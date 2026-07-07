@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIM Portal | الفرقة الثانية</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg: #0a0f1e;
+  --card: #111827;
+  --accent: #00f5d4;
+  --accent2: #7b2cbf;
+  --text: #e5e7eb;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo',sans-serif}
+body{background:var(--bg);color:var(--text)}
+header{text-align:center;padding:40px 20px;border-bottom:1px solid #222}
+header h1{font-size:2.2rem;font-weight:900;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.search-box{margin:20px auto;max-width:500px;padding:0 20px}
+.search-box input{width:100%;padding:14px 18px;border-radius:12px;border:1px solid #333;background:var(--card);color:var(--text);outline:none}
+.container{max-width:1100px;margin:30px auto;padding:0 20px}
+.section-title{font-size:1.5rem;margin:30px 0 15px;color:var(--accent);border-right:4px solid var(--accent);padding-right:10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.card{background:var(--card);padding:20px;border-radius:16px;border:1px solid #222}
+.card:hover{border-color:var(--accent)}
+.card .icon{font-size:2rem}
+.card h3{font-size:1.2rem;margin:10px 0;color:var(--accent)}
+.section{margin-top:15px}
+.section h4{font-size:.95rem;color:var(--accent2);margin-bottom:8px}
+.section ul{list-style:none}
+.section ul li a{display:block;padding:8px 12px;margin:5px 0;background:#1f2937;border-radius:8px;color:var(--text);text-decoration:none;font-size:.9rem}
+.section ul li a:hover{background:var(--accent);color:#000}
+.coming{opacity:.6;text-align:center;padding:40px 20px}
+footer{text-align:center;padding:30px;color:#6b7280;border-top:1px solid #222;margin-top:40px}
+footer b{color:var(--accent)}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>SIM Portal</h1>
+  <p>الفرقة الثانية - Software Industry & Multimedia System</p>
+</header>
+
+<div class="search-box">
+  <input type="text" id="search" placeholder="🔍 ابحث عن مادة...">
+</div>
+
+<div class="container">
+  <h2 class="section-title">مواد الترم الأول</h2>
+  <div class="grid" id="term1">
+
+    <div class="card" data-name="Data Science">
+      <div class="icon">📊</div><h3>Data Science</h3>
+      <div class="section"><h4>📖 محاضرات</h4><ul><li><a href="#">ضيف اللينك</a></li></ul></div>
+      <div class="section"><h4>✏️ سكاشن</h4><ul><li><a href="#">ضيف اللينك</a></li></ul></div>
+      <div class="section"><h4>📝 ملخصات</h4><ul><li><a href="#">ضيف اللينك</a></li></ul></div>
+    </div>
+
+    <div class="card" data-name="Software Engineering">
+      <div class="icon">💻</div><h3>Software Engineering</h3>
+      <div class="section"><h4>📖 محاضرات</h4><ul><li><a href="#">ضيف اللينك</a></li></ul></div>
+      <div class="section"><h4>✏️ سكاشن</h4><ul><li><a href="#">ضيف اللينك</a></li></ul></div>
+      <div class="section"><h4>📝 ملخصات</h4><ul><li><a href="#">ضيف اللينك</a></li></ul></div>
+    </div>
+
+    <div class="card" data-name="Math III">
+      <div class="icon">➗</div><h3>Math III</h3>
+      <div class="section"><h4>📖 محاضرات</h4><ul><li><a href="#">ضيف اللينك</a></li></ul></div>
+      <div class="section"><<h4>✏️ سكاشن</h4><ul><li><a href="#">ضيف اللينك</a></li></ul></div>
+      <div class="section"><h4>📝 ملخصات</h4><ul><li><a href="#">ضيف اللينك</a></li></ul></div>
+    </div>
+
+    <div class="card" data-name="Multimedia Systems">
+      <div class="icon">🎬</div><h3>Multimedia Systems</h3>
+      <div class="section"><h4>📖 محاضرات</h4><ul><li><a href="#">ضيف اللينك</a></li></ul></div>
+      <div class="section"><h4>✏️ سكاشن</h4><ul><li><a href="#">ضيف اللينك</a></li></ul></div>
+      <div class="section"><h4>📝 ملخصات</h4><ul><li><a href="#">ضيف اللينك</a></li></ul></div>
+    </div>
+
+    <div class="card" data-name="Data Structures">
+      <div class="icon">🗂️</div><h3>Data Structures</h3>
+      <div class="section"><h4>📖 محاضرات</h4><ul><li><a href="#">ضيف اللينك</a></li></ul></div>
+      <div class="section"><h4>✏️ سكاشن</h4><ul><li><a href="#">ضيف اللينك</a></li></ul></div>
+      <div class="section"><h4>📝 ملخصات</h4><ul><li><a href="#">ضيف اللينك</a></li></ul></div>
+    </div>
+
+    <div class="card" data-name="Game Programming">
+      <div class="icon">🎮</div><h3>Game Programming</h3>
+      <div class="section"><h4>📖 محاضرات</h4><ul><li><a href="#">ضيف اللينك</a></li></ul></div>
+      <div class="section"><h4>✏️ سكاشن</h4><ul><li><a href="#">ضيف اللينك</a></li></ul></div>
+      <div class="section"><h4>📝 ملخصات</h4><ul><li><a href="#">ضيف اللينك</a></li></ul></div>
+    </div>
+
+  </div>
+
+  <h2 class="section-title">مواد الترم الثاني</h2>
+  <div class="grid">
+    <div class="card coming">
+      <div class="icon">⏳</div>
+      <h3>لسا يا نجم</h3>
+      <p>هتنزل المواد لما يجي وقت الترم التاني</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Made with ❤️ By <b>Ziad Taha</b> | SIM - الفرقة الثانية
+</footer>
+
+<script>
+document.getElementById('search').addEventListener('input', function(e){
+  let query = e.target.value.toLowerCase();
+  document.querySelectorAll('.card').forEach(card=>{
+    let name = card.dataset.name.toLowerCase();
+    card.style.display = name.includes(query) ? 'block' : 'none';
+  });
+});
+</script>
+<script src="script.js"></script>
+</body>
+</html>
