@@ -1,44 +1,29 @@
-// 1. البحث المحسن
-document.getElementById('search').addEventListener('input', function(e){
-  let query = e.target.value.toLowerCase();
-  document.querySelectorAll('.card[data-name]').forEach(card=>{
-    let name = card.dataset.name.toLowerCase();
-    card.style.display = name.includes(query) ? 'block' : 'none';
-  });
-});
+// script.js - تحسينات إضافية
 
-// 2. حفظ اخر بحث في LocalStorage
-let lastSearch = localStorage.getItem('lastSearch');
-if(lastSearch){ document.getElementById('search').value = lastSearch; }
-document.getElementById('search').addEventListener('input', e=>{
-  localStorage.setItem('lastSearch', e.target.value);
-});
-
-// 3. عداد المواد
-document.querySelector('.section-title').innerHTML += ` <span style="color:#9ca3af;font-size:1rem">(${document.querySelectorAll('#term1 .card').length} مواد)</span>`;
-
-// 4. Dark/Light Mode Toggle
-const toggleBtn = document.createElement('button');
-toggleBtn.className = 'theme-toggle';
-toggleBtn.innerHTML = '🌙';
-document.body.appendChild(toggleBtn);
-
-toggleBtn.onclick = () => {
-  document.body.classList.toggle('light');
-  toggleBtn.innerHTML = document.body.classList.contains('light') ? '🌙' : '☀️';
-  localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
-}
-
-// استرجاع الثيم
-if(localStorage.getItem('theme') === 'light'){ 
-  document.body.classList.add('light'); 
-  toggleBtn.innerHTML = '🌙';
-}
-
-// 5. تنبيه عند الضغط على لينك فاضي
-document.querySelectorAll('.section a[href="#"]').forEach(link=>{
-  link.onclick = (e) => {
-    e.preventDefault();
-    alert('لسا مضفتش اللينك ده يا زياد 😅');
+// 1. حفظ حالة البحث في LocalStorage
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.getElementById('search');
+  if (searchInput) {
+    const savedSearch = localStorage.getItem('searchQuery');
+    if (savedSearch) {
+      searchInput.value = savedSearch;
+      searchInput.dispatchEvent(new Event('input'));
+    }
+    searchInput.addEventListener('input', function() {
+      localStorage.setItem('searchQuery', this.value);
+    });
   }
 });
+
+// 2. إحصائية المواد
+function countSubjects() {
+  const cards = document.querySelectorAll('.card:not(.coming)');
+  if (cards.length > 0) {
+    console.log(`📚 عدد المواد المتاحة: ${cards.length}`);
+  }
+}
+countSubjects();
+
+// 3. رسالة ترحيب في Console
+console.log('%c🚀 SIM Portal - الفرقة الثانية', 'font-size:20px; font-weight:bold; color:#00f5d4;');
+console.log('%c👨‍💻 Designed by Ziad Taha', 'font-size:14px; color:#7b2cbf;');
