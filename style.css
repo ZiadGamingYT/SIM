@@ -1,41 +1,28 @@
-/* تحسينات احترافية */
 :root{
-  --bg: #0a0f1e;
-  --card: #111827;
-  --accent: #00f5d4;
-  --accent2: #7b2cbf;
-  --text: #e5e7eb;
+ --bg: #0a0f1e;
+ --card: #111827;
+ --accent: #00f5d4;
+ --accent2: #7b2cbf;
+ --text: #e5e7eb;
 }
-
-/* 1. Scrollbar احترافي */
-::-webkit-scrollbar{width:10px}
-::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:linear-gradient(var(--accent), var(--accent2));border-radius:10px}
-
-/* 2. Animation عند ظهور الكروت */
-@keyframes fadeInUp{
-  from{opacity:0; transform:translateY(20px)}
-  to{opacity:1; transform:translateY(0)}
-}
-.card{animation:fadeInUp 0.5s ease forwards}
-
-/* 3. زرار Dark/Light Mode */
-.theme-toggle{
-  position:fixed; bottom:20px; left:20px; 
-  background:var(--accent); color:#000; border:none;
-  width:50px; height:50px; border-radius:50%;
-  font-size:1.5rem; cursor:pointer; z-index:999;
-  box-shadow:0 4px 20px #00f5d455
-}
-
-/* 4. Loading Skeleton للملفات */
-.section ul li a.loading{
-  background:linear-gradient(90deg, #1f2937 25%, #2d3748 50%, #1f2937 75%);
-  background-size:200% 100%; animation:loading 1.5s infinite;
-}
-@keyframes loading{0%{background-position:200% 0}100%{background-position:-200% 0}}
-
-/* 5. Responsive للموبايل */
-@media(max-width:768px){
-  header h1{font-size:1.8rem}
-  .grid{grid-template-columns:1fr}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo',sans-serif}
+body{background:var(--bg);color:var(--text)}
+header{text-align:center;padding:40px 20px;border-bottom:1px solid #222}
+header h1{font-size:2.2rem;font-weight:900;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.search-box{margin:20px auto;max-width:500px;padding:0 20px}
+.search-box input{width:100%;padding:14px 18px;border-radius:12px;border:1px solid #333;background:var(--card);color:var(--text);outline:none}
+.container{max-width:1100px;margin:30px auto;padding:0 20px}
+.section-title{font-size:1.5rem;margin:30px 0 15px;color:var(--accent);border-right:4px solid var(--accent);padding-right:10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.card{background:var(--card);padding:20px;border-radius:16px;border:1px solid #222; cursor:pointer; transition:0.3s}
+.card:hover{border-color:var(--accent); transform:translateY(-5px)}
+.card.icon{font-size:2rem}
+.card h3{font-size:1.2rem;margin:10px 0;color:var(--accent)}
+.section{margin-top:15px}
+.section h4{font-size:.95rem;color:var(--accent2);margin-bottom:8px}
+.section ul{list-style:none}
+.section ul li a{display:block;padding:8px 12px;margin:5px 0;background:#1f2937;border-radius:8px;color:var(--text);text-decoration:none;font-size:.9rem}
+.section ul li a:hover{background:var(--accent);color:#000}
+.coming{opacity:.6;text-align:center;padding:40px 20px}
+footer{text-align:center;padding:30px;color:#6b7280;border-top:1px solid #222;margin-top:40px}
+footer b{color:var(--accent)}
