@@ -766,6 +766,7 @@
     let isTransitioning = false;
     let historyStack = ['welcome'];
     let isBackAction = false;
+    let isFirstLoad = true;
 
     // ====== دالة إدارة التاريخ ======
     function pushHistory(state, title, url) {
@@ -825,7 +826,8 @@
         levelPage.classList.add('hidden');
         subjectPage.classList.add('hidden');
 
-        if (state.page === 'welcome') {
+        // لو الحالة welcome أو مفيش حالة، نظهر welcome
+        if (state.page === 'welcome' || !state.page) {
           welcomePage.classList.remove('hidden');
           welcomePage.classList.remove('entering');
           void welcomePage.offsetWidth;
@@ -859,7 +861,6 @@
         }
 
         if (state.page === 'subject' && state.subjectId) {
-          // نبحث عن المادة
           for (const levelId in levelsData) {
             const level = levelsData[levelId];
             for (const termId in level.terms) {
@@ -867,7 +868,6 @@
               if (found) {
                 currentLevel = levelId;
                 currentSubjectId = state.subjectId;
-                // نعرض المادة
                 const levelPage = document.getElementById('levelPage');
                 const subjectPage = document.getElementById('subjectPage');
                 const subject = found;
@@ -891,11 +891,11 @@
           }
         }
 
-        // لو مفيش حالة مناسبة، نروح للرئيسية
-        mainPage.classList.remove('hidden');
-        mainPage.classList.remove('entering');
-        void mainPage.offsetWidth;
-        mainPage.classList.add('entering');
+        // لو مفيش حالة مناسبة، نروح للترحيب
+        welcomePage.classList.remove('hidden');
+        welcomePage.classList.remove('entering');
+        void welcomePage.offsetWidth;
+        welcomePage.classList.add('entering');
         return true;
 
       } catch (e) {
@@ -1317,6 +1317,7 @@
         targetSubjectId = state.subjectId || null;
       }
 
+      // لو target welcome أو current welcome
       if (targetPage === 'welcome' || currentPage === 'welcome') {
         if (currentPage !== 'welcome') {
           welcomePage.classList.remove('hidden');
@@ -1331,19 +1332,31 @@
         return;
       }
 
+      // لو target main
       if (targetPage === 'main') {
         if (currentPage !== 'main') {
-          mainPage.classList.remove('hidden');
-          mainPage.classList.remove('entering');
-          void mainPage.offsetWidth;
-          mainPage.classList.add('entering');
-          levelPage.classList.add('hidden');
-          subjectPage.classList.add('hidden');
+          // لو كنا في welcome، نروح للرئيسية
+          if (currentPage === 'welcome') {
+            // نخفي welcome ونظهر main
+            welcomePage.classList.add('hidden');
+            mainPage.classList.remove('hidden');
+            mainPage.classList.remove('entering');
+            void mainPage.offsetWidth;
+            mainPage.classList.add('entering');
+          } else {
+            mainPage.classList.remove('hidden');
+            mainPage.classList.remove('entering');
+            void mainPage.offsetWidth;
+            mainPage.classList.add('entering');
+            levelPage.classList.add('hidden');
+            subjectPage.classList.add('hidden');
+          }
           saveCurrentState();
         }
         return;
       }
 
+      // لو target level
       if (targetPage === 'level') {
         if (currentPage === 'subject') {
           goBackToLevel();
@@ -1356,6 +1369,7 @@
         return;
       }
 
+      // لو target subject
       if (targetPage === 'subject' && targetSubjectId) {
         for (const levelId in levelsData) {
           const level = levelsData[levelId];
@@ -1369,8 +1383,17 @@
         }
       }
 
-      if (currentPage !== 'main') {
-        goBackToMain();
+      // لو مفيش حالة مناسبة
+      if (currentPage !== 'welcome') {
+        // نروح للترحيب
+        welcomePage.classList.remove('hidden');
+        welcomePage.classList.remove('entering');
+        void welcomePage.offsetWidth;
+        welcomePage.classList.add('entering');
+        mainPage.classList.add('hidden');
+        levelPage.classList.add('hidden');
+        subjectPage.classList.add('hidden');
+        saveCurrentState();
       }
     });
 
@@ -1396,16 +1419,17 @@
       // محاولة استعادة الحالة المحفوظة
       const restored = restoreSavedState();
       
-      // إذا لم يتم الاستعادة، نعرض الصفحة الرئيسية
+      // إذا لم يتم الاستعادة، نعرض صفحة الترحيب
       if (!restored) {
-        const mainPage = document.getElementById('mainPage');
-        mainPage.classList.remove('hidden');
-        mainPage.classList.remove('entering');
-        void mainPage.offsetWidth;
-        mainPage.classList.add('entering');
+        const welcomePage = document.getElementById('welcomePage');
+        welcomePage.classList.remove('hidden');
+        welcomePage.classList.remove('entering');
+        void welcomePage.offsetWidth;
+        welcomePage.classList.add('entering');
       }
       
       setTimeout(() => preloader.classList.add('hide'), 600);
+      isFirstLoad = false;
     });
 
     // حفظ الحالة عند إغلاق الصفحة
