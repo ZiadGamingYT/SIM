@@ -778,129 +778,14 @@
       historyStack.push(state.page);
     }
 
-    // ====== حفظ الحالة الحالية ======
+    // ====== حفظ الحالة الحالية - ملغي ======
     function saveCurrentState() {
-      const mainPage = document.getElementById('mainPage');
-      const levelPage = document.getElementById('levelPage');
-      const subjectPage = document.getElementById('subjectPage');
-      const welcomePage = document.getElementById('welcomePage');
-
-      let state = { page: 'welcome' };
-
-      if (!welcomePage.classList.contains('hidden')) {
-        state = { page: 'welcome' };
-      } else if (!mainPage.classList.contains('hidden')) {
-        state = { page: 'main' };
-      } else if (!levelPage.classList.contains('hidden')) {
-        state = { 
-          page: 'level', 
-          levelId: currentLevel || 'level1'
-        };
-      } else if (!subjectPage.classList.contains('hidden')) {
-        state = { 
-          page: 'subject', 
-          subjectId: currentSubjectId || 'dataScience'
-        };
-      }
-
-      localStorage.setItem('lastPageState', JSON.stringify(state));
-      if (state.levelId) localStorage.setItem('lastLevel', state.levelId);
-      if (state.subjectId) localStorage.setItem('lastSubject', state.subjectId);
+      // تم إلغاء حفظ الحالة
     }
 
-    // ====== استعادة الحالة المحفوظة ======
+    // ====== استعادة الحالة المحفوظة - ملغي ======
     function restoreSavedState() {
-      const savedState = localStorage.getItem('lastPageState');
-      if (!savedState) return false;
-
-      try {
-        const state = JSON.parse(savedState);
-        const welcomePage = document.getElementById('welcomePage');
-        const mainPage = document.getElementById('mainPage');
-        const levelPage = document.getElementById('levelPage');
-        const subjectPage = document.getElementById('subjectPage');
-
-        // نخفي كل الصفحات
-        welcomePage.classList.add('hidden');
-        mainPage.classList.add('hidden');
-        levelPage.classList.add('hidden');
-        subjectPage.classList.add('hidden');
-
-        // لو الحالة welcome أو مفيش حالة، نظهر welcome
-        if (state.page === 'welcome' || !state.page) {
-          welcomePage.classList.remove('hidden');
-          welcomePage.classList.remove('entering');
-          void welcomePage.offsetWidth;
-          welcomePage.classList.add('entering');
-          return true;
-        }
-
-        if (state.page === 'main') {
-          mainPage.classList.remove('hidden');
-          mainPage.classList.remove('entering');
-          void mainPage.offsetWidth;
-          mainPage.classList.add('entering');
-          return true;
-        }
-
-        if (state.page === 'level' && state.levelId) {
-          const levelId = state.levelId;
-          currentLevel = levelId;
-          const level = levelsData[levelId];
-          if (level) {
-            document.getElementById('levelTitle').textContent = `${level.icon} ${level.name}`;
-            document.getElementById('levelSubtitle').textContent = 'اختر الترم';
-            renderLevelSubjects(levelId);
-            setupLevelSearch(levelId);
-            levelPage.classList.remove('hidden');
-            levelPage.classList.remove('entering');
-            void levelPage.offsetWidth;
-            levelPage.classList.add('entering');
-            return true;
-          }
-        }
-
-        if (state.page === 'subject' && state.subjectId) {
-          for (const levelId in levelsData) {
-            const level = levelsData[levelId];
-            for (const termId in level.terms) {
-              const found = level.terms[termId].subjects.find(s => s.id === state.subjectId);
-              if (found) {
-                currentLevel = levelId;
-                currentSubjectId = state.subjectId;
-                const levelPage = document.getElementById('levelPage');
-                const subjectPage = document.getElementById('subjectPage');
-                const subject = found;
-                const termName = termId === 'term1' ? 'الترم الأول' : 'الترم الثاني';
-
-                document.getElementById('subjectTitle').textContent = `${subject.icon} ${subject.name}`;
-                document.getElementById('subjectSubtitle').textContent = `${termName} - ${level.name}`;
-
-                const isProject = state.subjectId === 'project1' || state.subjectId === 'project2';
-                setupMaterialTabs(state.subjectId, isProject);
-                setupSubjectSearch(state.subjectId);
-
-                levelPage.classList.add('hidden');
-                subjectPage.classList.remove('hidden');
-                subjectPage.classList.remove('entering');
-                void subjectPage.offsetWidth;
-                subjectPage.classList.add('entering');
-                return true;
-              }
-            }
-          }
-        }
-
-        // لو مفيش حالة مناسبة، نروح للترحيب
-        welcomePage.classList.remove('hidden');
-        welcomePage.classList.remove('entering');
-        void welcomePage.offsetWidth;
-        welcomePage.classList.add('entering');
-        return true;
-
-      } catch (e) {
-        return false;
-      }
+      return false;
     }
 
     // ====== إعداد تبويبات المادة ======
@@ -972,7 +857,6 @@
         void mainPage.offsetWidth;
         mainPage.classList.add('entering');
         pushHistory({ page: 'main' }, 'الرئيسية', '#main');
-        saveCurrentState();
       }, 300);
     }
 
@@ -1000,7 +884,6 @@
           }
           isTransitioning = false;
           if (callback) callback();
-          saveCurrentState();
         }, 280);
       } else {
         if (pageIn) {
@@ -1016,7 +899,6 @@
         }
         isTransitioning = false;
         if (callback) callback();
-        saveCurrentState();
       }
     }
 
@@ -1262,7 +1144,6 @@
       mainPage.classList.remove('entering');
       void mainPage.offsetWidth;
       mainPage.classList.add('entering');
-      saveCurrentState();
     }
 
     // ====== العودة للترم ======
@@ -1288,10 +1169,9 @@
       void levelPage.offsetWidth;
       levelPage.classList.add('entering');
       subjectPage.classList.add('hidden');
-      saveCurrentState();
     }
 
-    // ====== معالجة زر الرجوع ======
+    // ====== معالجة زر الرجوع - مع منع الخروج ======
     window.addEventListener('popstate', function(event) {
       if (isTransitioning) return;
 
@@ -1308,84 +1188,19 @@
 
       const state = event.state;
       let targetPage = 'welcome';
-      let targetLevelId = null;
-      let targetSubjectId = null;
 
       if (state) {
         targetPage = state.page || 'welcome';
-        targetLevelId = state.levelId || null;
-        targetSubjectId = state.subjectId || null;
       }
 
-      // لو target welcome أو current welcome
-      if (targetPage === 'welcome' || currentPage === 'welcome') {
-        if (currentPage !== 'welcome') {
-          welcomePage.classList.remove('hidden');
-          welcomePage.classList.remove('entering');
-          void welcomePage.offsetWidth;
-          welcomePage.classList.add('entering');
-          mainPage.classList.add('hidden');
-          levelPage.classList.add('hidden');
-          subjectPage.classList.add('hidden');
-          saveCurrentState();
-        }
+      // لو كنا في welcome، نمنع الخروج
+      if (currentPage === 'welcome') {
+        history.pushState({ page: 'welcome' }, '', '#welcome');
         return;
       }
 
-      // لو target main
-      if (targetPage === 'main') {
-        if (currentPage !== 'main') {
-          // لو كنا في welcome، نروح للرئيسية
-          if (currentPage === 'welcome') {
-            // نخفي welcome ونظهر main
-            welcomePage.classList.add('hidden');
-            mainPage.classList.remove('hidden');
-            mainPage.classList.remove('entering');
-            void mainPage.offsetWidth;
-            mainPage.classList.add('entering');
-          } else {
-            mainPage.classList.remove('hidden');
-            mainPage.classList.remove('entering');
-            void mainPage.offsetWidth;
-            mainPage.classList.add('entering');
-            levelPage.classList.add('hidden');
-            subjectPage.classList.add('hidden');
-          }
-          saveCurrentState();
-        }
-        return;
-      }
-
-      // لو target level
-      if (targetPage === 'level') {
-        if (currentPage === 'subject') {
-          goBackToLevel();
-        } else if (currentPage === 'main') {
-          const lastLevel = localStorage.getItem('lastLevel');
-          if (lastLevel) {
-            showLevel(lastLevel);
-          }
-        }
-        return;
-      }
-
-      // لو target subject
-      if (targetPage === 'subject' && targetSubjectId) {
-        for (const levelId in levelsData) {
-          const level = levelsData[levelId];
-          for (const termId in level.terms) {
-            const found = level.terms[termId].subjects.find(s => s.id === targetSubjectId);
-            if (found) {
-              showSubject(levelId, termId, targetSubjectId);
-              return;
-            }
-          }
-        }
-      }
-
-      // لو مفيش حالة مناسبة
-      if (currentPage !== 'welcome') {
-        // نروح للترحيب
+      // لو target welcome
+      if (targetPage === 'welcome') {
         welcomePage.classList.remove('hidden');
         welcomePage.classList.remove('entering');
         void welcomePage.offsetWidth;
@@ -1393,16 +1208,62 @@
         mainPage.classList.add('hidden');
         levelPage.classList.add('hidden');
         subjectPage.classList.add('hidden');
-        saveCurrentState();
+        history.pushState({ page: 'welcome' }, '', '#welcome');
+        return;
+      }
+
+      // لو target main
+      if (targetPage === 'main') {
+        if (currentPage !== 'main') {
+          if (currentPage === 'welcome') {
+            welcomePage.classList.add('hidden');
+          }
+          mainPage.classList.remove('hidden');
+          mainPage.classList.remove('entering');
+          void mainPage.offsetWidth;
+          mainPage.classList.add('entering');
+          levelPage.classList.add('hidden');
+          subjectPage.classList.add('hidden');
+        }
+        return;
+      }
+
+      // لو target level
+      if (targetPage === 'level' && state && state.levelId) {
+        if (currentPage === 'subject') {
+          goBackToLevel();
+        } else {
+          showLevel(state.levelId);
+        }
+        return;
+      }
+
+      // لو target subject
+      if (targetPage === 'subject' && state && state.subjectId) {
+        for (const levelId in levelsData) {
+          const level = levelsData[levelId];
+          for (const termId in level.terms) {
+            const found = level.terms[termId].subjects.find(s => s.id === state.subjectId);
+            if (found) {
+              showSubject(levelId, termId, state.subjectId);
+              return;
+            }
+          }
+        }
+      }
+
+      // لو مفيش حالة مناسبة، نروح للترحيب
+      if (currentPage !== 'welcome') {
+        welcomePage.classList.remove('hidden');
+        welcomePage.classList.remove('entering');
+        void welcomePage.offsetWidth;
+        welcomePage.classList.add('entering');
+        mainPage.classList.add('hidden');
+        levelPage.classList.add('hidden');
+        subjectPage.classList.add('hidden');
+        history.pushState({ page: 'welcome' }, '', '#welcome');
       }
     });
-
-    // حفظ آخر فرقة
-    const originalShowLevel = showLevel;
-    showLevel = function(levelId) {
-      localStorage.setItem('lastLevel', levelId);
-      originalShowLevel(levelId);
-    };
 
     // ====== Toast ======
     function showToast(message) {
@@ -1412,29 +1273,38 @@
       setTimeout(() => toast.classList.add('hidden'), 2500);
     }
 
-    // ====== Preloader واستعادة الحالة ======
+    // ====== Preloader - دايمًا نبدأ من الترحيب ======
     window.addEventListener('load', function() {
       const preloader = document.getElementById('preloader');
       
-      // محاولة استعادة الحالة المحفوظة
-      const restored = restoreSavedState();
+      // دايمًا نبدأ من صفحة الترحيب
+      const welcomePage = document.getElementById('welcomePage');
+      const mainPage = document.getElementById('mainPage');
+      const levelPage = document.getElementById('levelPage');
+      const subjectPage = document.getElementById('subjectPage');
       
-      // إذا لم يتم الاستعادة، نعرض صفحة الترحيب
-      if (!restored) {
-        const welcomePage = document.getElementById('welcomePage');
-        welcomePage.classList.remove('hidden');
-        welcomePage.classList.remove('entering');
-        void welcomePage.offsetWidth;
-        welcomePage.classList.add('entering');
-      }
+      // نخفي كل الصفحات
+      welcomePage.classList.add('hidden');
+      mainPage.classList.add('hidden');
+      levelPage.classList.add('hidden');
+      subjectPage.classList.add('hidden');
+      
+      // نظهر الترحيب
+      welcomePage.classList.remove('hidden');
+      welcomePage.classList.remove('entering');
+      void welcomePage.offsetWidth;
+      welcomePage.classList.add('entering');
+      
+      // نضيف تاريخ أولي عشان منخرجش
+      setTimeout(() => {
+        history.pushState({ page: 'welcome' }, '', '#welcome');
+        setTimeout(() => {
+          history.pushState({ page: 'welcome' }, '', '#welcome-keep');
+        }, 100);
+      }, 200);
       
       setTimeout(() => preloader.classList.add('hide'), 600);
       isFirstLoad = false;
-    });
-
-    // حفظ الحالة عند إغلاق الصفحة
-    window.addEventListener('beforeunload', function() {
-      saveCurrentState();
     });
 
     // ====== Ripple Effect ======
