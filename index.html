@@ -16,406 +16,1474 @@
       --border: #222;
       --shadow: rgba(14, 165, 233, 0.15);
       --input-bg: #111827;
+      --card-hover-bg: #1a2332;
       --text-secondary: #9ca3af;
+      --bg-light: #0a0f1e;
     }
+
     body.light-mode {
       --bg: #eef2f7;
       --card: #ffffff;
       --text: #1a2332;
       --border: #d1d9e6;
-      --shadow: rgba(0,0,0,0.08);
+      --shadow: rgba(0, 0, 0, 0.08);
       --input-bg: #ffffff;
+      --card-hover-bg: #f5f7fb;
       --text-secondary: #4a5568;
       --accent: #0ea5e9;
       --accent2: #7c3aed;
+      --bg-light: #eef2f7;
     }
-    * { margin:0; padding:0; box-sizing:border-box; font-family:'Cairo',sans-serif; }
-    body { background:var(--bg); color:var(--text); min-height:100vh; transition:background 0.4s ease,color 0.4s ease; overflow-x:hidden; }
-    header { text-align:center; padding:40px 20px; border-bottom:1px solid var(--border); transition:border-color 0.4s ease; }
-    header h1 { font-size:2.2rem; font-weight:900; background:linear-gradient(90deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-    header p { color:var(--accent); margin-top:10px; font-size:1.1rem; }
-    .search-box { margin:20px auto; max-width:500px; padding:0 20px; }
-    .search-box input { width:100%; padding:14px 18px; border-radius:12px; border:1px solid var(--border); background:var(--input-bg); color:var(--text); outline:none; transition:all 0.4s ease; }
-    .search-box input:focus { border-color:var(--accent); box-shadow:0 0 20px rgba(14,165,233,0.2); }
-    .search-box input::placeholder { color:var(--text-secondary); opacity:0.6; }
-    .container { max-width:1100px; margin:30px auto; padding:0 20px; }
-    .section-title { font-size:1.5rem; margin:30px 0 15px; color:var(--accent); border-right:4px solid var(--accent); padding-right:10px; text-shadow:0 0 20px rgba(14,165,233,0.2); transition:all 0.4s ease; }
-    .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:20px; }
-    .card { background:var(--card); padding:20px; border-radius:16px; border:1px solid var(--border); transition:all 0.4s cubic-bezier(0.175,0.885,0.32,1.275); cursor:pointer; position:relative; overflow:hidden; text-align:center; }
-    .card:hover { border-color:var(--accent); transform:translateY(-10px) scale(1.02); box-shadow:0 20px 50px var(--shadow); }
-    .card .icon { font-size:3rem; transition:all 0.3s ease; display:block; margin-bottom:10px; }
-    .card:hover .icon { animation:bounce 0.6s ease; }
-    @keyframes bounce { 0%,100%{transform:scale(1)}50%{transform:scale(1.3)} }
-    @keyframes fadeInUp { from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)} }
-    .card h3 { font-size:1.5rem; margin:10px 0; color:var(--accent); }
-    .card p { color:var(--text-secondary); font-size:0.9rem; }
-    .card.hidden-card { display:none !important; }
-    footer { text-align:center; padding:30px; color:var(--text-secondary); border-top:1px solid var(--border); margin-top:40px; transition:border-color 0.4s ease; }
-    footer b { color:var(--accent); }
-    .back-btn { display:inline-block; margin-bottom:30px; padding:12px 30px; background:var(--accent2); color:#fff; border-radius:12px; text-decoration:none; transition:all 0.3s ease; font-weight:700; border:none; cursor:pointer; }
-    .back-btn:hover { background:var(--accent); color:#fff; transform:translateX(-5px); box-shadow:0 5px 20px rgba(14,165,233,0.3); }
-    .hidden { display:none !important; }
-    #preloader { position:fixed; top:0; left:0; width:100%; height:100%; background:var(--bg); display:flex; justify-content:center; align-items:center; z-index:9999; transition:opacity 0.6s ease; }
-    #preloader.hide { opacity:0; pointer-events:none; }
-    .loader { width:50px; height:50px; border:4px solid var(--border); border-top-color:var(--accent); border-radius:50%; animation:spin 1s linear infinite; }
-    @keyframes spin { to{transform:rotate(360deg)} }
-    .toast { position:fixed; bottom:30px; right:30px; background:var(--card); color:var(--accent); padding:15px 25px; border-radius:12px; border:1px solid var(--accent); font-weight:700; transition:all 0.4s ease; z-index:999; box-shadow:0 10px 30px var(--shadow); }
-    .toast.hidden { transform:translateY(100px); opacity:0; }
-    @keyframes rippleAnim { to{transform:scale(4);opacity:0} }
-    @keyframes fadeInScale { from{opacity:0;transform:scale(0.95)}to{opacity:1;transform:scale(1)} }
-    @keyframes fadeOutScale { from{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(0.95)} }
-    #welcomePage { min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:40px 20px; animation:fadeInScale 0.6s ease forwards; }
-    #welcomePage .welcome-icon { font-size:4rem; margin-bottom:20px; }
-    #welcomePage h2 { font-size:2rem; color:var(--accent); margin-bottom:10px; }
-    #welcomePage .college-name { font-size:1.3rem; color:var(--accent2); margin-bottom:5px; }
-    #welcomePage .subtitle { font-size:1.1rem; color:var(--text-secondary); margin-bottom:20px; }
-    #welcomePage .description { max-width:700px; font-size:1.05rem; line-height:1.8; color:var(--text); opacity:0.85; margin-bottom:10px; }
-    #welcomePage .description-ar { max-width:700px; font-size:1rem; line-height:1.8; opacity:0.7; margin-bottom:30px; color:var(--text-secondary); }
-    #welcomePage .designed-by { font-size:0.95rem; color:var(--accent); margin-bottom:30px; }
-    .enter-btn { display:inline-block; padding:16px 50px; background:linear-gradient(90deg,var(--accent2),var(--accent)); color:#fff; font-size:1.2rem; font-weight:700; border:none; border-radius:50px; cursor:pointer; transition:all 0.3s ease; text-decoration:none; box-shadow:0 5px 25px rgba(14,165,233,0.3); }
-    .enter-btn:hover { transform:scale(1.05); box-shadow:0 8px 35px rgba(14,165,233,0.5); }
-    .page-level { transition:none; will-change:transform,opacity; }
-    .page-level.entering { animation:fadeInScale 0.35s ease forwards; }
-    .page-level.exiting { animation:fadeOutScale 0.25s ease forwards; }
-    .page-level.hidden { display:none !important; }
-    #mainPage.hidden { display:none !important; }
-    .theme-toggle { position:fixed; bottom:30px; left:30px; width:60px; height:60px; border-radius:50%; background:var(--card); border:2px solid var(--accent); color:var(--accent); font-size:1.8rem; cursor:pointer; z-index:999; box-shadow:0 5px 25px var(--shadow); transition:all 0.4s ease; display:flex; align-items:center; justify-content:center; }
-    .theme-toggle:hover { transform:scale(1.1) rotate(20deg); box-shadow:0 5px 35px rgba(14,165,233,0.4); }
-    .material-tabs { display:flex; gap:10px; margin:20px 0; flex-wrap:wrap; }
-    .material-tab { padding:12px 30px; background:var(--card); color:var(--text); border:1px solid var(--border); border-radius:12px; cursor:pointer; font-size:1rem; font-weight:700; transition:all 0.3s ease; font-family:'Cairo',sans-serif; flex:1; text-align:center; min-width:120px; }
-    .material-tab:hover { border-color:var(--accent); }
-    .material-tab.active { background:linear-gradient(90deg,var(--accent2),var(--accent)); color:#fff; border-color:var(--accent); }
-    .material-content { display:none; }
-    .material-content.active { display:block; animation:fadeInScale 0.3s ease forwards; }
-    .lecture-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:20px; margin-top:20px; }
-    .lecture-grid .lecture-card { animation:fadeInUp 0.4s ease forwards; opacity:0; }
-    .lecture-grid .lecture-card:nth-child(1){animation-delay:0.05s}
-    .lecture-grid .lecture-card:nth-child(2){animation-delay:0.1s}
-    .lecture-grid .lecture-card:nth-child(3){animation-delay:0.15s}
-    .lecture-grid .lecture-card:nth-child(4){animation-delay:0.2s}
-    .lecture-grid .lecture-card:nth-child(5){animation-delay:0.25s}
-    .lecture-grid .lecture-card:nth-child(6){animation-delay:0.3s}
-    .lecture-grid .lecture-card:nth-child(7){animation-delay:0.35s}
-    .lecture-grid .lecture-card:nth-child(8){animation-delay:0.4s}
-    .lecture-card { background:var(--card); padding:25px 20px; border-radius:16px; border:1px solid var(--border); text-align:center; transition:all 0.3s ease; }
-    .lecture-card:hover { border-color:var(--accent); transform:translateY(-5px); box-shadow:0 10px 30px var(--shadow); }
-    .lecture-card .num { font-size:2.5rem; font-weight:900; color:var(--accent2); display:block; margin-bottom:10px; }
-    .lecture-card h3 { font-size:1.1rem; margin-bottom:15px; color:var(--text); }
-    .lecture-card a { display:inline-block; padding:10px 25px; background:var(--accent); color:#fff; border-radius:10px; text-decoration:none; font-weight:700; transition:all 0.3s ease; }
-    .lecture-card a:hover { transform:scale(1.05); box-shadow:0 5px 20px rgba(14,165,233,0.4); }
-    .lecture-card.hidden-card { display:none !important; }
-    .no-results { text-align:center; padding:40px; font-size:1.2rem; color:var(--text-secondary); display:none; }
-    .no-results.show { display:block; }
-    @media(max-width:768px){
-      header h1{font-size:1.8rem}
-      .grid{grid-template-columns:1fr}
-      .lecture-grid{grid-template-columns:1fr}
-      .material-tabs{flex-direction:column}
-      .material-tab{min-width:unset}
-      .theme-toggle{width:50px;height:50px;font-size:1.4rem;bottom:15px;left:15px}
-      #welcomePage h2{font-size:1.5rem}
-      #welcomePage .college-name{font-size:1rem}
-      #welcomePage .description{font-size:0.95rem}
-      .enter-btn{padding:14px 35px;font-size:1rem}
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Cairo', sans-serif;
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      transition: background 0.4s ease, color 0.4s ease;
+      overflow-x: hidden;
+    }
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      border-bottom: 1px solid var(--border);
+      transition: border-color 0.4s ease;
+    }
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: 900;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    header p {
+      color: var(--accent);
+      margin-top: 10px;
+      font-size: 1.1rem;
+    }
+    .search-box {
+      margin: 20px auto;
+      max-width: 500px;
+      padding: 0 20px;
+    }
+    .search-box input {
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--input-bg);
+      color: var(--text);
+      outline: none;
+      transition: all 0.4s ease;
+    }
+    .search-box input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 20px rgba(14, 165, 233, 0.2);
+    }
+    .search-box input::placeholder {
+      color: var(--text-secondary);
+      opacity: 0.6;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+    .section-title {
+      font-size: 1.5rem;
+      margin: 30px 0 15px;
+      color: var(--accent);
+      border-right: 4px solid var(--accent);
+      padding-right: 10px;
+      text-shadow: 0 0 20px rgba(14, 165, 233, 0.2);
+      transition: all 0.4s ease;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--card);
+      padding: 20px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .card:hover {
+      border-color: var(--accent);
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 50px var(--shadow);
+    }
+    .card .icon {
+      font-size: 3rem;
+      transition: all 0.3s ease;
+      display: block;
+      margin-bottom: 10px;
+    }
+    .card:hover .icon {
+      animation: bounce 0.6s ease;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .card h3 {
+      font-size: 1.5rem;
+      margin: 10px 0;
+      color: var(--accent);
+    }
+    .card p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+    .card.hidden-card {
+      display: none !important;
+    }
+    .coming {
+      opacity: .6;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+      transition: border-color 0.4s ease;
+    }
+    footer b {
+      color: var(--accent);
+    }
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 30px;
+      padding: 12px 30px;
+      background: var(--accent2);
+      color: #fff;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+    }
+    .back-btn:hover {
+      background: var(--accent);
+      color: #fff;
+      transform: translateX(-5px);
+      box-shadow: 0 5px 20px rgba(14, 165, 233, 0.3);
+    }
+    .hidden {
+      display: none !important;
+    }
+
+    /* ====== Preloader ====== */
+    #preloader {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: var(--bg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.6s ease;
+    }
+    #preloader.hide {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .loader {
+      width: 50px; height: 50px;
+      border: 4px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* ====== Toast ====== */
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--card);
+      color: var(--accent);
+      padding: 15px 25px;
+      border-radius: 12px;
+      border: 1px solid var(--accent);
+      font-weight: 700;
+      transition: all 0.4s ease;
+      z-index: 999;
+      box-shadow: 0 10px 30px var(--shadow);
+    }
+    .toast.hidden {
+      transform: translateY(100px);
+      opacity: 0;
+    }
+
+    @keyframes rippleAnim {
+      to { transform: scale(4); opacity: 0; }
+    }
+
+    /* ====== Animations ====== */
+    @keyframes fadeInScale {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes fadeOutScale {
+      from { opacity: 1; transform: scale(1); }
+      to { opacity: 0; transform: scale(0.95); }
+    }
+
+    /* ====== صفحة الترحيب ====== */
+    #welcomePage {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+      animation: fadeInScale 0.6s ease forwards;
+    }
+    #welcomePage .welcome-icon {
+      font-size: 4rem;
+      margin-bottom: 20px;
+    }
+    #welcomePage h2 {
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    #welcomePage .college-name {
+      font-size: 1.3rem;
+      color: var(--accent2);
+      margin-bottom: 5px;
+    }
+    #welcomePage .subtitle {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+    #welcomePage .description {
+      max-width: 700px;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text);
+      opacity: 0.85;
+      margin-bottom: 10px;
+    }
+    #welcomePage .description-ar {
+      max-width: 700px;
+      font-size: 1rem;
+      line-height: 1.8;
+      opacity: 0.7;
+      margin-bottom: 30px;
+      color: var(--text-secondary);
+    }
+    #welcomePage .designed-by {
+      font-size: 0.95rem;
+      color: var(--accent);
+      margin-bottom: 30px;
+    }
+    .enter-btn {
+      display: inline-block;
+      padding: 16px 50px;
+      background: linear-gradient(90deg, var(--accent2), var(--accent));
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      box-shadow: 0 5px 25px rgba(14, 165, 233, 0.3);
+    }
+    .enter-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 35px rgba(14, 165, 233, 0.5);
+    }
+
+    /* ====== انتقال الصفحات ====== */
+    .page-level {
+      transition: none;
+      will-change: transform, opacity;
+    }
+    .page-level.entering {
+      animation: fadeInScale 0.35s ease forwards;
+    }
+    .page-level.exiting {
+      animation: fadeOutScale 0.25s ease forwards;
+    }
+    .page-level.hidden {
+      display: none !important;
+    }
+    #mainPage.hidden {
+      display: none !important;
+    }
+
+    /* ====== زر الثيم ====== */
+    .theme-toggle {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--card);
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      font-size: 1.8rem;
+      cursor: pointer;
+      z-index: 999;
+      box-shadow: 0 5px 25px var(--shadow);
+      transition: all 0.4s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .theme-toggle:hover {
+      transform: scale(1.1) rotate(20deg);
+      box-shadow: 0 5px 35px rgba(14, 165, 233, 0.4);
+    }
+
+    /* ====== تبويبات المادة ====== */
+    .material-tabs {
+      display: flex;
+      gap: 10px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+    .material-tab {
+      padding: 12px 30px;
+      background: var(--card);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      font-family: 'Cairo', sans-serif;
+      flex: 1;
+      text-align: center;
+      min-width: 120px;
+    }
+    .material-tab:hover {
+      border-color: var(--accent);
+    }
+    .material-tab.active {
+      background: linear-gradient(90deg, var(--accent2), var(--accent));
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .material-content {
+      display: none;
+    }
+    .material-content.active {
+      display: block;
+      animation: fadeInScale 0.3s ease forwards;
+    }
+
+    .lecture-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .lecture-grid .lecture-card {
+      animation: fadeInUp 0.4s ease forwards;
+      opacity: 0;
+    }
+    .lecture-grid .lecture-card:nth-child(1) { animation-delay: 0.05s; }
+    .lecture-grid .lecture-card:nth-child(2) { animation-delay: 0.1s; }
+    .lecture-grid .lecture-card:nth-child(3) { animation-delay: 0.15s; }
+    .lecture-grid .lecture-card:nth-child(4) { animation-delay: 0.2s; }
+    .lecture-grid .lecture-card:nth-child(5) { animation-delay: 0.25s; }
+    .lecture-grid .lecture-card:nth-child(6) { animation-delay: 0.3s; }
+    .lecture-grid .lecture-card:nth-child(7) { animation-delay: 0.35s; }
+    .lecture-grid .lecture-card:nth-child(8) { animation-delay: 0.4s; }
+
+    .lecture-card {
+      background: var(--card);
+      padding: 25px 20px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .lecture-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px var(--shadow);
+    }
+    .lecture-card .num {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--accent2);
+      display: block;
+      margin-bottom: 10px;
+    }
+    .lecture-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+      color: var(--text);
+    }
+    .lecture-card a {
+      display: inline-block;
+      padding: 10px 25px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: all 0.3s ease;
+    }
+    .lecture-card a:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 20px rgba(14, 165, 233, 0.4);
+    }
+    .lecture-card.hidden-card {
+      display: none !important;
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 40px;
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      display: none;
+    }
+    .no-results.show {
+      display: block;
+    }
+
+    @media(max-width:768px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      .lecture-grid {
+        grid-template-columns: 1fr;
+      }
+      .material-tabs {
+        flex-direction: column;
+      }
+      .material-tab {
+        min-width: unset;
+      }
+      .theme-toggle {
+        width: 50px;
+        height: 50px;
+        font-size: 1.4rem;
+        bottom: 15px;
+        left: 15px;
+      }
+      #welcomePage h2 {
+        font-size: 1.5rem;
+      }
+      #welcomePage .college-name {
+        font-size: 1rem;
+      }
+      #welcomePage .description {
+        font-size: 0.95rem;
+      }
+      .enter-btn {
+        padding: 14px 35px;
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
 <body>
-  <div id="preloader"><div class="loader"></div></div>
-  <div id="toast" class="toast hidden">✅ تم</div>
-  <button class="theme-toggle" id="themeToggle">🌙</button>
 
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="loader"></div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast hidden">✅ تم</div>
+
+  <!-- زر الثيم -->
+  <button class="theme-toggle" id="themeToggle" title="تغيير الوضع">🌙</button>
+
+  <!-- ====== صفحة الترحيب ====== -->
   <div id="welcomePage">
     <div class="welcome-icon">🎓</div>
     <h2>Faculty of Science - Software Industry & Multimedia Department</h2>
     <p class="college-name">كلية العلوم - قسم صناعة البرمجيات والوسائط المتعددة</p>
     <p class="subtitle">🚀 Welcome to the SIM Learning Platform</p>
-    <p class="description">Everything you need in one place: lectures, summaries, tutorials, graduation projects, and study materials to make your academic journey easier and help you achieve your best results.</p>
-    <p class="description-ar">كل ما تحتاجه في مكان واحد: محاضرات، ملخصات، سكاشن، مشاريع التخرج، ومواد دراسية لتسهيل رحلتك الأكاديمية ومساعدتك في تحقيق أفضل النتائج.</p>
+    <p class="description">
+      Everything you need in one place: lectures, summaries, tutorials, graduation projects, and study materials to make your academic journey easier and help you achieve your best results.
+    </p>
+    <p class="description-ar">
+      كل ما تحتاجه في مكان واحد: محاضرات، ملخصات، سكاشن، مشاريع التخرج، ومواد دراسية لتسهيل رحلتك الأكاديمية ومساعدتك في تحقيق أفضل النتائج.
+    </p>
     <p class="designed-by">❤️ Designed & Developed by Ziad Taha Mohamed Ahmed</p>
     <button class="enter-btn" onclick="enterPlatform()">🚀 اضغط هنا للدخول إلى المنصة</button>
   </div>
 
+  <!-- ====== الصفحة الرئيسية (الفرق) ====== -->
   <div id="mainPage" class="hidden page-level">
-    <header><h1>🎓 SIM Portal</h1><p>اختر فرقتك للوصول للمواد</p></header>
+    <header>
+      <h1>🎓 SIM Portal</h1>
+      <p>اختر فرقتك للوصول للمواد</p>
+    </header>
     <div class="container">
       <h2 class="section-title">الفرق</h2>
       <div class="grid" id="levelsGrid">
-        <div class="card" onclick="showLevel('level1')"><span class="icon">📘</span><h3>الفرقة الأولى</h3><p>مواد الترم الأول والثاني</p></div>
-        <div class="card" onclick="showLevel('level2')"><span class="icon">📗</span><h3>الفرقة الثانية</h3><p>مواد الترم الأول والثاني</p></div>
-        <div class="card" onclick="showLevel('level3')"><span class="icon">📕</span><h3>الفرقة الثالثة</h3><p>مواد الترم الأول والثاني</p></div>
-        <div class="card" onclick="showLevel('level4')"><span class="icon">📙</span><h3>الفرقة الرابعة</h3><p>مواد الترم الأول والثاني</p></div>
+        <div class="card" onclick="showLevel('level1')">
+          <span class="icon">📘</span>
+          <h3>الفرقة الأولى</h3>
+          <p>مواد الترم الأول والثاني</p>
+        </div>
+        <div class="card" onclick="showLevel('level2')">
+          <span class="icon">📗</span>
+          <h3>الفرقة الثانية</h3>
+          <p>مواد الترم الأول والثاني</p>
+        </div>
+        <div class="card" onclick="showLevel('level3')">
+          <span class="icon">📕</span>
+          <h3>الفرقة الثالثة</h3>
+          <p>مواد الترم الأول والثاني</p>
+        </div>
+        <div class="card" onclick="showLevel('level4')">
+          <span class="icon">📙</span>
+          <h3>الفرقة الرابعة</h3>
+          <p>مواد الترم الأول والثاني</p>
+        </div>
       </div>
     </div>
-    <footer>Made with ❤️ By <b>Ziad Taha</b> | SIM Portal</footer>
+    <footer>
+      Made with ❤️ By <b>Ziad Taha</b> | SIM Portal
+    </footer>
   </div>
 
+  <!-- ====== صفحة الفرقة ====== -->
   <div id="levelPage" class="hidden page-level">
-    <header><h1 id="levelTitle">الفرقة</h1><p id="levelSubtitle">اختر الترم</p></header>
+    <header>
+      <h1 id="levelTitle">الفرقة</h1>
+      <p id="levelSubtitle">اختر الترم</p>
+    </header>
     <div class="container">
       <button class="back-btn" onclick="goBackToMain()">⬅️ العودة للرئيسية</button>
-      <div class="search-box"><input type="text" id="levelSearch" placeholder="🔍 ابحث عن مادة..."></div>
+
+      <div class="search-box">
+        <input type="text" id="levelSearch" placeholder="🔍 ابحث عن مادة...">
+      </div>
+
       <h2 class="section-title">الترم الأول</h2>
       <div class="grid" id="term1Grid"></div>
       <div class="no-results" id="noResultsTerm1">❌ لا توجد نتائج مطابقة</div>
+
       <h2 class="section-title">الترم الثاني</h2>
       <div class="grid" id="term2Grid"></div>
       <div class="no-results" id="noResultsTerm2">❌ لا توجد نتائج مطابقة</div>
     </div>
-    <footer>Made with ❤️ By <b>Ziad Taha</b> | SIM Portal</footer>
+    <footer>
+      Made with ❤️ By <b>Ziad Taha</b> | SIM Portal
+    </footer>
   </div>
 
+  <!-- ====== صفحة المادة ====== -->
   <div id="subjectPage" class="hidden page-level">
-    <header><h1 id="subjectTitle">المادة</h1><p id="subjectSubtitle">اختر ما تريد</p></header>
+    <header>
+      <h1 id="subjectTitle">المادة</h1>
+      <p id="subjectSubtitle">اختر ما تريد</p>
+    </header>
     <div class="container">
       <button class="back-btn" onclick="goBackToLevel()">⬅️ العودة للترم</button>
-      <div class="search-box"><input type="text" id="subjectSearch" placeholder="🔍 ابحث في المحتوى..."></div>
+
+      <div class="search-box">
+        <input type="text" id="subjectSearch" placeholder="🔍 ابحث في المحتوى...">
+      </div>
+
       <div class="material-tabs" id="materialTabs"></div>
       <div id="materialContent"></div>
       <div class="no-results" id="noResultsSubject">❌ لا توجد نتائج مطابقة</div>
     </div>
-    <footer>Made with ❤️ By <b>Ziad Taha</b> | SIM Portal</footer>
+    <footer>
+      Made with ❤️ By <b>Ziad Taha</b> | SIM Portal
+    </footer>
   </div>
 
   <script>
     // ====== البيانات ======
     const levelsData = {
-      level1:{name:'الفرقة الأولى',icon:'📘',terms:{term1:{name:'الترم الأول',subjects:[{id:'l1t1s1',name:'Math I',icon:'📐'},{id:'l1t1s2',name:'Physics I',icon:'⚛️'},{id:'l1t1s3',name:'Introduction to Computing Technology',icon:'💻'},{id:'l1t1s4',name:'Computer Programming I',icon:'🖥️'},{id:'l1t1s5',name:'English',icon:'🇬🇧'},{id:'l1t1s6',name:'تاريخ علوم',icon:'📜'},{id:'l1t1s7',name:'إنسان وبيئة',icon:'🌍'}]},term2:{name:'الترم الثاني',subjects:[{id:'l1t2s1',name:'Math II',icon:'📐'},{id:'l1t2s2',name:'Introduction to Probability',icon:'🎲'},{id:'l1t2s3',name:'Physics II',icon:'⚛️'},{id:'l1t2s4',name:'Mathematics for Computer Science (MCS)',icon:'🧮'},{id:'l1t2s5',name:'Object Oriented Programming (OOP)',icon:'🔷'},{id:'l1t2s6',name:'Arabic',icon:'🇸🇦'},{id:'l1t2s7',name:'حاسب ومجتمع',icon:'🤝'}]}}},
-      level2:{name:'الفرقة الثانية',icon:'📗',terms:{term1:{name:'الترم الأول',subjects:[{id:'dataScience',name:'Data Science',icon:'📊'},{id:'softwareEngineering',name:'Software Engineering',icon:'💻'},{id:'math',name:'Math III',icon:'➗'},{id:'multimedia',name:'Multimedia Systems',icon:'🎬'},{id:'dataStructures',name:'Data Structures',icon:'🗂️'},{id:'game',name:'Game Programming',icon:'🎮'}]},term2:{name:'الترم الثاني',subjects:[{id:'l2t2s1',name:'Math IV',icon:'📐'},{id:'l2t2s2',name:'Web Programming',icon:'🌐'},{id:'l2t2s3',name:'Database',icon:'🗄️'},{id:'l2t2s4',name:'Human Computer Interaction',icon:'👤💻'},{id:'l2t2s5',name:'Software Requirements Analysis',icon:'📋'}]}}},
-      level3:{name:'الفرقة الثالثة',icon:'📕',terms:{term1:{name:'الترم الأول',subjects:[{id:'l3t1s1',name:'Linear Algebra',icon:'🔢'},{id:'l3t1s2',name:'Operating Systems',icon:'⚙️'},{id:'l3t1s3',name:'Design and Analysis of Algorithms',icon:'🧩'},{id:'l3t1s4',name:'Advanced Methods for Multimedia',icon:'🎥'}]},term2:{name:'الترم الثاني',subjects:[{id:'l3t2s1',name:'Numerical Computation',icon:'🔢'},{id:'l3t2s2',name:'AI for Game',icon:'🤖'},{id:'l3t2s3',name:'Mobile Application Development',icon:'📱'}]}}},
-      level4:{name:'الفرقة الرابعة',icon:'📙',terms:{term1:{name:'الترم الأول',subjects:[{id:'l4t1s1',name:'Computer Graphics',icon:'🎨'},{id:'project1',name:'Project I',icon:'📋'}]},term2:{name:'الترم الثاني',subjects:[{id:'l4t2s1',name:'Game Design & Modeling',icon:'🎮'},{id:'project2',name:'Project II',icon:'📋'}]}}}
-    };
-
-    const subjectsLectures = {
-      dataScience:{lectures:['https://drive.google.com/file/d/1dbKi-vRIFx3Ynl7-FmAtGcwaPr8LSWBh/view?usp=drivesdk','https://drive.google.com/file/d/1r52kwBYqGtPAtTE13VAQIkTkEURh5r2H/view?usp=drivesdk','https://drive.google.com/file/d/1YtZ1sNChbpqAPzc5mY2kaQEAqSkJR7Mz/view?usp=drivesdk','https://drive.google.com/file/d/1HiOVGb66Rtc9ROM_-ikXoajCRSuaNT6a/view?usp=drivesdk','https://drive.google.com/file/d/1jHCmkxxaThQvdZcrJ4yYWkg4AaVIGi-E/view?usp=drivesdk','https://drive.google.com/file/d/1yT02KGhdF4AjYqlrsLUB7-DC34K-8MlU/view?usp=drivesdk','https://drive.google.com/file/d/1LEc3a8DWWjQk4lrwC0DcTbhKoIZ1atty/view?usp=drivesdk','https://drive.google.com/file/d/1GbZRS7CNDoez8gVlARgGZspHBbkHhOF4/view?usp=drivesdk'],sections:[],summaries:[]},
-      softwareEngineering:{lectures:[],sections:[],summaries:[]},
-      math:{lectures:[],sections:[],summaries:[]},
-      multimedia:{lectures:[],sections:[],summaries:[]},
-      dataStructures:{lectures:[],sections:[],summaries:[]},
-      game:{lectures:[],sections:[],summaries:[]},
-      project1:{lectures:[],sections:[],summaries:[],isProject:true},
-      project2:{lectures:[],sections:[],summaries:[],isProject:true}
-    };
-
-    let currentLevel = null, isTransitioning = false;
-
-    function pushHistory(state){ history.pushState(state,'',state.url||'#'); }
-
-    function enterPlatform(){
-      const w=document.getElementById('welcomePage'), m=document.getElementById('mainPage');
-      w.classList.add('exiting');
-      setTimeout(()=>{w.classList.add('hidden');w.classList.remove('exiting');m.classList.remove('hidden');m.classList.remove('entering');void m.offsetWidth;m.classList.add('entering');pushHistory({page:'main',url:'#main'});},300);
-    }
-
-    function transitionToPage(pageIn,pageOut,stateData,callback){
-      if(isTransitioning)return;
-      isTransitioning=true;
-      if(pageOut&&!pageOut.classList.contains('hidden')){
-        pageOut.classList.remove('entering');pageOut.classList.add('exiting');
-        setTimeout(()=>{
-          pageOut.classList.add('hidden');pageOut.classList.remove('exiting');
-          if(pageIn){pageIn.classList.remove('hidden');pageIn.classList.remove('entering');void pageIn.offsetWidth;pageIn.classList.add('entering');}
-          if(stateData)pushHistory(stateData);
-          isTransitioning=false;
-          if(callback)callback();
-        },280);
-      }else{
-        if(pageIn){pageIn.classList.remove('hidden');pageIn.classList.remove('entering');void pageIn.offsetWidth;pageIn.classList.add('entering');}
-        if(stateData)pushHistory(stateData);
-        isTransitioning=false;
-        if(callback)callback();
+      level1: {
+        name: 'الفرقة الأولى',
+        icon: '📘',
+        terms: {
+          term1: {
+            name: 'الترم الأول',
+            subjects: [
+              { id: 'l1t1s1', name: 'Math I', icon: '📐' },
+              { id: 'l1t1s2', name: 'Physics I', icon: '⚛️' },
+              { id: 'l1t1s3', name: 'Introduction to Computing Technology', icon: '💻' },
+              { id: 'l1t1s4', name: 'Computer Programming I', icon: '🖥️' },
+              { id: 'l1t1s5', name: 'English', icon: '🇬🇧' },
+              { id: 'l1t1s6', name: 'تاريخ علوم', icon: '📜' },
+              { id: 'l1t1s7', name: 'إنسان وبيئة', icon: '🌍' }
+            ]
+          },
+          term2: {
+            name: 'الترم الثاني',
+            subjects: [
+              { id: 'l1t2s1', name: 'Math II', icon: '📐' },
+              { id: 'l1t2s2', name: 'Introduction to Probability', icon: '🎲' },
+              { id: 'l1t2s3', name: 'Physics II', icon: '⚛️' },
+              { id: 'l1t2s4', name: 'Mathematics for Computer Science (MCS)', icon: '🧮' },
+              { id: 'l1t2s5', name: 'Object Oriented Programming (OOP)', icon: '🔷' },
+              { id: 'l1t2s6', name: 'Arabic', icon: '🇸🇦' },
+              { id: 'l1t2s7', name: 'حاسب ومجتمع', icon: '🤝' }
+            ]
+          }
+        }
+      },
+      level2: {
+        name: 'الفرقة الثانية',
+        icon: '📗',
+        terms: {
+          term1: {
+            name: 'الترم الأول',
+            subjects: [
+              { id: 'dataScience', name: 'Data Science', icon: '📊' },
+              { id: 'softwareEngineering', name: 'Software Engineering', icon: '💻' },
+              { id: 'math', name: 'Math III', icon: '➗' },
+              { id: 'multimedia', name: 'Multimedia Systems', icon: '🎬' },
+              { id: 'dataStructures', name: 'Data Structures', icon: '🗂️' },
+              { id: 'game', name: 'Game Programming', icon: '🎮' }
+            ]
+          },
+          term2: {
+            name: 'الترم الثاني',
+            subjects: [
+              { id: 'l2t2s1', name: 'Math IV', icon: '📐' },
+              { id: 'l2t2s2', name: 'Web Programming', icon: '🌐' },
+              { id: 'l2t2s3', name: 'Database', icon: '🗄️' },
+              { id: 'l2t2s4', name: 'Human Computer Interaction', icon: '👤💻' },
+              { id: 'l2t2s5', name: 'Software Requirements Analysis', icon: '📋' }
+            ]
+          }
+        }
+      },
+      level3: {
+        name: 'الفرقة الثالثة',
+        icon: '📕',
+        terms: {
+          term1: {
+            name: 'الترم الأول',
+            subjects: [
+              { id: 'l3t1s1', name: 'Linear Algebra', icon: '🔢' },
+              { id: 'l3t1s2', name: 'Operating Systems', icon: '⚙️' },
+              { id: 'l3t1s3', name: 'Design and Analysis of Algorithms', icon: '🧩' },
+              { id: 'l3t1s4', name: 'Advanced Methods for Multimedia', icon: '🎥' }
+            ]
+          },
+          term2: {
+            name: 'الترم الثاني',
+            subjects: [
+              { id: 'l3t2s1', name: 'Numerical Computation', icon: '🔢' },
+              { id: 'l3t2s2', name: 'AI for Game', icon: '🤖' },
+              { id: 'l3t2s3', name: 'Mobile Application Development', icon: '📱' }
+            ]
+          }
+        }
+      },
+      level4: {
+        name: 'الفرقة الرابعة',
+        icon: '📙',
+        terms: {
+          term1: {
+            name: 'الترم الأول',
+            subjects: [
+              { id: 'l4t1s1', name: 'Computer Graphics', icon: '🎨' },
+              { id: 'project1', name: 'Project I', icon: '📋' }
+            ]
+          },
+          term2: {
+            name: 'الترم الثاني',
+            subjects: [
+              { id: 'l4t2s1', name: 'Game Design & Modeling', icon: '🎮' },
+              { id: 'project2', name: 'Project II', icon: '📋' }
+            ]
+          }
+        }
       }
-    }
+    };
 
-    function showLevel(levelId){
-      if(isTransitioning)return;
-      currentLevel=levelId;
-      const level=levelsData[levelId], mainPage=document.getElementById('mainPage'), levelPage=document.getElementById('levelPage');
-      document.getElementById('levelTitle').textContent=level.icon+' '+level.name;
-      document.getElementById('levelSubtitle').textContent='اختر الترم';
-      renderLevelSubjects(levelId);setupLevelSearch(levelId);
-      transitionToPage(levelPage,mainPage,{page:'level',levelId:levelId,title:level.name,url:'#level-'+levelId});
-      localStorage.setItem('lastLevel',levelId);
-    }
+    // ====== بيانات المحاضرات ======
+    const subjectsLectures = {
+      dataScience: {
+        name: '📊 Data Science',
+        lectures: [
+          'https://drive.google.com/file/d/1dbKi-vRIFx3Ynl7-FmAtGcwaPr8LSWBh/view?usp=drivesdk',
+          'https://drive.google.com/file/d/1r52kwBYqGtPAtTE13VAQIkTkEURh5r2H/view?usp=drivesdk',
+          'https://drive.google.com/file/d/1YtZ1sNChbpqAPzc5mY2kaQEAqSkJR7Mz/view?usp=drivesdk',
+          'https://drive.google.com/file/d/1HiOVGb66Rtc9ROM_-ikXoajCRSuaNT6a/view?usp=drivesdk',
+          'https://drive.google.com/file/d/1jHCmkxxaThQvdZcrJ4yYWkg4AaVIGi-E/view?usp=drivesdk',
+          'https://drive.google.com/file/d/1yT02KGhdF4AjYqlrsLUB7-DC34K-8MlU/view?usp=drivesdk',
+          'https://drive.google.com/file/d/1LEc3a8DWWjQk4lrwC0DcTbhKoIZ1atty/view?usp=drivesdk',
+          'https://drive.google.com/file/d/1GbZRS7CNDoez8gVlARgGZspHBbkHhOF4/view?usp=drivesdk'
+        ],
+        sections: [],
+        summaries: []
+      },
+      softwareEngineering: { name: '💻 Software Engineering', lectures: [], sections: [], summaries: [] },
+      math: { name: '➗ Math III', lectures: [], sections: [], summaries: [] },
+      multimedia: { name: '🎬 Multimedia Systems', lectures: [], sections: [], summaries: [] },
+      dataStructures: { name: '🗂️ Data Structures', lectures: [], sections: [], summaries: [] },
+      game: { name: '🎮 Game Programming', lectures: [], sections: [], summaries: [] },
+      project1: { name: '📋 Project I', lectures: [], sections: [], summaries: [], isProject: true },
+      project2: { name: '📋 Project II', lectures: [], sections: [], summaries: [], isProject: true }
+    };
 
-    function renderLevelSubjects(levelId){
-      const level=levelsData[levelId], t1=document.getElementById('term1Grid'), t2=document.getElementById('term2Grid');
-      t1.innerHTML='';t2.innerHTML='';
-      level.terms.term1.subjects.forEach(s=>{const c=document.createElement('div');c.className='card';c.dataset.subjectName=s.name.toLowerCase();c.innerHTML='<span class="icon">'+s.icon+'</span><h3>'+s.name+'</h3><p>اضغط للدخول</p>';c.onclick=()=>showSubject(levelId,'term1',s.id);t1.appendChild(c);});
-      level.terms.term2.subjects.forEach(s=>{const c=document.createElement('div');c.className='card';c.dataset.subjectName=s.name.toLowerCase();c.innerHTML='<span class="icon">'+s.icon+'</span><h3>'+s.name+'</h3><p>اضغط للدخول</p>';c.onclick=()=>showSubject(levelId,'term2',s.id);t2.appendChild(c);});
-    }
+    // ====== المتغيرات ======
+    let currentLevel = null;
+    let currentSubjectId = null;
+    let isTransitioning = false;
+    let historyStack = ['welcome'];
+    let isBackAction = false;
+    let isFirstLoad = true;
 
-    function setupLevelSearch(levelId){
-      const input=document.getElementById('levelSearch');
-      input.value='';
-      input.oninput=function(){
-        const q=this.value.toLowerCase().trim(), t1=document.getElementById('term1Grid'), t2=document.getElementById('term2Grid'), n1=document.getElementById('noResultsTerm1'), n2=document.getElementById('noResultsTerm2');
-        let h1=false,h2=false;
-        t1.querySelectorAll('.card').forEach(c=>{const n=c.dataset.subjectName||'';if(n.includes(q)||q===''){c.classList.remove('hidden-card');h1=true;}else{c.classList.add('hidden-card');}});
-        t2.querySelectorAll('.card').forEach(c=>{const n=c.dataset.subjectName||'';if(n.includes(q)||q===''){c.classList.remove('hidden-card');h2=true;}else{c.classList.add('hidden-card');}});
-        n1.classList.toggle('show',q!==''&&!h1);n2.classList.toggle('show',q!==''&&!h2);
-      };
-    }
-
-    function showSubject(levelId,termId,subjectId){
-      if(isTransitioning)return;
-      const level=levelsData[levelId];
-      let subject=null,termName='';
-      if(termId==='term1'){subject=level.terms.term1.subjects.find(s=>s.id===subjectId);termName='الترم الأول';}
-      else{subject=level.terms.term2.subjects.find(s=>s.id===subjectId);termName='الترم الثاني';}
-      if(!subject)return;
-      const lp=document.getElementById('levelPage'), sp=document.getElementById('subjectPage');
-      document.getElementById('subjectTitle').textContent=subject.icon+' '+subject.name;
-      document.getElementById('subjectSubtitle').textContent=termName+' - '+level.name;
-      localStorage.setItem('lastSubject',subjectId);
-      const isProject=subjectId==='project1'||subjectId==='project2';
-      const tc=document.getElementById('materialTabs'), cc=document.getElementById('materialContent');
-      tc.innerHTML='';cc.innerHTML='';
-      let tabs=[],keys=[];
-      if(isProject){tabs=['📋 متطلب المشروع'];keys=['project'];}
-      else{tabs=['📖 محاضرات','✏️ سكاشن','📝 ملخصات'];keys=['lectures','sections','summaries'];}
-      tabs.forEach((t,i)=>{const b=document.createElement('button');b.className='material-tab'+(i===0?' active':'');b.textContent=t;b.dataset.tabKey=keys[i];b.onclick=()=>switchMaterialTab(keys[i]);tc.appendChild(b);});
-      if(isProject){const d=document.createElement('div');d.className='material-content active';d.id='material-project';d.innerHTML='<div style="text-align:center;padding:60px 20px;"><span style="font-size:4rem;display:block;margin-bottom:20px;">📋</span><h2 style="color:var(--accent);margin-bottom:15px;">متطلب مشروع التخرج</h2><p style="font-size:1.1rem;color:var(--text-secondary);margin-bottom:30px;">سيتم إضافة رابط المشروع هنا قريباً</p><a href="#" target="_blank" style="display:inline-block;padding:15px 40px;background:var(--accent);color:#fff;border-radius:12px;text-decoration:none;font-weight:700;">🚀 اضغط لإضافة الرابط</a></div>';cc.appendChild(d);}
-      else{keys.forEach(k=>{const d=document.createElement('div');d.className='material-content';d.id='material-'+k;cc.appendChild(d);});document.getElementById('material-lectures').classList.add('active');renderMaterialContent(subjectId,'lectures');renderMaterialContent(subjectId,'sections');renderMaterialContent(subjectId,'summaries');}
-      setupSubjectSearch(subjectId);
-      transitionToPage(sp,lp,{page:'subject',subjectId:subjectId,title:subject.name,url:'#subject-'+subjectId});
-    }
-
-    function renderMaterialContent(sid,type){
-      const c=document.getElementById('material-'+type);
-      if(!c)return;
-      const data=subjectsLectures[sid];
-      if(!data){c.innerHTML='<p style="text-align:center;padding:40px;color:var(--text-secondary);">⏳ قيد الانتظار</p>';return;}
-      let items=[];if(type==='lectures')items=data.lectures||[];else if(type==='sections')items=data.sections||[];else if(type==='summaries')items=data.summaries||[];
-      const grid=document.createElement('div');grid.className='lecture-grid';
-      if(items.length===0){grid.innerHTML='<div class="lecture-card"><span class="num">⏳</span><h3>قيد الانتظار</h3><a href="#">سيتم الإضافة قريباً</a></div>';}
-      else{items.forEach((l,i)=>{const card=document.createElement('div');card.className='lecture-card';const label=type==='lectures'?'المحاضرة':type==='sections'?'سكشن':'ملخص';const btn=type==='summaries'?'📥 تحميل':'▶️ مشاهدة';card.dataset.lectureName=label+' '+(i+1);card.innerHTML='<span class="num">'+String(i+1).padStart(2,'0')+'</span><h3>'+label+' '+(i+1)+'</h3><a href="'+l+'" target="_blank">'+btn+'</a>';grid.appendChild(card);});}
-      c.innerHTML='';c.appendChild(grid);
-    }
-
-    function setupSubjectSearch(sid){
-      const input=document.getElementById('subjectSearch');
-      input.value='';
-      input.oninput=function(){
-        const q=this.value.toLowerCase().trim(), no=document.getElementById('noResultsSubject');
-        let h=false;
-        document.querySelectorAll('.lecture-card').forEach(c=>{const n=c.dataset.lectureName?c.dataset.lectureName.toLowerCase():'';if(n.includes(q)||q===''){c.classList.remove('hidden-card');h=true;}else{c.classList.add('hidden-card');}});
-        no.classList.toggle('show',q!==''&&!h);
-      };
-    }
-
-    function switchMaterialTab(key){
-      document.querySelectorAll('.material-tab').forEach(b=>b.classList.remove('active'));
-      document.querySelectorAll('.material-content').forEach(c=>c.classList.remove('active'));
-      const tabs=document.querySelectorAll('.material-tab'), keys=['lectures','sections','summaries','project'], idx=keys.indexOf(key);
-      if(tabs[idx])tabs[idx].classList.add('active');
-      const target=document.getElementById('material-'+key);if(target)target.classList.add('active');
-      document.getElementById('subjectSearch').value='';document.getElementById('subjectSearch').dispatchEvent(new Event('input'));
-    }
-
-    function goBackToMain(){
-      if(isTransitioning)return;
-      const m=document.getElementById('mainPage'), l=document.getElementById('levelPage'), s=document.getElementById('subjectPage');
-      if(!s.classList.contains('hidden'))s.classList.add('hidden');
-      if(!l.classList.contains('hidden'))l.classList.add('hidden');
-      document.getElementById('levelSearch').value='';document.getElementById('subjectSearch').value='';
-      m.classList.remove('hidden');m.classList.remove('entering');void m.offsetWidth;m.classList.add('entering');
-      pushHistory({page:'main',url:'#main'});
-    }
-
-    function goBackToLevel(){
-      if(isTransitioning)return;
-      const l=document.getElementById('levelPage'), s=document.getElementById('subjectPage');
-      document.getElementById('subjectSearch').value='';document.getElementById('noResultsSubject').classList.remove('show');
-      if(currentLevel){renderLevelSubjects(currentLevel);setupLevelSearch(currentLevel);}
-      l.classList.remove('hidden');l.classList.remove('entering');void l.offsetWidth;l.classList.add('entering');
-      s.classList.add('hidden');
-      pushHistory({page:'level',levelId:currentLevel,title:levelsData[currentLevel].name,url:'#level-'+currentLevel});
-    }
-
-    // ====== معالجة زر الرجوع - حل بسيط ومضمون ======
-    let backCount = 0;
-    window.addEventListener('popstate', function(event) {
-      if (isTransitioning) return;
-      
-      const w=document.getElementById('welcomePage'), m=document.getElementById('mainPage'), l=document.getElementById('levelPage'), s=document.getElementById('subjectPage');
-      let current='welcome';
-      if(!w.classList.contains('hidden'))current='welcome';
-      else if(!m.classList.contains('hidden'))current='main';
-      else if(!l.classList.contains('hidden'))current='level';
-      else if(!s.classList.contains('hidden'))current='subject';
-      
-      // لو كنا في welcome، نمنع الخروج
-      if(current==='welcome'){
-        history.pushState({page:'welcome'},'','#welcome');
+    // ====== دالة إدارة التاريخ ======
+    function pushHistory(state, title, url) {
+      if (isBackAction) {
+        isBackAction = false;
         return;
       }
-      
-      const state=event.state;
-      if(state){
-        const target=state.page||'welcome';
-        if(target==='welcome'){
-          w.classList.remove('hidden');w.classList.remove('entering');void w.offsetWidth;w.classList.add('entering');
-          m.classList.add('hidden');l.classList.add('hidden');s.classList.add('hidden');
-          history.pushState({page:'welcome'},'','#welcome');
-          return;
+      history.pushState(state, title, url);
+      historyStack.push(state.page);
+    }
+
+    // ====== حفظ الحالة الحالية ======
+    function saveCurrentState() {
+      const mainPage = document.getElementById('mainPage');
+      const levelPage = document.getElementById('levelPage');
+      const subjectPage = document.getElementById('subjectPage');
+      const welcomePage = document.getElementById('welcomePage');
+
+      let state = { page: 'welcome' };
+
+      if (!welcomePage.classList.contains('hidden')) {
+        state = { page: 'welcome' };
+      } else if (!mainPage.classList.contains('hidden')) {
+        state = { page: 'main' };
+      } else if (!levelPage.classList.contains('hidden')) {
+        state = { 
+          page: 'level', 
+          levelId: currentLevel || 'level1'
+        };
+      } else if (!subjectPage.classList.contains('hidden')) {
+        state = { 
+          page: 'subject', 
+          subjectId: currentSubjectId || 'dataScience'
+        };
+      }
+
+      localStorage.setItem('lastPageState', JSON.stringify(state));
+      if (state.levelId) localStorage.setItem('lastLevel', state.levelId);
+      if (state.subjectId) localStorage.setItem('lastSubject', state.subjectId);
+    }
+
+    // ====== استعادة الحالة المحفوظة ======
+    function restoreSavedState() {
+      const savedState = localStorage.getItem('lastPageState');
+      if (!savedState) return false;
+
+      try {
+        const state = JSON.parse(savedState);
+        const welcomePage = document.getElementById('welcomePage');
+        const mainPage = document.getElementById('mainPage');
+        const levelPage = document.getElementById('levelPage');
+        const subjectPage = document.getElementById('subjectPage');
+
+        // نخفي كل الصفحات
+        welcomePage.classList.add('hidden');
+        mainPage.classList.add('hidden');
+        levelPage.classList.add('hidden');
+        subjectPage.classList.add('hidden');
+
+        // لو الحالة welcome أو مفيش حالة، نظهر welcome
+        if (state.page === 'welcome' || !state.page) {
+          welcomePage.classList.remove('hidden');
+          welcomePage.classList.remove('entering');
+          void welcomePage.offsetWidth;
+          welcomePage.classList.add('entering');
+          return true;
         }
-        if(target==='main' && current!=='main'){
-          w.classList.add('hidden');
-          m.classList.remove('hidden');m.classList.remove('entering');void m.offsetWidth;m.classList.add('entering');
-          l.classList.add('hidden');s.classList.add('hidden');
-          return;
+
+        if (state.page === 'main') {
+          mainPage.classList.remove('hidden');
+          mainPage.classList.remove('entering');
+          void mainPage.offsetWidth;
+          mainPage.classList.add('entering');
+          return true;
         }
-        if(target==='level' && state.levelId){
-          if(current==='subject'){goBackToLevel();}
-          else{showLevel(state.levelId);}
-          return;
+
+        if (state.page === 'level' && state.levelId) {
+          const levelId = state.levelId;
+          currentLevel = levelId;
+          const level = levelsData[levelId];
+          if (level) {
+            document.getElementById('levelTitle').textContent = `${level.icon} ${level.name}`;
+            document.getElementById('levelSubtitle').textContent = 'اختر الترم';
+            renderLevelSubjects(levelId);
+            setupLevelSearch(levelId);
+            levelPage.classList.remove('hidden');
+            levelPage.classList.remove('entering');
+            void levelPage.offsetWidth;
+            levelPage.classList.add('entering');
+            return true;
+          }
         }
-        if(target==='subject' && state.subjectId){
-          for(const lid in levelsData){
-            const level=levelsData[lid];
-            for(const tid in level.terms){
-              const found=level.terms[tid].subjects.find(sub=>sub.id===state.subjectId);
-              if(found){showSubject(lid,tid,state.subjectId);return;}
+
+        if (state.page === 'subject' && state.subjectId) {
+          for (const levelId in levelsData) {
+            const level = levelsData[levelId];
+            for (const termId in level.terms) {
+              const found = level.terms[termId].subjects.find(s => s.id === state.subjectId);
+              if (found) {
+                currentLevel = levelId;
+                currentSubjectId = state.subjectId;
+                const levelPage = document.getElementById('levelPage');
+                const subjectPage = document.getElementById('subjectPage');
+                const subject = found;
+                const termName = termId === 'term1' ? 'الترم الأول' : 'الترم الثاني';
+
+                document.getElementById('subjectTitle').textContent = `${subject.icon} ${subject.name}`;
+                document.getElementById('subjectSubtitle').textContent = `${termName} - ${level.name}`;
+
+                const isProject = state.subjectId === 'project1' || state.subjectId === 'project2';
+                setupMaterialTabs(state.subjectId, isProject);
+                setupSubjectSearch(state.subjectId);
+
+                levelPage.classList.add('hidden');
+                subjectPage.classList.remove('hidden');
+                subjectPage.classList.remove('entering');
+                void subjectPage.offsetWidth;
+                subjectPage.classList.add('entering');
+                return true;
+              }
+            }
+          }
+        }
+
+        // لو مفيش حالة مناسبة، نروح للترحيب
+        welcomePage.classList.remove('hidden');
+        welcomePage.classList.remove('entering');
+        void welcomePage.offsetWidth;
+        welcomePage.classList.add('entering');
+        return true;
+
+      } catch (e) {
+        return false;
+      }
+    }
+
+    // ====== إعداد تبويبات المادة ======
+    function setupMaterialTabs(subjectId, isProject) {
+      const tabsContainer = document.getElementById('materialTabs');
+      tabsContainer.innerHTML = '';
+
+      let tabs = [];
+      let tabKeys = [];
+
+      if (isProject) {
+        tabs = ['📋 متطلب المشروع'];
+        tabKeys = ['project'];
+      } else {
+        tabs = ['📖 محاضرات', '✏️ سكاشن', '📝 ملخصات'];
+        tabKeys = ['lectures', 'sections', 'summaries'];
+      }
+
+      tabs.forEach((tab, index) => {
+        const btn = document.createElement('button');
+        btn.className = `material-tab ${index === 0 ? 'active' : ''}`;
+        btn.textContent = tab;
+        btn.dataset.tabKey = tabKeys[index];
+        btn.onclick = () => switchMaterialTab(tabKeys[index]);
+        tabsContainer.appendChild(btn);
+      });
+
+      const contentContainer = document.getElementById('materialContent');
+      contentContainer.innerHTML = '';
+
+      if (isProject) {
+        const div = document.createElement('div');
+        div.className = 'material-content active';
+        div.id = 'material-project';
+        div.innerHTML = `
+          <div style="text-align:center;padding:60px 20px;">
+            <span style="font-size:4rem;display:block;margin-bottom:20px;">📋</span>
+            <h2 style="color:var(--accent);margin-bottom:15px;">متطلب مشروع التخرج</h2>
+            <p style="font-size:1.1rem;color:var(--text-secondary);margin-bottom:30px;">سيتم إضافة رابط المشروع هنا قريباً</p>
+            <a href="#" target="_blank" style="display:inline-block;padding:15px 40px;background:var(--accent);color:#fff;border-radius:12px;text-decoration:none;font-weight:700;">🚀 اضغط لإضافة الرابط</a>
+          </div>
+        `;
+        contentContainer.appendChild(div);
+      } else {
+        tabKeys.forEach((key, index) => {
+          const div = document.createElement('div');
+          div.className = `material-content ${index === 0 ? 'active' : ''}`;
+          div.id = `material-${key}`;
+          contentContainer.appendChild(div);
+        });
+
+        renderMaterialContent(subjectId, 'lectures');
+        renderMaterialContent(subjectId, 'sections');
+        renderMaterialContent(subjectId, 'summaries');
+      }
+    }
+
+    // ====== الدخول إلى المنصة ======
+    function enterPlatform() {
+      const welcomePage = document.getElementById('welcomePage');
+      const mainPage = document.getElementById('mainPage');
+
+      welcomePage.classList.add('exiting');
+      setTimeout(() => {
+        welcomePage.classList.add('hidden');
+        welcomePage.classList.remove('exiting');
+        mainPage.classList.remove('hidden');
+        mainPage.classList.remove('entering');
+        void mainPage.offsetWidth;
+        mainPage.classList.add('entering');
+        pushHistory({ page: 'main' }, 'الرئيسية', '#main');
+        saveCurrentState();
+      }, 300);
+    }
+
+    // ====== دالة الانتقال بين الصفحات مع التاريخ ======
+    function transitionToPage(pageIn, pageOut, stateData, callback) {
+      if (isTransitioning) return;
+      isTransitioning = true;
+
+      if (pageOut && !pageOut.classList.contains('hidden')) {
+        pageOut.classList.remove('entering');
+        pageOut.classList.add('exiting');
+        setTimeout(() => {
+          pageOut.classList.add('hidden');
+          pageOut.classList.remove('exiting');
+          if (pageIn) {
+            pageIn.classList.remove('hidden');
+            pageIn.classList.remove('entering');
+            void pageIn.offsetWidth;
+            pageIn.classList.add('entering');
+          }
+          if (stateData && !isBackAction) {
+            pushHistory(stateData, stateData.title || '', stateData.url || '#');
+          } else {
+            isBackAction = false;
+          }
+          isTransitioning = false;
+          if (callback) callback();
+          saveCurrentState();
+        }, 280);
+      } else {
+        if (pageIn) {
+          pageIn.classList.remove('hidden');
+          pageIn.classList.remove('entering');
+          void pageIn.offsetWidth;
+          pageIn.classList.add('entering');
+        }
+        if (stateData && !isBackAction) {
+          pushHistory(stateData, stateData.title || '', stateData.url || '#');
+        } else {
+          isBackAction = false;
+        }
+        isTransitioning = false;
+        if (callback) callback();
+        saveCurrentState();
+      }
+    }
+
+    // ====== عرض الفرقة ======
+    function showLevel(levelId) {
+      if (isTransitioning) return;
+      currentLevel = levelId;
+      const level = levelsData[levelId];
+
+      const mainPage = document.getElementById('mainPage');
+      const levelPage = document.getElementById('levelPage');
+
+      document.getElementById('levelTitle').textContent = `${level.icon} ${level.name}`;
+      document.getElementById('levelSubtitle').textContent = 'اختر الترم';
+
+      renderLevelSubjects(levelId);
+      setupLevelSearch(levelId);
+
+      transitionToPage(levelPage, mainPage, {
+        page: 'level',
+        levelId: levelId,
+        title: level.name,
+        url: `#level-${levelId}`
+      });
+    }
+
+    // ====== عرض مواد الفرقة ======
+    function renderLevelSubjects(levelId) {
+      const level = levelsData[levelId];
+
+      const term1Grid = document.getElementById('term1Grid');
+      term1Grid.innerHTML = '';
+      level.terms.term1.subjects.forEach(sub => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.dataset.subjectName = sub.name.toLowerCase();
+        card.innerHTML = `
+          <span class="icon">${sub.icon}</span>
+          <h3>${sub.name}</h3>
+          <p>اضغط للدخول</p>
+        `;
+        card.onclick = () => showSubject(levelId, 'term1', sub.id);
+        term1Grid.appendChild(card);
+      });
+
+      const term2Grid = document.getElementById('term2Grid');
+      term2Grid.innerHTML = '';
+      level.terms.term2.subjects.forEach(sub => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.dataset.subjectName = sub.name.toLowerCase();
+        card.innerHTML = `
+          <span class="icon">${sub.icon}</span>
+          <h3>${sub.name}</h3>
+          <p>اضغط للدخول</p>
+        `;
+        card.onclick = () => showSubject(levelId, 'term2', sub.id);
+        term2Grid.appendChild(card);
+      });
+    }
+
+    // ====== سيرش الفرقة ======
+    function setupLevelSearch(levelId) {
+      const searchInput = document.getElementById('levelSearch');
+      searchInput.value = '';
+      searchInput.oninput = function() {
+        const query = this.value.toLowerCase().trim();
+        const term1Grid = document.getElementById('term1Grid');
+        const term2Grid = document.getElementById('term2Grid');
+        const noResults1 = document.getElementById('noResultsTerm1');
+        const noResults2 = document.getElementById('noResultsTerm2');
+
+        let term1HasResults = false;
+        let term2HasResults = false;
+
+        term1Grid.querySelectorAll('.card').forEach(card => {
+          const name = card.dataset.subjectName || '';
+          if (name.includes(query) || query === '') {
+            card.classList.remove('hidden-card');
+            term1HasResults = true;
+          } else {
+            card.classList.add('hidden-card');
+          }
+        });
+
+        term2Grid.querySelectorAll('.card').forEach(card => {
+          const name = card.dataset.subjectName || '';
+          if (name.includes(query) || query === '') {
+            card.classList.remove('hidden-card');
+            term2HasResults = true;
+          } else {
+            card.classList.add('hidden-card');
+          }
+        });
+
+        noResults1.classList.toggle('show', query !== '' && !term1HasResults);
+        noResults2.classList.toggle('show', query !== '' && !term2HasResults);
+      };
+    }
+
+    // ====== عرض المادة ======
+    function showSubject(levelId, termId, subjectId) {
+      if (isTransitioning) return;
+      currentSubjectId = subjectId;
+      const level = levelsData[levelId];
+      let subject = null;
+      let termName = '';
+      if (termId === 'term1') {
+        subject = level.terms.term1.subjects.find(s => s.id === subjectId);
+        termName = 'الترم الأول';
+      } else {
+        subject = level.terms.term2.subjects.find(s => s.id === subjectId);
+        termName = 'الترم الثاني';
+      }
+      if (!subject) return;
+
+      const levelPage = document.getElementById('levelPage');
+      const subjectPage = document.getElementById('subjectPage');
+
+      document.getElementById('subjectTitle').textContent = `${subject.icon} ${subject.name}`;
+      document.getElementById('subjectSubtitle').textContent = `${termName} - ${level.name}`;
+
+      const isProject = subjectId === 'project1' || subjectId === 'project2';
+      setupMaterialTabs(subjectId, isProject);
+      setupSubjectSearch(subjectId);
+
+      transitionToPage(subjectPage, levelPage, {
+        page: 'subject',
+        subjectId: subjectId,
+        title: subject.name,
+        url: `#subject-${subjectId}`
+      });
+    }
+
+    // ====== تعبئة محتوى المادة ======
+    function renderMaterialContent(subjectId, type) {
+      const container = document.getElementById(`material-${type}`);
+      if (!container) return;
+
+      const data = subjectsLectures[subjectId];
+      if (!data) {
+        container.innerHTML = '<p style="text-align:center;padding:40px;color:var(--text-secondary);">⏳ قيد الانتظار</p>';
+        return;
+      }
+
+      let items = [];
+      if (type === 'lectures') items = data.lectures || [];
+      else if (type === 'sections') items = data.sections || [];
+      else if (type === 'summaries') items = data.summaries || [];
+
+      const grid = document.createElement('div');
+      grid.className = 'lecture-grid';
+      grid.id = `grid-${type}`;
+
+      if (items.length === 0) {
+        grid.innerHTML = `
+          <div class="lecture-card">
+            <span class="num">⏳</span>
+            <h3>قيد الانتظار</h3>
+            <a href="#">سيتم الإضافة قريباً</a>
+          </div>
+        `;
+      } else {
+        items.forEach((link, index) => {
+          const card = document.createElement('div');
+          card.className = 'lecture-card';
+          const label = type === 'lectures' ? 'المحاضرة' : type === 'sections' ? 'سكشن' : 'ملخص';
+          const btnText = type === 'summaries' ? '📥 تحميل' : '▶️ مشاهدة';
+          card.dataset.lectureName = `${label} ${index + 1}`;
+          card.innerHTML = `
+            <span class="num">${String(index + 1).padStart(2, '0')}</span>
+            <h3>${label} ${index + 1}</h3>
+            <a href="${link}" target="_blank">${btnText}</a>
+          `;
+          grid.appendChild(card);
+        });
+      }
+      container.innerHTML = '';
+      container.appendChild(grid);
+    }
+
+    // ====== سيرش المادة ======
+    function setupSubjectSearch(subjectId) {
+      const searchInput = document.getElementById('subjectSearch');
+      searchInput.value = '';
+      searchInput.oninput = function() {
+        const query = this.value.toLowerCase().trim();
+        const noResults = document.getElementById('noResultsSubject');
+        let hasResults = false;
+
+        document.querySelectorAll('.lecture-card').forEach(card => {
+          const name = card.dataset.lectureName ? card.dataset.lectureName.toLowerCase() : '';
+          if (name.includes(query) || query === '') {
+            card.classList.remove('hidden-card');
+            hasResults = true;
+          } else {
+            card.classList.add('hidden-card');
+          }
+        });
+
+        noResults.classList.toggle('show', query !== '' && !hasResults);
+      };
+    }
+
+    // ====== التبديل بين التبويبات ======
+    function switchMaterialTab(tabKey) {
+      document.querySelectorAll('.material-tab').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.material-content').forEach(content => content.classList.remove('active'));
+
+      const tabs = document.querySelectorAll('.material-tab');
+      const keys = ['lectures', 'sections', 'summaries', 'project'];
+      const index = keys.indexOf(tabKey);
+      if (tabs[index]) tabs[index].classList.add('active');
+
+      const target = document.getElementById(`material-${tabKey}`);
+      if (target) target.classList.add('active');
+
+      const searchInput = document.getElementById('subjectSearch');
+      searchInput.value = '';
+      searchInput.dispatchEvent(new Event('input'));
+    }
+
+    // ====== العودة للرئيسية ======
+    function goBackToMain() {
+      if (isTransitioning) return;
+      const mainPage = document.getElementById('mainPage');
+      const levelPage = document.getElementById('levelPage');
+      const subjectPage = document.getElementById('subjectPage');
+
+      if (!subjectPage.classList.contains('hidden')) {
+        subjectPage.classList.add('hidden');
+      }
+      if (!levelPage.classList.contains('hidden')) {
+        levelPage.classList.add('hidden');
+      }
+
+      document.getElementById('levelSearch').value = '';
+      document.getElementById('subjectSearch').value = '';
+
+      pushHistory({ page: 'main' }, 'الرئيسية', '#main');
+
+      mainPage.classList.remove('hidden');
+      mainPage.classList.remove('entering');
+      void mainPage.offsetWidth;
+      mainPage.classList.add('entering');
+      saveCurrentState();
+    }
+
+    // ====== العودة للترم ======
+    function goBackToLevel() {
+      if (isTransitioning) return;
+      const levelPage = document.getElementById('levelPage');
+      const subjectPage = document.getElementById('subjectPage');
+
+      document.getElementById('subjectSearch').value = '';
+      document.getElementById('noResultsSubject').classList.remove('show');
+
+      renderLevelSubjects(currentLevel);
+      setupLevelSearch(currentLevel);
+
+      pushHistory({
+        page: 'level',
+        levelId: currentLevel,
+        title: levelsData[currentLevel].name
+      }, levelsData[currentLevel].name, `#level-${currentLevel}`);
+
+      levelPage.classList.remove('hidden');
+      levelPage.classList.remove('entering');
+      void levelPage.offsetWidth;
+      levelPage.classList.add('entering');
+      subjectPage.classList.add('hidden');
+      saveCurrentState();
+    }
+
+    // ====== معالجة زر الرجوع ======
+    window.addEventListener('popstate', function(event) {
+      if (isTransitioning) return;
+
+      const mainPage = document.getElementById('mainPage');
+      const levelPage = document.getElementById('levelPage');
+      const subjectPage = document.getElementById('subjectPage');
+      const welcomePage = document.getElementById('welcomePage');
+
+      let currentPage = 'welcome';
+      if (!welcomePage.classList.contains('hidden')) currentPage = 'welcome';
+      else if (!mainPage.classList.contains('hidden')) currentPage = 'main';
+      else if (!levelPage.classList.contains('hidden')) currentPage = 'level';
+      else if (!subjectPage.classList.contains('hidden')) currentPage = 'subject';
+
+      const state = event.state;
+      let targetPage = 'welcome';
+      let targetLevelId = null;
+      let targetSubjectId = null;
+
+      if (state) {
+        targetPage = state.page || 'welcome';
+        targetLevelId = state.levelId || null;
+        targetSubjectId = state.subjectId || null;
+      }
+
+      // لو target welcome أو current welcome
+      if (targetPage === 'welcome' || currentPage === 'welcome') {
+        if (currentPage !== 'welcome') {
+          welcomePage.classList.remove('hidden');
+          welcomePage.classList.remove('entering');
+          void welcomePage.offsetWidth;
+          welcomePage.classList.add('entering');
+          mainPage.classList.add('hidden');
+          levelPage.classList.add('hidden');
+          subjectPage.classList.add('hidden');
+          saveCurrentState();
+        }
+        return;
+      }
+
+      // لو target main
+      if (targetPage === 'main') {
+        if (currentPage !== 'main') {
+          // لو كنا في welcome، نروح للرئيسية
+          if (currentPage === 'welcome') {
+            // نخفي welcome ونظهر main
+            welcomePage.classList.add('hidden');
+            mainPage.classList.remove('hidden');
+            mainPage.classList.remove('entering');
+            void mainPage.offsetWidth;
+            mainPage.classList.add('entering');
+          } else {
+            mainPage.classList.remove('hidden');
+            mainPage.classList.remove('entering');
+            void mainPage.offsetWidth;
+            mainPage.classList.add('entering');
+            levelPage.classList.add('hidden');
+            subjectPage.classList.add('hidden');
+          }
+          saveCurrentState();
+        }
+        return;
+      }
+
+      // لو target level
+      if (targetPage === 'level') {
+        if (currentPage === 'subject') {
+          goBackToLevel();
+        } else if (currentPage === 'main') {
+          const lastLevel = localStorage.getItem('lastLevel');
+          if (lastLevel) {
+            showLevel(lastLevel);
+          }
+        }
+        return;
+      }
+
+      // لو target subject
+      if (targetPage === 'subject' && targetSubjectId) {
+        for (const levelId in levelsData) {
+          const level = levelsData[levelId];
+          for (const termId in level.terms) {
+            const found = level.terms[termId].subjects.find(s => s.id === targetSubjectId);
+            if (found) {
+              showSubject(levelId, termId, targetSubjectId);
+              return;
             }
           }
         }
       }
-      
-      // لو مفيش حالة مناسبة، نروح للترحيب
-      if(current!=='welcome'){
-        w.classList.remove('hidden');w.classList.remove('entering');void w.offsetWidth;w.classList.add('entering');
-        m.classList.add('hidden');l.classList.add('hidden');s.classList.add('hidden');
-        history.pushState({page:'welcome'},'','#welcome');
+
+      // لو مفيش حالة مناسبة
+      if (currentPage !== 'welcome') {
+        // نروح للترحيب
+        welcomePage.classList.remove('hidden');
+        welcomePage.classList.remove('entering');
+        void welcomePage.offsetWidth;
+        welcomePage.classList.add('entering');
+        mainPage.classList.add('hidden');
+        levelPage.classList.add('hidden');
+        subjectPage.classList.add('hidden');
+        saveCurrentState();
       }
     });
 
-    function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.remove('hidden');setTimeout(()=>t.classList.add('hidden'),2500);}
+    // حفظ آخر فرقة
+    const originalShowLevel = showLevel;
+    showLevel = function(levelId) {
+      localStorage.setItem('lastLevel', levelId);
+      originalShowLevel(levelId);
+    };
 
-    window.addEventListener('load',function(){
-      const preloader=document.getElementById('preloader');
-      const w=document.getElementById('welcomePage'),m=document.getElementById('mainPage'),l=document.getElementById('levelPage'),s=document.getElementById('subjectPage');
-      w.classList.add('hidden');m.classList.add('hidden');l.classList.add('hidden');s.classList.add('hidden');
-      w.classList.remove('hidden');w.classList.remove('entering');void w.offsetWidth;w.classList.add('entering');
-      setTimeout(()=>{history.pushState({page:'welcome'},'','#welcome');},200);
-      setTimeout(()=>preloader.classList.add('hide'),600);
+    // ====== Toast ======
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.remove('hidden');
+      setTimeout(() => toast.classList.add('hidden'), 2500);
+    }
+
+    // ====== Preloader واستعادة الحالة ======
+    window.addEventListener('load', function() {
+      const preloader = document.getElementById('preloader');
+      
+      // محاولة استعادة الحالة المحفوظة
+      const restored = restoreSavedState();
+      
+      // إذا لم يتم الاستعادة، نعرض صفحة الترحيب
+      if (!restored) {
+        const welcomePage = document.getElementById('welcomePage');
+        welcomePage.classList.remove('hidden');
+        welcomePage.classList.remove('entering');
+        void welcomePage.offsetWidth;
+        welcomePage.classList.add('entering');
+      }
+      
+      setTimeout(() => preloader.classList.add('hide'), 600);
+      isFirstLoad = false;
     });
 
-    document.querySelectorAll('.card').forEach(card=>{
-      card.addEventListener('click',function(e){
-        const ripple=document.createElement('span'), rect=this.getBoundingClientRect(), size=Math.min(rect.width,rect.height);
-        ripple.style.cssText='position:absolute;border-radius:50%;background:rgba(14,165,233,0.2);width:'+size+'px;height:'+size+'px;left:'+(e.clientX-rect.left-size/2)+'px;top:'+(e.clientY-rect.top-size/2)+'px;transform:scale(0);animation:rippleAnim 0.6s ease forwards;pointer-events:none;';
-        this.style.position='relative';this.style.overflow='hidden';this.appendChild(ripple);
-        setTimeout(()=>ripple.remove(),600);
+    // حفظ الحالة عند إغلاق الصفحة
+    window.addEventListener('beforeunload', function() {
+      saveCurrentState();
+    });
+
+    // ====== Ripple Effect ======
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('click', function(e) {
+        const ripple = document.createElement('span');
+        const rect = this.getBoundingClientRect();
+        const size = Math.min(rect.width, rect.height);
+        ripple.style.cssText = `
+          position: absolute;
+          border-radius: 50%;
+          background: rgba(14, 165, 233, 0.2);
+          width: ${size}px;
+          height: ${size}px;
+          left: ${e.clientX - rect.left - size/2}px;
+          top: ${e.clientY - rect.top - size/2}px;
+          transform: scale(0);
+          animation: rippleAnim 0.6s ease forwards;
+          pointer-events: none;
+        `;
+        this.style.position = 'relative';
+        this.style.overflow = 'hidden';
+        this.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 600);
       });
     });
 
-    const themeToggle=document.getElementById('themeToggle');
-    let isDark=true;
-    if(localStorage.getItem('theme')==='light'){document.body.classList.add('light-mode');themeToggle.textContent='☀️';isDark=false;}
-    themeToggle.addEventListener('click',function(){
-      if(isDark){document.body.classList.add('light-mode');this.textContent='☀️';isDark=false;localStorage.setItem('theme','light');showToast('☀️ الوضع الفاتح');}
-      else{document.body.classList.remove('light-mode');this.textContent='🌙';isDark=true;localStorage.setItem('theme','dark');showToast('🌙 الوضع الداكن');}
+    // ====== Dark/Light Mode ======
+    const themeToggle = document.getElementById('themeToggle');
+    let isDark = true;
+    if (localStorage.getItem('theme') === 'light') {
+      document.body.classList.add('light-mode');
+      themeToggle.textContent = '☀️';
+      isDark = false;
+    }
+    themeToggle.addEventListener('click', function() {
+      if (isDark) {
+        document.body.classList.add('light-mode');
+        this.textContent = '☀️';
+        isDark = false;
+        localStorage.setItem('theme', 'light');
+        showToast('☀️ الوضع الفاتح');
+      } else {
+        document.body.classList.remove('light-mode');
+        this.textContent = '🌙';
+        isDark = true;
+        localStorage.setItem('theme', 'dark');
+        showToast('🌙 الوضع الداكن');
+      }
     });
   </script>
 </body>
