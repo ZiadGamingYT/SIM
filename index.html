@@ -16,17 +16,27 @@
       --border: #222;
       --shadow: rgba(0, 245, 212, 0.15);
       --input-bg: #111827;
+      --card-hover-bg: #1a2332;
+      --text-secondary: #9ca3af;
+      --bg-light: #0a0f1e;
     }
 
+    /* ====== Light Mode - ألوان مريحة للعين ====== */
     body.light-mode {
-      --bg: #f0f4ff;
+      --bg: #eef2f7;
       --card: #ffffff;
-      --text: #1a1a2e;
-      --border: #d1d5db;
-      --shadow: rgba(0, 0, 0, 0.1);
+      --text: #1a2332;
+      --border: #d1d9e6;
+      --shadow: rgba(0, 0, 0, 0.08);
       --input-bg: #ffffff;
+      --card-hover-bg: #f5f7fb;
+      --text-secondary: #4a5568;
+      --accent: #0ea5e9;
+      --accent2: #7c3aed;
+      --bg-light: #eef2f7;
     }
 
+    /* ====== تنسيقات عامة ====== */
     * {
       margin: 0;
       padding: 0;
@@ -75,11 +85,11 @@
     }
     .search-box input:focus {
       border-color: var(--accent);
-      box-shadow: 0 0 20px rgba(0, 245, 212, 0.2);
+      box-shadow: 0 0 20px rgba(14, 165, 233, 0.2);
     }
     .search-box input::placeholder {
-      color: var(--text);
-      opacity: 0.5;
+      color: var(--text-secondary);
+      opacity: 0.6;
     }
     .container {
       max-width: 1100px;
@@ -92,7 +102,7 @@
       color: var(--accent);
       border-right: 4px solid var(--accent);
       padding-right: 10px;
-      text-shadow: 0 0 20px rgba(0, 245, 212, 0.3);
+      text-shadow: 0 0 20px rgba(14, 165, 233, 0.2);
       transition: all 0.4s ease;
     }
     .grid {
@@ -139,8 +149,7 @@
       color: var(--accent);
     }
     .card p {
-      color: var(--text);
-      opacity: 0.7;
+      color: var(--text-secondary);
       font-size: 0.9rem;
     }
     .card.hidden-card {
@@ -154,7 +163,7 @@
     footer {
       text-align: center;
       padding: 30px;
-      color: #6b7280;
+      color: var(--text-secondary);
       border-top: 1px solid var(--border);
       margin-top: 40px;
       transition: border-color 0.4s ease;
@@ -179,7 +188,7 @@
       background: var(--accent);
       color: #000;
       transform: translateX(-5px);
-      box-shadow: 0 5px 20px rgba(0, 245, 212, 0.3);
+      box-shadow: 0 5px 20px rgba(14, 165, 233, 0.3);
     }
     .hidden {
       display: none !important;
@@ -203,7 +212,7 @@
     }
     .loader {
       width: 50px; height: 50px;
-      border: 4px solid #333;
+      border: 4px solid var(--border);
       border-top-color: var(--accent);
       border-radius: 50%;
       animation: spin 1s linear infinite;
@@ -237,25 +246,9 @@
     }
 
     /* ====== Animations ====== */
-    @keyframes slideInRight {
-      from { opacity: 0; transform: translateX(30px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-    @keyframes slideInLeft {
-      from { opacity: 0; transform: translateX(-30px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
     @keyframes fadeInScale {
       from { opacity: 0; transform: scale(0.95); }
       to { opacity: 1; transform: scale(1); }
-    }
-    @keyframes slideOutRight {
-      from { opacity: 1; transform: translateX(0); }
-      to { opacity: 0; transform: translateX(30px); }
-    }
-    @keyframes slideOutLeft {
-      from { opacity: 1; transform: translateX(0); }
-      to { opacity: 0; transform: translateX(-30px); }
     }
     @keyframes fadeOutScale {
       from { opacity: 1; transform: scale(1); }
@@ -289,14 +282,14 @@
     }
     #welcomePage .subtitle {
       font-size: 1.1rem;
-      color: var(--text);
-      opacity: 0.8;
+      color: var(--text-secondary);
       margin-bottom: 20px;
     }
     #welcomePage .description {
       max-width: 700px;
       font-size: 1.05rem;
       line-height: 1.8;
+      color: var(--text);
       opacity: 0.85;
       margin-bottom: 10px;
     }
@@ -306,7 +299,7 @@
       line-height: 1.8;
       opacity: 0.7;
       margin-bottom: 30px;
-      color: var(--text);
+      color: var(--text-secondary);
     }
     #welcomePage .designed-by {
       font-size: 0.95rem;
@@ -325,11 +318,11 @@
       cursor: pointer;
       transition: all 0.3s ease;
       text-decoration: none;
-      box-shadow: 0 5px 25px rgba(0, 245, 212, 0.3);
+      box-shadow: 0 5px 25px rgba(14, 165, 233, 0.3);
     }
     .enter-btn:hover {
       transform: scale(1.05);
-      box-shadow: 0 8px 35px rgba(0, 245, 212, 0.5);
+      box-shadow: 0 8px 35px rgba(14, 165, 233, 0.5);
     }
 
     /* ====== انتقال الصفحات ====== */
@@ -372,7 +365,7 @@
     }
     .theme-toggle:hover {
       transform: scale(1.1) rotate(20deg);
-      box-shadow: 0 5px 35px rgba(0, 245, 212, 0.4);
+      box-shadow: 0 5px 35px rgba(14, 165, 233, 0.4);
     }
 
     /* ====== تبويبات المادة ====== */
@@ -461,7 +454,7 @@
       display: inline-block;
       padding: 10px 25px;
       background: var(--accent);
-      color: #000;
+      color: #fff;
       border-radius: 10px;
       text-decoration: none;
       font-weight: 700;
@@ -469,7 +462,7 @@
     }
     .lecture-card a:hover {
       transform: scale(1.05);
-      box-shadow: 0 5px 20px rgba(0, 245, 212, 0.4);
+      box-shadow: 0 5px 20px rgba(14, 165, 233, 0.4);
     }
     .lecture-card.hidden-card {
       display: none !important;
@@ -479,8 +472,7 @@
       text-align: center;
       padding: 40px;
       font-size: 1.2rem;
-      color: var(--text);
-      opacity: 0.6;
+      color: var(--text-secondary);
       display: none;
     }
     .no-results.show {
@@ -542,8 +534,8 @@
   <!-- ====== صفحة الترحيب ====== -->
   <div id="welcomePage">
     <div class="welcome-icon">🎓</div>
-    <h2>Faculty of Science - SIM Department</h2>
-    <p class="college-name">كلية العلوم - برنامج صناعة البرمجيات والوسائط المتعددة </p>
+    <h2>Faculty of Science - Software Industry & Multimedia Department</h2>
+    <p class="college-name">كلية العلوم - قسم صناعة البرمجيات والوسائط المتعددة</p>
     <p class="subtitle">🚀 Welcome to the SIM Learning Platform</p>
     <p class="description">
       Everything you need in one place: lectures, summaries, tutorials, graduation projects, and study materials to make your academic journey easier and help you achieve your best results.
@@ -973,8 +965,8 @@
           <div style="text-align:center;padding:60px 20px;">
             <span style="font-size:4rem;display:block;margin-bottom:20px;">📋</span>
             <h2 style="color:var(--accent);margin-bottom:15px;">متطلب مشروع التخرج</h2>
-            <p style="font-size:1.1rem;opacity:0.8;margin-bottom:30px;">سيتم إضافة رابط المشروع هنا قريباً</p>
-            <a href="#" target="_blank" style="display:inline-block;padding:15px 40px;background:var(--accent);color:#000;border-radius:12px;text-decoration:none;font-weight:700;">🚀 اضغط لإضافة الرابط</a>
+            <p style="font-size:1.1rem;color:var(--text-secondary);margin-bottom:30px;">سيتم إضافة رابط المشروع هنا قريباً</p>
+            <a href="#" target="_blank" style="display:inline-block;padding:15px 40px;background:var(--accent);color:#fff;border-radius:12px;text-decoration:none;font-weight:700;">🚀 اضغط لإضافة الرابط</a>
           </div>
         `;
         contentContainer.appendChild(div);
@@ -1003,7 +995,7 @@
 
       const data = subjectsLectures[subjectId];
       if (!data) {
-        container.innerHTML = '<p style="text-align:center;padding:40px;">⏳ قيد الانتظار</p>';
+        container.innerHTML = '<p style="text-align:center;padding:40px;color:var(--text-secondary);">⏳ قيد الانتظار</p>';
         return;
       }
 
@@ -1142,7 +1134,7 @@
         ripple.style.cssText = `
           position: absolute;
           border-radius: 50%;
-          background: rgba(0, 245, 212, 0.3);
+          background: rgba(14, 165, 233, 0.2);
           width: ${size}px;
           height: ${size}px;
           left: ${e.clientX - rect.left - size/2}px;
