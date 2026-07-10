@@ -19,6 +19,8 @@
       --card-hover-bg: #1a2332;
       --text-secondary: #9ca3af;
       --bg-light: #0a0f1e;
+      --neon-color: #00f5d4;
+      --neon-glow: rgba(0, 245, 212, 0.5);
     }
 
     body.light-mode {
@@ -33,6 +35,8 @@
       --accent: #0ea5e9;
       --accent2: #7c3aed;
       --bg-light: #eef2f7;
+      --neon-color: #7c3aed;
+      --neon-glow: rgba(124, 58, 237, 0.5);
     }
 
     * {
@@ -40,6 +44,7 @@
       padding: 0;
       box-sizing: border-box;
       font-family: 'Cairo', sans-serif;
+      scroll-behavior: smooth;
     }
     body {
       background: var(--bg);
@@ -48,14 +53,181 @@
       transition: background 0.4s ease, color 0.4s ease;
       overflow-x: hidden;
     }
-    header {
+
+    /* ====== Neon Frame Styles ====== */
+    .neon-frame {
+      position: relative;
+      padding: 3px;
+      border-radius: 20px;
+      background: transparent;
+      transition: all 0.3s ease;
+      display: inline-block;
+      width: 100%;
+      will-change: transform, opacity;
+    }
+
+    .neon-frame::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 22px;
+      padding: 2px;
+      background: conic-gradient(
+        from 0deg,
+        var(--neon-color),
+        var(--accent2),
+        var(--neon-color),
+        var(--accent2),
+        var(--neon-color)
+      );
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+      animation: none;
+    }
+
+    .neon-frame.active::before {
+      opacity: 1;
+      animation: neonSpin 3s linear infinite;
+    }
+
+    .neon-frame .neon-glow {
+      position: absolute;
+      inset: -8px;
+      border-radius: 25px;
+      background: radial-gradient(circle at center, var(--neon-glow), transparent 70%);
+      opacity: 0;
+      filter: blur(20px);
+      transition: opacity 0.6s ease;
+      pointer-events: none;
+      will-change: opacity;
+    }
+
+    .neon-frame.active .neon-glow {
+      opacity: 0.4;
+      animation: auraPulse 2.5s ease-in-out infinite;
+    }
+
+    .neon-frame .neon-content {
+      position: relative;
+      z-index: 2;
+      border-radius: 18px;
+      overflow: hidden;
+      background: var(--bg);
+      padding: 0;
+    }
+
+    @keyframes neonSpin {
+      0% { background: conic-gradient(from 0deg, var(--neon-color), var(--accent2), var(--neon-color), var(--accent2), var(--neon-color)); }
+      100% { background: conic-gradient(from 360deg, var(--neon-color), var(--accent2), var(--neon-color), var(--accent2), var(--neon-color)); }
+    }
+
+    @keyframes auraPulse {
+      0%, 100% { opacity: 0.2; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.04); }
+    }
+
+    /* ====== صفحة الترحيب ====== */
+    #welcomePage .neon-content {
+      background: transparent;
+      padding: 15px;
+    }
+    #welcomePage {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
       padding: 40px 20px;
+      animation: fadeInScale 0.5s ease forwards;
+    }
+
+    .welcome-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .welcome-img {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent);
+      box-shadow: 0 0 25px rgba(14, 165, 233, 0.25);
+      margin-bottom: 5px;
+    }
+    #welcomePage .welcome-icon {
+      font-size: 3.5rem;
+      margin-bottom: 15px;
+    }
+    #welcomePage h2 {
+      font-size: 1.8rem;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    #welcomePage .college-name {
+      font-size: 1.2rem;
+      color: var(--accent2);
+      margin-bottom: 5px;
+    }
+    #welcomePage .subtitle {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-bottom: 15px;
+    }
+    #welcomePage .description {
+      max-width: 650px;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--text);
+      opacity: 0.85;
+      margin-bottom: 8px;
+    }
+    #welcomePage .description-ar {
+      max-width: 650px;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      opacity: 0.7;
+      margin-bottom: 25px;
+      color: var(--text-secondary);
+    }
+    #welcomePage .designed-by {
+      font-size: 0.9rem;
+      color: var(--accent);
+      margin-bottom: 25px;
+    }
+    .enter-btn {
+      display: inline-block;
+      padding: 14px 45px;
+      background: linear-gradient(90deg, var(--accent2), var(--accent));
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      box-shadow: 0 5px 25px rgba(14, 165, 233, 0.25);
+    }
+    .enter-btn:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 35px rgba(14, 165, 233, 0.4);
+    }
+
+    /* ====== باقي التنسيقات ====== */
+    header {
+      text-align: center;
+      padding: 30px 20px;
       border-bottom: 1px solid var(--border);
       transition: border-color 0.4s ease;
     }
     header h1 {
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: 900;
       background: linear-gradient(90deg, var(--accent), var(--accent2));
       -webkit-background-clip: text;
@@ -63,27 +235,28 @@
     }
     header p {
       color: var(--accent);
-      margin-top: 10px;
-      font-size: 1.1rem;
+      margin-top: 8px;
+      font-size: 1rem;
     }
     .search-box {
-      margin: 20px auto;
-      max-width: 500px;
-      padding: 0 20px;
+      margin: 15px auto;
+      max-width: 480px;
+      padding: 0 15px;
     }
     .search-box input {
       width: 100%;
-      padding: 14px 18px;
+      padding: 12px 16px;
       border-radius: 12px;
       border: 1px solid var(--border);
       background: var(--input-bg);
       color: var(--text);
       outline: none;
       transition: all 0.4s ease;
+      font-size: 0.95rem;
     }
     .search-box input:focus {
       border-color: var(--accent);
-      box-shadow: 0 0 20px rgba(14, 165, 233, 0.2);
+      box-shadow: 0 0 20px rgba(14, 165, 233, 0.15);
     }
     .search-box input::placeholder {
       color: var(--text-secondary);
@@ -91,29 +264,29 @@
     }
     .container {
       max-width: 1100px;
-      margin: 30px auto;
-      padding: 0 20px;
+      margin: 25px auto;
+      padding: 0 15px;
     }
     .section-title {
-      font-size: 1.5rem;
-      margin: 30px 0 15px;
+      font-size: 1.3rem;
+      margin: 25px 0 12px;
       color: var(--accent);
       border-right: 4px solid var(--accent);
       padding-right: 10px;
-      text-shadow: 0 0 20px rgba(14, 165, 233, 0.2);
+      text-shadow: 0 0 15px rgba(14, 165, 233, 0.15);
       transition: all 0.4s ease;
     }
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 18px;
     }
     .card {
       background: var(--card);
-      padding: 20px;
-      border-radius: 16px;
+      padding: 18px;
+      border-radius: 14px;
       border: 1px solid var(--border);
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: all 0.3s ease;
       cursor: pointer;
       position: relative;
       overflow: hidden;
@@ -121,34 +294,34 @@
     }
     .card:hover {
       border-color: var(--accent);
-      transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 20px 50px var(--shadow);
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 15px 40px var(--shadow);
     }
     .card .icon {
-      font-size: 3rem;
+      font-size: 2.5rem;
       transition: all 0.3s ease;
       display: block;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
     .card:hover .icon {
-      animation: bounce 0.6s ease;
+      animation: bounce 0.5s ease;
     }
     @keyframes bounce {
       0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.3); }
+      50% { transform: scale(1.25); }
     }
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(15px); }
       to { opacity: 1; transform: translateY(0); }
     }
     .card h3 {
-      font-size: 1.5rem;
-      margin: 10px 0;
+      font-size: 1.3rem;
+      margin: 8px 0;
       color: var(--accent);
     }
     .card p {
       color: var(--text-secondary);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
     }
     .card.hidden-card {
       display: none !important;
@@ -156,23 +329,24 @@
     .coming {
       opacity: .6;
       text-align: center;
-      padding: 40px 20px;
+      padding: 30px 15px;
     }
     footer {
       text-align: center;
-      padding: 30px;
+      padding: 25px;
       color: var(--text-secondary);
       border-top: 1px solid var(--border);
-      margin-top: 40px;
+      margin-top: 35px;
       transition: border-color 0.4s ease;
+      font-size: 0.9rem;
     }
     footer b {
       color: var(--accent);
     }
     .back-btn {
       display: inline-block;
-      margin-bottom: 30px;
-      padding: 12px 30px;
+      margin-bottom: 25px;
+      padding: 10px 25px;
       background: var(--accent2);
       color: #fff;
       border-radius: 12px;
@@ -181,12 +355,13 @@
       font-weight: 700;
       border: none;
       cursor: pointer;
+      font-size: 0.95rem;
     }
     .back-btn:hover {
       background: var(--accent);
       color: #fff;
-      transform: translateX(-5px);
-      box-shadow: 0 5px 20px rgba(14, 165, 233, 0.3);
+      transform: translateX(-4px);
+      box-shadow: 0 5px 20px rgba(14, 165, 233, 0.25);
     }
     .hidden {
       display: none !important;
@@ -202,18 +377,19 @@
       justify-content: center;
       align-items: center;
       z-index: 9999;
-      transition: opacity 0.6s ease;
+      transition: opacity 0.4s ease;
     }
     #preloader.hide {
       opacity: 0;
       pointer-events: none;
     }
     .loader {
-      width: 50px; height: 50px;
-      border: 4px solid var(--border);
+      width: 40px;
+      height: 40px;
+      border: 3px solid var(--border);
       border-top-color: var(--accent);
       border-radius: 50%;
-      animation: spin 1s linear infinite;
+      animation: spin 0.8s linear infinite;
     }
     @keyframes spin {
       to { transform: rotate(360deg); }
@@ -222,20 +398,21 @@
     /* ====== Toast ====== */
     .toast {
       position: fixed;
-      bottom: 30px;
-      right: 30px;
+      bottom: 25px;
+      right: 25px;
       background: var(--card);
       color: var(--accent);
-      padding: 15px 25px;
+      padding: 12px 22px;
       border-radius: 12px;
       border: 1px solid var(--accent);
       font-weight: 700;
       transition: all 0.4s ease;
       z-index: 999;
       box-shadow: 0 10px 30px var(--shadow);
+      font-size: 0.9rem;
     }
     .toast.hidden {
-      transform: translateY(100px);
+      transform: translateY(80px);
       opacity: 0;
     }
 
@@ -245,82 +422,12 @@
 
     /* ====== Animations ====== */
     @keyframes fadeInScale {
-      from { opacity: 0; transform: scale(0.95); }
+      from { opacity: 0; transform: scale(0.96); }
       to { opacity: 1; transform: scale(1); }
     }
     @keyframes fadeOutScale {
       from { opacity: 1; transform: scale(1); }
-      to { opacity: 0; transform: scale(0.95); }
-    }
-
-    /* ====== صفحة الترحيب ====== */
-    #welcomePage {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 40px 20px;
-      animation: fadeInScale 0.6s ease forwards;
-    }
-    #welcomePage .welcome-icon {
-      font-size: 4rem;
-      margin-bottom: 20px;
-    }
-    #welcomePage h2 {
-      font-size: 2rem;
-      color: var(--accent);
-      margin-bottom: 10px;
-    }
-    #welcomePage .college-name {
-      font-size: 1.3rem;
-      color: var(--accent2);
-      margin-bottom: 5px;
-    }
-    #welcomePage .subtitle {
-      font-size: 1.1rem;
-      color: var(--text-secondary);
-      margin-bottom: 20px;
-    }
-    #welcomePage .description {
-      max-width: 700px;
-      font-size: 1.05rem;
-      line-height: 1.8;
-      color: var(--text);
-      opacity: 0.85;
-      margin-bottom: 10px;
-    }
-    #welcomePage .description-ar {
-      max-width: 700px;
-      font-size: 1rem;
-      line-height: 1.8;
-      opacity: 0.7;
-      margin-bottom: 30px;
-      color: var(--text-secondary);
-    }
-    #welcomePage .designed-by {
-      font-size: 0.95rem;
-      color: var(--accent);
-      margin-bottom: 30px;
-    }
-    .enter-btn {
-      display: inline-block;
-      padding: 16px 50px;
-      background: linear-gradient(90deg, var(--accent2), var(--accent));
-      color: #fff;
-      font-size: 1.2rem;
-      font-weight: 700;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-decoration: none;
-      box-shadow: 0 5px 25px rgba(14, 165, 233, 0.3);
-    }
-    .enter-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 35px rgba(14, 165, 233, 0.5);
+      to { opacity: 0; transform: scale(0.96); }
     }
 
     /* ====== انتقال الصفحات ====== */
@@ -329,10 +436,10 @@
       will-change: transform, opacity;
     }
     .page-level.entering {
-      animation: fadeInScale 0.35s ease forwards;
+      animation: fadeInScale 0.3s ease forwards;
     }
     .page-level.exiting {
-      animation: fadeOutScale 0.25s ease forwards;
+      animation: fadeOutScale 0.2s ease forwards;
     }
     .page-level.hidden {
       display: none !important;
@@ -344,49 +451,49 @@
     /* ====== زر الثيم ====== */
     .theme-toggle {
       position: fixed;
-      bottom: 30px;
-      left: 30px;
-      width: 60px;
-      height: 60px;
+      bottom: 20px;
+      left: 20px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
       background: var(--card);
       border: 2px solid var(--accent);
       color: var(--accent);
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       cursor: pointer;
       z-index: 999;
-      box-shadow: 0 5px 25px var(--shadow);
-      transition: all 0.4s ease;
+      box-shadow: 0 5px 20px var(--shadow);
+      transition: all 0.3s ease;
       display: flex;
       align-items: center;
       justify-content: center;
     }
     .theme-toggle:hover {
-      transform: scale(1.1) rotate(20deg);
-      box-shadow: 0 5px 35px rgba(14, 165, 233, 0.4);
+      transform: scale(1.05) rotate(15deg);
+      box-shadow: 0 5px 30px rgba(14, 165, 233, 0.3);
     }
 
     /* ====== تبويبات المادة ====== */
     .material-tabs {
       display: flex;
-      gap: 10px;
-      margin: 20px 0;
+      gap: 8px;
+      margin: 15px 0;
       flex-wrap: wrap;
     }
     .material-tab {
-      padding: 12px 30px;
+      padding: 10px 25px;
       background: var(--card);
       color: var(--text);
       border: 1px solid var(--border);
       border-radius: 12px;
       cursor: pointer;
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 700;
       transition: all 0.3s ease;
       font-family: 'Cairo', sans-serif;
       flex: 1;
       text-align: center;
-      min-width: 120px;
+      min-width: 100px;
     }
     .material-tab:hover {
       border-color: var(--accent);
@@ -401,66 +508,67 @@
     }
     .material-content.active {
       display: block;
-      animation: fadeInScale 0.3s ease forwards;
+      animation: fadeInScale 0.25s ease forwards;
     }
 
     .lecture-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
     }
     .lecture-grid .lecture-card {
-      animation: fadeInUp 0.4s ease forwards;
+      animation: fadeInUp 0.3s ease forwards;
       opacity: 0;
     }
-    .lecture-grid .lecture-card:nth-child(1) { animation-delay: 0.05s; }
-    .lecture-grid .lecture-card:nth-child(2) { animation-delay: 0.1s; }
-    .lecture-grid .lecture-card:nth-child(3) { animation-delay: 0.15s; }
-    .lecture-grid .lecture-card:nth-child(4) { animation-delay: 0.2s; }
-    .lecture-grid .lecture-card:nth-child(5) { animation-delay: 0.25s; }
-    .lecture-grid .lecture-card:nth-child(6) { animation-delay: 0.3s; }
-    .lecture-grid .lecture-card:nth-child(7) { animation-delay: 0.35s; }
-    .lecture-grid .lecture-card:nth-child(8) { animation-delay: 0.4s; }
+    .lecture-grid .lecture-card:nth-child(1) { animation-delay: 0.03s; }
+    .lecture-grid .lecture-card:nth-child(2) { animation-delay: 0.06s; }
+    .lecture-grid .lecture-card:nth-child(3) { animation-delay: 0.09s; }
+    .lecture-grid .lecture-card:nth-child(4) { animation-delay: 0.12s; }
+    .lecture-grid .lecture-card:nth-child(5) { animation-delay: 0.15s; }
+    .lecture-grid .lecture-card:nth-child(6) { animation-delay: 0.18s; }
+    .lecture-grid .lecture-card:nth-child(7) { animation-delay: 0.21s; }
+    .lecture-grid .lecture-card:nth-child(8) { animation-delay: 0.24s; }
 
     .lecture-card {
       background: var(--card);
-      padding: 25px 20px;
-      border-radius: 16px;
+      padding: 20px 15px;
+      border-radius: 14px;
       border: 1px solid var(--border);
       text-align: center;
       transition: all 0.3s ease;
     }
     .lecture-card:hover {
       border-color: var(--accent);
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px var(--shadow);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px var(--shadow);
     }
     .lecture-card .num {
-      font-size: 2.5rem;
+      font-size: 2rem;
       font-weight: 900;
       color: var(--accent2);
       display: block;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
     .lecture-card h3 {
-      font-size: 1.1rem;
-      margin-bottom: 15px;
+      font-size: 1rem;
+      margin-bottom: 12px;
       color: var(--text);
     }
     .lecture-card a {
       display: inline-block;
-      padding: 10px 25px;
+      padding: 8px 20px;
       background: var(--accent);
       color: #fff;
       border-radius: 10px;
       text-decoration: none;
       font-weight: 700;
       transition: all 0.3s ease;
+      font-size: 0.9rem;
     }
     .lecture-card a:hover {
-      transform: scale(1.05);
-      box-shadow: 0 5px 20px rgba(14, 165, 233, 0.4);
+      transform: scale(1.04);
+      box-shadow: 0 5px 20px rgba(14, 165, 233, 0.3);
     }
     .lecture-card.hidden-card {
       display: none !important;
@@ -468,8 +576,8 @@
 
     .no-results {
       text-align: center;
-      padding: 40px;
-      font-size: 1.2rem;
+      padding: 30px;
+      font-size: 1.1rem;
       color: var(--text-secondary);
       display: none;
     }
@@ -478,41 +586,17 @@
     }
 
     @media(max-width:768px) {
-      header h1 {
-        font-size: 1.8rem;
-      }
-      .grid {
-        grid-template-columns: 1fr;
-      }
-      .lecture-grid {
-        grid-template-columns: 1fr;
-      }
-      .material-tabs {
-        flex-direction: column;
-      }
-      .material-tab {
-        min-width: unset;
-      }
-      .theme-toggle {
-        width: 50px;
-        height: 50px;
-        font-size: 1.4rem;
-        bottom: 15px;
-        left: 15px;
-      }
-      #welcomePage h2 {
-        font-size: 1.5rem;
-      }
-      #welcomePage .college-name {
-        font-size: 1rem;
-      }
-      #welcomePage .description {
-        font-size: 0.95rem;
-      }
-      .enter-btn {
-        padding: 14px 35px;
-        font-size: 1rem;
-      }
+      header h1 { font-size: 1.6rem; }
+      .grid { grid-template-columns: 1fr; }
+      .lecture-grid { grid-template-columns: 1fr; }
+      .material-tabs { flex-direction: column; }
+      .material-tab { min-width: unset; }
+      .theme-toggle { width: 44px; height: 44px; font-size: 1.2rem; bottom: 15px; left: 15px; }
+      #welcomePage h2 { font-size: 1.3rem; }
+      #welcomePage .college-name { font-size: 1rem; }
+      #welcomePage .description { font-size: 0.9rem; }
+      .enter-btn { padding: 12px 30px; font-size: 1rem; }
+      .welcome-img { width: 90px; height: 90px; }
     }
   </style>
 </head>
@@ -531,102 +615,116 @@
 
   <!-- ====== صفحة الترحيب ====== -->
   <div id="welcomePage">
-    <div class="welcome-icon">🎓</div>
-    <h2>Faculty of Science - Software Industry & Multimedia Department</h2>
-    <p class="college-name">كلية العلوم - قسم صناعة البرمجيات والوسائط المتعددة</p>
-    <p class="subtitle">🚀 Welcome to the SIM Learning Platform</p>
-    <p class="description">
-      Everything you need in one place: lectures, summaries, tutorials, graduation projects, and study materials to make your academic journey easier and help you achieve your best results.
-    </p>
-    <p class="description-ar">
-      كل ما تحتاجه في مكان واحد: محاضرات، ملخصات، سكاشن، مشاريع التخرج، ومواد دراسية لتسهيل رحلتك الأكاديمية ومساعدتك في تحقيق أفضل النتائج.
-    </p>
-    <p class="designed-by">❤️ Designed & Developed by Ziad Taha Mohamed Ahmed</p>
-    <button class="enter-btn" onclick="enterPlatform()">🚀 اضغط هنا للدخول إلى المنصة</button>
+    <div class="neon-frame active">
+      <div class="neon-glow"></div>
+      <div class="neon-content">
+        <div class="welcome-content">
+          <img src="https://i.ibb.co/276n70Qz/Screenshot-2026-07-10-22-33-42-995-com-miui-gallery-edit.jpg" alt="SIM Logo" class="welcome-img" loading="lazy" fetchpriority="low">
+          <div class="welcome-icon">🎓</div>
+          <h2>Faculty of Science - Software Industry & Multimedia Department</h2>
+          <p class="college-name">كلية العلوم - قسم صناعة البرمجيات والوسائط المتعددة</p>
+          <p class="subtitle">🚀 Welcome to the SIM Learning Platform</p>
+          <p class="description">Everything you need in one place: lectures, summaries, tutorials, graduation projects, and study materials to make your academic journey easier and help you achieve your best results.</p>
+          <p class="description-ar">كل ما تحتاجه في مكان واحد: محاضرات، ملخصات، سكاشن، مشاريع التخرج، ومواد دراسية لتسهيل رحلتك الأكاديمية ومساعدتك في تحقيق أفضل النتائج.</p>
+          <p class="designed-by">❤️ Designed & Developed by Ziad Taha Mohamed Ahmed</p>
+          <button class="enter-btn" onclick="enterPlatform()">🚀 اضغط هنا للدخول إلى المنصة</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- ====== الصفحة الرئيسية (الفرق) ====== -->
   <div id="mainPage" class="hidden page-level">
-    <header>
-      <h1>🎓 SIM Portal</h1>
-      <p>اختر فرقتك للوصول للمواد</p>
-    </header>
-    <div class="container">
-      <h2 class="section-title">الفرق</h2>
-      <div class="grid" id="levelsGrid">
-        <div class="card" onclick="showLevel('level1')">
-          <span class="icon">📘</span>
-          <h3>الفرقة الأولى</h3>
-          <p>مواد الترم الأول والثاني</p>
+    <div class="neon-frame">
+      <div class="neon-glow"></div>
+      <div class="neon-content">
+        <header>
+          <h1>🎓 SIM Portal</h1>
+          <p>اختر فرقتك للوصول للمواد</p>
+        </header>
+        <div class="container">
+          <h2 class="section-title">الفرق</h2>
+          <div class="grid" id="levelsGrid">
+            <div class="card" onclick="showLevel('level1')">
+              <span class="icon">📘</span>
+              <h3>الفرقة الأولى</h3>
+              <p>مواد الترم الأول والثاني</p>
+            </div>
+            <div class="card" onclick="showLevel('level2')">
+              <span class="icon">📗</span>
+              <h3>الفرقة الثانية</h3>
+              <p>مواد الترم الأول والثاني</p>
+            </div>
+            <div class="card" onclick="showLevel('level3')">
+              <span class="icon">📕</span>
+              <h3>الفرقة الثالثة</h3>
+              <p>مواد الترم الأول والثاني</p>
+            </div>
+            <div class="card" onclick="showLevel('level4')">
+              <span class="icon">📙</span>
+              <h3>الفرقة الرابعة</h3>
+              <p>مواد الترم الأول والثاني</p>
+            </div>
+          </div>
         </div>
-        <div class="card" onclick="showLevel('level2')">
-          <span class="icon">📗</span>
-          <h3>الفرقة الثانية</h3>
-          <p>مواد الترم الأول والثاني</p>
-        </div>
-        <div class="card" onclick="showLevel('level3')">
-          <span class="icon">📕</span>
-          <h3>الفرقة الثالثة</h3>
-          <p>مواد الترم الأول والثاني</p>
-        </div>
-        <div class="card" onclick="showLevel('level4')">
-          <span class="icon">📙</span>
-          <h3>الفرقة الرابعة</h3>
-          <p>مواد الترم الأول والثاني</p>
-        </div>
+        <footer>
+          Made with ❤️ By <b>Ziad Taha</b> | SIM Portal
+        </footer>
       </div>
     </div>
-    <footer>
-      Made with ❤️ By <b>Ziad Taha</b> | SIM Portal
-    </footer>
   </div>
 
   <!-- ====== صفحة الفرقة ====== -->
   <div id="levelPage" class="hidden page-level">
-    <header>
-      <h1 id="levelTitle">الفرقة</h1>
-      <p id="levelSubtitle">اختر الترم</p>
-    </header>
-    <div class="container">
-      <button class="back-btn" onclick="goBackToMain()">⬅️ العودة للرئيسية</button>
-
-      <div class="search-box">
-        <input type="text" id="levelSearch" placeholder="🔍 ابحث عن مادة...">
+    <div class="neon-frame">
+      <div class="neon-glow"></div>
+      <div class="neon-content">
+        <header>
+          <h1 id="levelTitle">الفرقة</h1>
+          <p id="levelSubtitle">اختر الترم</p>
+        </header>
+        <div class="container">
+          <button class="back-btn" onclick="goBackToMain()">⬅️ العودة للرئيسية</button>
+          <div class="search-box">
+            <input type="text" id="levelSearch" placeholder="🔍 ابحث عن مادة...">
+          </div>
+          <h2 class="section-title">الترم الأول</h2>
+          <div class="grid" id="term1Grid"></div>
+          <div class="no-results" id="noResultsTerm1">❌ لا توجد نتائج مطابقة</div>
+          <h2 class="section-title">الترم الثاني</h2>
+          <div class="grid" id="term2Grid"></div>
+          <div class="no-results" id="noResultsTerm2">❌ لا توجد نتائج مطابقة</div>
+        </div>
+        <footer>
+          Made with ❤️ By <b>Ziad Taha</b> | SIM Portal
+        </footer>
       </div>
-
-      <h2 class="section-title">الترم الأول</h2>
-      <div class="grid" id="term1Grid"></div>
-      <div class="no-results" id="noResultsTerm1">❌ لا توجد نتائج مطابقة</div>
-
-      <h2 class="section-title">الترم الثاني</h2>
-      <div class="grid" id="term2Grid"></div>
-      <div class="no-results" id="noResultsTerm2">❌ لا توجد نتائج مطابقة</div>
     </div>
-    <footer>
-      Made with ❤️ By <b>Ziad Taha</b> | SIM Portal
-    </footer>
   </div>
 
   <!-- ====== صفحة المادة ====== -->
   <div id="subjectPage" class="hidden page-level">
-    <header>
-      <h1 id="subjectTitle">المادة</h1>
-      <p id="subjectSubtitle">اختر ما تريد</p>
-    </header>
-    <div class="container">
-      <button class="back-btn" onclick="goBackToLevel()">⬅️ العودة للترم</button>
-
-      <div class="search-box">
-        <input type="text" id="subjectSearch" placeholder="🔍 ابحث في المحتوى...">
+    <div class="neon-frame">
+      <div class="neon-glow"></div>
+      <div class="neon-content">
+        <header>
+          <h1 id="subjectTitle">المادة</h1>
+          <p id="subjectSubtitle">اختر ما تريد</p>
+        </header>
+        <div class="container">
+          <button class="back-btn" onclick="goBackToLevel()">⬅️ العودة للترم</button>
+          <div class="search-box">
+            <input type="text" id="subjectSearch" placeholder="🔍 ابحث في المحتوى...">
+          </div>
+          <div class="material-tabs" id="materialTabs"></div>
+          <div id="materialContent"></div>
+          <div class="no-results" id="noResultsSubject">❌ لا توجد نتائج مطابقة</div>
+        </div>
+        <footer>
+          Made with ❤️ By <b>Ziad Taha</b> | SIM Portal
+        </footer>
       </div>
-
-      <div class="material-tabs" id="materialTabs"></div>
-      <div id="materialContent"></div>
-      <div class="no-results" id="noResultsSubject">❌ لا توجد نتائج مطابقة</div>
     </div>
-    <footer>
-      Made with ❤️ By <b>Ziad Taha</b> | SIM Portal
-    </footer>
   </div>
 
   <script>
@@ -657,7 +755,7 @@
               { id: 'l1t2s4', name: 'Mathematics for Computer Science (MCS)', icon: '🧮', image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=300&fit=crop' },
               { id: 'l1t2s5', name: 'Object Oriented Programming (OOP)', icon: '🔷', image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=300&fit=crop' },
               { id: 'l1t2s6', name: 'Arabic', icon: '🇸🇦', image: 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=400&h=300&fit=crop' },
-              { id: 'l1t2s7', name: 'حاسب ومجتمع', icon: '🤝', image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=400&h=300&fit=crop' }
+              { id: 'l1t2s7', name: 'حاسب ومجتمع', icon: '🤝', image: 'https://images.unsplash.com/photo-1521791136064-7986c0212926?w=400&h=300&fit=crop' }
             ]
           }
         }
@@ -719,7 +817,7 @@
           term1: {
             name: 'الترم الأول',
             subjects: [
-              { id: 'l4t1s1', name: 'Computer Graphics', icon: '🎨', image: '' },
+              { id: 'l4t1s1', name: 'Computer Graphics', icon: '🎨', image: 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=400&h=300&fit=crop' },
               { id: 'project1', name: 'Project I', icon: '📋', image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop' }
             ]
           },
@@ -821,11 +919,11 @@
         div.className = 'material-content active';
         div.id = 'material-project';
         div.innerHTML = `
-          <div style="text-align:center;padding:60px 20px;">
-            <span style="font-size:4rem;display:block;margin-bottom:20px;">📋</span>
-            <h2 style="color:var(--accent);margin-bottom:15px;">متطلب مشروع التخرج</h2>
-            <p style="font-size:1.1rem;color:var(--text-secondary);margin-bottom:30px;">سيتم إضافة رابط المشروع هنا قريباً</p>
-            <a href="#" target="_blank" style="display:inline-block;padding:15px 40px;background:var(--accent);color:#fff;border-radius:12px;text-decoration:none;font-weight:700;">🚀 اضغط لإضافة الرابط</a>
+          <div style="text-align:center;padding:40px 20px;">
+            <span style="font-size:3.5rem;display:block;margin-bottom:15px;">📋</span>
+            <h2 style="color:var(--accent);margin-bottom:12px;">متطلب مشروع التخرج</h2>
+            <p style="font-size:1rem;color:var(--text-secondary);margin-bottom:25px;">سيتم إضافة رابط المشروع هنا قريباً</p>
+            <a href="#" target="_blank" style="display:inline-block;padding:12px 35px;background:var(--accent);color:#fff;border-radius:12px;text-decoration:none;font-weight:700;">🚀 اضغط لإضافة الرابط</a>
           </div>
         `;
         contentContainer.appendChild(div);
@@ -857,6 +955,7 @@
         void mainPage.offsetWidth;
         mainPage.classList.add('entering');
         pushHistory({ page: 'main' }, 'الرئيسية', '#main');
+        setTimeout(applyNeonFrameToCurrentPage, 100);
       }, 300);
     }
 
@@ -884,7 +983,8 @@
           }
           isTransitioning = false;
           if (callback) callback();
-        }, 280);
+          setTimeout(applyNeonFrameToCurrentPage, 100);
+        }, 250);
       } else {
         if (pageIn) {
           pageIn.classList.remove('hidden');
@@ -899,6 +999,7 @@
         }
         isTransitioning = false;
         if (callback) callback();
+        setTimeout(applyNeonFrameToCurrentPage, 100);
       }
     }
 
@@ -913,7 +1014,7 @@
         card.className = 'card';
         card.dataset.subjectName = sub.name.toLowerCase();
         card.innerHTML = `
-          <img src="${sub.image}" alt="${sub.name}" style="width:100%;height:160px;object-fit:cover;border-radius:12px;margin-bottom:12px;">
+          <img src="${sub.image}" alt="${sub.name}" style="width:100%;height:140px;object-fit:cover;border-radius:10px;margin-bottom:10px;">
           <span class="icon">${sub.icon}</span>
           <h3>${sub.name}</h3>
           <p>اضغط للدخول</p>
@@ -929,7 +1030,7 @@
         card.className = 'card';
         card.dataset.subjectName = sub.name.toLowerCase();
         card.innerHTML = `
-          <img src="${sub.image}" alt="${sub.name}" style="width:100%;height:160px;object-fit:cover;border-radius:12px;margin-bottom:12px;">
+          <img src="${sub.image}" alt="${sub.name}" style="width:100%;height:140px;object-fit:cover;border-radius:10px;margin-bottom:10px;">
           <span class="icon">${sub.icon}</span>
           <h3>${sub.name}</h3>
           <p>اضغط للدخول</p>
@@ -1042,7 +1143,7 @@
 
       const data = subjectsLectures[subjectId];
       if (!data) {
-        container.innerHTML = '<p style="text-align:center;padding:40px;color:var(--text-secondary);">⏳ قيد الانتظار</p>';
+        container.innerHTML = '<p style="text-align:center;padding:30px;color:var(--text-secondary);">⏳ قيد الانتظار</p>';
         return;
       }
 
@@ -1146,6 +1247,7 @@
       mainPage.classList.remove('entering');
       void mainPage.offsetWidth;
       mainPage.classList.add('entering');
+      setTimeout(applyNeonFrameToCurrentPage, 100);
     }
 
     // ====== العودة للترم ======
@@ -1171,9 +1273,44 @@
       void levelPage.offsetWidth;
       levelPage.classList.add('entering');
       subjectPage.classList.add('hidden');
+      setTimeout(applyNeonFrameToCurrentPage, 100);
     }
 
-    // ====== معالجة زر الرجوع - مع منع الخروج ======
+    // ====== تطبيق Neon Frame على الصفحة الحالية (خفيف) ======
+    function applyNeonFrameToCurrentPage() {
+      // نزيل الـ active من كل الـ neon-frame
+      document.querySelectorAll('.neon-frame').forEach(el => {
+        el.classList.remove('active');
+      });
+
+      // نبحث عن الصفحة الظاهرة ونضيف لها active لمدة 2.5 ثانية فقط
+      const visiblePages = document.querySelectorAll('.page-level:not(.hidden), #welcomePage');
+      visiblePages.forEach(page => {
+        const frame = page.querySelector('.neon-frame');
+        if (frame) {
+          frame.classList.add('active');
+          // نوقف الـ Neon بعد 2.5 ثانية عشان خفة الحركة
+          clearTimeout(frame._timeout);
+          frame._timeout = setTimeout(() => {
+            frame.classList.remove('active');
+          }, 2500);
+        }
+      });
+
+      // لو مفيش صفحة ظاهرة، نضيف active للترحيب لمدة 2.5 ثانية
+      if (document.querySelectorAll('.page-level:not(.hidden)').length === 0) {
+        const welcomeFrame = document.querySelector('#welcomePage .neon-frame');
+        if (welcomeFrame) {
+          welcomeFrame.classList.add('active');
+          clearTimeout(welcomeFrame._timeout);
+          welcomeFrame._timeout = setTimeout(() => {
+            welcomeFrame.classList.remove('active');
+          }, 2500);
+        }
+      }
+    }
+
+    // ====== معالجة زر الرجوع ======
     window.addEventListener('popstate', function(event) {
       if (isTransitioning) return;
 
@@ -1195,13 +1332,12 @@
         targetPage = state.page || 'welcome';
       }
 
-      // لو كنا في welcome، نمنع الخروج
       if (currentPage === 'welcome') {
         history.pushState({ page: 'welcome' }, '', '#welcome');
+        setTimeout(applyNeonFrameToCurrentPage, 100);
         return;
       }
 
-      // لو target welcome
       if (targetPage === 'welcome') {
         welcomePage.classList.remove('hidden');
         welcomePage.classList.remove('entering');
@@ -1211,10 +1347,10 @@
         levelPage.classList.add('hidden');
         subjectPage.classList.add('hidden');
         history.pushState({ page: 'welcome' }, '', '#welcome');
+        setTimeout(applyNeonFrameToCurrentPage, 100);
         return;
       }
 
-      // لو target main
       if (targetPage === 'main') {
         if (currentPage !== 'main') {
           if (currentPage === 'welcome') {
@@ -1227,20 +1363,20 @@
           levelPage.classList.add('hidden');
           subjectPage.classList.add('hidden');
         }
+        setTimeout(applyNeonFrameToCurrentPage, 100);
         return;
       }
 
-      // لو target level
       if (targetPage === 'level' && state && state.levelId) {
         if (currentPage === 'subject') {
           goBackToLevel();
         } else {
           showLevel(state.levelId);
         }
+        setTimeout(applyNeonFrameToCurrentPage, 100);
         return;
       }
 
-      // لو target subject
       if (targetPage === 'subject' && state && state.subjectId) {
         for (const levelId in levelsData) {
           const level = levelsData[levelId];
@@ -1248,13 +1384,13 @@
             const found = level.terms[termId].subjects.find(s => s.id === state.subjectId);
             if (found) {
               showSubject(levelId, termId, state.subjectId);
+              setTimeout(applyNeonFrameToCurrentPage, 100);
               return;
             }
           }
         }
       }
 
-      // لو مفيش حالة مناسبة، نروح للترحيب
       if (currentPage !== 'welcome') {
         welcomePage.classList.remove('hidden');
         welcomePage.classList.remove('entering');
@@ -1264,6 +1400,7 @@
         levelPage.classList.add('hidden');
         subjectPage.classList.add('hidden');
         history.pushState({ page: 'welcome' }, '', '#welcome');
+        setTimeout(applyNeonFrameToCurrentPage, 100);
       }
     });
 
@@ -1275,29 +1412,30 @@
       setTimeout(() => toast.classList.add('hidden'), 2500);
     }
 
-    // ====== Preloader - دايمًا نبدأ من الترحيب ======
+    // ====== Preloader - خفيف وسريع (بيختفي خلال 0.4 ثانية) ======
     window.addEventListener('load', function() {
       const preloader = document.getElementById('preloader');
       
-      // دايمًا نبدأ من صفحة الترحيب
+      // إخفاء الـ Preloader خلال 400 ملي ثانية (حتى لو الصورة لسه محملتش)
+      setTimeout(() => {
+        preloader.classList.add('hide');
+      }, 400);
+
       const welcomePage = document.getElementById('welcomePage');
       const mainPage = document.getElementById('mainPage');
       const levelPage = document.getElementById('levelPage');
       const subjectPage = document.getElementById('subjectPage');
       
-      // نخفي كل الصفحات
       welcomePage.classList.add('hidden');
       mainPage.classList.add('hidden');
       levelPage.classList.add('hidden');
       subjectPage.classList.add('hidden');
       
-      // نظهر الترحيب
       welcomePage.classList.remove('hidden');
       welcomePage.classList.remove('entering');
       void welcomePage.offsetWidth;
       welcomePage.classList.add('entering');
       
-      // نضيف تاريخ أولي عشان منخرجش
       setTimeout(() => {
         history.pushState({ page: 'welcome' }, '', '#welcome');
         setTimeout(() => {
@@ -1305,8 +1443,8 @@
         }, 100);
       }, 200);
       
-      setTimeout(() => preloader.classList.add('hide'), 600);
       isFirstLoad = false;
+      setTimeout(applyNeonFrameToCurrentPage, 200);
     });
 
     // ====== Ripple Effect ======
@@ -1318,19 +1456,19 @@
         ripple.style.cssText = `
           position: absolute;
           border-radius: 50%;
-          background: rgba(14, 165, 233, 0.2);
+          background: rgba(14, 165, 233, 0.15);
           width: ${size}px;
           height: ${size}px;
           left: ${e.clientX - rect.left - size/2}px;
           top: ${e.clientY - rect.top - size/2}px;
           transform: scale(0);
-          animation: rippleAnim 0.6s ease forwards;
+          animation: rippleAnim 0.5s ease forwards;
           pointer-events: none;
         `;
         this.style.position = 'relative';
         this.style.overflow = 'hidden';
         this.appendChild(ripple);
-        setTimeout(() => ripple.remove(), 600);
+        setTimeout(() => ripple.remove(), 500);
       });
     });
 
