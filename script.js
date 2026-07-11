@@ -136,6 +136,84 @@ let historyStack = ['welcome'];
 let isBackAction = false;
 let isFirstLoad = true;
 
+// ================================================================
+// ====== نظام الأصوات ======
+// ================================================================
+
+function playSound(type) {
+    try {
+        let audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        let oscillator = audioContext.createOscillator();
+        let gainNode = audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        
+        switch(type) {
+            case 'portal':
+                oscillator.type = 'sine';
+                oscillator.frequency.setValueAtTime(300, audioContext.currentTime);
+                oscillator.frequency.linearRampToValueAtTime(700, audioContext.currentTime + 0.25);
+                gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+                gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + 0.35);
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + 0.35);
+                break;
+                
+            case 'click':
+                oscillator.type = 'sine';
+                oscillator.frequency.setValueAtTime(900, audioContext.currentTime);
+                gainNode.gain.setValueAtTime(0.15, audioContext.currentTime);
+                gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + 0.08);
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + 0.08);
+                break;
+                
+            case 'techpop':
+                oscillator.type = 'square';
+                oscillator.frequency.setValueAtTime(600, audioContext.currentTime);
+                oscillator.frequency.linearRampToValueAtTime(1000, audioContext.currentTime + 0.15);
+                gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+                gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + 0.2);
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + 0.2);
+                break;
+                
+            case 'back':
+                oscillator.type = 'sine';
+                oscillator.frequency.setValueAtTime(550, audioContext.currentTime);
+                oscillator.frequency.linearRampToValueAtTime(200, audioContext.currentTime + 0.2);
+                gainNode.gain.setValueAtTime(0.15, audioContext.currentTime);
+                gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + 0.25);
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + 0.25);
+                break;
+                
+            case 'success':
+                oscillator.type = 'sine';
+                oscillator.frequency.setValueAtTime(500, audioContext.currentTime);
+                oscillator.frequency.linearRampToValueAtTime(800, audioContext.currentTime + 0.1);
+                oscillator.frequency.linearRampToValueAtTime(1000, audioContext.currentTime + 0.2);
+                gainNode.gain.setValueAtTime(0.15, audioContext.currentTime);
+                gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + 0.3);
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + 0.3);
+                break;
+                
+            default:
+                oscillator.type = 'sine';
+                oscillator.frequency.setValueAtTime(500, audioContext.currentTime);
+                gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+                gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + 0.1);
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + 0.1);
+        }
+    } catch(e) {
+        // لو المتصفح مش مدعوم، نتجاهل
+        console.log('Audio not supported');
+    }
+}
+
 // ====== دالة إدارة التاريخ ======
 function pushHistory(state, title, url) {
   if (isBackAction) { isBackAction = false; return; }
@@ -197,6 +275,7 @@ function setupMaterialTabs(subjectId, isProject) {
 
 // ====== الدخول إلى المنصة ======
 function enterPlatform() {
+  playSound('portal'); // 🔊 صوت البوابة
   const welcomePage = document.getElementById('welcomePage');
   const mainPage = document.getElementById('mainPage');
   welcomePage.classList.add('exiting');
@@ -289,6 +368,7 @@ function renderLevelSubjects(levelId) {
 // ====== عرض الفرقة ======
 function showLevel(levelId) {
   if (isTransitioning) return;
+  playSound('click'); // 🔊 صوت النقرة
   currentLevel = levelId;
   const level = levelsData[levelId];
   const mainPage = document.getElementById('mainPage');
@@ -330,6 +410,7 @@ function setupLevelSearch(levelId) {
 // ====== عرض المادة ======
 function showSubject(levelId, termId, subjectId) {
   if (isTransitioning) return;
+  playSound('techpop'); // 🔊 صوت إلكتروني
   currentSubjectId = subjectId;
   const level = levelsData[levelId];
   let subject = null, termName = '';
@@ -418,6 +499,7 @@ function switchMaterialTab(tabKey) {
 // ====== العودة للرئيسية ======
 function goBackToMain() {
   if (isTransitioning) return;
+  playSound('back'); // 🔊 صوت الرجوع
   const mainPage = document.getElementById('mainPage');
   const levelPage = document.getElementById('levelPage');
   const subjectPage = document.getElementById('subjectPage');
@@ -436,6 +518,7 @@ function goBackToMain() {
 // ====== العودة للترم ======
 function goBackToLevel() {
   if (isTransitioning) return;
+  playSound('back'); // 🔊 صوت الرجوع
   const levelPage = document.getElementById('levelPage');
   const subjectPage = document.getElementById('subjectPage');
   document.getElementById('subjectSearch').value = '';
@@ -476,6 +559,8 @@ function applyNeonFrameToCurrentPage() {
 // ====== معالجة زر الرجوع ======
 window.addEventListener('popstate', function(event) {
   if (isTransitioning) return;
+  playSound('back'); // 🔊 صوت الرجوع
+  
   const mainPage = document.getElementById('mainPage');
   const levelPage = document.getElementById('levelPage');
   const subjectPage = document.getElementById('subjectPage');
@@ -529,96 +614,6 @@ function showToast(message) {
   toast.classList.remove('hidden');
   setTimeout(() => toast.classList.add('hidden'), 2500);
 }
-
-// ====== Preloader واستعادة الحالة بعد Refresh ======
-window.addEventListener('load', function() {
-  const preloader = document.getElementById('preloader');
-  
-  // محاولة استعادة الصفحة بعد الـ Refresh
-  const restored = restorePageAfterRefresh();
-  
-  if (!restored) {
-    // لو مفيش حالة محفوظة، نبدأ من الترحيب
-    const welcomePage = document.getElementById('welcomePage');
-    const mainPage = document.getElementById('mainPage');
-    const levelPage = document.getElementById('levelPage');
-    const subjectPage = document.getElementById('subjectPage');
-    
-    welcomePage.classList.add('hidden');
-    mainPage.classList.add('hidden');
-    levelPage.classList.add('hidden');
-    subjectPage.classList.add('hidden');
-    
-    welcomePage.classList.remove('hidden');
-    welcomePage.classList.remove('entering');
-    void welcomePage.offsetWidth;
-    welcomePage.classList.add('entering');
-    
-    setTimeout(() => {
-      history.pushState({ page: 'welcome' }, '', '#welcome');
-      setTimeout(() => {
-        history.pushState({ page: 'welcome' }, '', '#welcome-keep');
-      }, 100);
-    }, 200);
-  }
-  
-  // إخفاء Preloader
-  setTimeout(() => {
-    preloader.classList.add('hide');
-  }, 300);
-  
-  isFirstLoad = false;
-  setTimeout(applyNeonFrameToCurrentPage, 200);
-});
-
-// ====== Ripple Effect ======
-document.querySelectorAll('.card').forEach(card => {
-  card.addEventListener('click', function(e) {
-    const ripple = document.createElement('span');
-    const rect = this.getBoundingClientRect();
-    const size = Math.min(rect.width, rect.height);
-    ripple.style.cssText = `
-      position: absolute;
-      border-radius: 50%;
-      background: rgba(14, 165, 233, 0.15);
-      width: ${size}px;
-      height: ${size}px;
-      left: ${e.clientX - rect.left - size/2}px;
-      top: ${e.clientY - rect.top - size/2}px;
-      transform: scale(0);
-      animation: rippleAnim 0.5s ease forwards;
-      pointer-events: none;
-    `;
-    this.style.position = 'relative';
-    this.style.overflow = 'hidden';
-    this.appendChild(ripple);
-    setTimeout(() => ripple.remove(), 500);
-  });
-});
-
-// ====== Dark/Light Mode ======
-const themeToggle = document.getElementById('themeToggle');
-let isDark = true;
-if (localStorage.getItem('theme') === 'light') {
-  document.body.classList.add('light-mode');
-  themeToggle.textContent = '☀️';
-  isDark = false;
-}
-themeToggle.addEventListener('click', function() {
-  if (isDark) {
-    document.body.classList.add('light-mode');
-    this.textContent = '☀️';
-    isDark = false;
-    localStorage.setItem('theme', 'light');
-    showToast('☀️ الوضع الفاتح');
-  } else {
-    document.body.classList.remove('light-mode');
-    this.textContent = '🌙';
-    isDark = true;
-    localStorage.setItem('theme', 'dark');
-    showToast('🌙 الوضع الداكن');
-  }
-});
 
 // ================================================================
 // ====== الجزء الجديد: حفظ واستعادة حالة الصفحة للـ Refresh ======
@@ -772,4 +767,94 @@ enterPlatform = function() {
 // ====== نمسح الحالة عند إغلاق المتصفح ======
 window.addEventListener('beforeunload', function() {
     localStorage.removeItem('refreshPageState');
+});
+
+// ====== Preloader واستعادة الحالة بعد Refresh ======
+window.addEventListener('load', function() {
+  const preloader = document.getElementById('preloader');
+  
+  // محاولة استعادة الصفحة بعد الـ Refresh
+  const restored = restorePageAfterRefresh();
+  
+  if (!restored) {
+    // لو مفيش حالة محفوظة، نبدأ من الترحيب
+    const welcomePage = document.getElementById('welcomePage');
+    const mainPage = document.getElementById('mainPage');
+    const levelPage = document.getElementById('levelPage');
+    const subjectPage = document.getElementById('subjectPage');
+    
+    welcomePage.classList.add('hidden');
+    mainPage.classList.add('hidden');
+    levelPage.classList.add('hidden');
+    subjectPage.classList.add('hidden');
+    
+    welcomePage.classList.remove('hidden');
+    welcomePage.classList.remove('entering');
+    void welcomePage.offsetWidth;
+    welcomePage.classList.add('entering');
+    
+    setTimeout(() => {
+      history.pushState({ page: 'welcome' }, '', '#welcome');
+      setTimeout(() => {
+        history.pushState({ page: 'welcome' }, '', '#welcome-keep');
+      }, 100);
+    }, 200);
+  }
+  
+  // إخفاء Preloader
+  setTimeout(() => {
+    preloader.classList.add('hide');
+  }, 300);
+  
+  isFirstLoad = false;
+  setTimeout(applyNeonFrameToCurrentPage, 200);
+});
+
+// ====== Ripple Effect ======
+document.querySelectorAll('.card').forEach(card => {
+  card.addEventListener('click', function(e) {
+    const ripple = document.createElement('span');
+    const rect = this.getBoundingClientRect();
+    const size = Math.min(rect.width, rect.height);
+    ripple.style.cssText = `
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(14, 165, 233, 0.15);
+      width: ${size}px;
+      height: ${size}px;
+      left: ${e.clientX - rect.left - size/2}px;
+      top: ${e.clientY - rect.top - size/2}px;
+      transform: scale(0);
+      animation: rippleAnim 0.5s ease forwards;
+      pointer-events: none;
+    `;
+    this.style.position = 'relative';
+    this.style.overflow = 'hidden';
+    this.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 500);
+  });
+});
+
+// ====== Dark/Light Mode ======
+const themeToggle = document.getElementById('themeToggle');
+let isDark = true;
+if (localStorage.getItem('theme') === 'light') {
+  document.body.classList.add('light-mode');
+  themeToggle.textContent = '☀️';
+  isDark = false;
+}
+themeToggle.addEventListener('click', function() {
+  if (isDark) {
+    document.body.classList.add('light-mode');
+    this.textContent = '☀️';
+    isDark = false;
+    localStorage.setItem('theme', 'light');
+    showToast('☀️ الوضع الفاتح');
+  } else {
+    document.body.classList.remove('light-mode');
+    this.textContent = '🌙';
+    isDark = true;
+    localStorage.setItem('theme', 'dark');
+    showToast('🌙 الوضع الداكن');
+  }
 });
