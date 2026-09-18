@@ -105,6 +105,15 @@ const levelsData = {
 
 // ====== بيانات المحاضرات ======
 const subjectsLectures = {
+  // ====== Math 0 ( الجديد ) ======
+  l1t1s0: {
+    name: '📐 Math 0 ( لطلاب علمي علوم )',
+    lectures: [],
+    sections: [],
+    summaries: []
+  },
+
+  // ====== باقي المواد ======
   dataScience: {
     name: '📊 Data Science',
     lectures: [
@@ -210,7 +219,6 @@ function playSound(type) {
                 oscillator.stop(audioContext.currentTime + 0.1);
         }
     } catch(e) {
-        // لو المتصفح مش مدعوم، نتجاهل
         console.log('Audio not supported');
     }
 }
@@ -276,7 +284,7 @@ function setupMaterialTabs(subjectId, isProject) {
 
 // ====== الدخول إلى المنصة ======
 function enterPlatform() {
-  playSound('portal'); // 🔊 صوت البوابة
+  playSound('portal');
   const welcomePage = document.getElementById('welcomePage');
   const mainPage = document.getElementById('mainPage');
   welcomePage.classList.add('exiting');
@@ -369,7 +377,7 @@ function renderLevelSubjects(levelId) {
 // ====== عرض الفرقة ======
 function showLevel(levelId) {
   if (isTransitioning) return;
-  playSound('click'); // 🔊 صوت النقرة
+  playSound('click');
   currentLevel = levelId;
   const level = levelsData[levelId];
   const mainPage = document.getElementById('mainPage');
@@ -411,7 +419,7 @@ function setupLevelSearch(levelId) {
 // ====== عرض المادة ======
 function showSubject(levelId, termId, subjectId) {
   if (isTransitioning) return;
-  playSound('techpop'); // 🔊 صوت إلكتروني
+  playSound('techpop');
   currentSubjectId = subjectId;
   const level = levelsData[levelId];
   let subject = null, termName = '';
@@ -452,7 +460,8 @@ function renderMaterialContent(subjectId, type) {
       const card = document.createElement('div');
       card.className = 'lecture-card';
       const label = type === 'lectures' ? 'المحاضرة' : type === 'sections' ? 'سكشن' : 'ملخص';
-      const btnText = type === 'summaries' ? '📥 تحميل' : '▶️ مشاهدة';
+      // ✅ التعديل: عرض PDF بدل مشاهدة
+      const btnText = type === 'summaries' ? '📥 تحميل الملخص' : '📄 عرض PDF';
       card.dataset.lectureName = `${label} ${index + 1}`;
       card.innerHTML = `
         <span class="num">${String(index + 1).padStart(2, '0')}</span>
@@ -500,7 +509,7 @@ function switchMaterialTab(tabKey) {
 // ====== العودة للرئيسية ======
 function goBackToMain() {
   if (isTransitioning) return;
-  playSound('back'); // 🔊 صوت الرجوع
+  playSound('back');
   const mainPage = document.getElementById('mainPage');
   const levelPage = document.getElementById('levelPage');
   const subjectPage = document.getElementById('subjectPage');
@@ -519,7 +528,7 @@ function goBackToMain() {
 // ====== العودة للترم ======
 function goBackToLevel() {
   if (isTransitioning) return;
-  playSound('back'); // 🔊 صوت الرجوع
+  playSound('back');
   const levelPage = document.getElementById('levelPage');
   const subjectPage = document.getElementById('subjectPage');
   document.getElementById('subjectSearch').value = '';
@@ -560,7 +569,7 @@ function applyNeonFrameToCurrentPage() {
 // ====== معالجة زر الرجوع ======
 window.addEventListener('popstate', function(event) {
   if (isTransitioning) return;
-  playSound('back'); // 🔊 صوت الرجوع
+  playSound('back');
   
   const mainPage = document.getElementById('mainPage');
   const levelPage = document.getElementById('levelPage');
@@ -620,7 +629,6 @@ function showToast(message) {
 // ====== الجزء الجديد: حفظ واستعادة حالة الصفحة للـ Refresh ======
 // ================================================================
 
-// دالة لحفظ الصفحة الحالية في localStorage (باستثناء صفحة الترحيب)
 function saveCurrentPageForRefresh() {
     const welcomePage = document.getElementById('welcomePage');
     const mainPage = document.getElementById('mainPage');
@@ -634,27 +642,18 @@ function saveCurrentPageForRefresh() {
     } else if (!mainPage.classList.contains('hidden')) {
         pageState = { page: 'main' };
     } else if (!levelPage.classList.contains('hidden')) {
-        pageState = {
-            page: 'level',
-            levelId: currentLevel || 'level1'
-        };
+        pageState = { page: 'level', levelId: currentLevel || 'level1' };
     } else if (!subjectPage.classList.contains('hidden')) {
-        pageState = {
-            page: 'subject',
-            subjectId: currentSubjectId || 'dataScience'
-        };
+        pageState = { page: 'subject', subjectId: currentSubjectId || 'dataScience' };
     }
 
-    // نحفظ الحالة في localStorage (بس مش للترحيب عشان الـ Refresh)
     if (pageState.page !== 'welcome') {
         localStorage.setItem('refreshPageState', JSON.stringify(pageState));
     } else {
-        // لو في الترحيب، نمسح الحالة عشان نبدأ من البداية
         localStorage.removeItem('refreshPageState');
     }
 }
 
-// دالة لاستعادة الصفحة بعد الـ Refresh
 function restorePageAfterRefresh() {
     const savedState = localStorage.getItem('refreshPageState');
     if (!savedState) return false;
@@ -666,7 +665,6 @@ function restorePageAfterRefresh() {
         const levelPage = document.getElementById('levelPage');
         const subjectPage = document.getElementById('subjectPage');
 
-        // نخفي كل الصفحات
         welcomePage.classList.add('hidden');
         mainPage.classList.add('hidden');
         levelPage.classList.add('hidden');
@@ -707,7 +705,6 @@ function restorePageAfterRefresh() {
                     if (found) {
                         currentLevel = levelId;
                         currentSubjectId = state.subjectId;
-                        // نضبط الصفحة من غير transition عشان تظهر بسرعة
                         const levelPage = document.getElementById('levelPage');
                         const subjectPage = document.getElementById('subjectPage');
                         const subject = found;
@@ -740,7 +737,6 @@ function restorePageAfterRefresh() {
     }
 }
 
-// ====== تعديل دالة الانتقال عشان تحفظ الحالة ======
 const originalTransitionToPage = transitionToPage;
 transitionToPage = function(pageIn, pageOut, stateData, callback) {
     originalTransitionToPage(pageIn, pageOut, stateData, function() {
@@ -751,21 +747,18 @@ transitionToPage = function(pageIn, pageOut, stateData, callback) {
     });
 };
 
-// ====== تعديل دالة العودة للرئيسية عشان تمسح الحالة ======
 const originalGoBackToMain = goBackToMain;
 goBackToMain = function() {
     originalGoBackToMain();
     localStorage.removeItem('refreshPageState');
 };
 
-// ====== تعديل دالة الدخول للمنصة عشان تمسح الحالة ======
 const originalEnterPlatform = enterPlatform;
 enterPlatform = function() {
     localStorage.removeItem('refreshPageState');
     originalEnterPlatform();
 };
 
-// ====== نمسح الحالة عند إغلاق المتصفح ======
 window.addEventListener('beforeunload', function() {
     localStorage.removeItem('refreshPageState');
 });
@@ -774,11 +767,9 @@ window.addEventListener('beforeunload', function() {
 window.addEventListener('load', function() {
   const preloader = document.getElementById('preloader');
   
-  // محاولة استعادة الصفحة بعد الـ Refresh
   const restored = restorePageAfterRefresh();
   
   if (!restored) {
-    // لو مفيش حالة محفوظة، نبدأ من الترحيب
     const welcomePage = document.getElementById('welcomePage');
     const mainPage = document.getElementById('mainPage');
     const levelPage = document.getElementById('levelPage');
@@ -802,7 +793,6 @@ window.addEventListener('load', function() {
     }, 200);
   }
   
-  // إخفاء Preloader
   setTimeout(() => {
     preloader.classList.add('hide');
   }, 300);
