@@ -7,6 +7,7 @@ const levelsData = {
       term1: {
         name: 'الترم الأول',
         subjects: [
+          { id: 'l1t1s0', name: 'Math 0 ( لطلاب علمي علوم )', icon: '📐', image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=300&fit=crop' },
           { id: 'l1t1s1', name: 'Math I', icon: '📐', image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=300&fit=crop' },
           { id: 'l1t1s2', name: 'Physics I', icon: '⚛️', image: 'https://images.unsplash.com/photo-1636466497217-26a8cbeaf0aa?w=400&h=300&fit=crop' },
           { id: 'l1t1s3', name: 'Introduction to Computing Technology', icon: '💻', image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=300&fit=crop' },
