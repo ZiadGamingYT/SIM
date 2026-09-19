@@ -12,139 +12,342 @@
   <div id="preloader"><div class="loader"></div></div>
   <div id="toast" class="toast hidden">✅ تم</div>
 
-  <div id="welcomeNotice" class="welcome-notice hidden">
-    <div class="notice-content">
-      <span class="notice-icon">💡</span>
-      <div class="notice-text">
-        <strong>أهلاً بيك في SIM Portal!</strong>
-        <p>تقدر تضيف محاضراتك وسكاشنك وملخصاتك وحلولك واختباراتك الخاصة في أي مادة، وتعدلها أو تمسحها براحتك. المحتوى الرسمي ثابت ومش هيتغير.</p>
-      </div>
-      <button class="notice-close" onclick="closeWelcomeNotice()">✕</button>
-    </div>
-  </div>
-
-  <button class="theme-toggle" id="themeToggle" title="تغيير الوضع">🌙</button>
-
-  <!-- صفحة الترحيب -->
-  <div id="welcomePage">
+  <!-- ============ صفحة تسجيل الدخول (Auth Gate) ============ -->
+  <div id="authGate">
     <div class="neon-frame active">
       <div class="neon-glow"></div>
       <div class="neon-content">
-        <div class="welcome-content">
-          <div style="width:130px;height:130px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:4rem;margin:0 auto 15px;box-shadow:0 0 30px rgba(14,165,233,0.3);">🎓</div>
-          <h2>Faculty of Science - Software Industry & Multimedia Department</h2>
-          <p class="college-name">كلية العلوم - قسم صناعة البرمجيات والوسائط المتعددة</p>
-          <p class="subtitle">🚀 Welcome to the SIM Learning Platform</p>
-          <p class="description">Everything you need in one place: lectures, summaries, tutorials, graduation projects, and study materials to make your academic journey easier and help you achieve your best results.</p>
-          <p class="description-ar">كل ما تحتاجه في مكان واحد: محاضرات، ملخصات، سكاشن، مشاريع التخرج، ومواد دراسية لتسهيل رحلتك الأكاديمية ومساعدتك في تحقيق أفضل النتائج.</p>
-          <p class="designed-by">❤️ Designed & Developed by Ziad Taha Mohamed Ahmed</p>
-          <button class="enter-btn" onclick="enterPlatform()">🚀 اضغط هنا للدخول إلى المنصة</button>
+        <div class="auth-gate-content">
+
+          <div class="auth-logo">🎓</div>
+          <h1 class="auth-title">SIM Portal</h1>
+          <p class="auth-subtitle">منصة قسم صناعة البرمجيات والوسائط المتعددة</p>
+
+          <div class="auth-card">
+            <h2 id="authGateTitle">🔐 تسجيل الدخول</h2>
+
+            <div class="auth-field">
+              <label for="gateEmail">الإيميل</label>
+              <input type="email" id="gateEmail" placeholder="example@email.com" autocomplete="email">
+            </div>
+
+            <div class="auth-field">
+              <label for="gatePassword">الباسورد</label>
+              <input type="password" id="gatePassword" placeholder="••••••" autocomplete="current-password">
+            </div>
+
+            <div id="forgotPasswordContainer" style="text-align:left;margin-top:-8px;margin-bottom:14px;">
+              <a href="#" onclick="openForgotPasswordModal(event);return false;"
+                 style="color:var(--accent);font-size:0.85rem;font-weight:700;text-decoration:none;cursor:pointer;">
+                🔑 نسيت كلمة المرور؟
+              </a>
+            </div>
+
+            <button class="btn-auth-primary" id="gateSubmitBtn" onclick="handleGateSubmit()">
+              تسجيل الدخول
+            </button>
+
+            <div class="auth-divider">
+              <span>أو</span>
+            </div>
+
+            <button class="google-btn" onclick="loginWithGoogleGate()">
+              <svg width="20" height="20" viewBox="0 0 48 48" style="flex-shrink:0;">
+                <path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/>
+                <path fill="#FF3D00" d="m6.306 14.691 6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/>
+                <path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/>
+                <path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/>
+              </svg>
+              <span>الدخول بحساب Google</span>
+            </button>
+
+            <p class="auth-switch">
+              <span id="gateSwitchText">ليس لديك حساب؟</span>
+              <a href="#" onclick="switchGateMode(event)">
+                <span id="gateSwitchBtn">سجّل الآن</span>
+              </a>
+            </p>
+
+            <div class="auth-divider">
+              <span>أو</span>
+            </div>
+
+            <button class="guest-btn" onclick="continueAsGuest()">
+              👤 تصفح كزائر
+              <span class="guest-note">(مش هتقدر تحفظ محتواك)</span>
+            </button>
+          </div>
+
+          <p class="auth-footer">❤️ Designed & Developed by <b>Ziad Taha</b></p>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- الصفحة الرئيسية -->
-  <div id="mainPage" class="hidden page-level">
-    <div class="neon-frame">
+  <!-- ============ شاشة تأكيد الإيميل ============ -->
+  <div id="verifyScreen" class="hidden">
+    <div class="neon-frame active">
       <div class="neon-glow"></div>
       <div class="neon-content">
-        <header><h1>🎓 SIM Portal</h1><p>اختر فرقتك للوصول للمواد</p></header>
-        <div class="container">
-          <h2 class="section-title">الفرق</h2>
-          <div class="grid" id="levelsGrid">
-            <div class="card" onclick="showLevel('level1')"><span class="icon">📘</span><h3>الفرقة الأولى</h3><p>مواد الترم الأول والثاني</p></div>
-            <div class="card" onclick="showLevel('level2')"><span class="icon">📗</span><h3>الفرقة الثانية</h3><p>مواد الترم الأول والثاني</p></div>
-            <div class="card" onclick="showLevel('level3')"><span class="icon">📕</span><h3>الفرقة الثالثة</h3><p>مواد الترم الأول والثاني</p></div>
-            <div class="card" onclick="showLevel('level4')"><span class="icon">📙</span><h3>الفرقة الرابعة</h3><p>مواد الترم الأول والثاني</p></div>
+        <div class="auth-gate-content">
+          <div class="auth-logo">📧</div>
+          <h1 class="auth-title">تأكيد الإيميل</h1>
+          <p class="auth-subtitle">بعتنالك رسالة تأكيد على إيميلك</p>
+
+          <div class="auth-card">
+            <p style="text-align:center;color:var(--text);margin-bottom:8px;font-size:1rem;">
+              بعتنا رابط تأكيد إلى:
+            </p>
+            <p id="verifyEmailDisplay" style="text-align:center;color:var(--accent);font-weight:700;margin-bottom:18px;word-break:break-all;">
+              —
+            </p>
+            <p style="text-align:center;color:var(--text-secondary);font-size:0.9rem;margin-bottom:22px;line-height:1.7;">
+              افتح الإيميل بتاعك، اضغط على الرابط اللي بعتناه، وبعدين ارجع هنا واضغط "تم التأكيد".
+            </p>
+
+            <button class="btn-auth-primary" onclick="checkEmailVerified()">
+              ✅ تم التأكيد - ادخل
+            </button>
+
+            <div class="auth-divider"><span>أو</span></div>
+
+            <button class="google-btn" onclick="resendVerificationEmail()">
+              📨 إعادة إرسال رسالة التأكيد
+            </button>
+
+            <p style="text-align:center;margin-top:16px;font-size:0.9rem;color:var(--text-secondary);">
+              <a href="#" onclick="cancelVerification(event)" style="color:var(--accent);font-weight:700;text-decoration:none;">
+                🚪 تسجيل خروج
+              </a>
+            </p>
           </div>
         </div>
-        <footer>Made with ❤️ By <b>Ziad Taha</b> | SIM Portal</footer>
       </div>
     </div>
   </div>
 
-  <!-- صفحة الفرقة -->
-  <div id="levelPage" class="hidden page-level">
-    <div class="neon-frame">
-      <div class="neon-glow"></div>
-      <div class="neon-content">
-        <header><h1 id="levelTitle">الفرقة</h1><p id="levelSubtitle">اختر الترم</p></header>
-        <div class="container">
-          <button class="back-btn" onclick="goBackToMain()">⬅️ العودة للرئيسية</button>
-          <div class="search-box"><input type="text" id="levelSearch" placeholder="🔍 ابحث عن مادة..."></div>
-          <h2 class="section-title">الترم الأول</h2>
-          <div class="grid" id="term1Grid"></div>
-          <div class="no-results" id="noResultsTerm1">❌ لا توجد نتائج مطابقة</div>
-          <h2 class="section-title">الترم الثاني</h2>
-          <div class="grid" id="term2Grid"></div>
-          <div class="no-results" id="noResultsTerm2">❌ لا توجد نتائج مطابقة</div>
+  <!-- ============ باقي الموقع ============ -->
+  <div id="siteWrapper" class="hidden">
+
+    <div id="welcomeNotice" class="welcome-notice hidden">
+      <div class="notice-content">
+        <span class="notice-icon">💡</span>
+        <div class="notice-text">
+          <strong>أهلاً بيك في SIM Portal!</strong>
+          <p>تقدر تضيف محاضراتك وسكاشنك وملخصاتك وحلولك واختباراتك الخاصة في أي مادة، وتعدلها أو تمسحها براحتك. المحتوى الرسمي ثابت ومش هيتغير.</p>
         </div>
-        <footer>Made with ❤️ By <b>Ziad Taha</b> | SIM Portal</footer>
+        <button class="notice-close" onclick="closeWelcomeNotice()">✕</button>
       </div>
     </div>
-  </div>
 
-  <!-- صفحة المادة -->
-  <div id="subjectPage" class="hidden page-level">
-    <div class="neon-frame">
-      <div class="neon-glow"></div>
-      <div class="neon-content">
-        <header><h1 id="subjectTitle">المادة</h1><p id="subjectSubtitle">اختر ما تريد</p></header>
-        <div class="container">
-          <button class="back-btn" onclick="goBackToLevel()">⬅️ العودة للترم</button>
-          <div class="search-box"><input type="text" id="subjectSearch" placeholder="🔍 ابحث في المحتوى..."></div>
-          <div class="material-tabs" id="materialTabs"></div>
-          <div id="materialContent"></div>
-          <div class="no-results" id="noResultsSubject">❌ لا توجد نتائج مطابقة</div>
+    <button class="theme-toggle" id="themeToggle" title="تغيير الوضع">🌙</button>
+    <button class="user-toggle" id="userToggle" onclick="handleUserBtn()" title="حسابي">🔐</button>
+
+    <div id="welcomePage">
+      <div class="neon-frame active">
+        <div class="neon-glow"></div>
+        <div class="neon-content">
+          <div class="welcome-content">
+            <div style="width:130px;height:130px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:4rem;margin:0 auto 15px;box-shadow:0 0 30px rgba(14,165,233,0.3);">🎓</div>
+            <h2>Faculty of Science - Software Industry & Multimedia Department</h2>
+            <p class="college-name">كلية العلوم - قسم صناعة البرمجيات والوسائط المتعددة</p>
+            <p class="subtitle">🚀 Welcome to the SIM Learning Platform</p>
+            <p class="description">Everything you need in one place: lectures, summaries, tutorials, graduation projects, and study materials to make your academic journey easier and help you achieve your best results.</p>
+            <p class="description-ar">كل ما تحتاجه في مكان واحد: محاضرات، ملخصات، سكاشن، مشاريع التخرج، ومواد دراسية لتسهيل رحلتك الأكاديمية ومساعدتك في تحقيق أفضل النتائج.</p>
+            <p class="designed-by">❤️ Designed & Developed by Ziad Taha Mohamed Ahmed</p>
+            <button class="enter-btn" onclick="enterPlatform()">🚀 اضغط هنا للدخول إلى المنصة</button>
+          </div>
         </div>
-        <footer>Made with ❤️ By <b>Ziad Taha</b> | SIM Portal</footer>
       </div>
     </div>
-  </div>
 
-  <!-- Modal: إضافة عنصر -->
-  <div id="addItemModal" class="modal hidden">
-    <div class="modal-overlay" onclick="closeAddModal()"></div>
-    <div class="modal-box">
-      <div class="modal-header">
-        <h3 id="modalTitle">إضافة جديدة</h3>
-        <button class="modal-close" onclick="closeAddModal()">✕</button>
-      </div>
-      <div class="modal-body">
-        <label for="itemName">الاسم</label>
-        <input type="text" id="itemName" placeholder="اكتب الاسم هنا">
-        <label for="itemLink">الرابط</label>
-        <input type="text" id="itemLink" placeholder="الصق الرابط هنا">
-        <p class="modal-note" id="modalNote">💡 اكتب الاسم والرابط ثم اضغط حفظ</p>
-      </div>
-      <div class="modal-footer">
-        <button class="btn-cancel" onclick="closeAddModal()">إلغاء</button>
-        <button class="btn-save" onclick="saveNewItem()">💾 حفظ</button>
+    <div id="mainPage" class="hidden page-level">
+      <div class="neon-frame">
+        <div class="neon-glow"></div>
+        <div class="neon-content">
+          <header><h1>🎓 SIM Portal</h1><p>اختر فرقتك للوصول للمواد</p></header>
+          <div class="container">
+            <h2 class="section-title">الفرق</h2>
+            <div class="grid" id="levelsGrid">
+              <div class="card" onclick="showLevel('level1')"><span class="icon">📘</span><h3>الفرقة الأولى</h3><p>مواد الترم الأول والثاني</p></div>
+              <div class="card" onclick="showLevel('level2')"><span class="icon">📗</span><h3>الفرقة الثانية</h3><p>مواد الترم الأول والثاني</p></div>
+              <div class="card" onclick="showLevel('level3')"><span class="icon">📕</span><h3>الفرقة الثالثة</h3><p>مواد الترم الأول والثاني</p></div>
+              <div class="card" onclick="showLevel('level4')"><span class="icon">📙</span><h3>الفرقة الرابعة</h3><p>مواد الترم الأول والثاني</p></div>
+            </div>
+          </div>
+          <footer>Made with ❤️ By <b>Ziad Taha</b> | SIM Portal</footer>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Modal: تعديل اسم -->
-  <div id="renameModal" class="modal hidden">
-    <div class="modal-overlay" onclick="closeRenameModal()"></div>
-    <div class="modal-box">
-      <div class="modal-header">
-        <h3 id="renameModalTitle">✏️ تعديل الاسم</h3>
-        <button class="modal-close" onclick="closeRenameModal()">✕</button>
-      </div>
-      <div class="modal-body">
-        <label for="renameInput">الاسم الجديد</label>
-        <input type="text" id="renameInput" placeholder="اكتب الاسم الجديد هنا">
-        <p class="modal-note">💡 اكتب الاسم اللي يسهل عليك إيجاد العنصر ده</p>
-      </div>
-      <div class="modal-footer">
-        <button class="btn-cancel" onclick="closeRenameModal()">إلغاء</button>
-        <button class="btn-save" onclick="saveRename()">💾 حفظ الاسم</button>
+    <div id="levelPage" class="hidden page-level">
+      <div class="neon-frame">
+        <div class="neon-glow"></div>
+        <div class="neon-content">
+          <header><h1 id="levelTitle">الفرقة</h1><p id="levelSubtitle">اختر الترم</p></header>
+          <div class="container">
+            <button class="back-btn" onclick="goBackToMain()">⬅️ العودة للرئيسية</button>
+            <div class="search-box"><input type="text" id="levelSearch" placeholder="🔍 ابحث عن مادة..."></div>
+            <h2 class="section-title">الترم الأول</h2>
+            <div class="grid" id="term1Grid"></div>
+            <div class="no-results" id="noResultsTerm1">❌ لا توجد نتائج مطابقة</div>
+            <h2 class="section-title">الترم الثاني</h2>
+            <div class="grid" id="term2Grid"></div>
+            <div class="no-results" id="noResultsTerm2">❌ لا توجد نتائج مطابقة</div>
+          </div>
+          <footer>Made with ❤️ By <b>Ziad Taha</b> | SIM Portal</footer>
+        </div>
       </div>
     </div>
+
+    <div id="subjectPage" class="hidden page-level">
+      <div class="neon-frame">
+        <div class="neon-glow"></div>
+        <div class="neon-content">
+          <header><h1 id="subjectTitle">المادة</h1><p id="subjectSubtitle">اختر ما تريد</p></header>
+          <div class="container">
+            <button class="back-btn" onclick="goBackToLevel()">⬅️ العودة للترم</button>
+            <div class="search-box"><input type="text" id="subjectSearch" placeholder="🔍 ابحث في المحتوى..."></div>
+            <div class="material-tabs" id="materialTabs"></div>
+            <div id="materialContent"></div>
+            <div class="no-results" id="noResultsSubject">❌ لا توجد نتائج مطابقة</div>
+          </div>
+          <footer>Made with ❤️ By <b>Ziad Taha</b> | SIM Portal</footer>
+        </div>
+      </div>
+    </div>
+
+    <div id="addItemModal" class="modal hidden">
+      <div class="modal-overlay" onclick="closeAddModal()"></div>
+      <div class="modal-box">
+        <div class="modal-header">
+          <h3 id="modalTitle">إضافة جديدة</h3>
+          <button class="modal-close" onclick="closeAddModal()">✕</button>
+        </div>
+        <div class="modal-body">
+          <label for="itemName">الاسم</label>
+          <input type="text" id="itemName" placeholder="اكتب الاسم هنا">
+          <label for="itemLink">الرابط</label>
+          <input type="text" id="itemLink" placeholder="الصق الرابط هنا">
+          <p class="modal-note" id="modalNote">💡 اكتب الاسم والرابط ثم اضغط حفظ</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-cancel" onclick="closeAddModal()">إلغاء</button>
+          <button class="btn-save" onclick="saveNewItem()">💾 حفظ</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="renameModal" class="modal hidden">
+      <div class="modal-overlay" onclick="closeRenameModal()"></div>
+      <div class="modal-box">
+        <div class="modal-header">
+          <h3 id="renameModalTitle">✏️ تعديل الاسم</h3>
+          <button class="modal-close" onclick="closeRenameModal()">✕</button>
+        </div>
+        <div class="modal-body">
+          <label for="renameInput">الاسم الجديد</label>
+          <input type="text" id="renameInput" placeholder="اكتب الاسم الجديد هنا">
+          <p class="modal-note">💡 اكتب الاسم اللي يسهل عليك إيجاد العنصر ده</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-cancel" onclick="closeRenameModal()">إلغاء</button>
+          <button class="btn-save" onclick="saveRename()">💾 حفظ الاسم</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="accountModal" class="modal hidden">
+      <div class="modal-overlay" onclick="closeAccountModal()"></div>
+      <div class="modal-box" style="max-width:420px;">
+        <div class="modal-header">
+          <h3>👤 حسابي</h3>
+          <button class="modal-close" onclick="closeAccountModal()">✕</button>
+        </div>
+        <div class="modal-body" style="text-align:center;">
+          <div id="accountAvatar" style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--accent2),var(--accent));display:flex;align-items:center;justify-content:center;font-size:2.2rem;margin:0 auto 15px;color:#fff;font-weight:900;">Z</div>
+          <h3 id="accountName" style="color:var(--accent);margin-bottom:6px;">مستخدم</h3>
+          <p id="accountEmail" style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:22px;">—</p>
+          <button class="btn-cancel" style="width:100%;" onclick="logout()">🚪 تسجيل الخروج</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="forgotPasswordModal" class="modal hidden">
+      <div class="modal-overlay" onclick="closeForgotPasswordModal()"></div>
+      <div class="modal-box" style="max-width:440px;">
+        <div class="modal-header">
+          <h3>🔑 استعادة كلمة المرور</h3>
+          <button class="modal-close" onclick="closeForgotPasswordModal()">✕</button>
+        </div>
+        <div class="modal-body">
+          <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:18px;line-height:1.7;text-align:center;">
+            اكتب الإيميل اللي سجلت بيه، وهنبعتلك رابط لإعادة تعيين كلمة المرور.
+          </p>
+
+          <label for="forgotEmail">الإيميل</label>
+          <input type="email" id="forgotEmail" placeholder="example@email.com" autocomplete="email">
+
+          <button class="btn-auth-primary" id="forgotSubmitBtn" style="width:100%;margin-top:8px;" onclick="handleForgotPassword()">
+            📨 إرسال رابط الاستعادة
+          </button>
+
+          <p style="text-align:center;margin-top:14px;font-size:0.85rem;color:var(--text-secondary);">
+            <a href="#" onclick="closeForgotPasswordModal();return false;"
+               style="color:var(--accent);font-weight:700;text-decoration:none;">
+              ← رجوع لتسجيل الدخول
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+
   </div>
 
-  <script src="script.js"></script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+    import {
+      getAuth,
+      createUserWithEmailAndPassword,
+      signInWithEmailAndPassword,
+      onAuthStateChanged,
+      signOut,
+      GoogleAuthProvider,
+      signInWithPopup,
+      sendEmailVerification,
+      sendPasswordResetEmail,
+      reload
+    } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDWP6vezf6ddj__3Kfa4VVunR68uGesAe4",
+      authDomain: "sim-portal-cb5a7.firebaseapp.com",
+      projectId: "sim-portal-cb5a7",
+      storageBucket: "sim-portal-cb5a7.firebasestorage.app",
+      messagingSenderId: "962837898575",
+      appId: "1:962837898575:web:d0231b4171979da91c913a",
+      measurementId: "G-484MRLJC0D"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    window.firebaseAuth = auth;
+    window.firebaseFns = {
+      createUserWithEmailAndPassword,
+      signInWithEmailAndPassword,
+      onAuthStateChanged,
+      signOut,
+      GoogleAuthProvider,
+      signInWithPopup,
+      sendEmailVerification,
+      sendPasswordResetEmail,
+      reload
+    };
+
+    window.dispatchEvent(new Event('firebaseReady'));
+  </script>
+
+  <script src="script.js" defer></script>
 </body>
 </html>
