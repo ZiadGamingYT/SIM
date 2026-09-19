@@ -571,7 +571,6 @@ let fbFns = null;
 let currentUser = null;
 let isGuest = false;
 let gateMode = 'login';
-let authReady = false;
 
 // ====== نظام الأصوات ======
 function playSound(type) {
@@ -1499,10 +1498,7 @@ function initFirebaseAuth() {
   fbFns = window.firebaseFns;
 
   fbFns.onAuthStateChanged(fbAuth, async (user) => {
-    authReady = true;
-
     if (user) {
-      // تحقق من تأكيد الإيميل
       const provider = user.providerData[0]?.providerId;
       const isEmailProvider = provider === 'password';
 
@@ -1525,9 +1521,7 @@ function initFirebaseAuth() {
       hideAuthGate();
       hideVerificationScreen();
       updateUserButton(user);
-      console.log('✅ مسجل دخول:', user.email || user.uid);
 
-      // استعادة الصفحة المحفوظة
       const restored = restorePageAfterRefresh();
       if (!restored) {
         const welcomePage = document.getElementById('welcomePage');
@@ -1899,91 +1893,6 @@ function authErrorMessage(code) {
   return messages[code] || 'حدث خطأ، حاول تاني';
 }
 
-document.addEventListener('keydown', function(e) {
-  const gate = document.getElementById('authGate');
-  if (gate && !gate.classList.contains('hidden') && e.key === 'Enter') {
-    e.preventDefault();
-    handleGateSubmit();
-  }
-  if (e.key === 'Escape') {
-    closeAddModal();
-    closeRenameModal();
-    closeAccountModal();
-  }
-});
-
-if (!history.state) {
-  history.replaceState({ page: 'welcome' }, '', '#welcome');
-}
-// ============================================================
-// ====== Forgot Password ======
-// ============================================================
-
-function openForgotPasswordModal(e) {
-  if (e) e.preventDefault();
-  const modal = document.getElementById('forgotPasswordModal');
-  if (!modal) return;
-
-  const gateEmail = document.getElementById('gateEmail');
-  const forgotEmail = document.getElementById('forgotEmail');
-  if (gateEmail && gateEmail.value.trim() && forgotEmail) {
-    forgotEmail.value = gateEmail.value.trim();
-  }
-
-  modal.classList.remove('hidden');
-  setTimeout(() => document.getElementById('forgotEmail').focus(), 100);
-  playSound('click');
-}
-
-function closeForgotPasswordModal() {
-  const modal = document.getElementById('forgotPasswordModal');
-  if (modal) modal.classList.add('hidden');
-}
-
-async function handleForgotPassword() {
-  if (!fbFns) {
-    showToast('⏳ Firebase لسه مجهزش');
-    return;
-  }
-
-  const email = document.getElementById('forgotEmail').value.trim();
-
-  if (!email) {
-    showToast('⚠️ اكتب الإيميل الأول');
-    return;
-  }
-
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    showToast('⚠️ الإيميل غير صحيح');
-    return;
-  }
-
-  const btn = document.getElementById('forgotSubmitBtn');
-  const original = btn.textContent;
-  btn.disabled = true;
-  btn.textContent = '⏳ جاري الإرسال...';
-
-  try {
-    await fbFns.sendPasswordResetEmail(fbAuth, email);
-    showToast('📨 بعتنالك رابط الاستعادة على إيميلك');
-    playSound('success');
-    closeForgotPasswordModal();
-    document.getElementById('forgotEmail').value = '';
-  } catch (error) {
-    console.error(error);
-    if (error.code === 'auth/user-not-found') {
-      showToast('📨 لو الإيميل مسجل، هيوصلك رابط الاستعادة');
-      playSound('success');
-      closeForgotPasswordModal();
-    } else {
-      showToast('⚠️ ' + authErrorMessage(error.code));
-    }
-  } finally {
-    btn.disabled = false;
-    btn.textContent = original;
-  }
-}
 // ============================================================
 // ====== Forgot Password ======
 // ============================================================
@@ -1997,8 +1906,6 @@ function openForgotPasswordModal(e) {
     return;
   }
 
-  // ✅ نفتح المودال فورًا (بدون شرط)
-  // ✅ ولو المستخدم كتب إيميل في الصفحة الأساسية، نملّيه تلقائيًا
   const gateEmail = document.getElementById('gateEmail');
   const forgotEmail = document.getElementById('forgotEmail');
 
@@ -2014,8 +1921,6 @@ function openForgotPasswordModal(e) {
   }, 100);
   playSound('click');
 }
- 
-}
 
 function closeForgotPasswordModal() {
   const modal = document.getElementById('forgotPasswordModal');
@@ -2065,4 +1970,25 @@ async function handleForgotPassword() {
     btn.disabled = false;
     btn.textContent = original;
   }
+}
+
+// ============================================================
+// ====== Escape Key ======
+// ============================================================
+document.addEventListener('keydown', function(e) {
+  const gate = document.getElementById('authGate');
+  if (gate && !gate.classList.contains('hidden') && e.key === 'Enter') {
+    e.preventDefault();
+    handleGateSubmit();
+  }
+  if (e.key === 'Escape') {
+    closeAddModal();
+    closeRenameModal();
+    closeAccountModal();
+    closeForgotPasswordModal();
+  }
+});
+
+if (!history.state) {
+  history.replaceState({ page: 'welcome' }, '', '#welcome');
 }
