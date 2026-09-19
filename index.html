@@ -9,25 +9,29 @@
 </head>
 <body>
 
-  <!-- Preloader -->
   <div id="preloader"><div class="loader"></div></div>
-
-  <!-- Toast -->
   <div id="toast" class="toast hidden">✅ تم</div>
 
-  <!-- زر الثيم -->
+  <div id="welcomeNotice" class="welcome-notice hidden">
+    <div class="notice-content">
+      <span class="notice-icon">💡</span>
+      <div class="notice-text">
+        <strong>أهلاً بيك في SIM Portal!</strong>
+        <p>تقدر تضيف محاضراتك وسكاشنك وملخصاتك وحلولك واختباراتك الخاصة في أي مادة، وتعدلها أو تمسحها براحتك. المحتوى الرسمي ثابت ومش هيتغير.</p>
+      </div>
+      <button class="notice-close" onclick="closeWelcomeNotice()">✕</button>
+    </div>
+  </div>
+
   <button class="theme-toggle" id="themeToggle" title="تغيير الوضع">🌙</button>
 
-  <!-- ====== صفحة الترحيب ====== -->
+  <!-- صفحة الترحيب -->
   <div id="welcomePage">
     <div class="neon-frame active">
       <div class="neon-glow"></div>
       <div class="neon-content">
         <div class="welcome-content">
-          <div style="width:130px;height:130px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:4rem;margin:0 auto 15px;box-shadow:0 0 30px rgba(14,165,233,0.3);">
-  🎓
-</div>
-          <div class="welcome-icon">🎓</div>
+          <div style="width:130px;height:130px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:4rem;margin:0 auto 15px;box-shadow:0 0 30px rgba(14,165,233,0.3);">🎓</div>
           <h2>Faculty of Science - Software Industry & Multimedia Department</h2>
           <p class="college-name">كلية العلوم - قسم صناعة البرمجيات والوسائط المتعددة</p>
           <p class="subtitle">🚀 Welcome to the SIM Learning Platform</p>
@@ -40,15 +44,12 @@
     </div>
   </div>
 
-  <!-- ====== الصفحة الرئيسية (الفرق) ====== -->
+  <!-- الصفحة الرئيسية -->
   <div id="mainPage" class="hidden page-level">
     <div class="neon-frame">
       <div class="neon-glow"></div>
       <div class="neon-content">
-        <header>
-          <h1>🎓 SIM Portal</h1>
-          <p>اختر فرقتك للوصول للمواد</p>
-        </header>
+        <header><h1>🎓 SIM Portal</h1><p>اختر فرقتك للوصول للمواد</p></header>
         <div class="container">
           <h2 class="section-title">الفرق</h2>
           <div class="grid" id="levelsGrid">
@@ -63,7 +64,7 @@
     </div>
   </div>
 
-  <!-- ====== صفحة الفرقة ====== -->
+  <!-- صفحة الفرقة -->
   <div id="levelPage" class="hidden page-level">
     <div class="neon-frame">
       <div class="neon-glow"></div>
@@ -84,7 +85,7 @@
     </div>
   </div>
 
-  <!-- ====== صفحة المادة ====== -->
+  <!-- صفحة المادة -->
   <div id="subjectPage" class="hidden page-level">
     <div class="neon-frame">
       <div class="neon-glow"></div>
@@ -98,6 +99,48 @@
           <div class="no-results" id="noResultsSubject">❌ لا توجد نتائج مطابقة</div>
         </div>
         <footer>Made with ❤️ By <b>Ziad Taha</b> | SIM Portal</footer>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: إضافة عنصر -->
+  <div id="addItemModal" class="modal hidden">
+    <div class="modal-overlay" onclick="closeAddModal()"></div>
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 id="modalTitle">إضافة جديدة</h3>
+        <button class="modal-close" onclick="closeAddModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <label for="itemName">الاسم</label>
+        <input type="text" id="itemName" placeholder="اكتب الاسم هنا">
+        <label for="itemLink">الرابط</label>
+        <input type="text" id="itemLink" placeholder="الصق الرابط هنا">
+        <p class="modal-note" id="modalNote">💡 اكتب الاسم والرابط ثم اضغط حفظ</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-cancel" onclick="closeAddModal()">إلغاء</button>
+        <button class="btn-save" onclick="saveNewItem()">💾 حفظ</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: تعديل اسم -->
+  <div id="renameModal" class="modal hidden">
+    <div class="modal-overlay" onclick="closeRenameModal()"></div>
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 id="renameModalTitle">✏️ تعديل الاسم</h3>
+        <button class="modal-close" onclick="closeRenameModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <label for="renameInput">الاسم الجديد</label>
+        <input type="text" id="renameInput" placeholder="اكتب الاسم الجديد هنا">
+        <p class="modal-note">💡 اكتب الاسم اللي يسهل عليك إيجاد العنصر ده</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-cancel" onclick="closeRenameModal()">إلغاء</button>
+        <button class="btn-save" onclick="saveRename()">💾 حفظ الاسم</button>
       </div>
     </div>
   </div>
