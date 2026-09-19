@@ -1997,30 +1997,15 @@ function openForgotPasswordModal(e) {
     return;
   }
 
+  // ✅ نفتح المودال فورًا (بدون شرط)
+  // ✅ ولو المستخدم كتب إيميل في الصفحة الأساسية، نملّيه تلقائيًا
   const gateEmail = document.getElementById('gateEmail');
   const forgotEmail = document.getElementById('forgotEmail');
 
-  // ✅ لازم المستخدم يكتب الإيميل الأول
-  const email = gateEmail ? gateEmail.value.trim() : '';
-
-  if (!email) {
-    showToast('⚠️ اكتب الإيميل الأول عشان نبعتلك رابط الاستعادة');
-    playSound('back');
-    if (gateEmail) gateEmail.focus();
-    return;
+  if (forgotEmail) forgotEmail.value = '';
+  if (gateEmail && gateEmail.value.trim() && forgotEmail) {
+    forgotEmail.value = gateEmail.value.trim();
   }
-
-  // ✅ تحقق من صيغة الإيميل
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    showToast('⚠️ الإيميل غير صحيح، اكتبه صح الأول');
-    playSound('back');
-    if (gateEmail) gateEmail.focus();
-    return;
-  }
-
-  // ✅ نملّي الإيميل تلقائيًا ونفتح المودال
-  if (forgotEmail) forgotEmail.value = email;
 
   modal.classList.remove('hidden');
   setTimeout(() => {
@@ -2028,6 +2013,8 @@ function openForgotPasswordModal(e) {
     if (input) input.focus();
   }, 100);
   playSound('click');
+}
+ 
 }
 
 function closeForgotPasswordModal() {
