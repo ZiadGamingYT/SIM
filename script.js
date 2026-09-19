@@ -105,9 +105,6 @@ const levelsData = {
 
 // ====== بيانات المواد ======
 const subjectsLectures = {
-  // ===== الفرقة الأولى - الترم الأول =====
-
-  // Math 0
   l1t1s0: {
     name: '📐 Math 0 ( لطلاب علمي علوم )',
     lectures: [
@@ -123,14 +120,9 @@ const subjectsLectures = {
       'https://drive.google.com/file/d/1Qv6vvO9V9zB3Zzo3kBX3C2BBGULYHb2w/view?usp=drivesdk',
       'https://drive.google.com/file/d/1C-KPVFkmfsriUvpkIUZxwsO5CRXfBnJh/view?usp=drivesdk'
     ],
-    sections: [],
-    summaries: [],
-    solutions: [],
-    exams: [],
-    examSolutions: []
+    sections: [], summaries: [], solutions: [], exams: [], examSolutions: []
   },
 
-  // Math I
   l1t1s1: {
     name: '📐 Math I',
     lectures: [
@@ -168,11 +160,9 @@ const subjectsLectures = {
       'https://drive.google.com/file/d/1Tsp2EA-XCKFYUgo57zn0HHFxx2IaUrpL/view?usp=drivesdk',
       'https://drive.google.com/file/d/1HmUCvpHtKFrlgnILgywg88Bt3BuC9oYL/view?usp=drivesdk'
     ],
-    exams: [],
-    examSolutions: []
+    exams: [], examSolutions: []
   },
 
-  // Physics I
   l1t1s2: {
     name: '⚛️ Physics I',
     lectures: [
@@ -196,11 +186,9 @@ const subjectsLectures = {
     solutions: [
       'https://drive.google.com/file/d/1rOeUJRwmEBd1oeLo2f0uUM5uN2Gb_tjO/view?usp=drivesdk'
     ],
-    exams: [],
-    examSolutions: []
+    exams: [], examSolutions: []
   },
 
-  // Introduction to Computing Technology
   l1t1s3: {
     name: '💻 Introduction to Computing Technology',
     lectures: [
@@ -231,11 +219,9 @@ const subjectsLectures = {
       'https://drive.google.com/file/d/1fU7XM49grHOlb1rpMKdj0R-R2Zb-QGI6/view?usp=drivesdk',
       'https://drive.google.com/file/d/1B1gn8fpzJhI1jHBK9qMigkIoOyVBbYtt/view?usp=drivesdk'
     ],
-    exams: [],
-    examSolutions: []
+    exams: [], examSolutions: []
   },
 
-  // Computer Programming I
   l1t1s4: {
     name: '🖥️ Computer Programming I',
     lectures: [
@@ -276,7 +262,6 @@ const subjectsLectures = {
     ]
   },
 
-  // English
   l1t1s5: {
     name: '🇬🇧 English',
     lectures: [
@@ -288,14 +273,9 @@ const subjectsLectures = {
       'https://drive.google.com/file/d/1NKqJvWngii_lLHj_h2HeuR_MkkhXdZJc/view?usp=drivesdk',
       'https://drive.google.com/file/d/1IIfWm2_7fRmTfdk8JBrJLRuF78vz65nU/view?usp=drivesdk'
     ],
-    sections: [],
-    summaries: [],
-    solutions: [],
-    exams: [],
-    examSolutions: []
+    sections: [], summaries: [], solutions: [], exams: [], examSolutions: []
   },
 
-  // تاريخ علوم
   l1t1s6: {
     name: '📜 تاريخ علوم',
     lectures: [
@@ -308,14 +288,9 @@ const subjectsLectures = {
       'https://drive.google.com/file/d/1VuWNiS5Pmw24257XXPobQAGKrNJMmFNI/view?usp=drivesdk',
       'https://drive.google.com/file/d/1-E4upOS24ooQPdCMmJ58DjZ7cNaS6OqG/view?usp=drivesdk'
     ],
-    sections: [],
-    summaries: [],
-    solutions: [],
-    exams: [],
-    examSolutions: []
+    sections: [], summaries: [], solutions: [], exams: [], examSolutions: []
   },
 
-  // إنسان وبيئة
   l1t1s7: {
     name: '🌍 إنسان وبيئة',
     lectures: [
@@ -329,16 +304,9 @@ const subjectsLectures = {
       'https://drive.google.com/file/d/1soTNNpXmjae9pgD_XUoWHkyGoqyiOSea/view?usp=drivesdk',
       'https://drive.google.com/file/d/1eQD5t02tPvwk1FPOSqtSOjYYUvcsNC0v/view?usp=drivesdk'
     ],
-    sections: [],
-    summaries: [],
-    solutions: [],
-    exams: [],
-    examSolutions: []
+    sections: [], summaries: [], solutions: [], exams: [], examSolutions: []
   },
 
-  // ===== الفرقة الأولى - الترم الثاني =====
-
-  // Math II
   l1t2s1: {
     name: '📐 Math II',
     lectures: [
@@ -369,11 +337,9 @@ const subjectsLectures = {
       'https://drive.google.com/file/d/1iFQfzoHPPHTvLNM53jRxeNUaFDfGjqGF/view?usp=drivesdk',
       'https://drive.google.com/file/d/1E7vzNnW5KBBd4atVpuplb8bwJqt8-9UE/view?usp=drivesdk'
     ],
-    exams: [],
-    examSolutions: []
+    exams: [], examSolutions: []
   },
 
-  // Introduction to Probability
   l1t2s2: {
     name: '🎲 Introduction to Probability',
     lectures: [
@@ -418,7 +384,6 @@ const subjectsLectures = {
     ]
   },
 
-  // Physics II
   l1t2s3: {
     name: '⚛️ Physics II',
     lectures: [
@@ -462,7 +427,6 @@ const subjectsLectures = {
     ]
   },
 
-  // Mathematics for Computer Science (MCS)
   l1t2s4: {
     name: '🧮 Mathematics for Computer Science (MCS)',
     lectures: [
@@ -494,11 +458,9 @@ const subjectsLectures = {
       'https://drive.google.com/file/d/1CZfGg6sYuJVokpLNhRmy8ElIp6mCDTRH/view?usp=drivesdk',
       'https://drive.google.com/file/d/10UhEMm7b1GoRrsHIpD6k-nXqKZhq5xNM/view?usp=drivesdk'
     ],
-    exams: [],
-    examSolutions: []
+    exams: [], examSolutions: []
   },
 
-  // Object Oriented Programming (OOP)
   l1t2s5: {
     name: '🔷 Object Oriented Programming (OOP)',
     lectures: [
@@ -542,11 +504,9 @@ const subjectsLectures = {
     examSolutions: []
   },
 
-  // Arabic
   l1t2s6: {
     name: '🇸🇦 Arabic',
-    lectures: [],
-    sections: [],
+    lectures: [], sections: [],
     summaries: [
       'https://drive.google.com/file/d/1k9pP8rg_KPsRpLSVptCEEmqkxSH3gUk8/view?usp=drivesdk',
       'https://drive.google.com/file/d/1IyIJijLImISp7ibMzmdJIgShtOeYuM2_/view?usp=drivesdk',
@@ -559,7 +519,6 @@ const subjectsLectures = {
     examSolutions: []
   },
 
-  // حاسب ومجتمع
   l1t2s7: {
     name: '🤝 حاسب ومجتمع',
     lectures: [
@@ -568,18 +527,13 @@ const subjectsLectures = {
       'https://docs.google.com/presentation/d/1Mv1DSa5KqnSwXus_boRWHxXPNYyyPVGg/edit?usp=drivesdk&ouid=116809461578921657543&rtpof=true&sd=true',
       'https://docs.google.com/presentation/d/1TZ-4y04vn7IahJVW7lUeaRXPQcZDoWmi/edit?usp=drivesdk&ouid=116809461578921657543&rtpof=true&sd=true'
     ],
-    sections: [],
-    summaries: [],
-    solutions: [],
+    sections: [], summaries: [], solutions: [],
     exams: [
       'https://drive.google.com/file/d/1cri8Kd66qEnHUAxoYf2IaMoOPQS3x_OS/view?usp=drivesdk'
     ],
     examSolutions: []
   },
 
-  // ===== الفرقة الثانية - الترم الأول =====
-
-  // Data Science
   dataScience: {
     name: '📊 Data Science',
     lectures: [
@@ -592,21 +546,15 @@ const subjectsLectures = {
       'https://drive.google.com/file/d/1LEc3a8DWWjQk4lrwC0DcTbhKoIZ1atty/view?usp=drivesdk',
       'https://drive.google.com/file/d/1GbZRS7CNDoez8gVlARgGZspHBbkHhOF4/view?usp=drivesdk'
     ],
-    sections: [],
-    summaries: [],
-    solutions: [],
-    exams: [],
-    examSolutions: []
+    sections: [], summaries: [], solutions: [], exams: [], examSolutions: []
   },
 
-  // باقي مواد الفرقة الثانية (فاضية)
   softwareEngineering: { name: '💻 Software Engineering', lectures: [], sections: [], summaries: [], solutions: [], exams: [], examSolutions: [] },
   math: { name: '➗ Math III', lectures: [], sections: [], summaries: [], solutions: [], exams: [], examSolutions: [] },
   multimedia: { name: '🎬 Multimedia Systems', lectures: [], sections: [], summaries: [], solutions: [], exams: [], examSolutions: [] },
   dataStructures: { name: '🗂️ Data Structures', lectures: [], sections: [], summaries: [], solutions: [], exams: [], examSolutions: [] },
   game: { name: '🎮 Game Programming', lectures: [], sections: [], summaries: [], solutions: [], exams: [], examSolutions: [] },
 
-  // المشاريع
   project1: { name: '📋 Project I', lectures: [], sections: [], summaries: [], solutions: [], exams: [], examSolutions: [], isProject: true },
   project2: { name: '📋 Project II', lectures: [], sections: [], summaries: [], solutions: [], exams: [], examSolutions: [], isProject: true }
 };
@@ -618,6 +566,12 @@ let isTransitioning = false;
 let historyStack = ['welcome'];
 let isBackAction = false;
 let isFirstLoad = true;
+let fbAuth = null;
+let fbFns = null;
+let currentUser = null;
+let isGuest = false;
+let gateMode = 'login';
+let authReady = false;
 
 // ====== نظام الأصوات ======
 function playSound(type) {
@@ -684,7 +638,7 @@ function playSound(type) {
     } catch(e) { console.log('Audio not supported'); }
 }
 
-// ====== دالة إدارة التاريخ ======
+// ====== إدارة التاريخ ======
 function pushHistory(state, title, url) {
   if (isBackAction) { isBackAction = false; return; }
   history.pushState(state, title, url);
@@ -694,7 +648,7 @@ function pushHistory(state, title, url) {
 function saveCurrentState() { }
 function restoreSavedState() { return false; }
 
-// ====== حماية من XSS ======
+// ====== حماية XSS ======
 function escapeHTML(str) {
   if (!str) return '';
   return String(str)
@@ -705,17 +659,24 @@ function escapeHTML(str) {
     .replace(/'/g, '&#039;');
 }
 
+// ====== مفتاح المستخدم ======
+function getUserKey() {
+  if (currentUser && currentUser.uid) return `u_${currentUser.uid}`;
+  if (isGuest) return 'guest';
+  return 'anon';
+}
+
 // ====== إعداد تبويبات المادة ======
 function setupMaterialTabs(subjectId, isProject) {
   const tabsContainer = document.getElementById('materialTabs');
   tabsContainer.innerHTML = '';
   let tabs = [], tabKeys = [];
-  if (isProject) { 
-    tabs = ['📋 متطلب المشروع']; 
-    tabKeys = ['project']; 
-  } else { 
-    tabs = ['📖 محاضرات', '✏️ سكاشن', '📝 ملخصات', '🎯 حل السكاشن', '📝 اختبارات', '✅ حل الاختبارات']; 
-    tabKeys = ['lectures', 'sections', 'summaries', 'solutions', 'exams', 'examSolutions']; 
+  if (isProject) {
+    tabs = ['📋 متطلب المشروع'];
+    tabKeys = ['project'];
+  } else {
+    tabs = ['📖 محاضرات', '✏️ سكاشن', '📝 ملخصات', '🎯 حل السكاشن', '📝 اختبارات', '✅ حل الاختبارات'];
+    tabKeys = ['lectures', 'sections', 'summaries', 'solutions', 'exams', 'examSolutions'];
   }
 
   tabs.forEach((tab, index) => {
@@ -821,7 +782,7 @@ function renderLevelSubjects(levelId) {
   const term2Grid = document.getElementById('term2Grid');
   term1Grid.innerHTML = '';
   term2Grid.innerHTML = '';
-  
+
   level.terms.term1.subjects.forEach(sub => {
     const card = document.createElement('div');
     card.className = 'card';
@@ -877,15 +838,15 @@ function setupLevelSearch(levelId) {
     const noResults1 = document.getElementById('noResultsTerm1');
     const noResults2 = document.getElementById('noResultsTerm2');
     let term1HasResults = false, term2HasResults = false;
-    
+
     term1Grid.querySelectorAll('.card').forEach(card => {
       const name = card.dataset.subjectName || '';
-      if (name.includes(query) || query === '') { card.classList.remove('hidden-card'); term1HasResults = true; } 
+      if (name.includes(query) || query === '') { card.classList.remove('hidden-card'); term1HasResults = true; }
       else { card.classList.add('hidden-card'); }
     });
     term2Grid.querySelectorAll('.card').forEach(card => {
       const name = card.dataset.subjectName || '';
-      if (name.includes(query) || query === '') { card.classList.remove('hidden-card'); term2HasResults = true; } 
+      if (name.includes(query) || query === '') { card.classList.remove('hidden-card'); term2HasResults = true; }
       else { card.classList.add('hidden-card'); }
     });
     noResults1.classList.toggle('show', query !== '' && !term1HasResults);
@@ -900,7 +861,7 @@ function showSubject(levelId, termId, subjectId) {
   currentSubjectId = subjectId;
   const level = levelsData[levelId];
   let subject = null, termName = '';
-  if (termId === 'term1') { subject = level.terms.term1.subjects.find(s => s.id === subjectId); termName = 'الترم الأول'; } 
+  if (termId === 'term1') { subject = level.terms.term1.subjects.find(s => s.id === subjectId); termName = 'الترم الأول'; }
   else { subject = level.terms.term2.subjects.find(s => s.id === subjectId); termName = 'الترم الثاني'; }
   if (!subject) return;
 
@@ -919,14 +880,16 @@ function showSubject(levelId, termId, subjectId) {
 // ====== الأسماء المخصصة ======
 function getCustomName(subjectId, type, index) {
   try {
-    const key = `customName_${subjectId}_${type}_${index}`;
+    const userKey = getUserKey();
+    const key = `customName_${userKey}_${subjectId}_${type}_${index}`;
     return localStorage.getItem(key) || null;
   } catch (e) { return null; }
 }
 
 function setCustomName(subjectId, type, index, name) {
   try {
-    const key = `customName_${subjectId}_${type}_${index}`;
+    const userKey = getUserKey();
+    const key = `customName_${userKey}_${subjectId}_${type}_${index}`;
     if (name && name.trim()) localStorage.setItem(key, name.trim());
     else localStorage.removeItem(key);
   } catch (e) {}
@@ -935,7 +898,8 @@ function setCustomName(subjectId, type, index, name) {
 // ====== العناصر الشخصية ======
 function getPersonalItems(subjectId, type) {
   try {
-    const key = `personal_${subjectId}_${type}`;
+    const userKey = getUserKey();
+    const key = `personal_${userKey}_${subjectId}_${type}`;
     const raw = localStorage.getItem(key);
     return raw ? JSON.parse(raw) : [];
   } catch (e) { return []; }
@@ -943,7 +907,8 @@ function getPersonalItems(subjectId, type) {
 
 function savePersonalItems(subjectId, type, items) {
   try {
-    const key = `personal_${subjectId}_${type}`;
+    const userKey = getUserKey();
+    const key = `personal_${userKey}_${subjectId}_${type}`;
     localStorage.setItem(key, JSON.stringify(items));
   } catch (e) {}
 }
@@ -953,12 +918,13 @@ function renderPersonalItems(subjectId, type) {
   if (!container) return;
 
   const items = getPersonalItems(subjectId, type);
+  const canEdit = !document.body.classList.contains('guest-mode');
 
   if (items.length === 0) {
     container.innerHTML = `
       <div class="empty-message">
         <span>📭</span>
-        لسه مفيش محتوى هنا.<br>اضغط على زر الإضافة فوق عشان تضيف أول عنصر.
+        لسه مفيش محتوى هنا.<br>${canEdit ? 'اضغط على زر الإضافة فوق عشان تضيف أول عنصر.' : 'سجّل دخول عشان تقدر تضيف محتواك.'}
       </div>
     `;
     return;
@@ -975,8 +941,10 @@ function renderPersonalItems(subjectId, type) {
       </div>
       <div class="item-actions">
         <a class="item-btn open" href="${escapeHTML(item.link)}" target="_blank" title="فتح">🔗</a>
-        <button class="item-btn edit" onclick="editPersonalItem('${subjectId}','${type}','${item.id}')" title="تعديل">✏️</button>
-        <button class="item-btn delete" onclick="deletePersonalItem('${subjectId}','${type}','${item.id}')" title="حذف">🗑️</button>
+        ${canEdit ? `
+          <button class="item-btn edit" onclick="editPersonalItem('${subjectId}','${type}','${item.id}')" title="تعديل">✏️</button>
+          <button class="item-btn delete" onclick="deletePersonalItem('${subjectId}','${type}','${item.id}')" title="حذف">🗑️</button>
+        ` : ''}
       </div>
     `;
     container.appendChild(div);
@@ -984,6 +952,7 @@ function renderPersonalItems(subjectId, type) {
 }
 
 function deletePersonalItem(subjectId, type, itemId) {
+  if (!requireAuth('حذف محتوى')) return;
   if (!confirm('متأكد إنك عايز تحذف العنصر ده؟')) return;
   let items = getPersonalItems(subjectId, type);
   items = items.filter(it => it.id !== itemId);
@@ -994,6 +963,7 @@ function deletePersonalItem(subjectId, type, itemId) {
 }
 
 function editPersonalItem(subjectId, type, itemId) {
+  if (!requireAuth('تعديل محتوى')) return;
   const items = getPersonalItems(subjectId, type);
   const item = items.find(it => it.id === itemId);
   if (!item) return;
@@ -1017,7 +987,7 @@ function renderMaterialContent(subjectId, type) {
   const container = document.getElementById(`material-${type}`);
   if (!container) return;
   const data = subjectsLectures[subjectId];
-  
+
   let items = [];
   if (data) {
     if (type === 'lectures') items = data.lectures || [];
@@ -1058,11 +1028,10 @@ function renderMaterialContent(subjectId, type) {
 
   if (items.length > 0) {
     const officialSection = document.createElement('div');
-    
     const officialTitle = document.createElement('h3');
     officialTitle.className = 'section-title';
     officialTitle.style.marginTop = (type === 'solutions' || type === 'examSolutions') ? '20px' : '0';
-    
+
     const titles = {
       lectures: '📖 المحاضرات الرسمية',
       sections: '✏️ السكاشن الرسمية',
@@ -1073,26 +1042,22 @@ function renderMaterialContent(subjectId, type) {
     };
     officialTitle.textContent = titles[type];
     officialSection.appendChild(officialTitle);
-    
+
     const hintBanner = document.createElement('div');
     hintBanner.className = 'hint-banner';
     const typeLabel = type === 'lectures' ? 'المحاضرة' : type === 'sections' ? 'السكشن' : type === 'summaries' ? 'الملخص' : type === 'solutions' ? 'الحل' : type === 'exams' ? 'الاختبار' : 'الحل';
-    hintBanner.innerHTML = `💡 <strong>معلومة:</strong> تقدر تغيّر اسم أي ${typeLabel} بالضغط على زر "تعديل الاسم" اللي تحت العنصر عشان تسهّل عليك إيجاد المحتوى`;
+    hintBanner.innerHTML = `💡 <strong>معلومة:</strong> تقدر تغيّر اسم أي ${typeLabel} بالضغط على زر "تعديل الاسم" اللي تحت العنصر`;
     officialSection.appendChild(hintBanner);
-    
+
     const grid = document.createElement('div');
     grid.className = 'lecture-grid';
-    
+
     items.forEach((link, index) => {
       const card = document.createElement('div');
       card.className = 'lecture-card';
       const labels = {
-        lectures: 'المحاضرة',
-        sections: 'سكشن',
-        summaries: 'ملخص',
-        solutions: 'حل',
-        exams: 'الاختبار',
-        examSolutions: 'حل اختبار'
+        lectures: 'المحاضرة', sections: 'سكشن', summaries: 'ملخص',
+        solutions: 'حل', exams: 'الاختبار', examSolutions: 'حل اختبار'
       };
       const label = labels[type];
       let btnText = '📄 عرض PDF';
@@ -1100,10 +1065,10 @@ function renderMaterialContent(subjectId, type) {
       else if (type === 'solutions') btnText = '📥 تحميل الحل';
       else if (type === 'exams') btnText = '📝 عرض الاختبار';
       else if (type === 'examSolutions') btnText = '✅ عرض الحل';
-      
+
       const customName = getCustomName(subjectId, type, index);
       const displayName = customName || `${label} ${index + 1}`;
-      
+
       card.dataset.lectureName = displayName.toLowerCase();
       card.innerHTML = `
         <span class="num">${String(index + 1).padStart(2, '0')}</span>
@@ -1119,7 +1084,7 @@ function renderMaterialContent(subjectId, type) {
 
   const personalSection = document.createElement('div');
   personalSection.className = 'personal-section';
-  
+
   let personalTitle = '';
   if (type === 'lectures') personalTitle = 'محاضراتي';
   else if (type === 'sections') personalTitle = 'سكاشني';
@@ -1127,17 +1092,30 @@ function renderMaterialContent(subjectId, type) {
   else if (type === 'solutions') personalTitle = 'حلولي';
   else if (type === 'exams') personalTitle = 'اختباراتي';
   else if (type === 'examSolutions') personalTitle = 'حلول اختباراتي';
-  
+
+  const canEdit = !document.body.classList.contains('guest-mode');
+
+  const guestBtnText = {
+    lectures: '🔒 سجّل دخولك عشان تقدر تضيف محاضرات',
+    sections: '🔒 سجّل دخولك عشان تقدر تضيف سكاشن',
+    summaries: '🔒 سجّل دخولك عشان تقدر تضيف ملخصات',
+    solutions: '🔒 سجّل دخولك عشان تقدر تضيف حلول',
+    exams: '🔒 سجّل دخولك عشان تقدر تضيف اختبارات',
+    examSolutions: '🔒 سجّل دخولك عشان تقدر تضيف حلول اختبارات'
+  }[type] || '🔒 سجّل دخولك عشان تقدر تضيف';
+
   personalSection.innerHTML = `
     <div class="personal-title">
       <h3>🌟 ${personalTitle} <span style="font-size:0.8rem;opacity:0.7;">(خاصة بيك)</span></h3>
-      <button class="add-btn" onclick="openAddModal('${subjectId}', '${type}')">+ إضافة ${personalTitle.slice(0, -1)}</button>
+      ${canEdit
+        ? `<button class="add-btn" onclick="openAddModal('${subjectId}', '${type}')">+ إضافة ${personalTitle.slice(0, -1)}</button>`
+        : `<button class="add-btn guest-locked-btn" onclick="requireAuth('إضافة محتوى')">${guestBtnText}</button>`
+      }
     </div>
     <div id="personalList-${subjectId}-${type}"></div>
   `;
-  
-  container.appendChild(personalSection);
 
+  container.appendChild(personalSection);
   renderPersonalItems(subjectId, type);
 }
 
@@ -1151,7 +1129,7 @@ function setupSubjectSearch(subjectId) {
     let hasResults = false;
     document.querySelectorAll('.lecture-card').forEach(card => {
       const name = card.dataset.lectureName ? card.dataset.lectureName.toLowerCase() : '';
-      if (name.includes(query) || query === '') { card.classList.remove('hidden-card'); hasResults = true; } 
+      if (name.includes(query) || query === '') { card.classList.remove('hidden-card'); hasResults = true; }
       else { card.classList.add('hidden-card'); }
     });
     noResults.classList.toggle('show', query !== '' && !hasResults);
@@ -1214,7 +1192,7 @@ function goBackToLevel() {
 // ====== تطبيق Neon Frame ======
 function applyNeonFrameToCurrentPage() {
   document.querySelectorAll('.neon-frame').forEach(el => el.classList.remove('active'));
-  const visiblePages = document.querySelectorAll('.page-level:not(.hidden), #welcomePage');
+  const visiblePages = document.querySelectorAll('.page-level:not(.hidden), #welcomePage, #authGate, #verifyScreen');
   visiblePages.forEach(page => {
     const frame = page.querySelector('.neon-frame');
     if (frame) {
@@ -1228,6 +1206,11 @@ function applyNeonFrameToCurrentPage() {
 // ====== معالجة زر الرجوع ======
 window.addEventListener('popstate', function(event) {
   if (isTransitioning) return;
+  const authGate = document.getElementById('authGate');
+  const verifyScreen = document.getElementById('verifyScreen');
+  if ((authGate && !authGate.classList.contains('hidden')) || (verifyScreen && !verifyScreen.classList.contains('hidden'))) {
+    return;
+  }
   playSound('back');
   const mainPage = document.getElementById('mainPage');
   const levelPage = document.getElementById('levelPage');
@@ -1370,41 +1353,15 @@ transitionToPage = function(pageIn, pageOut, stateData, callback) {
     });
 };
 
-const originalGoBackToMain = goBackToMain;
-goBackToMain = function() {
-    originalGoBackToMain();
-    localStorage.removeItem('refreshPageState');
-};
-
-const originalEnterPlatform = enterPlatform;
-enterPlatform = function() {
-    localStorage.removeItem('refreshPageState');
-    originalEnterPlatform();
-};
-
 window.addEventListener('beforeunload', function() {
     localStorage.removeItem('refreshPageState');
 });
 
+// ============================================================
 // ====== Preloader + الإقلاع ======
+// ============================================================
 window.addEventListener('load', function() {
   const preloader = document.getElementById('preloader');
-  const restored = restorePageAfterRefresh();
-  if (!restored) {
-    const welcomePage = document.getElementById('welcomePage');
-    const mainPage = document.getElementById('mainPage');
-    const levelPage = document.getElementById('levelPage');
-    const subjectPage = document.getElementById('subjectPage');
-    welcomePage.classList.add('hidden');
-    mainPage.classList.add('hidden');
-    levelPage.classList.add('hidden');
-    subjectPage.classList.add('hidden');
-
-    welcomePage.classList.remove('hidden');
-    welcomePage.classList.add('entering');
-    history.replaceState({ page: 'welcome' }, '', '#welcome');
-  }
-
   setTimeout(() => {
     preloader.classList.add('hide');
     setTimeout(() => {
@@ -1412,13 +1369,6 @@ window.addEventListener('load', function() {
     }, 500);
     setTimeout(applyNeonFrameToCurrentPage, 200);
   }, 400);
-
-  setTimeout(() => {
-    const notice = document.getElementById('welcomeNotice');
-    if (notice && !localStorage.getItem('welcomeNoticeClosed')) {
-      notice.classList.remove('hidden');
-    }
-  }, 1500);
 });
 
 // ====== إغلاق إشعار الترحيب ======
@@ -1446,7 +1396,6 @@ if (themeToggle) {
   } else {
     themeToggle.textContent = '🌙';
   }
-
   themeToggle.addEventListener('click', function() {
     document.body.classList.toggle('light-mode');
     const isLight = document.body.classList.contains('light-mode');
@@ -1460,6 +1409,7 @@ if (themeToggle) {
 let currentAddContext = { subjectId: null, type: null };
 
 function openAddModal(subjectId, type) {
+  if (!requireAuth('إضافة محتوى')) return;
   currentAddContext = { subjectId, type };
   const modal = document.getElementById('addItemModal');
   const title = document.getElementById('modalTitle');
@@ -1468,12 +1418,8 @@ function openAddModal(subjectId, type) {
   const note = document.getElementById('modalNote');
 
   const labels = {
-    lectures: 'محاضرة جديدة',
-    sections: 'سكشن جديد',
-    summaries: 'ملخص جديد',
-    solutions: 'حل جديد',
-    exams: 'اختبار جديد',
-    examSolutions: 'حل اختبار جديد'
+    lectures: 'محاضرة جديدة', sections: 'سكشن جديد', summaries: 'ملخص جديد',
+    solutions: 'حل جديد', exams: 'اختبار جديد', examSolutions: 'حل اختبار جديد'
   };
   title.textContent = '➕ ' + (labels[type] || 'إضافة جديدة');
   note.textContent = '💡 اكتب الاسم والرابط ثم اضغط حفظ';
@@ -1493,15 +1439,8 @@ function closeAddModal() {
 function saveNewItem() {
   const name = document.getElementById('itemName').value.trim();
   const link = document.getElementById('itemLink').value.trim();
-
-  if (!name) {
-    showToast('⚠️ اكتب الاسم أولاً');
-    return;
-  }
-  if (!link) {
-    showToast('⚠️ اكتب الرابط أولاً');
-    return;
-  }
+  if (!name) { showToast('⚠️ اكتب الاسم أولاً'); return; }
+  if (!link) { showToast('⚠️ اكتب الرابط أولاً'); return; }
 
   const { subjectId, type } = currentAddContext;
   if (!subjectId || !type) return;
@@ -1509,12 +1448,9 @@ function saveNewItem() {
   const personal = getPersonalItems(subjectId, type);
   personal.push({
     id: 'p_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7),
-    name: name,
-    link: link,
-    createdAt: Date.now()
+    name: name, link: link, createdAt: Date.now()
   });
   savePersonalItems(subjectId, type, personal);
-
   closeAddModal();
   renderPersonalItems(subjectId, type);
   playSound('success');
@@ -1525,6 +1461,7 @@ function saveNewItem() {
 let currentRenameContext = { subjectId: null, type: null, index: null };
 
 function openRenameModal(subjectId, type, index) {
+  if (!requireAuth('تعديل اسم')) return;
   currentRenameContext = { subjectId, type, index };
   const modal = document.getElementById('renameModal');
   const input = document.getElementById('renameInput');
@@ -1545,7 +1482,6 @@ function saveRename() {
   const newName = document.getElementById('renameInput').value.trim();
   const { subjectId, type, index } = currentRenameContext;
   if (subjectId === null || type === null || index === null) return;
-
   setCustomName(subjectId, type, index, newName);
   closeRenameModal();
   renderMaterialContent(subjectId, type);
@@ -1553,17 +1489,573 @@ function saveRename() {
   showToast('✅ تم تعديل الاسم');
 }
 
-// ====== إغلاق الـ Modals بزر Escape ======
+// ============================================================
+// ====== Firebase Auth ======
+// ============================================================
+
+function initFirebaseAuth() {
+  if (!window.firebaseAuth || !window.firebaseFns) return false;
+  fbAuth = window.firebaseAuth;
+  fbFns = window.firebaseFns;
+
+  fbFns.onAuthStateChanged(fbAuth, async (user) => {
+    authReady = true;
+
+    if (user) {
+      // تحقق من تأكيد الإيميل
+      const provider = user.providerData[0]?.providerId;
+      const isEmailProvider = provider === 'password';
+
+      if (isEmailProvider && !user.emailVerified) {
+        currentUser = user;
+        isGuest = false;
+        document.body.classList.remove('guest-mode');
+        const badge = document.querySelector('.guest-badge');
+        if (badge) badge.remove();
+        showVerificationScreen(user);
+        updateUserButton(user);
+        return;
+      }
+
+      currentUser = user;
+      isGuest = false;
+      document.body.classList.remove('guest-mode');
+      const badge = document.querySelector('.guest-badge');
+      if (badge) badge.remove();
+      hideAuthGate();
+      hideVerificationScreen();
+      updateUserButton(user);
+      console.log('✅ مسجل دخول:', user.email || user.uid);
+
+      // استعادة الصفحة المحفوظة
+      const restored = restorePageAfterRefresh();
+      if (!restored) {
+        const welcomePage = document.getElementById('welcomePage');
+        const mainPage = document.getElementById('mainPage');
+        const levelPage = document.getElementById('levelPage');
+        const subjectPage = document.getElementById('subjectPage');
+        welcomePage.classList.remove('hidden');
+        welcomePage.classList.add('entering');
+        mainPage.classList.add('hidden');
+        levelPage.classList.add('hidden');
+        subjectPage.classList.add('hidden');
+        history.replaceState({ page: 'welcome' }, '', '#welcome');
+      }
+      setTimeout(applyNeonFrameToCurrentPage, 200);
+      refreshSubjectPageIfOpen();
+    } else {
+      currentUser = null;
+      hideVerificationScreen();
+      if (!isGuest) {
+        showAuthGate();
+      }
+      updateUserButton(null);
+    }
+  });
+
+  return true;
+}
+
+if (window.firebaseAuth) {
+  initFirebaseAuth();
+} else {
+  window.addEventListener('firebaseReady', initFirebaseAuth);
+}
+
+function refreshSubjectPageIfOpen() {
+  const subjectPage = document.getElementById('subjectPage');
+  if (!subjectPage) return;
+  if (subjectPage.classList.contains('hidden')) return;
+  if (!currentSubjectId) return;
+  const data = subjectsLectures[currentSubjectId];
+  if (!data) return;
+  const types = ['lectures', 'sections', 'summaries', 'solutions', 'exams', 'examSolutions'];
+  types.forEach(type => {
+    if (document.getElementById(`material-${type}`)) {
+      renderMaterialContent(currentSubjectId, type);
+    }
+  });
+}
+
+function showAuthGate() {
+  const gate = document.getElementById('authGate');
+  const site = document.getElementById('siteWrapper');
+  const verify = document.getElementById('verifyScreen');
+  if (gate) gate.classList.remove('hidden');
+  if (site) site.classList.add('hidden');
+  if (verify) verify.classList.add('hidden');
+}
+
+function hideAuthGate() {
+  const gate = document.getElementById('authGate');
+  const site = document.getElementById('siteWrapper');
+  if (gate) gate.classList.add('hidden');
+  if (site) site.classList.remove('hidden');
+}
+
+function showVerificationScreen(user) {
+  const gate = document.getElementById('authGate');
+  const site = document.getElementById('siteWrapper');
+  const verify = document.getElementById('verifyScreen');
+  if (gate) gate.classList.add('hidden');
+  if (site) site.classList.add('hidden');
+  if (verify) {
+    verify.classList.remove('hidden');
+    const emailEl = document.getElementById('verifyEmailDisplay');
+    if (emailEl) emailEl.textContent = user.email || '—';
+  }
+  setTimeout(applyNeonFrameToCurrentPage, 200);
+}
+
+function hideVerificationScreen() {
+  const verify = document.getElementById('verifyScreen');
+  if (verify) verify.classList.add('hidden');
+}
+
+async function resendVerificationEmail() {
+  if (!currentUser || !fbFns) return;
+  try {
+    await fbFns.sendEmailVerification(currentUser);
+    showToast('📨 بعتنالك رسالة تأكيد جديدة');
+    playSound('success');
+  } catch (error) {
+    console.error(error);
+    showToast('⚠️ فشل الإرسال، حاول تاني بعد شوية');
+  }
+}
+
+async function checkEmailVerified() {
+  if (!currentUser || !fbFns) return;
+  try {
+    await fbFns.reload(currentUser);
+    if (currentUser.emailVerified) {
+      showToast('✅ تم تأكيد الإيميل!');
+      playSound('success');
+      hideVerificationScreen();
+      isGuest = false;
+      hideAuthGate();
+      updateUserButton(currentUser);
+      const restored = restorePageAfterRefresh();
+      if (!restored) {
+        document.getElementById('welcomePage').classList.remove('hidden');
+        document.getElementById('mainPage').classList.add('hidden');
+        document.getElementById('levelPage').classList.add('hidden');
+        document.getElementById('subjectPage').classList.add('hidden');
+      }
+      setTimeout(applyNeonFrameToCurrentPage, 200);
+    } else {
+      showToast('⚠️ لسه ما أكدتش الإيميل');
+    }
+  } catch (error) {
+    console.error(error);
+    showToast('⚠️ حصل خطأ، حاول تاني');
+  }
+}
+
+async function cancelVerification(e) {
+  if (e) e.preventDefault();
+  try {
+    await fbFns.signOut(fbAuth);
+    hideVerificationScreen();
+    showAuthGate();
+    showToast('👋 تم تسجيل الخروج');
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+function switchGateMode(e) {
+  if (e) e.preventDefault();
+  gateMode = gateMode === 'login' ? 'register' : 'login';
+  const title = document.getElementById('authGateTitle');
+  const submitBtn = document.getElementById('gateSubmitBtn');
+  const switchText = document.getElementById('gateSwitchText');
+  const switchBtn = document.getElementById('gateSwitchBtn');
+  const pwd = document.getElementById('gatePassword');
+
+  if (gateMode === 'register') {
+    title.textContent = '📝 إنشاء حساب جديد';
+    submitBtn.textContent = 'إنشاء حساب';
+    switchText.textContent = 'لديك حساب؟';
+    switchBtn.textContent = 'سجّل دخول';
+    if (pwd) pwd.setAttribute('autocomplete', 'new-password');
+  } else {
+    title.textContent = '🔐 تسجيل الدخول';
+    submitBtn.textContent = 'تسجيل الدخول';
+    switchText.textContent = 'ليس لديك حساب؟';
+    switchBtn.textContent = 'سجّل الآن';
+    if (pwd) pwd.setAttribute('autocomplete', 'current-password');
+  }
+  playSound('click');
+}
+
+async function handleGateSubmit() {
+  if (!fbFns) { showToast('⏳ Firebase لسه مجهزش'); return; }
+
+  const email = document.getElementById('gateEmail').value.trim();
+  const password = document.getElementById('gatePassword').value;
+
+  if (!email || !password) { showToast('⚠️ املأ الإيميل والباسورد'); return; }
+  if (password.length < 6) { showToast('⚠️ الباسورد 6 أحرف على الأقل'); return; }
+
+  const btn = document.getElementById('gateSubmitBtn');
+  const original = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = '⏳ جاري...';
+
+  try {
+    if (gateMode === 'register') {
+      const userCredential = await fbFns.createUserWithEmailAndPassword(fbAuth, email, password);
+      await fbFns.sendEmailVerification(userCredential.user);
+      showToast('📨 بعتنالك رسالة تأكيد على إيميلك');
+    } else {
+      const userCredential = await fbFns.signInWithEmailAndPassword(fbAuth, email, password);
+      if (!userCredential.user.emailVerified) {
+        await fbFns.sendEmailVerification(userCredential.user);
+        showToast('📨 بعتنالك رسالة تأكيد');
+      } else {
+        showToast('✅ مرحباً بيك');
+      }
+    }
+    playSound('success');
+  } catch (error) {
+    console.error(error);
+    showToast('⚠️ ' + authErrorMessage(error.code));
+  } finally {
+    btn.disabled = false;
+    btn.textContent = original;
+  }
+}
+
+async function loginWithGoogleGate() {
+  if (!fbFns) { showToast('⏳ Firebase لسه مجهزش'); return; }
+  try {
+    const provider = new fbFns.GoogleAuthProvider();
+    const result = await fbFns.signInWithPopup(fbAuth, provider);
+    showToast('✅ مرحباً ' + (result.user.displayName || ''));
+    playSound('success');
+  } catch (error) {
+    console.error(error);
+    if (error.code === 'auth/popup-closed-by-user') return;
+    showToast('⚠️ فشل تسجيل الدخول بـ Google');
+  }
+}
+
+function continueAsGuest() {
+  isGuest = true;
+  document.body.classList.add('guest-mode');
+  hideAuthGate();
+
+  if (!document.querySelector('.guest-badge')) {
+    const badge = document.createElement('div');
+    badge.className = 'guest-badge';
+    badge.textContent = '👤 زائر (اضغط للتسجيل)';
+    badge.title = 'سجّل دخول عشان تحفظ محتواك';
+    badge.onclick = openAuthFromGuest;
+    badge.style.cursor = 'pointer';
+    document.body.appendChild(badge);
+  }
+
+  showToast('👤 أهلاً بيك كزائر');
+  playSound('portal');
+
+  const restored = restorePageAfterRefresh();
+  if (!restored) {
+    document.getElementById('welcomePage').classList.remove('hidden');
+    document.getElementById('mainPage').classList.add('hidden');
+    document.getElementById('levelPage').classList.add('hidden');
+    document.getElementById('subjectPage').classList.add('hidden');
+    history.replaceState({ page: 'welcome' }, '', '#welcome');
+  }
+  setTimeout(applyNeonFrameToCurrentPage, 200);
+  refreshSubjectPageIfOpen();
+}
+
+function openAuthFromGuest() {
+  isGuest = false;
+  document.body.classList.remove('guest-mode');
+  const badge = document.querySelector('.guest-badge');
+  if (badge) badge.remove();
+  showAuthGate();
+}
+
+function requireAuth(action = 'الإضافة') {
+  if (currentUser && currentUser.emailVerified) return true;
+  if (currentUser && !currentUser.emailVerified) {
+    showToast('🔐 أكّد إيميلك الأول');
+    return false;
+  }
+  if (isGuest) {
+    showToast('🔐 سجّل دخول عشان تقدر تعمل ' + action);
+    playSound('back');
+    return false;
+  }
+  showToast('🔐 لازم تسجل دخول الأول');
+  return false;
+}
+
+function updateUserButton(user) {
+  const btn = document.getElementById('userToggle');
+  if (!btn) return;
+
+  if (user && user.emailVerified) {
+    btn.classList.add('logged-in');
+    btn.title = user.displayName || user.email || 'حسابي';
+    if (user.photoURL) {
+      btn.innerHTML = `<img src="${user.photoURL}" alt="user">`;
+    } else {
+      const initial = (user.displayName || user.email || 'U').charAt(0).toUpperCase();
+      btn.innerHTML = `<span class="user-initial">${escapeHTML(initial)}</span>`;
+    }
+  } else if (isGuest) {
+    btn.classList.remove('logged-in');
+    btn.title = 'تسجيل الدخول';
+    btn.innerHTML = '👤';
+  } else {
+    btn.classList.remove('logged-in');
+    btn.title = 'تسجيل الدخول';
+    btn.innerHTML = '🔐';
+  }
+}
+
+function handleUserBtn() {
+  playSound('click');
+  if (currentUser && currentUser.emailVerified) {
+    openAccountModal();
+  } else if (isGuest) {
+    if (confirm('عايز تسجل دخول عشان تحفظ محتواك؟')) {
+      openAuthFromGuest();
+    }
+  } else {
+    showAuthGate();
+  }
+}
+
+function openAccountModal() {
+  const modal = document.getElementById('accountModal');
+  if (!modal || !currentUser) return;
+
+  const avatar = document.getElementById('accountAvatar');
+  const nameEl = document.getElementById('accountName');
+  const emailEl = document.getElementById('accountEmail');
+
+  const displayName = currentUser.displayName || (currentUser.email || '').split('@')[0] || 'مستخدم';
+  const initial = displayName.charAt(0).toUpperCase();
+
+  if (currentUser.photoURL) {
+    avatar.style.backgroundImage = `url(${currentUser.photoURL})`;
+    avatar.style.backgroundSize = 'cover';
+    avatar.style.backgroundPosition = 'center';
+    avatar.textContent = '';
+  } else {
+    avatar.style.backgroundImage = '';
+    avatar.style.background = 'linear-gradient(135deg, var(--accent2), var(--accent))';
+    avatar.textContent = initial;
+  }
+
+  nameEl.textContent = displayName;
+  emailEl.textContent = currentUser.email || '—';
+  modal.classList.remove('hidden');
+  playSound('click');
+}
+
+function closeAccountModal() {
+  const modal = document.getElementById('accountModal');
+  if (modal) modal.classList.add('hidden');
+}
+
+async function logout() {
+  if (!fbFns) return;
+  if (!confirm('متأكد إنك عايز تسجل خروج؟')) return;
+  try {
+    await fbFns.signOut(fbAuth);
+    closeAccountModal();
+    const badge = document.querySelector('.guest-badge');
+    if (badge) badge.remove();
+    document.body.classList.remove('guest-mode');
+    isGuest = false;
+    showToast('👋 تم تسجيل الخروج');
+    playSound('back');
+  } catch (error) {
+    console.error(error);
+    showToast('⚠️ فشل تسجيل الخروج');
+  }
+}
+
+function authErrorMessage(code) {
+  const messages = {
+    'auth/email-already-in-use': 'الإيميل مستخدم بالفعل',
+    'auth/invalid-email': 'الإيميل غير صحيح',
+    'auth/weak-password': 'الباسورد ضعيف (6 أحرف على الأقل)',
+    'auth/user-not-found': 'المستخدم غير موجود',
+    'auth/wrong-password': 'الباسورد غلط',
+    'auth/invalid-credential': 'الإيميل أو الباسورد غلط',
+    'auth/too-many-requests': 'محاولات كتير، استنى شوية',
+    'auth/network-request-failed': 'مشكلة في الإنترنت',
+    'auth/popup-blocked': 'المتصفح منع النافذة، اسمح بها',
+    'auth/operation-not-allowed': 'الطريقة دي مش مفعّلة في Firebase',
+    'auth/unauthorized-domain': 'الدومين ده مش مصرح بيه في Firebase'
+  };
+  return messages[code] || 'حدث خطأ، حاول تاني';
+}
+
 document.addEventListener('keydown', function(e) {
+  const gate = document.getElementById('authGate');
+  if (gate && !gate.classList.contains('hidden') && e.key === 'Enter') {
+    e.preventDefault();
+    handleGateSubmit();
+  }
   if (e.key === 'Escape') {
-    const addModal = document.getElementById('addItemModal');
-    const renameModal = document.getElementById('renameModal');
-    if (addModal && !addModal.classList.contains('hidden')) closeAddModal();
-    if (renameModal && !renameModal.classList.contains('hidden')) closeRenameModal();
+    closeAddModal();
+    closeRenameModal();
+    closeAccountModal();
   }
 });
 
-// ====== توجيه حالة الـ history الابتدائية ======
 if (!history.state) {
   history.replaceState({ page: 'welcome' }, '', '#welcome');
+}
+// ============================================================
+// ====== Forgot Password ======
+// ============================================================
+
+function openForgotPasswordModal(e) {
+  if (e) e.preventDefault();
+  const modal = document.getElementById('forgotPasswordModal');
+  if (!modal) return;
+
+  const gateEmail = document.getElementById('gateEmail');
+  const forgotEmail = document.getElementById('forgotEmail');
+  if (gateEmail && gateEmail.value.trim() && forgotEmail) {
+    forgotEmail.value = gateEmail.value.trim();
+  }
+
+  modal.classList.remove('hidden');
+  setTimeout(() => document.getElementById('forgotEmail').focus(), 100);
+  playSound('click');
+}
+
+function closeForgotPasswordModal() {
+  const modal = document.getElementById('forgotPasswordModal');
+  if (modal) modal.classList.add('hidden');
+}
+
+async function handleForgotPassword() {
+  if (!fbFns) {
+    showToast('⏳ Firebase لسه مجهزش');
+    return;
+  }
+
+  const email = document.getElementById('forgotEmail').value.trim();
+
+  if (!email) {
+    showToast('⚠️ اكتب الإيميل الأول');
+    return;
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    showToast('⚠️ الإيميل غير صحيح');
+    return;
+  }
+
+  const btn = document.getElementById('forgotSubmitBtn');
+  const original = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = '⏳ جاري الإرسال...';
+
+  try {
+    await fbFns.sendPasswordResetEmail(fbAuth, email);
+    showToast('📨 بعتنالك رابط الاستعادة على إيميلك');
+    playSound('success');
+    closeForgotPasswordModal();
+    document.getElementById('forgotEmail').value = '';
+  } catch (error) {
+    console.error(error);
+    if (error.code === 'auth/user-not-found') {
+      showToast('📨 لو الإيميل مسجل، هيوصلك رابط الاستعادة');
+      playSound('success');
+      closeForgotPasswordModal();
+    } else {
+      showToast('⚠️ ' + authErrorMessage(error.code));
+    }
+  } finally {
+    btn.disabled = false;
+    btn.textContent = original;
+  }
+}
+// ============================================================
+// ====== Forgot Password ======
+// ============================================================
+
+function openForgotPasswordModal(e) {
+  if (e) e.preventDefault();
+  console.log('🔑 openForgotPasswordModal called');
+
+  const modal = document.getElementById('forgotPasswordModal');
+  if (!modal) {
+    console.error('❌ Modal #forgotPasswordModal not found in DOM');
+    showToast('⚠️ حدث خطأ، حاول تاني');
+    return;
+  }
+
+  const gateEmail = document.getElementById('gateEmail');
+  const forgotEmail = document.getElementById('forgotEmail');
+  if (gateEmail && gateEmail.value.trim() && forgotEmail) {
+    forgotEmail.value = gateEmail.value.trim();
+  }
+
+  modal.classList.remove('hidden');
+  setTimeout(() => document.getElementById('forgotEmail').focus(), 100);
+  playSound('click');
+}
+
+function closeForgotPasswordModal() {
+  const modal = document.getElementById('forgotPasswordModal');
+  if (modal) modal.classList.add('hidden');
+}
+
+async function handleForgotPassword() {
+  if (!fbFns) {
+    showToast('⏳ Firebase لسه مجهزش');
+    return;
+  }
+
+  const email = document.getElementById('forgotEmail').value.trim();
+
+  if (!email) {
+    showToast('⚠️ اكتب الإيميل الأول');
+    return;
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    showToast('⚠️ الإيميل غير صحيح');
+    return;
+  }
+
+  const btn = document.getElementById('forgotSubmitBtn');
+  const original = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = '⏳ جاري الإرسال...';
+
+  try {
+    await fbFns.sendPasswordResetEmail(fbAuth, email);
+    showToast('📨 بعتنالك رابط الاستعادة على إيميلك');
+    playSound('success');
+    closeForgotPasswordModal();
+    document.getElementById('forgotEmail').value = '';
+  } catch (error) {
+    console.error(error);
+    if (error.code === 'auth/user-not-found') {
+      showToast('📨 لو الإيميل مسجل، هيوصلك رابط الاستعادة');
+      playSound('success');
+      closeForgotPasswordModal();
+    } else {
+      showToast('⚠️ ' + authErrorMessage(error.code));
+    }
+  } finally {
+    btn.disabled = false;
+    btn.textContent = original;
+  }
 }
