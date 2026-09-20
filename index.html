@@ -116,7 +116,7 @@
             </button>
 
             <p style="text-align:center;margin-top:16px;font-size:0.9rem;color:var(--text-secondary);">
-              <a href="#" onclick="cancelVerification(event)" style="color:var(--accent);font-weight:700;text-decoration:none;">
+              <a href="#" onclick="cancelVerification(event);return false;" style="color:var(--accent);font-weight:700;text-decoration:none;">
                 🚪 تسجيل خروج
               </a>
             </p>
@@ -143,6 +143,7 @@
     <button class="theme-toggle" id="themeToggle" title="تغيير الوضع">🌙</button>
     <button class="user-toggle" id="userToggle" onclick="handleUserBtn()" title="حسابي">🔐</button>
 
+    <!-- صفحة الترحيب -->
     <div id="welcomePage">
       <div class="neon-frame active">
         <div class="neon-glow"></div>
@@ -161,6 +162,7 @@
       </div>
     </div>
 
+    <!-- الصفحة الرئيسية -->
     <div id="mainPage" class="hidden page-level">
       <div class="neon-frame">
         <div class="neon-glow"></div>
@@ -180,6 +182,7 @@
       </div>
     </div>
 
+    <!-- صفحة الفرقة -->
     <div id="levelPage" class="hidden page-level">
       <div class="neon-frame">
         <div class="neon-glow"></div>
@@ -200,6 +203,7 @@
       </div>
     </div>
 
+    <!-- صفحة المادة -->
     <div id="subjectPage" class="hidden page-level">
       <div class="neon-frame">
         <div class="neon-glow"></div>
@@ -217,6 +221,7 @@
       </div>
     </div>
 
+    <!-- Modal: إضافة عنصر -->
     <div id="addItemModal" class="modal hidden">
       <div class="modal-overlay" onclick="closeAddModal()"></div>
       <div class="modal-box">
@@ -238,6 +243,7 @@
       </div>
     </div>
 
+    <!-- Modal: تعديل اسم -->
     <div id="renameModal" class="modal hidden">
       <div class="modal-overlay" onclick="closeRenameModal()"></div>
       <div class="modal-box">
@@ -257,6 +263,7 @@
       </div>
     </div>
 
+    <!-- Modal: حسابي -->
     <div id="accountModal" class="modal hidden">
       <div class="modal-overlay" onclick="closeAccountModal()"></div>
       <div class="modal-box" style="max-width:420px;">
@@ -273,37 +280,54 @@
       </div>
     </div>
 
-    <div id="forgotPasswordModal" class="modal hidden">
-      <div class="modal-overlay" onclick="closeForgotPasswordModal()"></div>
-      <div class="modal-box" style="max-width:440px;">
-        <div class="modal-header">
-          <h3>🔑 استعادة كلمة المرور</h3>
-          <button class="modal-close" onclick="closeForgotPasswordModal()">✕</button>
-        </div>
-        <div class="modal-body">
-          <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:18px;line-height:1.7;text-align:center;">
-            اكتب الإيميل اللي سجلت بيه، وهنبعتلك رابط لإعادة تعيين كلمة المرور.
-          </p>
-
-          <label for="forgotEmail">الإيميل</label>
-          <input type="email" id="forgotEmail" placeholder="example@email.com" autocomplete="email">
-
-          <button class="btn-auth-primary" id="forgotSubmitBtn" style="width:100%;margin-top:8px;" onclick="handleForgotPassword()">
-            📨 إرسال رابط الاستعادة
-          </button>
-
-          <p style="text-align:center;margin-top:14px;font-size:0.85rem;color:var(--text-secondary);">
-            <a href="#" onclick="closeForgotPasswordModal();return false;"
-               style="color:var(--accent);font-weight:700;text-decoration:none;">
-              ← رجوع لتسجيل الدخول
-            </a>
-          </p>
-        </div>
-      </div>
+<!-- Modal: نسيت كلمة المرور -->
+<div id="forgotPasswordModal" class="modal hidden">
+  <div class="modal-overlay" onclick="closeForgotPasswordModal()"></div>
+  <div class="modal-box" style="max-width:440px;">
+    <div class="modal-header">
+      <h3>🔑 استعادة كلمة المرور</h3>
+      <button class="modal-close" onclick="closeForgotPasswordModal()">✕</button>
     </div>
+    <div class="modal-body">
+      <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:18px;line-height:1.7;text-align:center;">
+        اكتب الإيميل اللي سجلت بيه، وهنبعتلك رابط لإعادة تعيين كلمة المرور.
+      </p>
 
+      <label for="forgotEmail">الإيميل</label>
+      <input type="email" id="forgotEmail" placeholder="example@email.com" autocomplete="email">
+
+      <!-- ✅ زرار الإرسال -->
+      <button class="btn-auth-primary" id="forgotSubmitBtn" style="width:100%;margin-top:8px;" onclick="handleForgotPassword()">
+        📨 إرسال رابط الاستعادة
+      </button>
+
+      <!-- ✅ زرار إعادة الإرسال (مخفي في الأول) -->
+      <button class="btn-auth-primary hidden" id="forgotResendBtn" style="width:100%;margin-top:8px;background:linear-gradient(90deg,#f59e0b,#fbbf24);" onclick="handleForgotPassword(true)">
+        🔄 إعادة الإرسال
+      </button>
+
+      <!-- ✅ عدّاد الثواني -->
+      <div id="forgotCountdown" class="hidden" style="text-align:center;margin-top:14px;padding:12px;background:rgba(14,165,233,0.1);border-radius:12px;color:var(--text-secondary);font-size:0.9rem;">
+        ⏳ تقدر تعيد الإرسال بعد <b id="forgotCountdownNum" style="color:var(--accent);font-size:1.1rem;">60</b> ثانية
+      </div>
+
+      <!-- ✅ رسالة النجاح -->
+      <div id="forgotSuccess" class="hidden" style="text-align:center;margin-top:14px;padding:12px;background:rgba(34,197,94,0.15);border:1px solid #22c55e;border-radius:12px;color:#22c55e;font-size:0.9rem;line-height:1.6;">
+        ✅ <b>تم إرسال الرسالة!</b><br>
+        افتح إيميلك واضغط على الرابط لتغيير كلمة المرور.
+      </div>
+
+      <p style="text-align:center;margin-top:14px;font-size:0.85rem;color:var(--text-secondary);">
+        <a href="#" onclick="closeForgotPasswordModal();return false;"
+           style="color:var(--accent);font-weight:700;text-decoration:none;">
+          ← رجوع لتسجيل الدخول
+        </a>
+      </p>
+    </div>
   </div>
+</div>
 
+  <!-- Firebase SDK -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
     import {
