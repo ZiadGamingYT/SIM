@@ -12,13 +12,11 @@
   <div id="preloader"><div class="loader"></div></div>
   <div id="toast" class="toast hidden">✅ تم</div>
 
-  <!-- ============ صفحة تسجيل الدخول (Auth Gate) ============ -->
   <div id="authGate">
     <div class="neon-frame active">
       <div class="neon-glow"></div>
       <div class="neon-content">
         <div class="auth-gate-content">
-
           <div class="auth-logo">🎓</div>
           <h1 class="auth-title">SIM Portal</h1>
           <p class="auth-subtitle">منصة قسم صناعة البرمجيات والوسائط المتعددة</p>
@@ -47,9 +45,7 @@
               تسجيل الدخول
             </button>
 
-            <div class="auth-divider">
-              <span>أو</span>
-            </div>
+            <div class="auth-divider"><span>أو</span></div>
 
             <button class="google-btn" onclick="loginWithGoogleGate()">
               <svg width="20" height="20" viewBox="0 0 48 48" style="flex-shrink:0;">
@@ -68,9 +64,7 @@
               </a>
             </p>
 
-            <div class="auth-divider">
-              <span>أو</span>
-            </div>
+            <div class="auth-divider"><span>أو</span></div>
 
             <button class="guest-btn" onclick="continueAsGuest()">
               👤 تصفح كزائر
@@ -84,7 +78,6 @@
     </div>
   </div>
 
-  <!-- ============ شاشة تأكيد الإيميل ============ -->
   <div id="verifyScreen" class="hidden">
     <div class="neon-frame active">
       <div class="neon-glow"></div>
@@ -95,30 +88,20 @@
           <p class="auth-subtitle">بعتنالك رسالة تأكيد على إيميلك</p>
 
           <div class="auth-card">
-            <p style="text-align:center;color:var(--text);margin-bottom:8px;font-size:1rem;">
-              بعتنا رابط تأكيد إلى:
-            </p>
-            <p id="verifyEmailDisplay" style="text-align:center;color:var(--accent);font-weight:700;margin-bottom:18px;word-break:break-all;">
-              —
-            </p>
+            <p style="text-align:center;color:var(--text);margin-bottom:8px;font-size:1rem;">بعتنا رابط تأكيد إلى:</p>
+            <p id="verifyEmailDisplay" style="text-align:center;color:var(--accent);font-weight:700;margin-bottom:18px;word-break:break-all;">—</p>
             <p style="text-align:center;color:var(--text-secondary);font-size:0.9rem;margin-bottom:22px;line-height:1.7;">
               افتح الإيميل بتاعك، اضغط على الرابط اللي بعتناه، وبعدين ارجع هنا واضغط "تم التأكيد".
             </p>
 
-            <button class="btn-auth-primary" onclick="checkEmailVerified()">
-              ✅ تم التأكيد - ادخل
-            </button>
+            <button class="btn-auth-primary" onclick="checkEmailVerified()">✅ تم التأكيد - ادخل</button>
 
             <div class="auth-divider"><span>أو</span></div>
 
-            <button class="google-btn" onclick="resendVerificationEmail()">
-              📨 إعادة إرسال رسالة التأكيد
-            </button>
+            <button class="google-btn" onclick="resendVerificationEmail()">📨 إعادة إرسال رسالة التأكيد</button>
 
             <p style="text-align:center;margin-top:16px;font-size:0.9rem;color:var(--text-secondary);">
-              <a href="#" onclick="cancelVerification(event);return false;" style="color:var(--accent);font-weight:700;text-decoration:none;">
-                🚪 تسجيل خروج
-              </a>
+              <a href="#" onclick="cancelVerification(event);return false;" style="color:var(--accent);font-weight:700;text-decoration:none;">🚪 تسجيل خروج</a>
             </p>
           </div>
         </div>
@@ -126,7 +109,6 @@
     </div>
   </div>
 
-  <!-- ============ باقي الموقع ============ -->
   <div id="siteWrapper" class="hidden">
 
     <div id="welcomeNotice" class="welcome-notice hidden">
@@ -143,7 +125,6 @@
     <button class="theme-toggle" id="themeToggle" title="تغيير الوضع">🌙</button>
     <button class="user-toggle" id="userToggle" onclick="handleUserBtn()" title="حسابي">🔐</button>
 
-    <!-- صفحة الترحيب -->
     <div id="welcomePage">
       <div class="neon-frame active">
         <div class="neon-glow"></div>
@@ -162,7 +143,6 @@
       </div>
     </div>
 
-    <!-- الصفحة الرئيسية -->
     <div id="mainPage" class="hidden page-level">
       <div class="neon-frame">
         <div class="neon-glow"></div>
@@ -182,7 +162,6 @@
       </div>
     </div>
 
-    <!-- صفحة الفرقة -->
     <div id="levelPage" class="hidden page-level">
       <div class="neon-frame">
         <div class="neon-glow"></div>
@@ -203,7 +182,6 @@
       </div>
     </div>
 
-    <!-- صفحة المادة -->
     <div id="subjectPage" class="hidden page-level">
       <div class="neon-frame">
         <div class="neon-glow"></div>
@@ -221,7 +199,6 @@
       </div>
     </div>
 
-    <!-- Modal: إضافة عنصر -->
     <div id="addItemModal" class="modal hidden">
       <div class="modal-overlay" onclick="closeAddModal()"></div>
       <div class="modal-box">
@@ -243,7 +220,6 @@
       </div>
     </div>
 
-    <!-- Modal: تعديل اسم -->
     <div id="renameModal" class="modal hidden">
       <div class="modal-overlay" onclick="closeRenameModal()"></div>
       <div class="modal-box">
@@ -263,7 +239,6 @@
       </div>
     </div>
 
-    <!-- Modal: حسابي -->
     <div id="accountModal" class="modal hidden">
       <div class="modal-overlay" onclick="closeAccountModal()"></div>
       <div class="modal-box" style="max-width:420px;">
@@ -280,54 +255,50 @@
       </div>
     </div>
 
-<!-- Modal: نسيت كلمة المرور -->
-<div id="forgotPasswordModal" class="modal hidden">
-  <div class="modal-overlay" onclick="closeForgotPasswordModal()"></div>
-  <div class="modal-box" style="max-width:440px;">
-    <div class="modal-header">
-      <h3>🔑 استعادة كلمة المرور</h3>
-      <button class="modal-close" onclick="closeForgotPasswordModal()">✕</button>
-    </div>
-    <div class="modal-body">
-      <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:18px;line-height:1.7;text-align:center;">
-        اكتب الإيميل اللي سجلت بيه، وهنبعتلك رابط لإعادة تعيين كلمة المرور.
-      </p>
+    <div id="forgotPasswordModal" class="modal hidden">
+      <div class="modal-overlay" onclick="closeForgotPasswordModal()"></div>
+      <div class="modal-box" style="max-width:440px;">
+        <div class="modal-header">
+          <h3>🔑 استعادة كلمة المرور</h3>
+          <button class="modal-close" onclick="closeForgotPasswordModal()">✕</button>
+        </div>
+        <div class="modal-body">
+          <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:18px;line-height:1.7;text-align:center;">
+            اكتب الإيميل اللي سجلت بيه، وهنبعتلك رابط لإعادة تعيين كلمة المرور.
+          </p>
 
-      <label for="forgotEmail">الإيميل</label>
-      <input type="email" id="forgotEmail" placeholder="example@email.com" autocomplete="email">
+          <label for="forgotEmail">الإيميل</label>
+          <input type="email" id="forgotEmail" placeholder="example@email.com" autocomplete="email">
 
-      <!-- ✅ زرار الإرسال -->
-      <button class="btn-auth-primary" id="forgotSubmitBtn" style="width:100%;margin-top:8px;" onclick="handleForgotPassword()">
-        📨 إرسال رابط الاستعادة
-      </button>
+          <button class="btn-auth-primary" id="forgotSubmitBtn" style="width:100%;margin-top:8px;" onclick="handleForgotPassword()">
+            📨 إرسال رابط الاستعادة
+          </button>
 
-      <!-- ✅ زرار إعادة الإرسال (مخفي في الأول) -->
-      <button class="btn-auth-primary hidden" id="forgotResendBtn" style="width:100%;margin-top:8px;background:linear-gradient(90deg,#f59e0b,#fbbf24);" onclick="handleForgotPassword(true)">
-        🔄 إعادة الإرسال
-      </button>
+          <button class="btn-auth-primary hidden" id="forgotResendBtn" style="width:100%;margin-top:8px;background:linear-gradient(90deg,#f59e0b,#fbbf24);" onclick="handleForgotPassword(true)">
+            🔄 إعادة الإرسال
+          </button>
 
-      <!-- ✅ عدّاد الثواني -->
-      <div id="forgotCountdown" class="hidden" style="text-align:center;margin-top:14px;padding:12px;background:rgba(14,165,233,0.1);border-radius:12px;color:var(--text-secondary);font-size:0.9rem;">
-        ⏳ تقدر تعيد الإرسال بعد <b id="forgotCountdownNum" style="color:var(--accent);font-size:1.1rem;">60</b> ثانية
+          <div id="forgotCountdown" class="hidden" style="text-align:center;margin-top:14px;padding:12px;background:rgba(14,165,233,0.1);border-radius:12px;color:var(--text-secondary);font-size:0.9rem;">
+            ⏳ تقدر تعيد الإرسال بعد <b id="forgotCountdownNum" style="color:var(--accent);font-size:1.1rem;">60</b> ثانية
+          </div>
+
+          <div id="forgotSuccess" class="hidden" style="text-align:center;margin-top:14px;padding:12px;background:rgba(34,197,94,0.15);border:1px solid #22c55e;border-radius:12px;color:#22c55e;font-size:0.9rem;line-height:1.6;">
+            ✅ <b>تم إرسال الرسالة!</b><br>
+            افتح إيميلك واضغط على الرابط لتغيير كلمة المرور.
+          </div>
+
+          <p style="text-align:center;margin-top:14px;font-size:0.85rem;color:var(--text-secondary);">
+            <a href="#" onclick="closeForgotPasswordModal();return false;"
+               style="color:var(--accent);font-weight:700;text-decoration:none;">
+              ← رجوع لتسجيل الدخول
+            </a>
+          </p>
+        </div>
       </div>
-
-      <!-- ✅ رسالة النجاح -->
-      <div id="forgotSuccess" class="hidden" style="text-align:center;margin-top:14px;padding:12px;background:rgba(34,197,94,0.15);border:1px solid #22c55e;border-radius:12px;color:#22c55e;font-size:0.9rem;line-height:1.6;">
-        ✅ <b>تم إرسال الرسالة!</b><br>
-        افتح إيميلك واضغط على الرابط لتغيير كلمة المرور.
-      </div>
-
-      <p style="text-align:center;margin-top:14px;font-size:0.85rem;color:var(--text-secondary);">
-        <a href="#" onclick="closeForgotPasswordModal();return false;"
-           style="color:var(--accent);font-weight:700;text-decoration:none;">
-          ← رجوع لتسجيل الدخول
-        </a>
-      </p>
     </div>
+
   </div>
-</div>
 
-  <!-- Firebase SDK -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
     import {
