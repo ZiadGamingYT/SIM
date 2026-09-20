@@ -1892,21 +1892,30 @@ function openForgotPasswordModal(e) {
   const gateEmail = document.getElementById('gateEmail');
   const forgotEmail = document.getElementById('forgotEmail');
 
-  if (gateEmail && gateEmail.value.trim() && forgotEmail) {
-    const email = gateEmail.value.trim();
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (emailRegex.test(email)) {
-      forgotEmail.value = email;
+  // ✅ إعادة تعيين المودال الأول
+  resetForgotPasswordUI();
+
+  // ✅ لو المستخدم كتب إيميل في الصفحة الأساسية → نملّيه تلقائي
+  // لو مش كتب → سيب الحقل فاضي والمستخدم يكتبه
+  if (forgotEmail) {
+    forgotEmail.value = '';
+    if (gateEmail && gateEmail.value.trim()) {
+      const email = gateEmail.value.trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (emailRegex.test(email)) {
+        forgotEmail.value = email;
+      }
     }
   }
 
-  resetForgotPasswordUI();
-
+  // ✅ نفتح المودال دائمًا
   modal.classList.remove('hidden');
+
   setTimeout(() => {
     const input = document.getElementById('forgotEmail');
     if (input) input.focus();
   }, 100);
+
   playSound('click');
 }
 
