@@ -146,7 +146,8 @@ let gateMode = 'login';
 let forgotCountdownInterval = null;
 let forgotCooldownSeconds = 0;
 let firestoreReady = false;
-let cachedPersonalData = {}; // cache للبيانات من Firestore
+let cachedPersonalData = {};
+let cachedCustomSubjects = [];
 
 // ====== نظام الأصوات ======
 function playSound(type) {
@@ -245,45 +246,36 @@ function getUserKey() {
 // ====== FIRESTORE HELPERS ======
 // ============================================================
 
-// مفتاح الـ document في Firestore
 function makeFirestoreDocId(subjectId, type) {
   return `${subjectId}__${type}`;
 }
 
-// جلب مرجع الـ personal document
 function getPersonalDocRef(subjectId, type) {
   if (!fbDb || !currentUser) return null;
   const docId = makeFirestoreDocId(subjectId, type);
   return fbFns.doc(fbDb, 'users', currentUser.uid, 'personal', docId);
 }
 
-// جلب مرجع الـ customName document
 function getCustomNameDocRef(subjectId, type, index) {
   if (!fbDb || !currentUser) return null;
   const docId = `${subjectId}__${type}__${index}`;
   return fbFns.doc(fbDb, 'users', currentUser.uid, 'customNames', docId);
 }
 
-// ✅ init Firestore للمستخدم
 async function initFirestoreForUser(user) {
   if (!window.firebaseDb || !window.firebaseFns) {
     console.warn('⚠️ Firestore مش جاهز');
     return false;
   }
   fbDb = window.firebaseDb;
-
-  // ✅ First migration: ننقل البيانات القديمة من localStorage
   await migrateLocalDataToFirestore();
-
-  // ✅ نحمّل البيانات من Firestore
   await loadAllUserDataFromFirestore();
-
+  await loadCustomSubjectsFromFirestore();
   firestoreReady = true;
   console.log('✅ Firestore جاهز للمستخدم');
   return true;
 }
 
-// ✅ Migration: نقل البيانات من localStorage لـ Firestore (مرة واحدة)
 async function migrateLocalDataToFirestore() {
   if (!currentUser) return;
   const migrationKey = `migrated_${currentUser.uid}`;
@@ -293,7 +285,6 @@ async function migrateLocalDataToFirestore() {
   const keys = Object.keys(localStorage);
   let migratedCount = 0;
 
-  // نقل personal items
   for (const key of keys) {
     if (key.startsWith(`personal_${oldUserKey}_`)) {
       const rest = key.replace(`personal_${oldUserKey}_`, '');
@@ -315,7 +306,6 @@ async function migrateLocalDataToFirestore() {
     }
   }
 
-  // نقل custom names
   for (const key of keys) {
     if (key.startsWith(`customName_${oldUserKey}_`)) {
       const rest = key.replace(`customName_${oldUserKey}_`, '');
@@ -342,7 +332,6 @@ async function migrateLocalDataToFirestore() {
   console.log(`✅ تم نقل ${migratedCount} عنصر من localStorage لـ Firestore`);
 }
 
-// ✅ تحميل كل بيانات المستخدم من Firestore مرة واحدة
 async function loadAllUserDataFromFirestore() {
   if (!fbDb || !currentUser) return;
   cachedPersonalData = {};
@@ -359,7 +348,6 @@ async function loadAllUserDataFromFirestore() {
       }
     });
 
-    // تحميل custom names
     const customRef = fbFns.collection(fbDb, 'users', currentUser.uid, 'customNames');
     const customSnap = await fbFns.getDocs(customRef);
 
@@ -378,10 +366,239 @@ async function loadAllUserDataFromFirestore() {
 }
 
 // ============================================================
+// ====== CUSTOM SUBJECTS ======
+// ============================================================
+
+async function loadCustomSubjectsFromFirestore() {
+  if (!fbDb || !currentUser) {
+    cachedCustomSubjects = [];
+    return;
+  }
+  try {
+    const ref = fbFns.collection(fbDb, 'users', currentUser.uid, 'customSubjects');
+    const snap = await fbFns.getDocs(ref);
+    cachedCustomSubjects = [];
+    snap.forEach(d => {
+      cachedCustomSubjects.push({ id: d.id, ...d.data() });
+    });
+    console.log('✅ تم تحميل المواد المخصصة:', cachedCustomSubjects.length);
+  } catch (e) {
+    console.error('❌ خطأ في تحميل المواد:', e);
+    cachedCustomSubjects = [];
+  }
+}
+
+async function saveCustomSubjectToFirestore(subject) {
+  if (!fbDb || !currentUser) return false;
+  try {
+    const ref = fbFns.doc(fbDb, 'users', currentUser.uid, 'customSubjects', subject.id);
+    await fbFns.setDoc(ref, {
+      name: subject.name,
+      icon: subject.icon || '📚',
+      levelId: subject.levelId,
+      termId: subject.termId,
+      image: subject.image || '',
+      createdAt: subject.createdAt || Date.now(),
+      updatedAt: Date.now()
+    });
+    return true;
+  } catch (e) {
+    console.error('❌ خطأ في حفظ المادة:', e);
+    return false;
+  }
+}
+
+async function deleteCustomSubjectFromFirestore(subjectId) {
+  if (!fbDb || !currentUser) return false;
+  try {
+    const ref = fbFns.doc(fbDb, 'users', currentUser.uid, 'customSubjects', subjectId);
+    await fbFns.deleteDoc(ref);
+    return true;
+  } catch (e) {
+    console.error('❌ خطأ في حذف المادة:', e);
+    return false;
+  }
+}
+
+function getCustomSubjects(levelId, termId) {
+  return cachedCustomSubjects.filter(s => s.levelId === levelId && s.termId === termId);
+}
+
+function openAddSubjectModal() {
+  if (!requireAuth('إضافة مادة')) return;
+
+  const modal = document.getElementById('addSubjectModal');
+  const title = document.getElementById('addSubjectTitle');
+  const nameInput = document.getElementById('newSubjectName');
+  const iconInput = document.getElementById('newSubjectIcon');
+  const levelSelect = document.getElementById('newSubjectLevel');
+  const termSelect = document.getElementById('newSubjectTerm');
+  const editId = document.getElementById('editingSubjectId');
+  const saveBtn = document.getElementById('saveSubjectBtn');
+
+  title.textContent = '✨ إضافة مادة جديدة';
+  nameInput.value = '';
+  iconInput.value = '';
+  editId.value = '';
+  saveBtn.textContent = '💾 حفظ المادة';
+
+  if (currentLevel) levelSelect.value = currentLevel;
+
+  modal.classList.remove('hidden');
+  setTimeout(() => nameInput.focus(), 100);
+  playSound('click');
+}
+
+function closeAddSubjectModal() {
+  document.getElementById('addSubjectModal').classList.add('hidden');
+}
+
+async function saveSubject() {
+  if (!requireAuth('حفظ مادة')) return;
+
+  const name = document.getElementById('newSubjectName').value.trim();
+  const icon = document.getElementById('newSubjectIcon').value.trim() || '📚';
+  const levelId = document.getElementById('newSubjectLevel').value;
+  const termId = document.getElementById('newSubjectTerm').value;
+  const editId = document.getElementById('editingSubjectId').value;
+
+  if (!name) {
+    showToast('⚠️ اكتب اسم المادة');
+    return;
+  }
+
+  const saveBtn = document.getElementById('saveSubjectBtn');
+  const original = saveBtn.textContent;
+  saveBtn.disabled = true;
+  saveBtn.textContent = '⏳ جاري الحفظ...';
+
+  try {
+    if (editId) {
+      const existing = cachedCustomSubjects.find(s => s.id === editId);
+      if (!existing) throw new Error('المادة غير موجودة');
+
+      existing.name = name;
+      existing.icon = icon;
+      existing.levelId = levelId;
+      existing.termId = termId;
+
+      const ok = await saveCustomSubjectToFirestore(existing);
+      if (!ok) throw new Error('فشل الحفظ');
+
+      showToast('✅ تم تعديل المادة');
+    } else {
+      const newId = 'sub_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7);
+      const newSubject = {
+        id: newId,
+        name: name,
+        icon: icon,
+        levelId: levelId,
+        termId: termId,
+        image: '',
+        createdAt: Date.now()
+      };
+
+      const ok = await saveCustomSubjectToFirestore(newSubject);
+      if (!ok) throw new Error('فشل الحفظ');
+
+      cachedCustomSubjects.push(newSubject);
+      showToast('✅ تم إضافة المادة');
+    }
+
+    closeAddSubjectModal();
+
+    if (!document.getElementById('levelPage').classList.contains('hidden')) {
+      if (currentLevel) renderLevelSubjects(currentLevel);
+    }
+
+    playSound('success');
+  } catch (e) {
+    console.error(e);
+    showToast('⚠️ فشل حفظ المادة');
+  } finally {
+    saveBtn.disabled = false;
+    saveBtn.textContent = original;
+  }
+}
+
+function editCustomSubject(subjectId, event) {
+  if (event) event.stopPropagation();
+  if (!requireAuth('تعديل مادة')) return;
+
+  const subject = cachedCustomSubjects.find(s => s.id === subjectId);
+  if (!subject) return;
+
+  const modal = document.getElementById('addSubjectModal');
+  document.getElementById('addSubjectTitle').textContent = '✏️ تعديل المادة';
+  document.getElementById('newSubjectName').value = subject.name || '';
+  document.getElementById('newSubjectIcon').value = subject.icon || '📚';
+  document.getElementById('newSubjectLevel').value = subject.levelId || 'level1';
+  document.getElementById('newSubjectTerm').value = subject.termId || 'term1';
+  document.getElementById('editingSubjectId').value = subject.id;
+  document.getElementById('saveSubjectBtn').textContent = '💾 حفظ التعديلات';
+
+  modal.classList.remove('hidden');
+  playSound('click');
+}
+
+async function deleteCustomSubject(subjectId, event) {
+  if (event) event.stopPropagation();
+  if (!requireAuth('حذف مادة')) return;
+
+  const subject = cachedCustomSubjects.find(s => s.id === subjectId);
+  if (!subject) return;
+
+  if (!confirm(`متأكد إنك عايز تحذف مادة "${subject.name}"؟\n\n⚠️ كل المحتوى الشخصي جواها هيتمسح كمان.`)) return;
+
+  try {
+    const ok = await deleteCustomSubjectFromFirestore(subjectId);
+    if (!ok) throw new Error('فشل الحذف');
+
+    const deletePromises = [];
+
+    const relatedDocs = await fbFns.getDocs(
+      fbFns.collection(fbDb, 'users', currentUser.uid, 'personal')
+    );
+    relatedDocs.forEach(d => {
+      if (d.id.startsWith(subjectId + '__')) {
+        deletePromises.push(fbFns.deleteDoc(d.ref));
+      }
+    });
+
+    const namesDocs = await fbFns.getDocs(
+      fbFns.collection(fbDb, 'users', currentUser.uid, 'customNames')
+    );
+    namesDocs.forEach(d => {
+      if (d.id.startsWith(subjectId + '__')) {
+        deletePromises.push(fbFns.deleteDoc(d.ref));
+      }
+    });
+
+    await Promise.all(deletePromises);
+
+    cachedCustomSubjects = cachedCustomSubjects.filter(s => s.id !== subjectId);
+    Object.keys(cachedPersonalData).forEach(k => {
+      if (k.startsWith(subjectId + '__') || k.startsWith('customName_' + subjectId + '__')) {
+        delete cachedPersonalData[k];
+      }
+    });
+
+    showToast('🗑️ تم حذف المادة');
+    playSound('back');
+
+    if (!document.getElementById('levelPage').classList.contains('hidden')) {
+      if (currentLevel) renderLevelSubjects(currentLevel);
+    }
+  } catch (e) {
+    console.error(e);
+    showToast('⚠️ فشل حذف المادة');
+  }
+}
+
+// ============================================================
 // ====== الأسماء المخصصة (Firestore) ======
 // ============================================================
 function getCustomName(subjectId, type, index) {
-  // ✅ لو مفيش user → نرجع للـ localStorage (للزائر)
   if (!currentUser || !firestoreReady) {
     try {
       const userKey = getUserKey();
@@ -390,13 +607,11 @@ function getCustomName(subjectId, type, index) {
     } catch (e) { return null; }
   }
 
-  // ✅ من Firestore cache
   const docId = `${subjectId}__${type}__${index}`;
   return cachedPersonalData[`customName_${docId}`] || null;
 }
 
 async function setCustomName(subjectId, type, index, name) {
-  // ✅ للزائر → localStorage
   if (!currentUser || !firestoreReady) {
     try {
       const userKey = getUserKey();
@@ -407,7 +622,6 @@ async function setCustomName(subjectId, type, index, name) {
     return;
   }
 
-  // ✅ لـ المستخدم المسجل → Firestore
   try {
     const docRef = getCustomNameDocRef(subjectId, type, index);
     const docId = `${subjectId}__${type}__${index}`;
@@ -429,7 +643,6 @@ async function setCustomName(subjectId, type, index, name) {
 // ====== العناصر الشخصية (Firestore) ======
 // ============================================================
 function getPersonalItems(subjectId, type) {
-  // ✅ للزائر → localStorage
   if (!currentUser || !firestoreReady) {
     try {
       const userKey = getUserKey();
@@ -439,13 +652,11 @@ function getPersonalItems(subjectId, type) {
     } catch (e) { return []; }
   }
 
-  // ✅ من Firestore cache
   const docId = makeFirestoreDocId(subjectId, type);
   return cachedPersonalData[docId] || [];
 }
 
 async function savePersonalItems(subjectId, type, items) {
-  // ✅ للزائر → localStorage
   if (!currentUser || !firestoreReady) {
     try {
       const userKey = getUserKey();
@@ -455,7 +666,6 @@ async function savePersonalItems(subjectId, type, items) {
     return;
   }
 
-  // ✅ لـ المستخدم المسجل → Firestore
   try {
     const docRef = getPersonalDocRef(subjectId, type);
     const docId = makeFirestoreDocId(subjectId, type);
@@ -662,32 +872,54 @@ function renderLevelSubjects(levelId) {
   term2Grid.innerHTML = '';
 
   level.terms.term1.subjects.forEach(sub => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.dataset.subjectName = sub.name.toLowerCase();
-    card.innerHTML = `
-      <img src="${sub.image}" alt="${sub.name}" style="width:100%;height:140px;object-fit:cover;border-radius:10px;margin-bottom:10px;">
-      <span class="icon">${sub.icon}</span>
-      <h3>${sub.name}</h3>
-      <p>اضغط للدخول</p>
-    `;
-    card.onclick = () => showSubject(levelId, 'term1', sub.id);
-    term1Grid.appendChild(card);
+    term1Grid.appendChild(createSubjectCard(sub, levelId, 'term1', false));
+  });
+
+  getCustomSubjects(levelId, 'term1').forEach(sub => {
+    term1Grid.appendChild(createSubjectCard(sub, levelId, 'term1', true));
   });
 
   level.terms.term2.subjects.forEach(sub => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.dataset.subjectName = sub.name.toLowerCase();
-    card.innerHTML = `
-      <img src="${sub.image}" alt="${sub.name}" style="width:100%;height:140px;object-fit:cover;border-radius:10px;margin-bottom:10px;">
-      <span class="icon">${sub.icon}</span>
-      <h3>${sub.name}</h3>
-      <p>اضغط للدخول</p>
-    `;
-    card.onclick = () => showSubject(levelId, 'term2', sub.id);
-    term2Grid.appendChild(card);
+    term2Grid.appendChild(createSubjectCard(sub, levelId, 'term2', false));
   });
+
+  getCustomSubjects(levelId, 'term2').forEach(sub => {
+    term2Grid.appendChild(createSubjectCard(sub, levelId, 'term2', true));
+  });
+}
+
+function createSubjectCard(sub, levelId, termId, isCustom) {
+  const card = document.createElement('div');
+  card.className = 'card' + (isCustom ? ' custom-subject' : '');
+  card.dataset.subjectName = sub.name.toLowerCase();
+
+  let imageHTML = '';
+  if (isCustom && sub.image && sub.image.trim()) {
+    imageHTML = `<img src="${sub.image}" alt="${escapeHTML(sub.name)}" style="width:100%;height:140px;object-fit:cover;border-radius:10px;margin-bottom:10px;" onerror="this.style.display='none'">`;
+  } else if (!isCustom) {
+    imageHTML = `<img src="${sub.image || ''}" alt="${escapeHTML(sub.name)}" style="width:100%;height:140px;object-fit:cover;border-radius:10px;margin-bottom:10px;">`;
+  }
+
+  let actionsHTML = '';
+  if (isCustom && !document.body.classList.contains('guest-mode')) {
+    actionsHTML = `
+      <div class="card-actions">
+        <button class="edit-btn" onclick="editCustomSubject('${sub.id}', event)" title="تعديل">✏️</button>
+        <button class="delete-btn" onclick="deleteCustomSubject('${sub.id}', event)" title="حذف">🗑️</button>
+      </div>
+    `;
+  }
+
+  card.innerHTML = `
+    ${imageHTML}
+    <span class="icon">${sub.icon || '📚'}</span>
+    <h3>${escapeHTML(sub.name)}</h3>
+    <p>اضغط للدخول</p>
+    ${actionsHTML}
+  `;
+
+  card.onclick = () => showSubject(levelId, termId, sub.id);
+  return card;
 }
 
 // ====== عرض الفرقة ======
@@ -741,12 +973,25 @@ function showSubject(levelId, termId, subjectId) {
   let subject = null, termName = '';
   if (termId === 'term1') { subject = level.terms.term1.subjects.find(s => s.id === subjectId); termName = 'الترم الأول'; }
   else { subject = level.terms.term2.subjects.find(s => s.id === subjectId); termName = 'الترم الثاني'; }
+
+  // لو مادة مخصصة
+  if (!subject) {
+    subject = cachedCustomSubjects.find(s => s.id === subjectId);
+    if (subject) {
+      const levelData = levelsData[subject.levelId];
+      const customTermName = subject.termId === 'term1' ? 'الترم الأول' : 'الترم الثاني';
+      document.getElementById('subjectTitle').textContent = `${subject.icon || '📚'} ${subject.name}`;
+      document.getElementById('subjectSubtitle').textContent = `${customTermName} - ${levelData.name}`;
+    }
+  } else {
+    document.getElementById('subjectTitle').textContent = `${subject.icon} ${subject.name}`;
+    document.getElementById('subjectSubtitle').textContent = `${termName} - ${level.name}`;
+  }
+
   if (!subject) return;
 
   const levelPage = document.getElementById('levelPage');
   const subjectPage = document.getElementById('subjectPage');
-  document.getElementById('subjectTitle').textContent = `${subject.icon} ${subject.name}`;
-  document.getElementById('subjectSubtitle').textContent = `${termName} - ${level.name}`;
 
   const isProject = subjectId === 'project1' || subjectId === 'project2';
   setupMaterialTabs(subjectId, isProject);
@@ -1023,6 +1268,12 @@ window.addEventListener('popstate', function(event) {
         if (found) { showSubject(levelId, termId, state.subjectId); setTimeout(applyNeonFrameToCurrentPage, 100); return; }
       }
     }
+    // لو مادة مخصصة
+    const customSub = cachedCustomSubjects.find(s => s.id === state.subjectId);
+    if (customSub) {
+      showSubject(customSub.levelId, customSub.termId, customSub.id);
+      setTimeout(applyNeonFrameToCurrentPage, 100); return;
+    }
   }
   if (currentPage !== 'welcome') {
     welcomePage.classList.remove('hidden'); welcomePage.classList.remove('entering'); void welcomePage.offsetWidth; welcomePage.classList.add('entering');
@@ -1059,11 +1310,16 @@ function saveCurrentPageForRefresh() {
     }
 }
 
-function restorePageAfterRefresh() {
+async function restorePageAfterRefresh() {
     const savedState = localStorage.getItem('refreshPageState');
     if (!savedState) return false;
     try {
         const state = JSON.parse(savedState);
+
+        if (currentUser && fbDb && cachedCustomSubjects.length === 0) {
+            await loadCustomSubjectsFromFirestore();
+        }
+
         const welcomePage = document.getElementById('welcomePage');
         const mainPage = document.getElementById('mainPage');
         const levelPage = document.getElementById('levelPage');
@@ -1114,9 +1370,25 @@ function restorePageAfterRefresh() {
                     }
                 }
             }
+
+            const customSub = cachedCustomSubjects.find(s => s.id === state.subjectId);
+            if (customSub) {
+                currentLevel = customSub.levelId;
+                currentSubjectId = state.subjectId;
+                const levelData = levelsData[customSub.levelId];
+                const termName = customSub.termId === 'term1' ? 'الترم الأول' : 'الترم الثاني';
+                document.getElementById('subjectTitle').textContent = `${customSub.icon || '📚'} ${customSub.name}`;
+                document.getElementById('subjectSubtitle').textContent = `${termName} - ${levelData.name}`;
+                setupMaterialTabs(state.subjectId, false);
+                setupSubjectSearch(state.subjectId);
+                levelPage.classList.add('hidden');
+                subjectPage.classList.remove('hidden'); subjectPage.classList.remove('entering'); void subjectPage.offsetWidth; subjectPage.classList.add('entering');
+                history.pushState({ page: 'subject', subjectId: state.subjectId }, '', `#subject-${state.subjectId}`);
+                return true;
+            }
         }
         return false;
-    } catch (e) { return false; }
+    } catch (e) { console.error(e); return false; }
 }
 
 const originalTransitionToPage = transitionToPage;
@@ -1291,14 +1563,13 @@ function initFirebaseAuth() {
       const badge = document.querySelector('.guest-badge');
       if (badge) badge.remove();
 
-      // ✅ init Firestore للمستخدم
       await initFirestoreForUser(user);
 
       hideAuthGate();
       hideVerificationScreen();
       updateUserButton(user);
 
-      const restored = restorePageAfterRefresh();
+      const restored = await restorePageAfterRefresh();
       if (!restored) {
         const welcomePage = document.getElementById('welcomePage');
         const mainPage = document.getElementById('mainPage');
@@ -1317,6 +1588,7 @@ function initFirebaseAuth() {
       currentUser = null;
       firestoreReady = false;
       cachedPersonalData = {};
+      cachedCustomSubjects = [];
       hideVerificationScreen();
       if (!isGuest) {
         showAuthGate();
@@ -1339,8 +1611,6 @@ function refreshSubjectPageIfOpen() {
   if (!subjectPage) return;
   if (subjectPage.classList.contains('hidden')) return;
   if (!currentSubjectId) return;
-  const data = subjectsLectures[currentSubjectId];
-  if (!data) return;
   const types = ['lectures', 'sections', 'summaries', 'solutions', 'exams', 'examSolutions'];
   types.forEach(type => {
     if (document.getElementById(`material-${type}`)) {
@@ -1407,7 +1677,7 @@ async function checkEmailVerified() {
       isGuest = false;
       hideAuthGate();
       updateUserButton(currentUser);
-      const restored = restorePageAfterRefresh();
+      const restored = await restorePageAfterRefresh();
       if (!restored) {
         document.getElementById('welcomePage').classList.remove('hidden');
         document.getElementById('mainPage').classList.add('hidden');
@@ -1648,6 +1918,7 @@ async function logout() {
     isGuest = false;
     firestoreReady = false;
     cachedPersonalData = {};
+    cachedCustomSubjects = [];
     showToast('👋 تم تسجيل الخروج');
     playSound('back');
   } catch (error) {
@@ -1862,6 +2133,7 @@ document.addEventListener('keydown', function(e) {
     closeRenameModal();
     closeAccountModal();
     closeForgotPasswordModal();
+    closeAddSubjectModal();
   }
 });
 
