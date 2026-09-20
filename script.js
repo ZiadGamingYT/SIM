@@ -1904,10 +1904,27 @@ function openForgotPasswordModal(e) {
   const gateEmail = document.getElementById('gateEmail');
   const forgotEmail = document.getElementById('forgotEmail');
 
-  if (forgotEmail) forgotEmail.value = '';
-  if (gateEmail && gateEmail.value.trim() && forgotEmail) {
-    forgotEmail.value = gateEmail.value.trim();
+  // ✅ لازم المستخدم يكتب الإيميل الأول في الصفحة الأساسية
+  const email = gateEmail ? gateEmail.value.trim() : '';
+
+  if (!email) {
+    showToast('⚠️ اكتب الإيميل الأول عشان نقدر نبعتلك رابط الاستعادة');
+    playSound('back');
+    if (gateEmail) gateEmail.focus();
+    return;
   }
+
+  // ✅ تحقق من صيغة الإيميل
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    showToast('⚠️ الإيميل غير صحيح، اكتبه صح الأول');
+    playSound('back');
+    if (gateEmail) gateEmail.focus();
+    return;
+  }
+
+  // ✅ نملّي الإيميل تلقائيًا ونفتح المودال
+  if (forgotEmail) forgotEmail.value = email;
 
   modal.classList.remove('hidden');
   setTimeout(() => {
