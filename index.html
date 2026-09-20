@@ -255,7 +255,6 @@
 
   </div>
 
-  <!-- ✅ مودال نسيت كلمة المرور — بره siteWrapper -->
   <div id="forgotPasswordModal" class="modal hidden">
     <div class="modal-overlay" onclick="closeForgotPasswordModal()"></div>
     <div class="modal-box" style="max-width:440px;">
@@ -313,6 +312,17 @@
       reload
     } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
 
+    import {
+      getFirestore,
+      doc,
+      getDoc,
+      setDoc,
+      deleteDoc,
+      collection,
+      getDocs,
+      serverTimestamp
+    } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
+
     const firebaseConfig = {
       apiKey: "AIzaSyDWP6vezf6ddj__3Kfa4VVunR68uGesAe4",
       authDomain: "sim-portal-cb5a7.firebaseapp.com",
@@ -325,8 +335,10 @@
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
+    const db = getFirestore(app);
 
     window.firebaseAuth = auth;
+    window.firebaseDb = db;
     window.firebaseFns = {
       createUserWithEmailAndPassword,
       signInWithEmailAndPassword,
@@ -336,7 +348,14 @@
       signInWithPopup,
       sendEmailVerification,
       sendPasswordResetEmail,
-      reload
+      reload,
+      doc,
+      getDoc,
+      setDoc,
+      deleteDoc,
+      collection,
+      getDocs,
+      serverTimestamp
     };
 
     window.dispatchEvent(new Event('firebaseReady'));
