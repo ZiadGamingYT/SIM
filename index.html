@@ -34,12 +34,10 @@
               <input type="password" id="gatePassword" placeholder="••••••" autocomplete="current-password">
             </div>
 
-            <div id="forgotPasswordContainer" style="text-align:left;margin-top:-8px;margin-bottom:14px;">
-              <a href="#" onclick="openForgotPasswordModal(event);return false;"
-                 style="color:var(--accent);font-size:0.85rem;font-weight:700;text-decoration:none;cursor:pointer;">
-                🔑 نسيت كلمة المرور؟
-              </a>
-            </div>
+            <button type="button" id="openForgotBtn"
+               style="background:transparent;border:none;color:var(--accent);font-size:0.9rem;font-weight:700;cursor:pointer;font-family:'Cairo',sans-serif;padding:10px;margin-bottom:14px;display:block;text-align:right;width:100%;">
+              🔑 نسيت كلمة المرور؟
+            </button>
 
             <button class="btn-auth-primary" id="gateSubmitBtn" onclick="handleGateSubmit()">
               تسجيل الدخول
@@ -255,48 +253,49 @@
       </div>
     </div>
 
-    <div id="forgotPasswordModal" class="modal hidden">
-      <div class="modal-overlay" onclick="closeForgotPasswordModal()"></div>
-      <div class="modal-box" style="max-width:440px;">
-        <div class="modal-header">
-          <h3>🔑 استعادة كلمة المرور</h3>
-          <button class="modal-close" onclick="closeForgotPasswordModal()">✕</button>
+  </div>
+
+  <!-- ✅ مودال نسيت كلمة المرور — بره siteWrapper -->
+  <div id="forgotPasswordModal" class="modal hidden">
+    <div class="modal-overlay" onclick="closeForgotPasswordModal()"></div>
+    <div class="modal-box" style="max-width:440px;">
+      <div class="modal-header">
+        <h3>🔑 استعادة كلمة المرور</h3>
+        <button class="modal-close" onclick="closeForgotPasswordModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:18px;line-height:1.7;text-align:center;">
+          اكتب الإيميل اللي سجلت بيه، وهنبعتلك رابط لإعادة تعيين كلمة المرور.
+        </p>
+
+        <label for="forgotEmail">الإيميل</label>
+        <input type="email" id="forgotEmail" placeholder="example@email.com" autocomplete="email">
+
+        <button class="btn-auth-primary" id="forgotSubmitBtn" style="width:100%;margin-top:8px;" onclick="handleForgotPassword()">
+          📨 إرسال رابط الاستعادة
+        </button>
+
+        <button class="btn-auth-primary hidden" id="forgotResendBtn" style="width:100%;margin-top:8px;background:linear-gradient(90deg,#f59e0b,#fbbf24);" onclick="handleForgotPassword(true)">
+          🔄 إعادة الإرسال
+        </button>
+
+        <div id="forgotCountdown" class="hidden" style="text-align:center;margin-top:14px;padding:12px;background:rgba(14,165,233,0.1);border-radius:12px;color:var(--text-secondary);font-size:0.9rem;">
+          ⏳ تقدر تعيد الإرسال بعد <b id="forgotCountdownNum" style="color:var(--accent);font-size:1.1rem;">60</b> ثانية
         </div>
-        <div class="modal-body">
-          <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:18px;line-height:1.7;text-align:center;">
-            اكتب الإيميل اللي سجلت بيه، وهنبعتلك رابط لإعادة تعيين كلمة المرور.
-          </p>
 
-          <label for="forgotEmail">الإيميل</label>
-          <input type="email" id="forgotEmail" placeholder="example@email.com" autocomplete="email">
-
-          <button class="btn-auth-primary" id="forgotSubmitBtn" style="width:100%;margin-top:8px;" onclick="handleForgotPassword()">
-            📨 إرسال رابط الاستعادة
-          </button>
-
-          <button class="btn-auth-primary hidden" id="forgotResendBtn" style="width:100%;margin-top:8px;background:linear-gradient(90deg,#f59e0b,#fbbf24);" onclick="handleForgotPassword(true)">
-            🔄 إعادة الإرسال
-          </button>
-
-          <div id="forgotCountdown" class="hidden" style="text-align:center;margin-top:14px;padding:12px;background:rgba(14,165,233,0.1);border-radius:12px;color:var(--text-secondary);font-size:0.9rem;">
-            ⏳ تقدر تعيد الإرسال بعد <b id="forgotCountdownNum" style="color:var(--accent);font-size:1.1rem;">60</b> ثانية
-          </div>
-
-          <div id="forgotSuccess" class="hidden" style="text-align:center;margin-top:14px;padding:12px;background:rgba(34,197,94,0.15);border:1px solid #22c55e;border-radius:12px;color:#22c55e;font-size:0.9rem;line-height:1.6;">
-            ✅ <b>تم إرسال الرسالة!</b><br>
-            افتح إيميلك واضغط على الرابط لتغيير كلمة المرور.
-          </div>
-
-          <p style="text-align:center;margin-top:14px;font-size:0.85rem;color:var(--text-secondary);">
-            <a href="#" onclick="closeForgotPasswordModal();return false;"
-               style="color:var(--accent);font-weight:700;text-decoration:none;">
-              ← رجوع لتسجيل الدخول
-            </a>
-          </p>
+        <div id="forgotSuccess" class="hidden" style="text-align:center;margin-top:14px;padding:12px;background:rgba(34,197,94,0.15);border:1px solid #22c55e;border-radius:12px;color:#22c55e;font-size:0.9rem;line-height:1.6;">
+          ✅ <b>تم إرسال الرسالة!</b><br>
+          افتح إيميلك واضغط على الرابط لتغيير كلمة المرور.
         </div>
+
+        <p style="text-align:center;margin-top:14px;font-size:0.85rem;color:var(--text-secondary);">
+          <a href="#" onclick="closeForgotPasswordModal();return false;"
+             style="color:var(--accent);font-weight:700;text-decoration:none;">
+            ← رجوع لتسجيل الدخول
+          </a>
+        </p>
       </div>
     </div>
-
   </div>
 
   <script type="module">
