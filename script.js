@@ -102,6 +102,7 @@ const levelsData = {
     }
   }
 };
+
 // ====== بيانات المواد ======
 const subjectsLectures = {
   l1t1s0: {
@@ -121,7 +122,6 @@ const subjectsLectures = {
     ],
     sections: [], summaries: [], solutions: [], exams: [], examSolutions: []
   },
-
   l1t1s1: {
     name: '📐 Math I',
     lectures: [
@@ -161,7 +161,6 @@ const subjectsLectures = {
     ],
     exams: [], examSolutions: []
   },
-
   l1t1s2: {
     name: '⚛️ Physics I',
     lectures: [
@@ -187,7 +186,6 @@ const subjectsLectures = {
     ],
     exams: [], examSolutions: []
   },
-
   l1t1s3: {
     name: '💻 Introduction to Computing Technology',
     lectures: [
@@ -220,7 +218,6 @@ const subjectsLectures = {
     ],
     exams: [], examSolutions: []
   },
-
   l1t1s4: {
     name: '🖥️ Computer Programming I',
     lectures: [
@@ -260,7 +257,6 @@ const subjectsLectures = {
       'https://drive.google.com/file/d/1HkX9NZsE8HqMVKIrqlE1lBRY-clEdUIG/view?usp=drivesdk'
     ]
   },
-
   l1t1s5: {
     name: '🇬🇧 English',
     lectures: [
@@ -274,7 +270,6 @@ const subjectsLectures = {
     ],
     sections: [], summaries: [], solutions: [], exams: [], examSolutions: []
   },
-
   l1t1s6: {
     name: '📜 تاريخ علوم',
     lectures: [
@@ -289,7 +284,6 @@ const subjectsLectures = {
     ],
     sections: [], summaries: [], solutions: [], exams: [], examSolutions: []
   },
-
   l1t1s7: {
     name: '🌍 إنسان وبيئة',
     lectures: [
@@ -305,7 +299,6 @@ const subjectsLectures = {
     ],
     sections: [], summaries: [], solutions: [], exams: [], examSolutions: []
   },
-
   l1t2s1: {
     name: '📐 Math II',
     lectures: [
@@ -338,7 +331,6 @@ const subjectsLectures = {
     ],
     exams: [], examSolutions: []
   },
-
   l1t2s2: {
     name: '🎲 Introduction to Probability',
     lectures: [
@@ -382,7 +374,6 @@ const subjectsLectures = {
       'https://drive.google.com/file/d/1_ONDwpd5qxEVBZiA9q2QVFbobE7CjqSs/view?usp=drivesdk'
     ]
   },
-
   l1t2s3: {
     name: '⚛️ Physics II',
     lectures: [
@@ -425,7 +416,6 @@ const subjectsLectures = {
       'https://drive.google.com/file/d/1bYdH2ddl5Goqo1h-dKqJglcu-w3FIjs4/view?usp=drivesdk'
     ]
   },
-
   l1t2s4: {
     name: '🧮 Mathematics for Computer Science (MCS)',
     lectures: [
@@ -459,7 +449,6 @@ const subjectsLectures = {
     ],
     exams: [], examSolutions: []
   },
-
   l1t2s5: {
     name: '🔷 Object Oriented Programming (OOP)',
     lectures: [
@@ -502,7 +491,6 @@ const subjectsLectures = {
     ],
     examSolutions: []
   },
-
   l1t2s6: {
     name: '🇸🇦 Arabic',
     lectures: [], sections: [],
@@ -517,7 +505,6 @@ const subjectsLectures = {
     ],
     examSolutions: []
   },
-
   l1t2s7: {
     name: '🤝 حاسب ومجتمع',
     lectures: [
@@ -532,7 +519,6 @@ const subjectsLectures = {
     ],
     examSolutions: []
   },
-
   dataScience: {
     name: '📊 Data Science',
     lectures: [
@@ -547,7 +533,6 @@ const subjectsLectures = {
     ],
     sections: [], summaries: [], solutions: [], exams: [], examSolutions: []
   },
-
   softwareEngineering: { name: '💻 Software Engineering', lectures: [], sections: [], summaries: [], solutions: [], exams: [], examSolutions: [] },
   math: { name: '➗ Math III', lectures: [], sections: [], summaries: [], solutions: [], exams: [], examSolutions: [] },
   multimedia: { name: '🎬 Multimedia Systems', lectures: [], sections: [], summaries: [], solutions: [], exams: [], examSolutions: [] },
@@ -556,6 +541,7 @@ const subjectsLectures = {
   project1: { name: '📋 Project I', lectures: [], sections: [], summaries: [], solutions: [], exams: [], examSolutions: [], isProject: true },
   project2: { name: '📋 Project II', lectures: [], sections: [], summaries: [], solutions: [], exams: [], examSolutions: [], isProject: true }
 };
+
 // ====== المتغيرات ======
 let currentLevel = null;
 let currentSubjectId = null;
@@ -568,6 +554,8 @@ let fbFns = null;
 let currentUser = null;
 let isGuest = false;
 let gateMode = 'login';
+let forgotCountdownInterval = null;
+let forgotCooldownSeconds = 0;
 
 // ====== نظام الأصوات ======
 function playSound(type) {
@@ -977,6 +965,7 @@ function editPersonalItem(subjectId, type, itemId) {
   playSound('success');
   showToast('✅ تم التعديل');
 }
+
 // ====== تعبئة محتوى المادة ======
 function renderMaterialContent(subjectId, type) {
   const container = document.getElementById(`material-${type}`);
@@ -1891,9 +1880,6 @@ function authErrorMessage(code) {
 // ====== Forgot Password ======
 // ============================================================
 
-let forgotCountdownInterval = null;
-let forgotCooldownSeconds = 0;
-
 function openForgotPasswordModal(e) {
   if (e) e.preventDefault();
 
@@ -1906,7 +1892,6 @@ function openForgotPasswordModal(e) {
   const gateEmail = document.getElementById('gateEmail');
   const forgotEmail = document.getElementById('forgotEmail');
 
-  // ✅ لو كتب إيميل في الصفحة الأساسية → نملّيه تلقائي
   if (gateEmail && gateEmail.value.trim() && forgotEmail) {
     const email = gateEmail.value.trim();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -1915,7 +1900,6 @@ function openForgotPasswordModal(e) {
     }
   }
 
-  // ✅ إعادة تعيين الحالة
   resetForgotPasswordUI();
 
   modal.classList.remove('hidden');
@@ -1927,7 +1911,6 @@ function openForgotPasswordModal(e) {
 }
 
 function resetForgotPasswordUI() {
-  // إيقاف أي عدّاد قديم
   if (forgotCountdownInterval) {
     clearInterval(forgotCountdownInterval);
     forgotCountdownInterval = null;
@@ -1961,7 +1944,6 @@ function startForgotCountdown(seconds = 60) {
   const success = document.getElementById('forgotSuccess');
   const emailInput = document.getElementById('forgotEmail');
 
-  // اخفي زرار الإرسال + عرض النجاح + العدّاد
   if (submitBtn) submitBtn.classList.add('hidden');
   if (resendBtn) resendBtn.classList.add('hidden');
   if (success) success.classList.remove('hidden');
@@ -1981,7 +1963,6 @@ function startForgotCountdown(seconds = 60) {
       clearInterval(forgotCountdownInterval);
       forgotCountdownInterval = null;
 
-      // إظهار زرار إعادة الإرسال
       if (countdown) countdown.classList.add('hidden');
       if (resendBtn) resendBtn.classList.remove('hidden');
       if (emailInput) emailInput.disabled = false;
@@ -1992,8 +1973,6 @@ function startForgotCountdown(seconds = 60) {
 function closeForgotPasswordModal() {
   const modal = document.getElementById('forgotPasswordModal');
   if (modal) modal.classList.add('hidden');
-
-  // ⚠️ ما نوقفش العدّاد عشان لو رجع يفتح يلاقيه شغال
 }
 
 async function handleForgotPassword(isResend = false) {
@@ -2002,7 +1981,6 @@ async function handleForgotPassword(isResend = false) {
     return;
   }
 
-  // لو في cooldown شغال
   if (forgotCooldownSeconds > 0 && !isResend) {
     showToast('⏳ استنى ' + forgotCooldownSeconds + ' ثانية');
     return;
@@ -2033,13 +2011,10 @@ async function handleForgotPassword(isResend = false) {
     await fbFns.sendPasswordResetEmail(fbAuth, email);
     showToast('📨 بعتنالك رابط الاستعادة على إيميلك');
     playSound('success');
-
-    // ✅ ابدأ العدّاد
     startForgotCountdown(60);
   } catch (error) {
     console.error(error);
     if (error.code === 'auth/user-not-found') {
-      // لأسباب أمنية، نظهر نفس الرسالة
       showToast('📨 لو الإيميل مسجل، هيوصلك رابط الاستعادة');
       playSound('success');
       startForgotCountdown(60);
@@ -2048,55 +2023,6 @@ async function handleForgotPassword(isResend = false) {
       btn.disabled = false;
       btn.textContent = original;
     }
-  }
-}
-function closeForgotPasswordModal() {
-  const modal = document.getElementById('forgotPasswordModal');
-  if (modal) modal.classList.add('hidden');
-}
-
-async function handleForgotPassword() {
-  if (!fbFns) {
-    showToast('⏳ Firebase لسه مجهزش');
-    return;
-  }
-
-  const email = document.getElementById('forgotEmail').value.trim();
-
-  if (!email) {
-    showToast('⚠️ اكتب الإيميل الأول');
-    return;
-  }
-
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    showToast('⚠️ الإيميل غير صحيح');
-    return;
-  }
-
-  const btn = document.getElementById('forgotSubmitBtn');
-  const original = btn.textContent;
-  btn.disabled = true;
-  btn.textContent = '⏳ جاري الإرسال...';
-
-  try {
-    await fbFns.sendPasswordResetEmail(fbAuth, email);
-    showToast('📨 بعتنالك رابط الاستعادة على إيميلك');
-    playSound('success');
-    closeForgotPasswordModal();
-    document.getElementById('forgotEmail').value = '';
-  } catch (error) {
-    console.error(error);
-    if (error.code === 'auth/user-not-found') {
-      showToast('📨 لو الإيميل مسجل، هيوصلك رابط الاستعادة');
-      playSound('success');
-      closeForgotPasswordModal();
-    } else {
-      showToast('⚠️ ' + authErrorMessage(error.code));
-    }
-  } finally {
-    btn.disabled = false;
-    btn.textContent = original;
   }
 }
 
