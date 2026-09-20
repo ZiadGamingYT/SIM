@@ -174,16 +174,12 @@ const subjectsLectures = {
       'https://drive.google.com/file/d/1zvRK44OP6gelNSK4jr4a2eMChoRuGORB/view?usp=drivesdk',
       'https://drive.google.com/file/d/1MNP6XM6qR3OVE8m-SXMqnBsxHGoYTkr9/view?usp=drivesdk'
     ],
-    sections: [
-      'https://drive.google.com/file/d/1rp9AFRT8sdwj0Nn-qBaJZKr1Ogk3ogTN/view?usp=drivesdk'
-    ],
+    sections: ['https://drive.google.com/file/d/1rp9AFRT8sdwj0Nn-qBaJZKr1Ogk3ogTN/view?usp=drivesdk'],
     summaries: [
       'https://drive.google.com/file/d/1fHzz-2X75g7Bg5GtBgJn2hkYbYBoYUj1/view?usp=drivesdk',
       'https://drive.google.com/file/d/1IsmhEx-Hr28yuec6gw8z2MElS9VCV1-u/view?usp=drivesdk'
     ],
-    solutions: [
-      'https://drive.google.com/file/d/1rOeUJRwmEBd1oeLo2f0uUM5uN2Gb_tjO/view?usp=drivesdk'
-    ],
+    solutions: ['https://drive.google.com/file/d/1rOeUJRwmEBd1oeLo2f0uUM5uN2Gb_tjO/view?usp=drivesdk'],
     exams: [], examSolutions: []
   },
   l1t1s3: {
@@ -253,9 +249,7 @@ const subjectsLectures = {
       'https://drive.google.com/file/d/1M_cnMHzBgv1mWekDcirNxxed2wUQdzMf/view?usp=drivesdk',
       'https://drive.google.com/file/d/1LalUqkj9NEg3Ntegt3IWTxcsxYT-555m/view?usp=drivesdk'
     ],
-    examSolutions: [
-      'https://drive.google.com/file/d/1HkX9NZsE8HqMVKIrqlE1lBRY-clEdUIG/view?usp=drivesdk'
-    ]
+    examSolutions: ['https://drive.google.com/file/d/1HkX9NZsE8HqMVKIrqlE1lBRY-clEdUIG/view?usp=drivesdk']
   },
   l1t1s5: {
     name: '🇬🇧 English',
@@ -350,9 +344,7 @@ const subjectsLectures = {
       'https://drive.google.com/file/d/1FaSYLfLWjG5lR-D-ZSlz2ku6hNANLY2U/view?usp=drivesdk',
       'https://drive.google.com/file/d/1iTeFTddP7tzHNdLO-rClfibQuCJRtVA1/view?usp=drivesdk'
     ],
-    summaries: [
-      'https://drive.google.com/file/d/1cG_9pOdhMyASGVRZWZCXZenr7aB3M0eY/view?usp=drivesdk'
-    ],
+    summaries: ['https://drive.google.com/file/d/1cG_9pOdhMyASGVRZWZCXZenr7aB3M0eY/view?usp=drivesdk'],
     solutions: [
       'https://drive.google.com/file/d/1rgeBBDK64ZqZRrnwx1hq0chCNMvMAHe4/view?usp=drivesdk',
       'https://drive.google.com/file/d/1iqm88Y01C9nbX4FgL9W-uyGpThOgaTcc/view?usp=drivesdk',
@@ -387,9 +379,7 @@ const subjectsLectures = {
       'https://drive.google.com/file/d/1QSKOH4B-RxTh2VL66JADUJXIRlzyT2cn/view?usp=drivesdk',
       'https://drive.google.com/file/d/1tn_zFBqMFSbefWMYxdFrs29FBosooTMi/view?usp=drivesdk'
     ],
-    sections: [
-      'https://drive.google.com/file/d/1Eqgran95B8T-E9hbVYW_upTziu_UGAyJ/view?usp=drivesdk'
-    ],
+    sections: ['https://drive.google.com/file/d/1Eqgran95B8T-E9hbVYW_upTziu_UGAyJ/view?usp=drivesdk'],
     summaries: [
       'https://drive.google.com/file/d/1s2WAHLGBS0DGxIwGGjotXmqByN_TvUvW/view?usp=drivesdk',
       'https://drive.google.com/file/d/1p1nMRqNA2qBmnlhzLbD2zC3np3XpzGf3/view?usp=drivesdk',
@@ -471,9 +461,7 @@ const subjectsLectures = {
       'https://drive.google.com/file/d/1aAfK8S1ld8DVykHG9LQVB4RhNr0GoO2v/view?usp=drivesdk',
       'https://drive.google.com/file/d/1HuBQWTF_sUB8ZNAChsAHNXPfNjH0M7Hc/view?usp=drivesdk'
     ],
-    summaries: [
-      'https://drive.google.com/file/d/1wghhlbPjogeykxgD-L4tVb5bK9jezxqx/view?usp=drivesdk'
-    ],
+    summaries: ['https://drive.google.com/file/d/1wghhlbPjogeykxgD-L4tVb5bK9jezxqx/view?usp=drivesdk'],
     solutions: [
       'https://drive.google.com/file/d/1Ubnmn7NwtuCGrcNweFqrU7Vz0RrGAg7w/view?usp=drivesdk',
       'https://drive.google.com/file/d/1KrUKPIz3mEmgAcPB-9uzwAK3jv_2MF4s/view?usp=drivesdk',
@@ -500,9 +488,7 @@ const subjectsLectures = {
       'https://drive.google.com/file/d/1whL_Ma8pWVqvVwtbFh2L_UhDeH30u74U/view?usp=drivesdk'
     ],
     solutions: [],
-    exams: [
-      'https://drive.google.com/file/d/1xaNzL80mmyIv4d6zVE0QVLRwNyohuMHW/view?usp=drivesdk'
-    ],
+    exams: ['https://drive.google.com/file/d/1xaNzL80mmyIv4d6zVE0QVLRwNyohuMHW/view?usp=drivesdk'],
     examSolutions: []
   },
   l1t2s7: {
@@ -514,9 +500,7 @@ const subjectsLectures = {
       'https://docs.google.com/presentation/d/1TZ-4y04vn7IahJVW7lUeaRXPQcZDoWmi/edit?usp=drivesdk&ouid=116809461578921657543&rtpof=true&sd=true'
     ],
     sections: [], summaries: [], solutions: [],
-    exams: [
-      'https://drive.google.com/file/d/1cri8Kd66qEnHUAxoYf2IaMoOPQS3x_OS/view?usp=drivesdk'
-    ],
+    exams: ['https://drive.google.com/file/d/1cri8Kd66qEnHUAxoYf2IaMoOPQS3x_OS/view?usp=drivesdk'],
     examSolutions: []
   },
   dataScience: {
@@ -1892,11 +1876,8 @@ function openForgotPasswordModal(e) {
   const gateEmail = document.getElementById('gateEmail');
   const forgotEmail = document.getElementById('forgotEmail');
 
-  // ✅ إعادة تعيين المودال الأول
   resetForgotPasswordUI();
 
-  // ✅ لو المستخدم كتب إيميل في الصفحة الأساسية → نملّيه تلقائي
-  // لو مش كتب → سيب الحقل فاضي والمستخدم يكتبه
   if (forgotEmail) {
     forgotEmail.value = '';
     if (gateEmail && gateEmail.value.trim()) {
@@ -1908,7 +1889,6 @@ function openForgotPasswordModal(e) {
     }
   }
 
-  // ✅ نفتح المودال دائمًا
   modal.classList.remove('hidden');
 
   setTimeout(() => {
@@ -2034,6 +2014,26 @@ async function handleForgotPassword(isResend = false) {
     }
   }
 }
+
+// ============================================================
+// ====== ربط زرار "نسيت كلمة المرور" ======
+// ============================================================
+function bindForgotPasswordButton() {
+  const btn = document.getElementById('openForgotBtn');
+  if (btn && !btn._listenerAdded) {
+    btn._listenerAdded = true;
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      openForgotPasswordModal(e);
+    });
+  }
+}
+
+document.addEventListener('DOMContentLoaded', bindForgotPasswordButton);
+window.addEventListener('load', function() {
+  bindForgotPasswordButton();
+});
 
 // ============================================================
 // ====== Escape Key ======
