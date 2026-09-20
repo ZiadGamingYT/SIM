@@ -105,418 +105,22 @@ const levelsData = {
 
 // ====== بيانات المواد ======
 const subjectsLectures = {
-  l1t1s0: {
-    name: '📐 Math 0 ( لطلاب علمي علوم )',
-    lectures: [
-      'https://drive.google.com/file/d/1aHnLPwjqj41a2ei6tToBmu9McSuucup2/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1MZyB1rQLhX_-DOy6pCJTCzhk7ntvilEK/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1VVbkUEwrXxZ6xI-t3szUWuEK45PDniwv/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1exnrHOGbbrmHNmZtU-9dHScHJAestsJy/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1NTIDjx-CW-bEEpqHy0uWDsJjP1nJhMb-/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1w0p-u5FPAwzRu5ZpMjzQlWoVtJiwtIsV/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1GImQB71CoCVImWvRjHjX2idnc5UHEg_-/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1F1PL4fcCz7yNY9Pd6gn6mO87ITxQUPXb/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1XnwcrTZaLn2Zwm8S-3Cr_tuxfF-CBnDo/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1Qv6vvO9V9zB3Zzo3kBX3C2BBGULYHb2w/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1C-KPVFkmfsriUvpkIUZxwsO5CRXfBnJh/view?usp=drivesdk'
-    ],
-    sections: [], summaries: [], solutions: [], exams: [], examSolutions: []
-  },
-  l1t1s1: {
-    name: '📐 Math I',
-    lectures: [
-      'https://drive.google.com/file/d/1uqKNbQsG-Bl_mBZpCEWXJVCMBYKtrD-s/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1xaKtpak5VwohwkrQoIw4wFgOUfoO69j1/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1Ql0XSNjoCSDc-zTDY_tBhJOM1A50ctlm/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1AayTWoVbshZDr_3AN_N621JkSICqjg9l/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1eypGnyY1VSD12CwCZ168Zguj8HM2IfaM/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1_VmYzNWGaV0XHf_rALfA-3V1PmZwPf1R/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1bBREFbKjBX8DjI_z0WCosnNWhcwa0ciA/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1vXekGBt3GfiyGFKvnrdrf2EfgcGRmbFE/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1wGQkgG_JEsvHAnw6uYU5mt-HpLiiqCNA/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1N0YnsebF62zoHQcjokE6Fl12RGFSa6XE/view?usp=drivesdk'
-    ],
-    sections: [
-      'https://drive.google.com/file/d/1oLukH2Z4heGeutK9sWEsBGqTfbHwbzqU/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1Pet_Oj0krRB8IPxEqBN8_8zTltQw-Tu5/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1cIFeS--umZvvL_Hu5lrEVw7XDg9rJjSY/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1UEAgffshbimme4TPXZImg2XkUG71Iqgb/view?usp=drivesdk',
-      'https://drive.google.com/file/d/182GPrbIxPs-9m2h6dBef4lMaJ9afwRCZ/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1rOXhsxxyYA5KilczwjAJfFZ_jk1naMKp/view?usp=drivesdk',
-      'https://drive.google.com/file/d/15cTl7DXBpSngC2OUvlmEKOPm6WPw5njT/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1nPJSrEgfeek7i_ukAY2mgkiVDR1pI16M/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1qlEQrUC9r37CcOZsrTq2H6sWCJ81RkWV/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1F_XfPlxe25OrAiM4bo7AhAry1EcH_Gfa/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1kKsXMWZ7oh1j5HetIeZhV48RaLVCFVnA/view?usp=drivesdk'
-    ],
-    summaries: [
-      'https://drive.google.com/file/d/166Sbo_D6cFklJDwmJUP2zdT7uHIHEclB/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1SL4uLSEOkcMbNaSa0MktJQ8jxoxHxe1B/view?usp=drivesdk'
-    ],
-    solutions: [
-      'https://drive.google.com/file/d/1eUmyMAB5VeNWFKDlnabrIRgyvuIL3U-y/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1rrfeAVxt_fwr2AgWggwP3CZORWE2HBZf/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1Tsp2EA-XCKFYUgo57zn0HHFxx2IaUrpL/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1HmUCvpHtKFrlgnILgywg88Bt3BuC9oYL/view?usp=drivesdk'
-    ],
-    exams: [], examSolutions: []
-  },
-  l1t1s2: {
-    name: '⚛️ Physics I',
-    lectures: [
-      'https://drive.google.com/file/d/1DLGjDkDjKW_WbWn1tQIi6d8SfoO66Foj/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1WOYHJ3lexlDaqQ6Yk4WKR0sx54ykvQiR/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1aqDGu8NTTRax3dGirtL7n3ohGEmxxMKs/view?usp=drivesdk',
-      'https://drive.google.com/file/d/15tohSzreLNO2GEBK_lryUvYMtrg1ESwn/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1vgfZqG5KLWn1go6iQzgWhxkPrzfjcFdp/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1KxluU0b-ahpKTYEp7Aj_NndsDPgf4uLy/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1HE3rodAHZrG17Wt48t-lnJ0ZYPsqKnrU/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1zvRK44OP6gelNSK4jr4a2eMChoRuGORB/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1MNP6XM6qR3OVE8m-SXMqnBsxHGoYTkr9/view?usp=drivesdk'
-    ],
-    sections: ['https://drive.google.com/file/d/1rp9AFRT8sdwj0Nn-qBaJZKr1Ogk3ogTN/view?usp=drivesdk'],
-    summaries: [
-      'https://drive.google.com/file/d/1fHzz-2X75g7Bg5GtBgJn2hkYbYBoYUj1/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1IsmhEx-Hr28yuec6gw8z2MElS9VCV1-u/view?usp=drivesdk'
-    ],
-    solutions: ['https://drive.google.com/file/d/1rOeUJRwmEBd1oeLo2f0uUM5uN2Gb_tjO/view?usp=drivesdk'],
-    exams: [], examSolutions: []
-  },
-  l1t1s3: {
-    name: '💻 Introduction to Computing Technology',
-    lectures: [
-      'https://drive.google.com/file/d/139p2O6zEYuUG_xWshX0JfV9CHCQwrrYG/view?usp=drivesdk',
-      'https://docs.google.com/presentation/d/1q-8EQq3QLWakho2R9VilkFKwVZJGqKVA/edit?usp=drivesdk&ouid=116809461578921657543&rtpof=true&sd=true',
-      'https://docs.google.com/presentation/d/1-AWnEh9HLtOaJJswf79tS9lk6p3DRgo5/edit?usp=drivesdk&ouid=116809461578921657543&rtpof=true&sd=true',
-      'https://docs.google.com/presentation/d/1dqxds9C2wWethkYQp_22EvXSEauHQ9aW/edit?usp=drivesdk&ouid=116809461578921657543&rtpof=true&sd=true',
-      'https://docs.google.com/presentation/d/1r45qeF8fVhbaFzqt9kd8haH72N_9xiaJ/edit?usp=drivesdk&ouid=116809461578921657543&rtpof=true&sd=true',
-      'https://docs.google.com/presentation/d/17ojMR4EEOsJEmSG9_KJgmaMU33McoEHp/edit?usp=drivesdk&ouid=116809461578921657543&rtpof=true&sd=true',
-      'https://docs.google.com/presentation/d/1DkrvoNv_PxiI8Rj4XUclHexmBw1CeaSe/edit?usp=drivesdk&ouid=116809461578921657543&rtpof=true&sd=true',
-      'https://docs.google.com/presentation/d/1rGQfgFMTsZBBwoHQkN6W5x1fI1j1N6O2/edit?usp=drivesdk&ouid=116809461578921657543&rtpof=true&sd=true'
-    ],
-    sections: [
-      'https://drive.google.com/file/d/1nS69Omllny-w6FyeArbME-uATzgbXotG/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1Tbhb7mkjWCXAhRcB8YcDWMXTerdVNS7l/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1HuV1oIaL2gM6uOnMunpyifOMY-1g7uMM/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1bftzzIAIPhph5Ox04ntgo9KE6j6UMhUN/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1jUl0lrHDZA9gmD_hQdiXJ05AMZIlhqn8/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1IQMQIoBlW5FLTOPh-fJGIJh0PFMj3Tye/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1_TLi_oMm3LogtEs6P7eto8vQph-fRPRF/view?usp=drivesdk'
-    ],
-    summaries: [],
-    solutions: [
-      'https://drive.google.com/file/d/1nS69Omllny-w6FyeArbME-uATzgbXotG/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1N2oaFe76POdbVsEpKksoV3l5bmAMAHWT/view?usp=drivesdk',
-      'https://drive.google.com/file/d/19G1XMDYnYGqNFhpG8ORLNMsP2KZunn6o/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1zK4jGh2C4jB8eWRtBqy9hU2GIiRJGN48/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1fU7XM49grHOlb1rpMKdj0R-R2Zb-QGI6/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1B1gn8fpzJhI1jHBK9qMigkIoOyVBbYtt/view?usp=drivesdk'
-    ],
-    exams: [], examSolutions: []
-  },
-  l1t1s4: {
-    name: '🖥️ Computer Programming I',
-    lectures: [
-      'https://drive.google.com/file/d/1CyeSIBwbk_3m7k2WtAl6sOtRTTmwifIO/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1pdY6UCC4ixVXFdxXcb9uxrHIoB1xTbGf/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1fvnQlNvDex6JJ6TD9385SU-q87kw1wiT/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1PIOMb6QWAAcAYEDQ3mPcpPswUrWMYkON/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1A626BsUTtnVPl86cmXYwefP1kpLS6thi/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1HmzTSyl0PD8fj6nU0jJsOaSw-XowmX4F/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1XUMA7LbEBmcS842iYibT0CPD4OzlqxUK/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1ZM48eSkNOLfNFEfKPykys7j7d-Gc-QiM/view?usp=drivesdk'
-    ],
-    sections: [
-      'https://drive.google.com/file/d/1Rz88Totjjh9u3j6uvpENJALXOM-e9rJ5/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1Zh_EdMkssq5mZOK7MCHVek5SRXnTeSLs/view?usp=drivesdk',
-      'https://drive.google.com/file/d/17wpLkDV6w8dW7lqAxl-lrm97asYv3qVe/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1AZQXLewtXdzImM2zWE8Py8ZHVhZqgfYx/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1w_pubH9-BzP3wmzcW_BypoCVHR5b5L9E/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1gI6O-P8pPP6VTWYF9hzKCyzcQfjLvTwJ/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1l92fu5ij_montVYLAkiZcT1gU-tMDyk_/view?usp=drivesdk'
-    ],
-    summaries: [],
-    solutions: [
-      'https://drive.google.com/file/d/1q4SsnJ0s9zMx_irRPo2eYm3JytbhKKeT/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1Ay_Phv0OkTCWDMx2VMx_crRT8tjJsI3e/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1eNT9__-aUbUnNts6OyBcoGaT-JLJGW6E/view?usp=drivesdk',
-      'https://drive.google.com/file/d/12lSQxRbx54d_FNmuRYLTAU3z_JmlgC4h/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1rrOeSZ-djnQqVkA7fVt10okWJQN1-4AX/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1X1LrcB2-OtptrDIQSlc-3XxdHwUK-kPp/view?usp=drivesdk',
-      'https://drive.google.com/file/d/13smzLkuxvzzJq77a-otKDwu08wydIPZD/view?usp=drivesdk'
-    ],
-    exams: [
-      'https://drive.google.com/file/d/1M_cnMHzBgv1mWekDcirNxxed2wUQdzMf/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1LalUqkj9NEg3Ntegt3IWTxcsxYT-555m/view?usp=drivesdk'
-    ],
-    examSolutions: ['https://drive.google.com/file/d/1HkX9NZsE8HqMVKIrqlE1lBRY-clEdUIG/view?usp=drivesdk']
-  },
-  l1t1s5: {
-    name: '🇬🇧 English',
-    lectures: [
-      'https://drive.google.com/file/d/1I_D44mR4_fGh3feuNSXkVB63zMa07-2-/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1qvXgiUPrWJnABJeAs7URl7yt0I1gevdL/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1TejE77NHgbq3yoR5FOKj5BpBfX8pg2BT/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1csoerE3vRbZbnTta2YEBxmul0FmVJ7qB/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1yuOXF3FFyOGejb9g_s_EAuEJDT_5ycud/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1NKqJvWngii_lLHj_h2HeuR_MkkhXdZJc/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1IIfWm2_7fRmTfdk8JBrJLRuF78vz65nU/view?usp=drivesdk'
-    ],
-    sections: [], summaries: [], solutions: [], exams: [], examSolutions: []
-  },
-  l1t1s6: {
-    name: '📜 تاريخ علوم',
-    lectures: [
-      'https://drive.google.com/file/d/10koVaYItpWBoTTp3v_ZlWG8TjJ9RXwnD/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1VjejxQ6Qp8PElvML7yvw31fS-cz28vk5/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1q389Qf2Zp7wZ5GNZGVRQvvWbEF3eYKCH/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1YYiELsz2B78Z--KOU0OhbxG6Sq17Sffw/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1b1QINlvHkL2Uai4IbYYyty2WqeSEvyhp/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1oUD8pEriBgp2AUNiOqdqMSwdj1smF3ul/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1VuWNiS5Pmw24257XXPobQAGKrNJMmFNI/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1-E4upOS24ooQPdCMmJ58DjZ7cNaS6OqG/view?usp=drivesdk'
-    ],
-    sections: [], summaries: [], solutions: [], exams: [], examSolutions: []
-  },
-  l1t1s7: {
-    name: '🌍 إنسان وبيئة',
-    lectures: [
-      'https://drive.google.com/file/d/1oGVl89y2h4zPBzk6y71dQnAfJOBnS7n3/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1sw-hxRxH52DZhWwVFZA74FvZzk8cuJcn/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1FDBn9cyafyOpfQxJ4LNsy0U_5e_9Ax7g/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1CIYlwupSh95SJ_C8ZYuPmfUx4Mu0WcMp/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1KinaIFmgcYLxQwzb8Er1kuXbLTjQX3s_/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1PFuMQZUtqYqN9J1tw3KS4j40B1zoAQP7/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1-6w1-gwjvHRzb4SVG45xpZwU-76I5dTj/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1soTNNpXmjae9pgD_XUoWHkyGoqyiOSea/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1eQD5t02tPvwk1FPOSqtSOjYYUvcsNC0v/view?usp=drivesdk'
-    ],
-    sections: [], summaries: [], solutions: [], exams: [], examSolutions: []
-  },
-  l1t2s1: {
-    name: '📐 Math II',
-    lectures: [
-      'https://drive.google.com/file/d/1nG20OOBt0WVsccLickSraegVHeHGTNNV/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1FJ91mxOYV_DJdujVl2lnLyvp-LJSx5Be/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1hWJ0IbLjng3BhBx6Cq8h04m2TxOMFJzZ/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1y_fKF4_6XX2Y8VDhLjodXEHubVLW1LHZ/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1LlqNgyemMUsXi76NRUDZxBDleuvamEMq/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1poy1tcdtGy8UZcDPCu8DSZxJLHsHtlnd/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1KiSEif9hg2AOupFgwFZMYXugAp-ZUBEw/view?usp=drivesdk'
-    ],
-    sections: [
-      'https://drive.google.com/file/d/1dcyiaVivcrqrDDDWLclAuPJlU2mCteBR/view?usp=drivesdk',
-      'https://drive.google.com/file/d/12yDLgT9zqvr_vlHZzWuXdhsqm-ltXeC0/view?usp=drivesdk',
-      'https://drive.google.com/file/d/16qDyD4zRFaTYW_TQSrSHpJ-eYopJK7V1/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1SMjlSl4fmtwCnXxk2gd9uOq4QbaXzWzd/view?usp=drivesdk'
-    ],
-    summaries: [
-      'https://drive.google.com/file/d/1TtJoDIBjiS-auGn-L8MMW2DDIuo-PTq_/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1Q9LMY_ILg3XUZae2UGRH2LZtgMfSGA8p/view?usp=drivesdk'
-    ],
-    solutions: [
-      'https://drive.google.com/file/d/1YNCxIjXNou_M6XKAPutX_4sltfSgRRte/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1RS7BixvOvIIM_dZ9NhmhcjRm6DUMKllx/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1rBhUYN3CUo0uf5XXJltHJGMNMcKZ524L/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1W2mXkOSdc6daHkdqcE-V15IHxomhFSPV/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1w0eAObsIpmxTY9eAJuTw3hWUu80rHhvo/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1iFQfzoHPPHTvLNM53jRxeNUaFDfGjqGF/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1E7vzNnW5KBBd4atVpuplb8bwJqt8-9UE/view?usp=drivesdk'
-    ],
-    exams: [], examSolutions: []
-  },
-  l1t2s2: {
-    name: '🎲 Introduction to Probability',
-    lectures: [
-      'https://drive.google.com/file/d/1E7KZzLy3fuZxz4HHoJ7NtTI_3eBywvM8/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1Fk4fmDuXqirgnMwvWqh_1XGIrEDbFdsy/view?usp=drivesdk',
-      'https://drive.google.com/file/d/15UiV30ifIZRssAVuAIL7-MzlpZxH5gD3/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1joZ7PVuG3iqSlS5zwgG7xHVbnGGn5G9K/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1yHCmSqd-R0ftORlxKSMZ9FdMY-yvGjUA/view?usp=drivesdk',
-      'https://drive.google.com/file/d/19AVsQzZU5lff3yCnfhOVzjk_TJ13WfBj/view?usp=drivesdk'
-    ],
-    sections: [
-      'https://drive.google.com/file/d/15FnhO3iGtt7LBcq63ua_9FsGfkMrSsTU/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1T3kGTeZ79-g1bvQEzMiNpta0yWH8lsvB/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1vKq2UUGkwL0Oz5-aF1DyKOIDJ0aDwxGD/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1aQSMTZa1Rf2F7O3-J0jm1HM9StEb5tvk/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1MaxXa1PJCPpUppNrZnxUIT95A8B43GtU/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1FaSYLfLWjG5lR-D-ZSlz2ku6hNANLY2U/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1iTeFTddP7tzHNdLO-rClfibQuCJRtVA1/view?usp=drivesdk'
-    ],
-    summaries: ['https://drive.google.com/file/d/1cG_9pOdhMyASGVRZWZCXZenr7aB3M0eY/view?usp=drivesdk'],
-    solutions: [
-      'https://drive.google.com/file/d/1rgeBBDK64ZqZRrnwx1hq0chCNMvMAHe4/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1iqm88Y01C9nbX4FgL9W-uyGpThOgaTcc/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1AR0FmvEYe9edw74MLY91ccGTztNiO0hN/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1Mv6bhH_6FJ-hDpALdxGqvkaOtnulfxXR/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1AcL36KsYwRPA761TdJb07bzN3hTj2N1c/view?usp=drivesdk',
-      'https://drive.google.com/file/d/125t4BDB5taKPzKK3tFtn6QVPK8gGXgLr/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1peDch-xD0Um8udmTmMx0ibBtUcOLEr_c/view?usp=drivesdk'
-    ],
-    exams: [
-      'https://drive.google.com/file/d/17BYFJFOnh2yAMlQmqdWC8q9mCfvt7APN/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1m9y330qoASjfTlMmr-dGq9HDFbcpiMOt/view?usp=drivesdk'
-    ],
-    examSolutions: [
-      'https://drive.google.com/file/d/17yXaOWJau3ZlPVTDREKj8zg6p48-SvYs/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1bMwyche65bBH5vdyoISnH4S5_l3tOi1F/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1qs8VcXv1LK-uPmqmZuru8BmEm6UlvRf1/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1klHGfOmCCqwwtSGT1hp2iaHN2tVeK-5Q/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1_ONDwpd5qxEVBZiA9q2QVFbobE7CjqSs/view?usp=drivesdk'
-    ]
-  },
-  l1t2s3: {
-    name: '⚛️ Physics II',
-    lectures: [
-      'https://drive.google.com/file/d/1zAvRmSz778zWWwUS3ZuOrTlqI8RMTnlj/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1Q4T-yX0ztwmnHP5cGdpBVCndTG-6XOhz/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1c692zmV8UItf0aZuIGApOcOc4c-Mt7NN/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1mSmyuJq3Nai5FtrgIlZzfoB5JbOki69I/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1s4ujQKyZxQjXTphfBGHkY15OHruN0EnN/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1CXWMancmVRWwcFXYvkdgm1nmgCHTytz6/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1quxVB7Gy7UqBRHtMV0KAvz4JYhv8Pr8Q/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1QSKOH4B-RxTh2VL66JADUJXIRlzyT2cn/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1tn_zFBqMFSbefWMYxdFrs29FBosooTMi/view?usp=drivesdk'
-    ],
-    sections: ['https://drive.google.com/file/d/1Eqgran95B8T-E9hbVYW_upTziu_UGAyJ/view?usp=drivesdk'],
-    summaries: [
-      'https://drive.google.com/file/d/1s2WAHLGBS0DGxIwGGjotXmqByN_TvUvW/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1p1nMRqNA2qBmnlhzLbD2zC3np3XpzGf3/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1QlR8aCHmidJY6plDmRV1dqha6Ea2qPnZ/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1Bve2LPvPEepenQCmZd1Q93gd1AvKw8cR/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1LxOvLek-9T5S_nzYWwUOHL5HX93swhDj/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1Tutf3h2BHDiTZKfbNoVYdYWI3YMOTxfu/view?usp=drivesdk',
-      'https://drive.google.com/file/d/100mTNjKmNWN8_NdT2asi4E0Xg6ShNEHU/view?usp=drivesdk',
-      'https://drive.google.com/file/d/11TJBBjXVzn2ra5FC0blxxrBtdG-nRlAT/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1geV2p0M8K8kqI2J4uIYhvExn-V2uEMx6/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1-L3wvagfnyNDxAjiDywBFSqKFBbEDOVQ/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1IybJBBto2QK2YCEohYT4XGmz3UaSFGtj/view?usp=drivesdk'
-    ],
-    solutions: [
-      'https://drive.google.com/file/d/1oR-TzeHSokHJ44dH3S6XCMtNUxbc76es/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1QGPkYaItVEOR7r5T-SUnOh-JbGC2E8CE/view?usp=drivesdk'
-    ],
-    exams: [
-      'https://drive.google.com/file/d/1GxI8EEE7VWOPCxjRQgMIhVZD14XlmoHi/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1k9OBrkomD4JQRjTHWaZhrs1hY4sLXLUi/view?usp=drivesdk'
-    ],
-    examSolutions: [
-      'https://drive.google.com/file/d/1y3X68n7hLy5WTSWybsFolmrZDPXdyAuG/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1bYdH2ddl5Goqo1h-dKqJglcu-w3FIjs4/view?usp=drivesdk'
-    ]
-  },
-  l1t2s4: {
-    name: '🧮 Mathematics for Computer Science (MCS)',
-    lectures: [
-      'https://drive.google.com/file/d/1xBOSOytc7wYZmbxEABAyW4GSnVj38iML/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1lRB_h8s0nN4IbTawfRnatdeiVSt_eEhZ/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1LXQKJoGzeJcmIsLvZ2YGzuRHkHRrhxia/view?usp=drivesdk',
-      'https://docs.google.com/presentation/d/1hBgv2ZYpzQDjkDD6l6F_Ch00raBBP0yq/edit?usp=drivesdk&ouid=116809461578921657543&rtpof=true&sd=true',
-      'https://docs.google.com/presentation/d/1GFnF0x4qxF9lQK2eRFU-5kJUO4Xb2Fn9/edit?usp=drivesdk&ouid=116809461578921657543&rtpof=true&sd=true',
-      'https://docs.google.com/presentation/d/1u5njKueP9i-li9LKXk5_MHIYa6M3-8BY/edit?usp=drivesdk&ouid=116809461578921657543&rtpof=true&sd=true',
-      'https://docs.google.com/presentation/d/1ROoNg3yck1VSZYoebWEEz71uEgHLUFVW/edit?usp=drivesdk&ouid=116809461578921657543&rtpof=true&sd=true',
-      'https://docs.google.com/presentation/d/1EkzQd9slt66e1WQ2lYR6Z-uj0d2B8HTe/edit?usp=drivesdk&ouid=116809461578921657543&rtpof=true&sd=true'
-    ],
-    sections: [
-      'https://drive.google.com/file/d/1M8ayrtQcwNRk-8edvCKbu25H1mxXmsaK/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1t6-xF17ETQysG51Apg6971T3q3K7iaZv/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1wUrdXgzFMLZ6Ss6Kf9Rnpl85EOLOlBL8/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1cFrxG8bq1bibbw1t7zxsCoQnBwhoqgEr/view?usp=drivesdk',
-      'https://drive.google.com/file/d/15Vyjo_SoOTUEwd44IRKXhEWLNmIE_liv/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1y5brJaqoACbzyZlowvLOiJ-h6A9OSNL6/view?usp=drivesdk'
-    ],
-    summaries: [],
-    solutions: [
-      'https://drive.google.com/file/d/133KKd-I2xhwOGETdwspwqorsm4HGqLSj/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1uYvTCY7fL9Wh7QDjHyW3m__8t9JMk7mH/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1jj5eJWATeru4Hjwro0-gR_DNO6qZlrf9/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1UFdv3IH8NZh0z4WfQMpXiQKNv4DFTELF/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1fhduUQEyaD5iViijN_GgyB_UwkLhMyoy/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1WOfomvX1Ny0zyNLhIEA9jK0OAUKtP1A_/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1CZfGg6sYuJVokpLNhRmy8ElIp6mCDTRH/view?usp=drivesdk',
-      'https://drive.google.com/file/d/10UhEMm7b1GoRrsHIpD6k-nXqKZhq5xNM/view?usp=drivesdk'
-    ],
-    exams: [], examSolutions: []
-  },
-  l1t2s5: {
-    name: '🔷 Object Oriented Programming (OOP)',
-    lectures: [
-      'https://drive.google.com/file/d/1BYo0qyHCVlMsNeVnd48LFE_kEWw6dwqK/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1MOJqcZYsG-Yz8CwnbLHbH7-G3IdmjUNZ/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1Axgj0vnUo5zlTBvVIj8kQrqVGTvUGo-U/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1Dj_4-iJapyQpy3l9LQuk45Wvy-XWqaR1/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1fRerjJ2uRY0gC-V3V8wvbTic7hV_BVcJ/view?usp=drivesdk',
-      'https://drive.google.com/file/d/18G0b5vKecCfFFlW-IV96JpRTHiev3Cj-/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1QpXzBPCkzvOiLlc0FBfGwtXIq-z20s57/view?usp=drivesdk'
-    ],
-    sections: [
-      'https://drive.google.com/file/d/1dU_IXDVGIwenP20I_TPlCCsWJ5-ps0yP/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1xKM6B_J0G92zc1s4iagZ7-kbPIAXD4uE/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1mbl1DYRPvpSKXCKcYHwagA1JCXabhgvY/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1LZ51MTneKZqXKFtf2ZXsbEBHIzGb1zfi/view?usp=drivesdk',
-      'https://drive.google.com/file/d/17Y73viPkXMN30O6uvhEkkT8-ngWj80qV/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1agRgJrxN9KFK_32lKYbSY-L7OvW7YnZU/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1v3yQaV-_nfQyPxtQqI2ogztjSMEK_3BX/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1aAfK8S1ld8DVykHG9LQVB4RhNr0GoO2v/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1HuBQWTF_sUB8ZNAChsAHNXPfNjH0M7Hc/view?usp=drivesdk'
-    ],
-    summaries: ['https://drive.google.com/file/d/1wghhlbPjogeykxgD-L4tVb5bK9jezxqx/view?usp=drivesdk'],
-    solutions: [
-      'https://drive.google.com/file/d/1Ubnmn7NwtuCGrcNweFqrU7Vz0RrGAg7w/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1KrUKPIz3mEmgAcPB-9uzwAK3jv_2MF4s/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1iYmtqFstk_bXsZFzxMpYiZ6WxhtvZDqT/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1oD01E20dEmor-_SVzYavh-Kd_iO0OVMU/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1vukrRdmjIbTB0pYCA7-JbIQehu4RUBpP/view?usp=drivesdk',
-      'https://drive.google.com/file/d/17VS0qXvVGLHm2gG0fhLihNpvOumJYzfX/view?usp=drivesdk',
-      'https://drive.google.com/file/d/14TpvGiXMlXxyrhSo9OhwfaxoJLuDvNal/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1pu406xJ9zk8-vhoU_Bdv0S2NRWbeeRpv/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1-M3WklVkzvjvSGkPnlbQ6JcFbgoQm-Z2/view?usp=drivesdk'
-    ],
-    exams: [
-      'https://drive.google.com/file/d/1EHwI0B6t8sA2f5rUTH8knV8J7IZNhbZF/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1jR_EvG_BusRU5nhQenq8syTa1Zm47gJH/view?usp=drivesdk'
-    ],
-    examSolutions: []
-  },
-  l1t2s6: {
-    name: '🇸🇦 Arabic',
-    lectures: [], sections: [],
-    summaries: [
-      'https://drive.google.com/file/d/1k9pP8rg_KPsRpLSVptCEEmqkxSH3gUk8/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1IyIJijLImISp7ibMzmdJIgShtOeYuM2_/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1whL_Ma8pWVqvVwtbFh2L_UhDeH30u74U/view?usp=drivesdk'
-    ],
-    solutions: [],
-    exams: ['https://drive.google.com/file/d/1xaNzL80mmyIv4d6zVE0QVLRwNyohuMHW/view?usp=drivesdk'],
-    examSolutions: []
-  },
-  l1t2s7: {
-    name: '🤝 حاسب ومجتمع',
-    lectures: [
-      'https://drive.google.com/file/d/1Vqks2Dz1-3t9xnsLYBRdlYGiY_ZwX58S/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1dJ7W3-dK_0susc4FRGc3zRR95h4d_Op5/view?usp=drivesdk',
-      'https://docs.google.com/presentation/d/1Mv1DSa5KqnSwXus_boRWHxXPNYyyPVGg/edit?usp=drivesdk&ouid=116809461578921657543&rtpof=true&sd=true',
-      'https://docs.google.com/presentation/d/1TZ-4y04vn7IahJVW7lUeaRXPQcZDoWmi/edit?usp=drivesdk&ouid=116809461578921657543&rtpof=true&sd=true'
-    ],
-    sections: [], summaries: [], solutions: [],
-    exams: ['https://drive.google.com/file/d/1cri8Kd66qEnHUAxoYf2IaMoOPQS3x_OS/view?usp=drivesdk'],
-    examSolutions: []
-  },
-  dataScience: {
-    name: '📊 Data Science',
-    lectures: [
-      'https://drive.google.com/file/d/1dbKi-vRIFx3Ynl7-FmAtGcwaPr8LSWBh/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1r52kwBYqGtPAtTE13VAQIkTkEURh5r2H/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1YtZ1sNChbpqAPzc5mY2kaQEAqSkJR7Mz/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1HiOVGb66Rtc9ROM_-ikXoajCRSuaNT6a/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1jHCmkxxaThQvdZcrJ4yYWkg4AaVIGi-E/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1yT02KGhdF4AjYqlrsLUB7-DC34K-8MlU/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1LEc3a8DWWjQk4lrwC0DcTbhKoIZ1atty/view?usp=drivesdk',
-      'https://drive.google.com/file/d/1GbZRS7CNDoez8gVlARgGZspHBbkHhOF4/view?usp=drivesdk'
-    ],
-    sections: [], summaries: [], solutions: [], exams: [], examSolutions: []
-  },
+  l1t1s0: { name: '📐 Math 0 ( لطلاب علمي علوم )', lectures: ['https://drive.google.com/file/d/1aHnLPwjqj41a2ei6tToBmu9McSuucup2/view?usp=drivesdk','https://drive.google.com/file/d/1MZyB1rQLhX_-DOy6pCJTCzhk7ntvilEK/view?usp=drivesdk','https://drive.google.com/file/d/1VVbkUEwrXxZ6xI-t3szUWuEK45PDniwv/view?usp=drivesdk','https://drive.google.com/file/d/1exnrHOGbbrmHNmZtU-9dHScHJAestsJy/view?usp=drivesdk','https://drive.google.com/file/d/1NTIDjx-CW-bEEpqHy0uWDsJjP1nJhMb-/view?usp=drivesdk','https://drive.google.com/file/d/1w0p-u5FPAwzRu5ZpMjzQlWoVtJiwtIsV/view?usp=drivesdk','https://drive.google.com/file/d/1GImQB71CoCVImWvRjHjX2idnc5UHEg_-/view?usp=drivesdk','https://drive.google.com/file/d/1F1PL4fcCz7yNY9Pd6gn6mO87ITxQUPXb/view?usp=drivesdk','https://drive.google.com/file/d/1XnwcrTZaLn2Zwm8S-3Cr_tuxfF-CBnDo/view?usp=drivesdk','https://drive.google.com/file/d/1Qv6vvO9V9zB3Zzo3kBX3C2BBGULYHb2w/view?usp=drivesdk','https://drive.google.com/file/d/1C-KPVFkmfsriUvpkIUZxwsO5CRXfBnJh/view?usp=drivesdk'], sections: [], summaries: [], solutions: [], exams: [], examSolutions: [] },
+  l1t1s1: { name: '📐 Math I', lectures: ['https://drive.google.com/file/d/1uqKNbQsG-Bl_mBZpCEWXJVCMBYKtrD-s/view?usp=drivesdk','https://drive.google.com/file/d/1xaKtpak5VwohwkrQoIw4wFgOUfoO69j1/view?usp=drivesdk','https://drive.google.com/file/d/1Ql0XSNjoCSDc-zTDY_tBhJOM1A50ctlm/view?usp=drivesdk','https://drive.google.com/file/d/1AayTWoVbshZDr_3AN_N621JkSICqjg9l/view?usp=drivesdk','https://drive.google.com/file/d/1eypGnyY1VSD12CwCZ168Zguj8HM2IfaM/view?usp=drivesdk','https://drive.google.com/file/d/1_VmYzNWGaV0XHf_rALfA-3V1PmZwPf1R/view?usp=drivesdk','https://drive.google.com/file/d/1bBREFbKjBX8DjI_z0WCosnNWhcwa0ciA/view?usp=drivesdk','https://drive.google.com/file/d/1vXekGBt3GfiyGFKvnrdrf2EfgcGRmbFE/view?usp=drivesdk','https://drive.google.com/file/d/1wGQkgG_JEsvHAnw6uYU5mt-HpLiiqCNA/view?usp=drivesdk','https://drive.google.com/file/d/1N0YnsebF62zoHQcjokE6Fl12RGFSa6XE/view?usp=drivesdk'], sections: ['https://drive.google.com/file/d/1oLukH2Z4heGeutK9sWEsBGqTfbHwbzqU/view?usp=drivesdk','https://drive.google.com/file/d/1Pet_Oj0krRB8IPxEqBN8_8zTltQw-Tu5/view?usp=drivesdk','https://drive.google.com/file/d/1cIFeS--umZvvL_Hu5lrEVw7XDg9rJjSY/view?usp=drivesdk','https://drive.google.com/file/d/1UEAgffshbimme4TPXZImg2XkUG71Iqgb/view?usp=drivesdk','https://drive.google.com/file/d/182GPrbIxPs-9m2h6dBef4lMaJ9afwRCZ/view?usp=drivesdk','https://drive.google.com/file/d/1rOXhsxxyYA5KilczwjAJfFZ_jk1naMKp/view?usp=drivesdk','https://drive.google.com/file/d/15cTl7DXBpSngC2OUvlmEKOPm6WPw5njT/view?usp=drivesdk','https://drive.google.com/file/d/1nPJSrEgfeek7i_ukAY2mgkiVDR1pI16M/view?usp=drivesdk','https://drive.google.com/file/d/1qlEQrUC9r37CcOZsrTq2H6sWCJ81RkWV/view?usp=drivesdk','https://drive.google.com/file/d/1F_XfPlxe25OrAiM4bo7AhAry1EcH_Gfa/view?usp=drivesdk','https://drive.google.com/file/d/1kKsXMWZ7oh1j5HetIeZhV48RaLVCFVnA/view?usp=drivesdk'], summaries: ['https://drive.google.com/file/d/166Sbo_D6cFklJDwmJUP2zdT7uHIHEclB/view?usp=drivesdk','https://drive.google.com/file/d/1SL4uLSEOkcMbNaSa0MktJQ8jxoxHxe1B/view?usp=drivesdk'], solutions: ['https://drive.google.com/file/d/1eUmyMAB5VeNWFKDlnabrIRgyvuIL3U-y/view?usp=drivesdk','https://drive.google.com/file/d/1rrfeAVxt_fwr2AgWggwP3CZORWE2HBZf/view?usp=drivesdk','https://drive.google.com/file/d/1Tsp2EA-XCKFYUgo57zn0HHFxx2IaUrpL/view?usp=drivesdk','https://drive.google.com/file/d/1HmUCvpHtKFrlgnILgywg88Bt3BuC9oYL/view?usp=drivesdk'], exams: [], examSolutions: [] },
+  l1t1s2: { name: '⚛️ Physics I', lectures: ['https://drive.google.com/file/d/1DLGjDkDjKW_WbWn1tQIi6d8SfoO66Foj/view?usp=drivesdk','https://drive.google.com/file/d/1WOYHJ3lexlDaqQ6Yk4WKR0sx54ykvQiR/view?usp=drivesdk','https://drive.google.com/file/d/1aqDGu8NTTRax3dGirtL7n3ohGEmxxMKs/view?usp=drivesdk','https://drive.google.com/file/d/15tohSzreLNO2GEBK_lryUvYMtrg1ESwn/view?usp=drivesdk','https://drive.google.com/file/d/1vgfZqG5KLWn1go6iQzgWhxkPrzfjcFdp/view?usp=drivesdk','https://drive.google.com/file/d/1KxluU0b-ahpKTYEp7Aj_NndsDPgf4uLy/view?usp=drivesdk','https://drive.google.com/file/d/1HE3rodAHZrG17Wt48t-lnJ0ZYPsqKnrU/view?usp=drivesdk','https://drive.google.com/file/d/1zvRK44OP6gelNSK4jr4a2eMChoRuGORB/view?usp=drivesdk','https://drive.google.com/file/d/1MNP6XM6qR3OVE8m-SXMqnBsxHGoYTkr9/view?usp=drivesdk'], sections: ['https://drive.google.com/file/d/1rp9AFRT8sdwj0Nn-qBaJZKr1Ogk3ogTN/view?usp=drivesdk'], summaries: ['https://drive.google.com/file/d/1fHzz-2X75g7Bg5GtBgJn2hkYbYBoYUj1/view?usp=drivesdk','https://drive.google.com/file/d/1IsmhEx-Hr28yuec6gw8z2MElS9VCV1-u/view?usp=drivesdk'], solutions: ['https://drive.google.com/file/d/1rOeUJRwmEBd1oeLo2f0uUM5uN2Gb_tjO/view?usp=drivesdk'], exams: [], examSolutions: [] },
+  l1t1s3: { name: '💻 Introduction to Computing Technology', lectures: ['https://drive.google.com/file/d/139p2O6zEYuUG_xWshX0JfV9CHCQwrrYG/view?usp=drivesdk','https://docs.google.com/presentation/d/1q-8EQq3QLWakho2R9VilkFKwVZJGqKVA/edit?usp=drivesdk&ouid=116809461578921657543&rtpof=true&sd=true','https://docs.google.com/presentation/d/1-AWnEh9HLtOaJJswf79tS9lk6p3DRgo5/edit?usp=drivesdk&ouid=116809461578921657543&rtpof=true&sd=true','https://docs.google.com/presentation/d/1dqxds9C2wWethkYQp_22EvXSEauHQ9aW/edit?usp=drivesdk&ouid=116809461578921657543&rtpof=true&sd=true','https://docs.google.com/presentation/d/1r45qeF8fVhbaFzqt9kd8haH72N_9xiaJ/edit?usp=drivesdk&ouid=116809461578921657543&rtpof=true&sd=true','https://docs.google.com/presentation/d/17ojMR4EEOsJEmSG9_KJgmaMU33McoEHp/edit?usp=drivesdk&ouid=116809461578921657543&rtpof=true&sd=true','https://docs.google.com/presentation/d/1DkrvoNv_PxiI8Rj4XUclHexmBw1CeaSe/edit?usp=drivesdk&ouid=116809461578921657543&rtpof=true&sd=true','https://docs.google.com/presentation/d/1rGQfgFMTsZBBwoHQkN6W5x1fI1j1N6O2/edit?usp=drivesdk&ouid=116809461578921657543&rtpof=true&sd=true'], sections: ['https://drive.google.com/file/d/1nS69Omllny-w6FyeArbME-uATzgbXotG/view?usp=drivesdk','https://drive.google.com/file/d/1Tbhb7mkjWCXAhRcB8YcDWMXTerdVNS7l/view?usp=drivesdk','https://drive.google.com/file/d/1HuV1oIaL2gM6uOnMunpyifOMY-1g7uMM/view?usp=drivesdk','https://drive.google.com/file/d/1bftzzIAIPhph5Ox04ntgo9KE6j6UMhUN/view?usp=drivesdk','https://drive.google.com/file/d/1jUl0lrHDZA9gmD_hQdiXJ05AMZIlhqn8/view?usp=drivesdk','https://drive.google.com/file/d/1IQMQIoBlW5FLTOPh-fJGIJh0PFMj3Tye/view?usp=drivesdk','https://drive.google.com/file/d/1_TLi_oMm3LogtEs6P7eto8vQph-fRPRF/view?usp=drivesdk'], summaries: [], solutions: ['https://drive.google.com/file/d/1nS69Omllny-w6FyeArbME-uATzgbXotG/view?usp=drivesdk','https://drive.google.com/file/d/1N2oaFe76POdbVsEpKksoV3l5bmAMAHWT/view?usp=drivesdk','https://drive.google.com/file/d/19G1XMDYnYGqNFhpG8ORLNMsP2KZunn6o/view?usp=drivesdk','https://drive.google.com/file/d/1zK4jGh2C4jB8eWRtBqy9hU2GIiRJGN48/view?usp=drivesdk','https://drive.google.com/file/d/1fU7XM49grHOlb1rpMKdj0R-R2Zb-QGI6/view?usp=drivesdk','https://drive.google.com/file/d/1B1gn8fpzJhI1jHBK9qMigkIoOyVBbYtt/view?usp=drivesdk'], exams: [], examSolutions: [] },
+  l1t1s4: { name: '🖥️ Computer Programming I', lectures: ['https://drive.google.com/file/d/1CyeSIBwbk_3m7k2WtAl6sOtRTTmwifIO/view?usp=drivesdk','https://drive.google.com/file/d/1pdY6UCC4ixVXFdxXcb9uxrHIoB1xTbGf/view?usp=drivesdk','https://drive.google.com/file/d/1fvnQlNvDex6JJ6TD9385SU-q87kw1wiT/view?usp=drivesdk','https://drive.google.com/file/d/1PIOMb6QWAAcAYEDQ3mPcpPswUrWMYkON/view?usp=drivesdk','https://drive.google.com/file/d/1A626BsUTtnVPl86cmXYwefP1kpLS6thi/view?usp=drivesdk','https://drive.google.com/file/d/1HmzTSyl0PD8fj6nU0jJsOaSw-XowmX4F/view?usp=drivesdk','https://drive.google.com/file/d/1XUMA7LbEBmcS842iYibT0CPD4OzlqxUK/view?usp=drivesdk','https://drive.google.com/file/d/1ZM48eSkNOLfNFEfKPykys7j7d-Gc-QiM/view?usp=drivesdk'], sections: ['https://drive.google.com/file/d/1Rz88Totjjh9u3j6uvpENJALXOM-e9rJ5/view?usp=drivesdk','https://drive.google.com/file/d/1Zh_EdMkssq5mZOK7MCHVek5SRXnTeSLs/view?usp=drivesdk','https://drive.google.com/file/d/17wpLkDV6w8dW7lqAxl-lrm97asYv3qVe/view?usp=drivesdk','https://drive.google.com/file/d/1AZQXLewtXdzImM2zWE8Py8ZHVhZqgfYx/view?usp=drivesdk','https://drive.google.com/file/d/1w_pubH9-BzP3wmzcW_BypoCVHR5b5L9E/view?usp=drivesdk','https://drive.google.com/file/d/1gI6O-P8pPP6VTWYF9hzKCyzcQfjLvTwJ/view?usp=drivesdk','https://drive.google.com/file/d/1l92fu5ij_montVYLAkiZcT1gU-tMDyk_/view?usp=drivesdk'], summaries: [], solutions: ['https://drive.google.com/file/d/1q4SsnJ0s9zMx_irRPo2eYm3JytbhKKeT/view?usp=drivesdk','https://drive.google.com/file/d/1Ay_Phv0OkTCWDMx2VMx_crRT8tjJsI3e/view?usp=drivesdk','https://drive.google.com/file/d/1eNT9__-aUbUnNts6OyBcoGaT-JLJGW6E/view?usp=drivesdk','https://drive.google.com/file/d/12lSQxRbx54d_FNmuRYLTAU3z_JmlgC4h/view?usp=drivesdk','https://drive.google.com/file/d/1rrOeSZ-djnQqVkA7fVt10okWJQN1-4AX/view?usp=drivesdk','https://drive.google.com/file/d/1X1LrcB2-OtptrDIQSlc-3XxdHwUK-kPp/view?usp=drivesdk','https://drive.google.com/file/d/13smzLkuxvzzJq77a-otKDwu08wydIPZD/view?usp=drivesdk'], exams: ['https://drive.google.com/file/d/1M_cnMHzBgv1mWekDcirNxxed2wUQdzMf/view?usp=drivesdk','https://drive.google.com/file/d/1LalUqkj9NEg3Ntegt3IWTxcsxYT-555m/view?usp=drivesdk'], examSolutions: ['https://drive.google.com/file/d/1HkX9NZsE8HqMVKIrqlE1lBRY-clEdUIG/view?usp=drivesdk'] },
+  l1t1s5: { name: '🇬🇧 English', lectures: ['https://drive.google.com/file/d/1I_D44mR4_fGh3feuNSXkVB63zMa07-2-/view?usp=drivesdk','https://drive.google.com/file/d/1qvXgiUPrWJnABJeAs7URl7yt0I1gevdL/view?usp=drivesdk','https://drive.google.com/file/d/1TejE77NHgbq3yoR5FOKj5BpBfX8pg2BT/view?usp=drivesdk','https://drive.google.com/file/d/1csoerE3vRbZbnTta2YEBxmul0FmVJ7qB/view?usp=drivesdk','https://drive.google.com/file/d/1yuOXF3FFyOGejb9g_s_EAuEJDT_5ycud/view?usp=drivesdk','https://drive.google.com/file/d/1NKqJvWngii_lLHj_h2HeuR_MkkhXdZJc/view?usp=drivesdk','https://drive.google.com/file/d/1IIfWm2_7fRmTfdk8JBrJLRuF78vz65nU/view?usp=drivesdk'], sections: [], summaries: [], solutions: [], exams: [], examSolutions: [] },
+  l1t1s6: { name: '📜 تاريخ علوم', lectures: ['https://drive.google.com/file/d/10koVaYItpWBoTTp3v_ZlWG8TjJ9RXwnD/view?usp=drivesdk','https://drive.google.com/file/d/1VjejxQ6Qp8PElvML7yvw31fS-cz28vk5/view?usp=drivesdk','https://drive.google.com/file/d/1q389Qf2Zp7wZ5GNZGVRQvvWbEF3eYKCH/view?usp=drivesdk','https://drive.google.com/file/d/1YYiELsz2B78Z--KOU0OhbxG6Sq17Sffw/view?usp=drivesdk','https://drive.google.com/file/d/1b1QINlvHkL2Uai4IbYYyty2WqeSEvyhp/view?usp=drivesdk','https://drive.google.com/file/d/1oUD8pEriBgp2AUNiOqdqMSwdj1smF3ul/view?usp=drivesdk','https://drive.google.com/file/d/1VuWNiS5Pmw24257XXPobQAGKrNJMmFNI/view?usp=drivesdk','https://drive.google.com/file/d/1-E4upOS24ooQPdCMmJ58DjZ7cNaS6OqG/view?usp=drivesdk'], sections: [], summaries: [], solutions: [], exams: [], examSolutions: [] },
+  l1t1s7: { name: '🌍 إنسان وبيئة', lectures: ['https://drive.google.com/file/d/1oGVl89y2h4zPBzk6y71dQnAfJOBnS7n3/view?usp=drivesdk','https://drive.google.com/file/d/1sw-hxRxH52DZhWwVFZA74FvZzk8cuJcn/view?usp=drivesdk','https://drive.google.com/file/d/1FDBn9cyafyOpfQxJ4LNsy0U_5e_9Ax7g/view?usp=drivesdk','https://drive.google.com/file/d/1CIYlwupSh95SJ_C8ZYuPmfUx4Mu0WcMp/view?usp=drivesdk','https://drive.google.com/file/d/1KinaIFmgcYLxQwzb8Er1kuXbLTjQX3s_/view?usp=drivesdk','https://drive.google.com/file/d/1PFuMQZUtqYqN9J1tw3KS4j40B1zoAQP7/view?usp=drivesdk','https://drive.google.com/file/d/1-6w1-gwjvHRzb4SVG45xpZwU-76I5dTj/view?usp=drivesdk','https://drive.google.com/file/d/1soTNNpXmjae9pgD_XUoWHkyGoqyiOSea/view?usp=drivesdk','https://drive.google.com/file/d/1eQD5t02tPvwk1FPOSqtSOjYYUvcsNC0v/view?usp=drivesdk'], sections: [], summaries: [], solutions: [], exams: [], examSolutions: [] },
+  l1t2s1: { name: '📐 Math II', lectures: ['https://drive.google.com/file/d/1nG20OOBt0WVsccLickSraegVHeHGTNNV/view?usp=drivesdk','https://drive.google.com/file/d/1FJ91mxOYV_DJdujVl2lnLyvp-LJSx5Be/view?usp=drivesdk','https://drive.google.com/file/d/1hWJ0IbLjng3BhBx6Cq8h04m2TxOMFJzZ/view?usp=drivesdk','https://drive.google.com/file/d/1y_fKF4_6XX2Y8VDhLjodXEHubVLW1LHZ/view?usp=drivesdk','https://drive.google.com/file/d/1LlqNgyemMUsXi76NRUDZxBDleuvamEMq/view?usp=drivesdk','https://drive.google.com/file/d/1poy1tcdtGy8UZcDPCu8DSZxJLHsHtlnd/view?usp=drivesdk','https://drive.google.com/file/d/1KiSEif9hg2AOupFgwFZMYXugAp-ZUBEw/view?usp=drivesdk'], sections: ['https://drive.google.com/file/d/1dcyiaVivcrqrDDDWLclAuPJlU2mCteBR/view?usp=drivesdk','https://drive.google.com/file/d/12yDLgT9zqvr_vlHZzWuXdhsqm-ltXeC0/view?usp=drivesdk','https://drive.google.com/file/d/16qDyD4zRFaTYW_TQSrSHpJ-eYopJK7V1/view?usp=drivesdk','https://drive.google.com/file/d/1SMjlSl4fmtwCnXxk2gd9uOq4QbaXzWzd/view?usp=drivesdk'], summaries: ['https://drive.google.com/file/d/1TtJoDIBjiS-auGn-L8MMW2DDIuo-PTq_/view?usp=drivesdk','https://drive.google.com/file/d/1Q9LMY_ILg3XUZae2UGRH2LZtgMfSGA8p/view?usp=drivesdk'], solutions: ['https://drive.google.com/file/d/1YNCxIjXNou_M6XKAPutX_4sltfSgRRte/view?usp=drivesdk','https://drive.google.com/file/d/1RS7BixvOvIIM_dZ9NhmhcjRm6DUMKllx/view?usp=drivesdk','https://drive.google.com/file/d/1rBhUYN3CUo0uf5XXJltHJGMNMcKZ524L/view?usp=drivesdk','https://drive.google.com/file/d/1W2mXkOSdc6daHkdqcE-V15IHxomhFSPV/view?usp=drivesdk','https://drive.google.com/file/d/1w0eAObsIpmxTY9eAJuTw3hWUu80rHhvo/view?usp=drivesdk','https://drive.google.com/file/d/1iFQfzoHPPHTvLNM53jRxeNUaFDfGjqGF/view?usp=drivesdk','https://drive.google.com/file/d/1E7vzNnW5KBBd4atVpuplb8bwJqt8-9UE/view?usp=drivesdk'], exams: [], examSolutions: [] },
+  l1t2s2: { name: '🎲 Introduction to Probability', lectures: ['https://drive.google.com/file/d/1E7KZzLy3fuZxz4HHoJ7NtTI_3eBywvM8/view?usp=drivesdk','https://drive.google.com/file/d/1Fk4fmDuXqirgnMwvWqh_1XGIrEDbFdsy/view?usp=drivesdk','https://drive.google.com/file/d/15UiV30ifIZRssAVuAIL7-MzlpZxH5gD3/view?usp=drivesdk','https://drive.google.com/file/d/1joZ7PVuG3iqSlS5zwgG7xHVbnGGn5G9K/view?usp=drivesdk','https://drive.google.com/file/d/1yHCmSqd-R0ftORlxKSMZ9FdMY-yvGjUA/view?usp=drivesdk','https://drive.google.com/file/d/19AVsQzZU5lff3yCnfhOVzjk_TJ13WfBj/view?usp=drivesdk'], sections: ['https://drive.google.com/file/d/15FnhO3iGtt7LBcq63ua_9FsGfkMrSsTU/view?usp=drivesdk','https://drive.google.com/file/d/1T3kGTeZ79-g1bvQEzMiNpta0yWH8lsvB/view?usp=drivesdk','https://drive.google.com/file/d/1vKq2UUGkwL0Oz5-aF1DyKOIDJ0aDwxGD/view?usp=drivesdk','https://drive.google.com/file/d/1aQSMTZa1Rf2F7O3-J0jm1HM9StEb5tvk/view?usp=drivesdk','https://drive.google.com/file/d/1MaxXa1PJCPpUppNrZnxUIT95A8B43GtU/view?usp=drivesdk','https://drive.google.com/file/d/1FaSYLfLWjG5lR-D-ZSlz2ku6hNANLY2U/view?usp=drivesdk','https://drive.google.com/file/d/1iTeFTddP7tzHNdLO-rClfibQuCJRtVA1/view?usp=drivesdk'], summaries: ['https://drive.google.com/file/d/1cG_9pOdhMyASGVRZWZCXZenr7aB3M0eY/view?usp=drivesdk'], solutions: ['https://drive.google.com/file/d/1rgeBBDK64ZqZRrnwx1hq0chCNMvMAHe4/view?usp=drivesdk','https://drive.google.com/file/d/1iqm88Y01C9nbX4FgL9W-uyGpThOgaTcc/view?usp=drivesdk','https://drive.google.com/file/d/1AR0FmvEYe9edw74MLY91ccGTztNiO0hN/view?usp=drivesdk','https://drive.google.com/file/d/1Mv6bhH_6FJ-hDpALdxGqvkaOtnulfxXR/view?usp=drivesdk','https://drive.google.com/file/d/1AcL36KsYwRPA761TdJb07bzN3hTj2N1c/view?usp=drivesdk','https://drive.google.com/file/d/125t4BDB5taKPzKK3tFtn6QVPK8gGXgLr/view?usp=drivesdk','https://drive.google.com/file/d/1peDch-xD0Um8udmTmMx0ibBtUcOLEr_c/view?usp=drivesdk'], exams: ['https://drive.google.com/file/d/17BYFJFOnh2yAMlQmqdWC8q9mCfvt7APN/view?usp=drivesdk','https://drive.google.com/file/d/1m9y330qoASjfTlMmr-dGq9HDFbcpiMOt/view?usp=drivesdk'], examSolutions: ['https://drive.google.com/file/d/17yXaOWJau3ZlPVTDREKj8zg6p48-SvYs/view?usp=drivesdk','https://drive.google.com/file/d/1bMwyche65bBH5vdyoISnH4S5_l3tOi1F/view?usp=drivesdk','https://drive.google.com/file/d/1qs8VcXv1LK-uPmqmZuru8BmEm6UlvRf1/view?usp=drivesdk','https://drive.google.com/file/d/1klHGfOmCCqwwtSGT1hp2iaHN2tVeK-5Q/view?usp=drivesdk','https://drive.google.com/file/d/1_ONDwpd5qxEVBZiA9q2QVFbobE7CjqSs/view?usp=drivesdk'] },
+  l1t2s3: { name: '⚛️ Physics II', lectures: ['https://drive.google.com/file/d/1zAvRmSz778zWWwUS3ZuOrTlqI8RMTnlj/view?usp=drivesdk','https://drive.google.com/file/d/1Q4T-yX0ztwmnHP5cGdpBVCndTG-6XOhz/view?usp=drivesdk','https://drive.google.com/file/d/1c692zmV8UItf0aZuIGApOcOc4c-Mt7NN/view?usp=drivesdk','https://drive.google.com/file/d/1mSmyuJq3Nai5FtrgIlZzfoB5JbOki69I/view?usp=drivesdk','https://drive.google.com/file/d/1s4ujQKyZxQjXTphfBGHkY15OHruN0EnN/view?usp=drivesdk','https://drive.google.com/file/d/1CXWMancmVRWwcFXYvkdgm1nmgCHTytz6/view?usp=drivesdk','https://drive.google.com/file/d/1quxVB7Gy7UqBRHtMV0KAvz4JYhv8Pr8Q/view?usp=drivesdk','https://drive.google.com/file/d/1QSKOH4B-RxTh2VL66JADUJXIRlzyT2cn/view?usp=drivesdk','https://drive.google.com/file/d/1tn_zFBqMFSbefWMYxdFrs29FBosooTMi/view?usp=drivesdk'], sections: ['https://drive.google.com/file/d/1Eqgran95B8T-E9hbVYW_upTziu_UGAyJ/view?usp=drivesdk'], summaries: ['https://drive.google.com/file/d/1s2WAHLGBS0DGxIwGGjotXmqByN_TvUvW/view?usp=drivesdk','https://drive.google.com/file/d/1p1nMRqNA2qBmnlhzLbD2zC3np3XpzGf3/view?usp=drivesdk','https://drive.google.com/file/d/1QlR8aCHmidJY6plDmRV1dqha6Ea2qPnZ/view?usp=drivesdk','https://drive.google.com/file/d/1Bve2LPvPEepenQCmZd1Q93gd1AvKw8cR/view?usp=drivesdk','https://drive.google.com/file/d/1LxOvLek-9T5S_nzYWwUOHL5HX93swhDj/view?usp=drivesdk','https://drive.google.com/file/d/1Tutf3h2BHDiTZKfbNoVYdYWI3YMOTxfu/view?usp=drivesdk','https://drive.google.com/file/d/100mTNjKmNWN8_NdT2asi4E0Xg6ShNEHU/view?usp=drivesdk','https://drive.google.com/file/d/11TJBBjXVzn2ra5FC0blxxrBtdG-nRlAT/view?usp=drivesdk','https://drive.google.com/file/d/1geV2p0M8K8kqI2J4uIYhvExn-V2uEMx6/view?usp=drivesdk','https://drive.google.com/file/d/1-L3wvagfnyNDxAjiDywBFSqKFBbEDOVQ/view?usp=drivesdk','https://drive.google.com/file/d/1IybJBBto2QK2YCEohYT4XGmz3UaSFGtj/view?usp=drivesdk'], solutions: ['https://drive.google.com/file/d/1oR-TzeHSokHJ44dH3S6XCMtNUxbc76es/view?usp=drivesdk','https://drive.google.com/file/d/1QGPkYaItVEOR7r5T-SUnOh-JbGC2E8CE/view?usp=drivesdk'], exams: ['https://drive.google.com/file/d/1GxI8EEE7VWOPCxjRQgMIhVZD14XlmoHi/view?usp=drivesdk','https://drive.google.com/file/d/1k9OBrkomD4JQRjTHWaZhrs1hY4sLXLUi/view?usp=drivesdk'], examSolutions: ['https://drive.google.com/file/d/1y3X68n7hLy5WTSWybsFolmrZDPXdyAuG/view?usp=drivesdk','https://drive.google.com/file/d/1bYdH2ddl5Goqo1h-dKqJglcu-w3FIjs4/view?usp=drivesdk'] },
+  l1t2s4: { name: '🧮 Mathematics for Computer Science (MCS)', lectures: ['https://drive.google.com/file/d/1xBOSOytc7wYZmbxEABAyW4GSnVj38iML/view?usp=drivesdk','https://drive.google.com/file/d/1lRB_h8s0nN4IbTawfRnatdeiVSt_eEhZ/view?usp=drivesdk','https://drive.google.com/file/d/1LXQKJoGzeJcmIsLvZ2YGzuRHkHRrhxia/view?usp=drivesdk','https://docs.google.com/presentation/d/1hBgv2ZYpzQDjkDD6l6F_Ch00raBBP0yq/edit?usp=drivesdk&ouid=116809461578921657543&rtpof=true&sd=true','https://docs.google.com/presentation/d/1GFnF0x4qxF9lQK2eRFU-5kJUO4Xb2Fn9/edit?usp=drivesdk&ouid=116809461578921657543&rtpof=true&sd=true','https://docs.google.com/presentation/d/1u5njKueP9i-li9LKXk5_MHIYa6M3-8BY/edit?usp=drivesdk&ouid=116809461578921657543&rtpof=true&sd=true','https://docs.google.com/presentation/d/1ROoNg3yck1VSZYoebWEEz71uEgHLUFVW/edit?usp=drivesdk&ouid=116809461578921657543&rtpof=true&sd=true','https://docs.google.com/presentation/d/1EkzQd9slt66e1WQ2lYR6Z-uj0d2B8HTe/edit?usp=drivesdk&ouid=116809461578921657543&rtpof=true&sd=true'], sections: ['https://drive.google.com/file/d/1M8ayrtQcwNRk-8edvCKbu25H1mxXmsaK/view?usp=drivesdk','https://drive.google.com/file/d/1t6-xF17ETQysG51Apg6971T3q3K7iaZv/view?usp=drivesdk','https://drive.google.com/file/d/1wUrdXgzFMLZ6Ss6Kf9Rnpl85EOLOlBL8/view?usp=drivesdk','https://drive.google.com/file/d/1cFrxG8bq1bibbw1t7zxsCoQnBwhoqgEr/view?usp=drivesdk','https://drive.google.com/file/d/15Vyjo_SoOTUEwd44IRKXhEWLNmIE_liv/view?usp=drivesdk','https://drive.google.com/file/d/1y5brJaqoACbzyZlowvLOiJ-h6A9OSNL6/view?usp=drivesdk'], summaries: [], solutions: ['https://drive.google.com/file/d/133KKd-I2xhwOGETdwspwqorsm4HGqLSj/view?usp=drivesdk','https://drive.google.com/file/d/1uYvTCY7fL9Wh7QDjHyW3m__8t9JMk7mH/view?usp=drivesdk','https://drive.google.com/file/d/1jj5eJWATeru4Hjwro0-gR_DNO6qZlrf9/view?usp=drivesdk','https://drive.google.com/file/d/1UFdv3IH8NZh0z4WfQMpXiQKNv4DFTELF/view?usp=drivesdk','https://drive.google.com/file/d/1fhduUQEyaD5iViijN_GgyB_UwkLhMyoy/view?usp=drivesdk','https://drive.google.com/file/d/1WOfomvX1Ny0zyNLhIEA9jK0OAUKtP1A_/view?usp=drivesdk','https://drive.google.com/file/d/1CZfGg6sYuJVokpLNhRmy8ElIp6mCDTRH/view?usp=drivesdk','https://drive.google.com/file/d/10UhEMm7b1GoRrsHIpD6k-nXqKZhq5xNM/view?usp=drivesdk'], exams: [], examSolutions: [] },
+  l1t2s5: { name: '🔷 Object Oriented Programming (OOP)', lectures: ['https://drive.google.com/file/d/1BYo0qyHCVlMsNeVnd48LFE_kEWw6dwqK/view?usp=drivesdk','https://drive.google.com/file/d/1MOJqcZYsG-Yz8CwnbLHbH7-G3IdmjUNZ/view?usp=drivesdk','https://drive.google.com/file/d/1Axgj0vnUo5zlTBvVIj8kQrqVGTvUGo-U/view?usp=drivesdk','https://drive.google.com/file/d/1Dj_4-iJapyQpy3l9LQuk45Wvy-XWqaR1/view?usp=drivesdk','https://drive.google.com/file/d/1fRerjJ2uRY0gC-V3V8wvbTic7hV_BVcJ/view?usp=drivesdk','https://drive.google.com/file/d/18G0b5vKecCfFFlW-IV96JpRTHiev3Cj-/view?usp=drivesdk','https://drive.google.com/file/d/1QpXzBPCkzvOiLlc0FBfGwtXIq-z20s57/view?usp=drivesdk'], sections: ['https://drive.google.com/file/d/1dU_IXDVGIwenP20I_TPlCCsWJ5-ps0yP/view?usp=drivesdk','https://drive.google.com/file/d/1xKM6B_J0G92zc1s4iagZ7-kbPIAXD4uE/view?usp=drivesdk','https://drive.google.com/file/d/1mbl1DYRPvpSKXCKcYHwagA1JCXabhgvY/view?usp=drivesdk','https://drive.google.com/file/d/1LZ51MTneKZqXKFtf2ZXsbEBHIzGb1zfi/view?usp=drivesdk','https://drive.google.com/file/d/17Y73viPkXMN30O6uvhEkkT8-ngWj80qV/view?usp=drivesdk','https://drive.google.com/file/d/1agRgJrxN9KFK_32lKYbSY-L7OvW7YnZU/view?usp=drivesdk','https://drive.google.com/file/d/1v3yQaV-_nfQyPxtQqI2ogztjSMEK_3BX/view?usp=drivesdk','https://drive.google.com/file/d/1aAfK8S1ld8DVykHG9LQVB4RhNr0GoO2v/view?usp=drivesdk','https://drive.google.com/file/d/1HuBQWTF_sUB8ZNAChsAHNXPfNjH0M7Hc/view?usp=drivesdk'], summaries: ['https://drive.google.com/file/d/1wghhlbPjogeykxgD-L4tVb5bK9jezxqx/view?usp=drivesdk'], solutions: ['https://drive.google.com/file/d/1Ubnmn7NwtuCGrcNweFqrU7Vz0RrGAg7w/view?usp=drivesdk','https://drive.google.com/file/d/1KrUKPIz3mEmgAcPB-9uzwAK3jv_2MF4s/view?usp=drivesdk','https://drive.google.com/file/d/1iYmtqFstk_bXsZFzxMpYiZ6WxhtvZDqT/view?usp=drivesdk','https://drive.google.com/file/d/1oD01E20dEmor-_SVzYavh-Kd_iO0OVMU/view?usp=drivesdk','https://drive.google.com/file/d/1vukrRdmjIbTB0pYCA7-JbIQehu4RUBpP/view?usp=drivesdk','https://drive.google.com/file/d/17VS0qXvVGLHm2gG0fhLihNpvOumJYzfX/view?usp=drivesdk','https://drive.google.com/file/d/14TpvGiXMlXxyrhSo9OhwfaxoJLuDvNal/view?usp=drivesdk','https://drive.google.com/file/d/1pu406xJ9zk8-vhoU_Bdv0S2NRWbeeRpv/view?usp=drivesdk','https://drive.google.com/file/d/1-M3WklVkzvjvSGkPnlbQ6JcFbgoQm-Z2/view?usp=drivesdk'], exams: ['https://drive.google.com/file/d/1EHwI0B6t8sA2f5rUTH8knV8J7IZNhbZF/view?usp=drivesdk','https://drive.google.com/file/d/1jR_EvG_BusRU5nhQenq8syTa1Zm47gJH/view?usp=drivesdk'], examSolutions: [] },
+  l1t2s6: { name: '🇸🇦 Arabic', lectures: [], sections: [], summaries: ['https://drive.google.com/file/d/1k9pP8rg_KPsRpLSVptCEEmqkxSH3gUk8/view?usp=drivesdk','https://drive.google.com/file/d/1IyIJijLImISp7ibMzmdJIgShtOeYuM2_/view?usp=drivesdk','https://drive.google.com/file/d/1whL_Ma8pWVqvVwtbFh2L_UhDeH30u74U/view?usp=drivesdk'], solutions: [], exams: ['https://drive.google.com/file/d/1xaNzL80mmyIv4d6zVE0QVLRwNyohuMHW/view?usp=drivesdk'], examSolutions: [] },
+  l1t2s7: { name: '🤝 حاسب ومجتمع', lectures: ['https://drive.google.com/file/d/1Vqks2Dz1-3t9xnsLYBRdlYGiY_ZwX58S/view?usp=drivesdk','https://drive.google.com/file/d/1dJ7W3-dK_0susc4FRGc3zRR95h4d_Op5/view?usp=drivesdk','https://docs.google.com/presentation/d/1Mv1DSa5KqnSwXus_boRWHxXPNYyyPVGg/edit?usp=drivesdk&ouid=116809461578921657543&rtpof=true&sd=true','https://docs.google.com/presentation/d/1TZ-4y04vn7IahJVW7lUeaRXPQcZDoWmi/edit?usp=drivesdk&ouid=116809461578921657543&rtpof=true&sd=true'], sections: [], summaries: [], solutions: [], exams: ['https://drive.google.com/file/d/1cri8Kd66qEnHUAxoYf2IaMoOPQS3x_OS/view?usp=drivesdk'], examSolutions: [] },
+  dataScience: { name: '📊 Data Science', lectures: ['https://drive.google.com/file/d/1dbKi-vRIFx3Ynl7-FmAtGcwaPr8LSWBh/view?usp=drivesdk','https://drive.google.com/file/d/1r52kwBYqGtPAtTE13VAQIkTkEURh5r2H/view?usp=drivesdk','https://drive.google.com/file/d/1YtZ1sNChbpqAPzc5mY2kaQEAqSkJR7Mz/view?usp=drivesdk','https://drive.google.com/file/d/1HiOVGb66Rtc9ROM_-ikXoajCRSuaNT6a/view?usp=drivesdk','https://drive.google.com/file/d/1jHCmkxxaThQvdZcrJ4yYWkg4AaVIGi-E/view?usp=drivesdk','https://drive.google.com/file/d/1yT02KGhdF4AjYqlrsLUB7-DC34K-8MlU/view?usp=drivesdk','https://drive.google.com/file/d/1LEc3a8DWWjQk4lrwC0DcTbhKoIZ1atty/view?usp=drivesdk','https://drive.google.com/file/d/1GbZRS7CNDoez8gVlARgGZspHBbkHhOF4/view?usp=drivesdk'], sections: [], summaries: [], solutions: [], exams: [], examSolutions: [] },
   softwareEngineering: { name: '💻 Software Engineering', lectures: [], sections: [], summaries: [], solutions: [], exams: [], examSolutions: [] },
   math: { name: '➗ Math III', lectures: [], sections: [], summaries: [], solutions: [], exams: [], examSolutions: [] },
   multimedia: { name: '🎬 Multimedia Systems', lectures: [], sections: [], summaries: [], solutions: [], exams: [], examSolutions: [] },
@@ -535,11 +139,14 @@ let isBackAction = false;
 let isFirstLoad = true;
 let fbAuth = null;
 let fbFns = null;
+let fbDb = null;
 let currentUser = null;
 let isGuest = false;
 let gateMode = 'login';
 let forgotCountdownInterval = null;
 let forgotCooldownSeconds = 0;
+let firestoreReady = false;
+let cachedPersonalData = {}; // cache للبيانات من Firestore
 
 // ====== نظام الأصوات ======
 function playSound(type) {
@@ -634,7 +241,310 @@ function getUserKey() {
   return 'anon';
 }
 
+// ============================================================
+// ====== FIRESTORE HELPERS ======
+// ============================================================
+
+// مفتاح الـ document في Firestore
+function makeFirestoreDocId(subjectId, type) {
+  return `${subjectId}__${type}`;
+}
+
+// جلب مرجع الـ personal document
+function getPersonalDocRef(subjectId, type) {
+  if (!fbDb || !currentUser) return null;
+  const docId = makeFirestoreDocId(subjectId, type);
+  return fbFns.doc(fbDb, 'users', currentUser.uid, 'personal', docId);
+}
+
+// جلب مرجع الـ customName document
+function getCustomNameDocRef(subjectId, type, index) {
+  if (!fbDb || !currentUser) return null;
+  const docId = `${subjectId}__${type}__${index}`;
+  return fbFns.doc(fbDb, 'users', currentUser.uid, 'customNames', docId);
+}
+
+// ✅ init Firestore للمستخدم
+async function initFirestoreForUser(user) {
+  if (!window.firebaseDb || !window.firebaseFns) {
+    console.warn('⚠️ Firestore مش جاهز');
+    return false;
+  }
+  fbDb = window.firebaseDb;
+
+  // ✅ First migration: ننقل البيانات القديمة من localStorage
+  await migrateLocalDataToFirestore();
+
+  // ✅ نحمّل البيانات من Firestore
+  await loadAllUserDataFromFirestore();
+
+  firestoreReady = true;
+  console.log('✅ Firestore جاهز للمستخدم');
+  return true;
+}
+
+// ✅ Migration: نقل البيانات من localStorage لـ Firestore (مرة واحدة)
+async function migrateLocalDataToFirestore() {
+  if (!currentUser) return;
+  const migrationKey = `migrated_${currentUser.uid}`;
+  if (localStorage.getItem(migrationKey) === 'true') return;
+
+  const oldUserKey = `u_${currentUser.uid}`;
+  const keys = Object.keys(localStorage);
+  let migratedCount = 0;
+
+  // نقل personal items
+  for (const key of keys) {
+    if (key.startsWith(`personal_${oldUserKey}_`)) {
+      const rest = key.replace(`personal_${oldUserKey}_`, '');
+      const parts = rest.split('_');
+      if (parts.length >= 2) {
+        const type = parts[parts.length - 1];
+        const subjectId = parts.slice(0, -1).join('_');
+        try {
+          const data = JSON.parse(localStorage.getItem(key) || '[]');
+          if (data.length > 0) {
+            const docRef = getPersonalDocRef(subjectId, type);
+            if (docRef) {
+              await fbFns.setDoc(docRef, { items: data, updatedAt: fbFns.serverTimestamp() });
+              migratedCount++;
+            }
+          }
+        } catch(e) { console.warn('Migration error:', e); }
+      }
+    }
+  }
+
+  // نقل custom names
+  for (const key of keys) {
+    if (key.startsWith(`customName_${oldUserKey}_`)) {
+      const rest = key.replace(`customName_${oldUserKey}_`, '');
+      const parts = rest.split('_');
+      if (parts.length >= 3) {
+        const index = parts[parts.length - 1];
+        const type = parts[parts.length - 2];
+        const subjectId = parts.slice(0, -2).join('_');
+        const name = localStorage.getItem(key);
+        if (name) {
+          try {
+            const docRef = getCustomNameDocRef(subjectId, type, index);
+            if (docRef) {
+              await fbFns.setDoc(docRef, { name: name, updatedAt: fbFns.serverTimestamp() });
+              migratedCount++;
+            }
+          } catch(e) { console.warn('Migration error:', e); }
+        }
+      }
+    }
+  }
+
+  localStorage.setItem(migrationKey, 'true');
+  console.log(`✅ تم نقل ${migratedCount} عنصر من localStorage لـ Firestore`);
+}
+
+// ✅ تحميل كل بيانات المستخدم من Firestore مرة واحدة
+async function loadAllUserDataFromFirestore() {
+  if (!fbDb || !currentUser) return;
+  cachedPersonalData = {};
+
+  try {
+    const personalRef = fbFns.collection(fbDb, 'users', currentUser.uid, 'personal');
+    const snapshot = await fbFns.getDocs(personalRef);
+
+    snapshot.forEach(docSnap => {
+      const data = docSnap.data();
+      const docId = docSnap.id;
+      if (data && data.items) {
+        cachedPersonalData[docId] = data.items;
+      }
+    });
+
+    // تحميل custom names
+    const customRef = fbFns.collection(fbDb, 'users', currentUser.uid, 'customNames');
+    const customSnap = await fbFns.getDocs(customRef);
+
+    customSnap.forEach(docSnap => {
+      const data = docSnap.data();
+      const docId = docSnap.id;
+      if (data && data.name) {
+        cachedPersonalData[`customName_${docId}`] = data.name;
+      }
+    });
+
+    console.log('✅ تم تحميل البيانات من Firestore');
+  } catch (error) {
+    console.error('❌ خطأ في تحميل البيانات:', error);
+  }
+}
+
+// ============================================================
+// ====== الأسماء المخصصة (Firestore) ======
+// ============================================================
+function getCustomName(subjectId, type, index) {
+  // ✅ لو مفيش user → نرجع للـ localStorage (للزائر)
+  if (!currentUser || !firestoreReady) {
+    try {
+      const userKey = getUserKey();
+      const key = `customName_${userKey}_${subjectId}_${type}_${index}`;
+      return localStorage.getItem(key) || null;
+    } catch (e) { return null; }
+  }
+
+  // ✅ من Firestore cache
+  const docId = `${subjectId}__${type}__${index}`;
+  return cachedPersonalData[`customName_${docId}`] || null;
+}
+
+async function setCustomName(subjectId, type, index, name) {
+  // ✅ للزائر → localStorage
+  if (!currentUser || !firestoreReady) {
+    try {
+      const userKey = getUserKey();
+      const key = `customName_${userKey}_${subjectId}_${type}_${index}`;
+      if (name && name.trim()) localStorage.setItem(key, name.trim());
+      else localStorage.removeItem(key);
+    } catch (e) {}
+    return;
+  }
+
+  // ✅ لـ المستخدم المسجل → Firestore
+  try {
+    const docRef = getCustomNameDocRef(subjectId, type, index);
+    const docId = `${subjectId}__${type}__${index}`;
+
+    if (name && name.trim()) {
+      await fbFns.setDoc(docRef, { name: name.trim(), updatedAt: fbFns.serverTimestamp() });
+      cachedPersonalData[`customName_${docId}`] = name.trim();
+    } else {
+      await fbFns.deleteDoc(docRef);
+      delete cachedPersonalData[`customName_${docId}`];
+    }
+  } catch (error) {
+    console.error('❌ خطأ في حفظ الاسم:', error);
+    showToast('⚠️ فشل حفظ الاسم');
+  }
+}
+
+// ============================================================
+// ====== العناصر الشخصية (Firestore) ======
+// ============================================================
+function getPersonalItems(subjectId, type) {
+  // ✅ للزائر → localStorage
+  if (!currentUser || !firestoreReady) {
+    try {
+      const userKey = getUserKey();
+      const key = `personal_${userKey}_${subjectId}_${type}`;
+      const raw = localStorage.getItem(key);
+      return raw ? JSON.parse(raw) : [];
+    } catch (e) { return []; }
+  }
+
+  // ✅ من Firestore cache
+  const docId = makeFirestoreDocId(subjectId, type);
+  return cachedPersonalData[docId] || [];
+}
+
+async function savePersonalItems(subjectId, type, items) {
+  // ✅ للزائر → localStorage
+  if (!currentUser || !firestoreReady) {
+    try {
+      const userKey = getUserKey();
+      const key = `personal_${userKey}_${subjectId}_${type}`;
+      localStorage.setItem(key, JSON.stringify(items));
+    } catch (e) {}
+    return;
+  }
+
+  // ✅ لـ المستخدم المسجل → Firestore
+  try {
+    const docRef = getPersonalDocRef(subjectId, type);
+    const docId = makeFirestoreDocId(subjectId, type);
+
+    if (items.length === 0) {
+      await fbFns.deleteDoc(docRef);
+      delete cachedPersonalData[docId];
+    } else {
+      await fbFns.setDoc(docRef, { items: items, updatedAt: fbFns.serverTimestamp() });
+      cachedPersonalData[docId] = items;
+    }
+  } catch (error) {
+    console.error('❌ خطأ في حفظ البيانات:', error);
+    showToast('⚠️ فشل حفظ البيانات');
+  }
+}
+
+function renderPersonalItems(subjectId, type) {
+  const container = document.getElementById(`personalList-${subjectId}-${type}`);
+  if (!container) return;
+
+  const items = getPersonalItems(subjectId, type);
+  const canEdit = !document.body.classList.contains('guest-mode');
+
+  if (items.length === 0) {
+    container.innerHTML = `
+      <div class="empty-message">
+        <span>📭</span>
+        لسه مفيش محتوى هنا.<br>${canEdit ? 'اضغط على زر الإضافة فوق عشان تضيف أول عنصر.' : 'سجّل دخول عشان تقدر تضيف محتواك.'}
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = '';
+  items.forEach(item => {
+    const div = document.createElement('div');
+    div.className = 'personal-item';
+    div.innerHTML = `
+      <div class="item-info">
+        <span class="item-icon">📄</span>
+        <span class="item-name">${escapeHTML(item.name)}</span>
+      </div>
+      <div class="item-actions">
+        <a class="item-btn open" href="${escapeHTML(item.link)}" target="_blank" title="فتح">🔗</a>
+        ${canEdit ? `
+          <button class="item-btn edit" onclick="editPersonalItem('${subjectId}','${type}','${item.id}')" title="تعديل">✏️</button>
+          <button class="item-btn delete" onclick="deletePersonalItem('${subjectId}','${type}','${item.id}')" title="حذف">🗑️</button>
+        ` : ''}
+      </div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+async function deletePersonalItem(subjectId, type, itemId) {
+  if (!requireAuth('حذف محتوى')) return;
+  if (!confirm('متأكد إنك عايز تحذف العنصر ده؟')) return;
+  let items = getPersonalItems(subjectId, type);
+  items = items.filter(it => it.id !== itemId);
+  await savePersonalItems(subjectId, type, items);
+  renderPersonalItems(subjectId, type);
+  playSound('back');
+  showToast('🗑️ تم الحذف');
+}
+
+async function editPersonalItem(subjectId, type, itemId) {
+  if (!requireAuth('تعديل محتوى')) return;
+  const items = getPersonalItems(subjectId, type);
+  const item = items.find(it => it.id === itemId);
+  if (!item) return;
+
+  const newName = prompt('الاسم الجديد:', item.name);
+  if (newName === null) return;
+  const newLink = prompt('الرابط الجديد:', item.link);
+  if (newLink === null) return;
+
+  item.name = newName.trim() || item.name;
+  item.link = newLink.trim() || item.link;
+
+  await savePersonalItems(subjectId, type, items);
+  renderPersonalItems(subjectId, type);
+  playSound('success');
+  showToast('✅ تم التعديل');
+}
+
+// ============================================================
 // ====== إعداد تبويبات المادة ======
+// ============================================================
 function setupMaterialTabs(subjectId, isProject) {
   const tabsContainer = document.getElementById('materialTabs');
   tabsContainer.innerHTML = '';
@@ -843,111 +753,6 @@ function showSubject(levelId, termId, subjectId) {
   setupSubjectSearch(subjectId);
 
   transitionToPage(subjectPage, levelPage, { page: 'subject', subjectId: subjectId, title: subject.name, url: `#subject-${subjectId}` });
-}
-
-// ====== الأسماء المخصصة ======
-function getCustomName(subjectId, type, index) {
-  try {
-    const userKey = getUserKey();
-    const key = `customName_${userKey}_${subjectId}_${type}_${index}`;
-    return localStorage.getItem(key) || null;
-  } catch (e) { return null; }
-}
-
-function setCustomName(subjectId, type, index, name) {
-  try {
-    const userKey = getUserKey();
-    const key = `customName_${userKey}_${subjectId}_${type}_${index}`;
-    if (name && name.trim()) localStorage.setItem(key, name.trim());
-    else localStorage.removeItem(key);
-  } catch (e) {}
-}
-
-// ====== العناصر الشخصية ======
-function getPersonalItems(subjectId, type) {
-  try {
-    const userKey = getUserKey();
-    const key = `personal_${userKey}_${subjectId}_${type}`;
-    const raw = localStorage.getItem(key);
-    return raw ? JSON.parse(raw) : [];
-  } catch (e) { return []; }
-}
-
-function savePersonalItems(subjectId, type, items) {
-  try {
-    const userKey = getUserKey();
-    const key = `personal_${userKey}_${subjectId}_${type}`;
-    localStorage.setItem(key, JSON.stringify(items));
-  } catch (e) {}
-}
-
-function renderPersonalItems(subjectId, type) {
-  const container = document.getElementById(`personalList-${subjectId}-${type}`);
-  if (!container) return;
-
-  const items = getPersonalItems(subjectId, type);
-  const canEdit = !document.body.classList.contains('guest-mode');
-
-  if (items.length === 0) {
-    container.innerHTML = `
-      <div class="empty-message">
-        <span>📭</span>
-        لسه مفيش محتوى هنا.<br>${canEdit ? 'اضغط على زر الإضافة فوق عشان تضيف أول عنصر.' : 'سجّل دخول عشان تقدر تضيف محتواك.'}
-      </div>
-    `;
-    return;
-  }
-
-  container.innerHTML = '';
-  items.forEach(item => {
-    const div = document.createElement('div');
-    div.className = 'personal-item';
-    div.innerHTML = `
-      <div class="item-info">
-        <span class="item-icon">📄</span>
-        <span class="item-name">${escapeHTML(item.name)}</span>
-      </div>
-      <div class="item-actions">
-        <a class="item-btn open" href="${escapeHTML(item.link)}" target="_blank" title="فتح">🔗</a>
-        ${canEdit ? `
-          <button class="item-btn edit" onclick="editPersonalItem('${subjectId}','${type}','${item.id}')" title="تعديل">✏️</button>
-          <button class="item-btn delete" onclick="deletePersonalItem('${subjectId}','${type}','${item.id}')" title="حذف">🗑️</button>
-        ` : ''}
-      </div>
-    `;
-    container.appendChild(div);
-  });
-}
-
-function deletePersonalItem(subjectId, type, itemId) {
-  if (!requireAuth('حذف محتوى')) return;
-  if (!confirm('متأكد إنك عايز تحذف العنصر ده؟')) return;
-  let items = getPersonalItems(subjectId, type);
-  items = items.filter(it => it.id !== itemId);
-  savePersonalItems(subjectId, type, items);
-  renderPersonalItems(subjectId, type);
-  playSound('back');
-  showToast('🗑️ تم الحذف');
-}
-
-function editPersonalItem(subjectId, type, itemId) {
-  if (!requireAuth('تعديل محتوى')) return;
-  const items = getPersonalItems(subjectId, type);
-  const item = items.find(it => it.id === itemId);
-  if (!item) return;
-
-  const newName = prompt('الاسم الجديد:', item.name);
-  if (newName === null) return;
-  const newLink = prompt('الرابط الجديد:', item.link);
-  if (newLink === null) return;
-
-  item.name = newName.trim() || item.name;
-  item.link = newLink.trim() || item.link;
-
-  savePersonalItems(subjectId, type, items);
-  renderPersonalItems(subjectId, type);
-  playSound('success');
-  showToast('✅ تم التعديل');
 }
 
 // ====== تعبئة محتوى المادة ======
@@ -1402,7 +1207,7 @@ function closeAddModal() {
   currentAddContext = { subjectId: null, type: null };
 }
 
-function saveNewItem() {
+async function saveNewItem() {
   const name = document.getElementById('itemName').value.trim();
   const link = document.getElementById('itemLink').value.trim();
   if (!name) { showToast('⚠️ اكتب الاسم أولاً'); return; }
@@ -1416,7 +1221,7 @@ function saveNewItem() {
     id: 'p_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7),
     name: name, link: link, createdAt: Date.now()
   });
-  savePersonalItems(subjectId, type, personal);
+  await savePersonalItems(subjectId, type, personal);
   closeAddModal();
   renderPersonalItems(subjectId, type);
   playSound('success');
@@ -1444,11 +1249,11 @@ function closeRenameModal() {
   currentRenameContext = { subjectId: null, type: null, index: null };
 }
 
-function saveRename() {
+async function saveRename() {
   const newName = document.getElementById('renameInput').value.trim();
   const { subjectId, type, index } = currentRenameContext;
   if (subjectId === null || type === null || index === null) return;
-  setCustomName(subjectId, type, index, newName);
+  await setCustomName(subjectId, type, index, newName);
   closeRenameModal();
   renderMaterialContent(subjectId, type);
   playSound('success');
@@ -1485,6 +1290,10 @@ function initFirebaseAuth() {
       document.body.classList.remove('guest-mode');
       const badge = document.querySelector('.guest-badge');
       if (badge) badge.remove();
+
+      // ✅ init Firestore للمستخدم
+      await initFirestoreForUser(user);
+
       hideAuthGate();
       hideVerificationScreen();
       updateUserButton(user);
@@ -1506,6 +1315,8 @@ function initFirebaseAuth() {
       refreshSubjectPageIfOpen();
     } else {
       currentUser = null;
+      firestoreReady = false;
+      cachedPersonalData = {};
       hideVerificationScreen();
       if (!isGuest) {
         showAuthGate();
@@ -1835,6 +1646,8 @@ async function logout() {
     if (badge) badge.remove();
     document.body.classList.remove('guest-mode');
     isGuest = false;
+    firestoreReady = false;
+    cachedPersonalData = {};
     showToast('👋 تم تسجيل الخروج');
     playSound('back');
   } catch (error) {
